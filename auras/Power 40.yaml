@@ -1,0 +1,74 @@
+id: Power 40
+triggers:
+- trigger:
+    type: unit
+    subeventSuffix: _CAST_START
+    event: Power
+    use_unit: true
+    names: {}
+    powertype: 3
+    spellIds: {}
+    use_showCost: false
+    unit: player
+    subeventPrefix: SPELL
+    use_powertype: false
+    debuffType: HELPFUL
+  untrigger: {}
+regionType: icon
+position:
+  xOffset: 555.3334350585938
+  yOffset: -225.3999847412109
+  anchorPoint: CENTER
+  frameStrata: 1
+visual:
+  regionType: icon
+  color:
+  - 1
+  - 1
+  - 1
+  - 1
+  desaturate: false
+  alpha: 1
+  cooldown: false
+  glow: false
+parent: Power, Health and Enemy Details
+load:
+  use_never: false
+  talent: {}
+  spec: {}
+  class:
+    single: WARRIOR
+    multi:
+      WARRIOR: true
+      ROGUE: true
+  size: {}
+conditions:
+- check:
+    trigger: 1
+    variable: percentpower
+    op: <
+    value: '40'
+  changes:
+  - value:
+    - 1
+    - 1
+    - 1
+    - 0
+    property: color
+actions: {}
+animation:
+  start:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none
+  main:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none
+  finish:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none

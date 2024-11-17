@@ -24,6 +24,7 @@ class WeakAuraManager:
         self.auras_dir = auras_dir
         self.backup_dir = backup_dir
         self.auras: Dict[str, WeakAura] = {}
+        self.parser = WeakAurasParser()
     
     def backup_weakauras_file(self) -> None:
         """Create a backup of the WeakAuras.lua file"""
@@ -40,10 +41,14 @@ class WeakAuraManager:
             raise FileNotFoundError(f"WeakAuras.lua not found at {self.weakauras_path}")
             
         try:
-            parsed = WeakAurasParser.parse_file(self.weakauras_path)
+            parsed = self.parser.parse_file(self.weakauras_path)
             displays = parsed.get("displays", {})
             
             for aura_id, aura_data in displays.items():
+                # Skip groups (they don't have triggers and are just for organization)
+                if aura_data.get("regionType") == "group":
+                    continue
+                    
                 aura = WeakAura.from_lua_table(aura_id, aura_data)
                 self.auras[aura_id] = aura
                 
@@ -52,28 +57,61 @@ class WeakAuraManager:
     
     def save_to_game(self) -> None:
         """Save auras to WeakAuras.lua"""
-        # Create directory if it doesn't exist
-        self.weakauras_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        # Create backup if file exists
+        # Create backup before saving
         if self.weakauras_path.exists():
             self.backup_weakauras_file()
         
-        displays = {
-            aura_id: aura.to_lua_table() 
-            for aura_id, aura in self.auras.items()
-        }
-        
-        data = {
-            "displays": displays,
+        output = {
+            "displays": {},
             "dbVersion": WEAKAURAS_DB_VERSION,
             "minimap": {"hide": False},
+            "editor_theme": "Monokai",
+            "editor_font_size": 12,
+            "editor_tab_spaces": 4,
             "login_squelch_time": 10,
-            "editor_tab_spaces": 4
+            "historyCutoff": 730,
+            "migrationCutoff": 730,
+            "registered": {},
+            "features": {},
+            "dynamicIconCache": {}
         }
         
-        lua_content = WeakAurasParser.to_lua_string(data)
-        self.weakauras_path.write_text(lua_content, encoding='utf-8')
+        # Convert auras to Lua format
+        for aura_id, aura in self.auras.items():
+            aura_data = {
+                "id": aura.id,
+                "regionType": aura.regionType,
+                "triggers": aura.triggers,
+                "load": aura.load,
+                "conditions": aura.conditions,
+                "actions": aura.actions,
+                "animation": aura.animation,
+                # Position
+                "xOffset": aura.position.get("xOffset", 0),
+                "yOffset": aura.position.get("yOffset", 0),
+                "anchorPoint": aura.position.get("anchorPoint", "CENTER"),
+                "frameStrata": aura.position.get("frameStrata", 1),
+                # Visual
+                "color": aura.visual.get("color", [1, 1, 1, 1]),
+                "desaturate": aura.visual.get("desaturate", False),
+                "alpha": aura.visual.get("alpha", 1),
+                # Other required fields
+                "uid": aura_id,  # Use aura_id as uid
+                "internalVersion": 78,  # Current version
+                "authorOptions": {},
+                "config": {},
+                "subRegions": [
+                    {"type": "subbackground"},
+                    {"type": "subforeground"}
+                ]
+            }
+            
+            output["displays"][aura_id] = aura_data
+        
+        # Save to file
+        lua_content = f"WeakAurasSaved = {self.parser.to_lua_string(output)}\n"
+        with self.weakauras_path.open('w', encoding='utf-8') as f:
+            f.write(lua_content)
     
     def export_to_yaml(self) -> None:
         """Export all auras to individual YAML files"""
@@ -83,30 +121,28 @@ class WeakAuraManager:
             # Create clean YAML structure
             aura_data = {
                 "id": aura.id,
-                "triggers": aura.triggers,
-                "load": aura.load.to_dict() if hasattr(aura, 'load') else {},
-                "conditions": aura.conditions,
-                "actions": aura.actions,
-                "animation": aura.animation,
-                "visual": {
-                    "regionType": aura.regionType,
-                    "color": aura.visual.get("color", [1, 1, 1, 1]),
-                    "desaturate": aura.visual.get("desaturate", False),
-                    "alpha": aura.visual.get("alpha", 1),
-                    "cooldown": aura.visual.get("cooldown", False),
-                    "glow": aura.visual.get("glow", False),
-                },
+                "triggers": aura.triggers,  # List of trigger groups
+                "regionType": aura.regionType,
                 "position": {
                     "xOffset": aura.position.get("xOffset", 0),
                     "yOffset": aura.position.get("yOffset", 0),
                     "anchorPoint": aura.position.get("anchorPoint", "CENTER"),
-                    "frameStrata": aura.position.get("frameStrata", 1),
-                }
+                    "frameStrata": aura.position.get("frameStrata", 1)
+                },
+                "visual": {
+                    "regionType": aura.regionType,  # Include regionType in visual section
+                    "color": aura.visual.get("color", [1, 1, 1, 1]),
+                    "desaturate": aura.visual.get("desaturate", False),
+                    "alpha": aura.visual.get("alpha", 1),
+                    "cooldown": aura.visual.get("cooldown", False),
+                    "glow": aura.visual.get("glow", False)
+                },
+                "parent": aura.parent,
+                "load": aura.load,
+                "conditions": aura.conditions,
+                "actions": aura.actions,
+                "animation": aura.animation
             }
-            
-            # Add parent if it exists
-            if hasattr(aura, 'parent') and aura.parent:
-                aura_data["parent"] = aura.parent
             
             # Clean up None values
             aura_data = self._clean_dict(aura_data)
@@ -138,39 +174,66 @@ class WeakAuraManager:
             try:
                 with yaml_file.open('r', encoding='utf-8') as f:
                     aura_data = yaml.safe_load(f)
-                    
-                # Reconstruct full aura data
-                full_data = {}
                 
-                # Add basic fields
-                full_data["id"] = aura_data["id"]
-                full_data["triggers"] = aura_data["triggers"]
-                
-                # Add visual properties
-                if "visual" in aura_data:
-                    full_data.update(aura_data["visual"])
-                    
-                # Add position properties
-                if "position" in aura_data:
-                    full_data.update(aura_data["position"])
-                    
-                # Add other sections
-                for key in ["load", "conditions", "actions", "animation", "parent"]:
-                    if key in aura_data:
-                        full_data[key] = aura_data[key]
+                # Ensure triggers are properly structured
+                if "triggers" not in aura_data:
+                    aura_data["triggers"] = []
                 
                 # Create WeakAura object
-                aura = WeakAura.from_lua_table(aura_data["id"], full_data)
+                aura = WeakAura(
+                    id=aura_data["id"],
+                    triggers=aura_data["triggers"],
+                    regionType=aura_data.get("regionType", "icon"),
+                    position=aura_data.get("position", {}),
+                    visual=aura_data.get("visual", {}),
+                    parent=aura_data.get("parent"),
+                    load=aura_data.get("load", {}),
+                    conditions=aura_data.get("conditions", {}),
+                    actions=aura_data.get("actions", {}),
+                    animation=aura_data.get("animation", {})
+                )
+                
                 self.auras[aura.id] = aura
                 
             except Exception as e:
                 print(f"Error loading {yaml_file.name}: {e}")
     
+    def validate_trigger_structure(self, triggers: List[Dict]) -> List[str]:
+        """Validate the trigger structure matches WeakAuras.lua format"""
+        errors = []
+        
+        for i, trigger_group in enumerate(triggers):
+            if not isinstance(trigger_group, dict):
+                errors.append(f"Trigger {i}: Not a dictionary")
+                continue
+                
+            if "trigger" not in trigger_group:
+                errors.append(f"Trigger {i}: Missing 'trigger' key")
+                continue
+                
+            trigger = trigger_group["trigger"]
+            if not isinstance(trigger, dict):
+                errors.append(f"Trigger {i}: Trigger value is not a dictionary")
+                continue
+                
+            if "type" not in trigger:
+                errors.append(f"Trigger {i}: Missing trigger type")
+                
+        return errors
+
     def validate_all(self) -> Dict[str, List[str]]:
         """Validate all auras and return any errors"""
         errors = {}
         for aura_id, aura in self.auras.items():
+            # Validate basic aura structure
             aura_errors = aura.validate()
+            
+            # Validate trigger structure
+            trigger_errors = self.validate_trigger_structure(aura.triggers)
+            if trigger_errors:
+                aura_errors.extend(trigger_errors)
+                
             if aura_errors:
                 errors[aura_id] = aura_errors
+                
         return errors

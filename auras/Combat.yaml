@@ -1,0 +1,68 @@
+id: Combat
+triggers:
+- trigger:
+    useRem: false
+    useName: true
+    use_incombat: true
+    auranames:
+    - Demon Skin
+    subeventPrefix: SPELL
+    ownOnly: true
+    event: Conditions
+    use_unit: true
+    unitExists: false
+    matchesShowOn: showOnActive
+    spellIds: {}
+    unit: player
+    type: unit
+    names: {}
+    subeventSuffix: _CAST_START
+    debuffType: BOTH
+  untrigger: {}
+regionType: icon
+position:
+  xOffset: 585.1331909179687
+  yOffset: -165.6
+  anchorPoint: CENTER
+  frameStrata: 1
+visual:
+  regionType: icon
+  color:
+  - 1
+  - 1
+  - 1
+  - 1
+  desaturate: false
+  alpha: 1
+  cooldown: false
+  glow: false
+parent: Power, Health and Enemy Details
+load:
+  use_never: false
+  talent: {}
+  spec: {}
+  class:
+    single: DRUID
+    multi:
+      DRUID: true
+  size: {}
+actions:
+  finish:
+    do_custom: false
+    hide_all_glows: false
+animation:
+  start:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none
+  main:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none
+  finish:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none

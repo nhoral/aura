@@ -1,48 +1,43 @@
 #!/usr/bin/env python3
-import os
 import sys
 from pathlib import Path
-import json
 
-# Add the project root directory to Python path
-root_dir = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(root_dir))
+# Add the project root to the Python path
+project_root = Path(__file__).parent.parent
+sys.path.append(str(project_root))
 
 from src.core.manager import WeakAuraManager
-from src.config import DEFAULT_WEAKAURAS_LUA_PATH, DEFAULT_AURAS_DIR
+from src.config import (
+    DEFAULT_WEAKAURAS_LUA_PATH,
+    DEFAULT_AURAS_DIR,
+    DEFAULT_BACKUP_DIR,
+    WEAKAURAS_DB_VERSION
+)
 
-def main():
+def build_weakauras(source_dir: Path = DEFAULT_AURAS_DIR,
+                   target_path: Path = DEFAULT_WEAKAURAS_LUA_PATH) -> int:
     """Build WeakAuras.lua from YAML files"""
-    print("WeakAuras Builder")
-    print("=================")
-    print(f"Source directory: {DEFAULT_AURAS_DIR}")
-    print(f"Target file: {DEFAULT_WEAKAURAS_LUA_PATH / 'WeakAuras.lua'}\n")
+    print(f"Loading auras from: {source_dir}")
+    print(f"Building WeakAuras.lua at: {target_path}")
     
     try:
+        # Initialize manager
         manager = WeakAuraManager(
-            weakauras_path=DEFAULT_WEAKAURAS_LUA_PATH,
-            auras_dir=DEFAULT_AURAS_DIR
+            weakauras_path=target_path,
+            auras_dir=source_dir,
+            backup_dir=DEFAULT_BACKUP_DIR
         )
         
-        # Import from YAML
+        # Create backup of current WeakAuras.lua if it exists
+        if target_path.exists():
+            manager.backup_weakauras_file()
+            print("Created backup of existing WeakAuras.lua")
+        
+        # Import from YAML files
         manager.import_from_yaml()
         print(f"Loaded {len(manager.auras)} auras")
         
-        # Debug: Print the trigger structure for a failing aura
-        print("\nDebug - Trigger structure for 'Power 10':")
-        power_aura = manager.auras.get("Power 10")
-        if power_aura:
-            print(json.dumps(power_aura.triggers, indent=2))
-            print("\nFull aura data:")
-            print(json.dumps({
-                "id": power_aura.id,
-                "triggers": power_aura.triggers,
-                "regionType": power_aura.regionType,
-                "position": power_aura.position,
-                "visual": power_aura.visual
-            }, indent=2))
-        
-        # Validate
+        # Validate auras
         errors = manager.validate_all()
         if errors:
             print("\nValidation errors found:")
@@ -50,25 +45,22 @@ def main():
                 print(f"\n{aura_id}:")
                 for error in aura_errors:
                     print(f"  - {error}")
-            
-            if input("\nContinue with build anyway? (y/N): ").lower() != 'y':
-                print("\nBuild cancelled.")
-                return 1
+            return 1
         
-        # Build WeakAuras.lua
+        # Save to WeakAuras.lua
         manager.save_to_game()
         print(f"\nSuccessfully built WeakAuras.lua")
         print("\nIncluded auras:")
         for aura_id in sorted(manager.auras.keys()):
             print(f"  - {aura_id}")
             
-        print(f"\nBackup created in: {manager.backup_dir}")
-            
     except Exception as e:
-        print(f"\nError: {e}")
+        print(f"Error: {e}")
         return 1
         
     return 0
 
 if __name__ == "__main__":
-    exit(main())
+    source_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_AURAS_DIR
+    target_path = Path(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_WEAKAURAS_LUA_PATH
+    exit(build_weakauras(source_dir, target_path))

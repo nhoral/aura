@@ -1,0 +1,75 @@
+id: Target Health Below 50
+triggers:
+- trigger:
+    type: unit
+    subeventSuffix: _CAST_START
+    event: Health
+    use_power: false
+    use_showCost: true
+    use_percentpower: false
+    names: {}
+    powertype: 3
+    spellIds: {}
+    unit: target
+    use_unit: true
+    subeventPrefix: SPELL
+    use_powertype: true
+    debuffType: HELPFUL
+  untrigger: {}
+regionType: icon
+position:
+  xOffset: 525.4333129882812
+  yOffset: -195.5
+  anchorPoint: CENTER
+  frameStrata: 1
+visual:
+  regionType: icon
+  color:
+  - 1
+  - 1
+  - 1
+  - 1
+  desaturate: false
+  alpha: 1
+  cooldown: false
+  glow: false
+parent: Power, Health and Enemy Details
+load:
+  use_never: false
+  talent: {}
+  class:
+    single: ROGUE
+    multi:
+      ROGUE: true
+  spec: {}
+  size: {}
+conditions:
+- check:
+    trigger: 1
+    variable: percenthealth
+    op: '>'
+    value: '50'
+  changes:
+  - value:
+    - 1
+    - 1
+    - 1
+    - 0
+    property: color
+actions: {}
+animation:
+  start:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none
+  main:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none
+  finish:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none

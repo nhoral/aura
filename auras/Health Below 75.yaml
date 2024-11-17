@@ -1,0 +1,75 @@
+id: Health Below 75
+triggers:
+- trigger:
+    type: unit
+    subeventSuffix: _CAST_START
+    use_showCost: true
+    use_power: false
+    event: Health
+    unit: player
+    names: {}
+    powertype: 3
+    spellIds: {}
+    use_unit: true
+    subeventPrefix: SPELL
+    use_percentpower: false
+    use_powertype: true
+    debuffType: HELPFUL
+  untrigger: {}
+regionType: icon
+position:
+  xOffset: 465.3333129882813
+  yOffset: -195.5
+  anchorPoint: CENTER
+  frameStrata: 1
+visual:
+  regionType: icon
+  color:
+  - 1
+  - 1
+  - 1
+  - 1
+  desaturate: false
+  alpha: 1
+  cooldown: false
+  glow: false
+parent: Power, Health and Enemy Details
+load:
+  use_never: false
+  talent: {}
+  class:
+    single: ROGUE
+    multi:
+      ROGUE: true
+  spec: {}
+  size: {}
+conditions:
+- check:
+    trigger: 1
+    variable: percenthealth
+    op: '>'
+    value: '75'
+  changes:
+  - value:
+    - 1
+    - 1
+    - 1
+    - 0
+    property: color
+actions: {}
+animation:
+  start:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none
+  main:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none
+  finish:
+    type: none
+    easeStrength: 3
+    duration_type: seconds
+    easeType: none

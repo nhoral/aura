@@ -1,0 +1,81 @@
+id: Enemy Casting
+triggers:
+- trigger:
+    use_interruptible: true
+    type: unit
+    subeventSuffix: _CAST_START
+    remaining_operator: <
+    event: Cast
+    names: {}
+    remaining: '1'
+    spellIds: {}
+    use_remaining: false
+    use_unit: true
+    subeventPrefix: SPELL
+    unit: target
+    debuffType: HELPFUL
+  untrigger: {}
+regionType: icon
+position:
+  xOffset: 555.2531909179688
+  yOffset: -165.600015258789
+  anchorPoint: CENTER
+  frameStrata: 1
+visual:
+  regionType: icon
+  color:
+  - 1
+  - 1
+  - 1
+  - 1
+  desaturate: false
+  alpha: 1
+  cooldown: false
+  glow: false
+parent: Power, Health and Enemy Details
+load:
+  use_never: false
+  talent: {}
+  class: {}
+  spec: {}
+  size: {}
+conditions:
+- check:
+    trigger: 1
+    variable: show
+    value: 1
+  changes:
+  - value:
+    - 1
+    - 1
+    - 1
+    - 1
+    property: color
+- check:
+    trigger: 1
+    variable: show
+    value: 0
+  changes:
+  - value:
+    - 1
+    - 1
+    - 1
+    - 0
+    property: color
+actions: {}
+animation:
+  start:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none
+  main:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none
+  finish:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none

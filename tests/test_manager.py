@@ -31,24 +31,29 @@ def test_paths(tmp_path):
 
 @pytest.fixture
 def sample_weakauras_file(test_paths):
-    content = f"""WeakAurasSaved = {{
-        ["displays"] = {{
-            ["TestAura"] = {{
+    content = """WeakAurasSaved = {
+        ["displays"] = {
+            ["TestAura"] = {
                 ["id"] = "TestAura",
-                ["triggers"] = {{
-                    ["trigger"] = {{
-                        ["type"] = "aura",
-                        ["event"] = "Health"
-                    }}
-                }},
-                ["regionType"] = "{VALID_REGION_TYPES[0]}",
-                ["xOffset"] = {DEFAULT_AURA_VALUES["position"]["xOffset"]},
-                ["yOffset"] = {DEFAULT_AURA_VALUES["position"]["yOffset"]},
-                ["anchorPoint"] = "{DEFAULT_AURA_VALUES["position"]["anchorPoint"]}"
-            }}
-        }},
-        ["dbVersion"] = {WEAKAURAS_DB_VERSION}
-    }}"""
+                ["triggers"] = {
+                    {  -- First trigger group
+                        ["trigger"] = {
+                            ["type"] = "aura",
+                            ["event"] = "Health",
+                            ["unit"] = "player"
+                        },
+                        ["untrigger"] = {}
+                    },
+                    ["activeTriggerMode"] = -10
+                },
+                ["regionType"] = "icon",
+                ["xOffset"] = 0,
+                ["yOffset"] = 0,
+                ["anchorPoint"] = "CENTER"
+            }
+        },
+        ["dbVersion"] = 78
+    }"""
     
     file_path = test_paths["weakauras_path"] / WEAKAURAS_FILE
     file_path.write_text(content)
@@ -142,21 +147,32 @@ def test_import_from_yaml(manager, sample_weakauras_file):
 def complex_aura_data():
     """Fixture for complex aura test data"""
     return {
-        "id": "ComplexAura",
-        "triggers": [{
-            "trigger": {
-                "type": "custom",
-                "custom": "function() return true end",
-                "events": "UNIT_HEALTH"
-            }
-        }],
+        "triggers": {
+            0: {  # Note the numeric key
+                "trigger": {
+                    "type": "custom",
+                    "custom": "function() return true end",
+                    "events": "UNIT_HEALTH"
+                },
+                "untrigger": {}
+            },
+            "activeTriggerMode": -10
+        },
+        "regionType": "icon",
+        "xOffset": 0,
+        "yOffset": 0,
+        "anchorPoint": "CENTER",
+        "color": [1, 1, 1, 1],
+        "desaturate": False,
         "load": {
             "class": {
                 "single": "WARRIOR",
-                "multi": {"WARRIOR": True, "ROGUE": True}
+                "multi": {
+                    "WARRIOR": True,
+                    "ROGUE": True
+                }
             }
         },
-        "regionType": "icon",
         "actions": {
             "start": {
                 "sound": "None",
@@ -187,3 +203,54 @@ def test_export_complex_aura(manager, complex_aura_data):
     assert aura_data["load"]["class"]["single"] == "WARRIOR"
     assert "actions" in aura_data
     assert aura_data["actions"]["start"]["glow"] is True
+
+def test_trigger_structure_validation(manager, sample_weakauras_file):
+    """Test validation of trigger structure"""
+    manager.load_from_game()
+    errors = manager.validate_all()
+    assert not errors, f"Unexpected validation errors: {errors}"
+
+    # Test invalid trigger structure
+    manager.auras["TestAura"].triggers = [{
+        "not_trigger": {  # Wrong key
+            "type": "aura",
+            "event": "Health"
+        }
+    }]
+    errors = manager.validate_all()
+    assert "TestAura" in errors
+    assert any("Missing 'trigger' key" in error for error in errors["TestAura"])
+
+def test_trigger_type_validation(manager, sample_weakauras_file):
+    """Test validation of trigger types"""
+    manager.load_from_game()
+    
+    # Test invalid trigger type
+    manager.auras["TestAura"].triggers = [{
+        "trigger": {
+            "type": "invalid_type",  # Invalid type
+            "event": "Health"
+        },
+        "untrigger": {}
+    }]
+    errors = manager.validate_all()
+    assert "TestAura" in errors
+    assert any("Invalid trigger type" in error for error in errors["TestAura"])
+
+def test_yaml_roundtrip(manager, complex_aura_data):
+    """Test that YAML export/import preserves trigger structure"""
+    # Create and export complex aura
+    complex_aura = WeakAura.from_lua_table("ComplexAura", complex_aura_data)
+    manager.auras["ComplexAura"] = complex_aura
+    manager.export_to_yaml()
+    
+    # Clear and reload from YAML
+    manager.auras.clear()
+    manager.import_from_yaml()
+    
+    # Verify trigger structure is preserved
+    aura = manager.auras["ComplexAura"]
+    assert len(aura.triggers) == 1
+    assert "trigger" in aura.triggers[0]
+    assert "untrigger" in aura.triggers[0]
+    assert aura.triggers[0]["trigger"]["type"] == "custom"

@@ -1,0 +1,75 @@
+id: Casting
+triggers:
+- trigger:
+    type: unit
+    subeventSuffix: _CAST_START
+    event: Cast
+    subeventPrefix: SPELL
+    spellIds: {}
+    use_unit: true
+    unit: player
+    names: {}
+    debuffType: HELPFUL
+  untrigger: {}
+regionType: icon
+position:
+  xOffset: 466.1777709960936
+  yOffset: -135.5642719813756
+  anchorPoint: CENTER
+  frameStrata: 1
+visual:
+  regionType: icon
+  color:
+  - 1
+  - 1
+  - 1
+  - 1
+  desaturate: false
+  alpha: 1
+  cooldown: false
+  glow: false
+parent: Power, Health and Enemy Details
+load:
+  use_never: false
+  talent: {}
+  class:
+    single: WARLOCK
+    multi:
+      WARLOCK: true
+  spec: {}
+  size: {}
+conditions:
+- check:
+    trigger: 1
+    variable: show
+    value: 1
+  changes:
+  - property: color
+- check:
+    trigger: 1
+    variable: show
+    value: 0
+  changes:
+  - value:
+    - 1
+    - 1
+    - 1
+    - 0
+    property: color
+actions: {}
+animation:
+  start:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none
+  main:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none
+  finish:
+    easeStrength: 3
+    type: none
+    duration_type: seconds
+    easeType: none

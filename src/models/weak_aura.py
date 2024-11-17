@@ -121,154 +121,96 @@ class SubRegion:
 class WeakAura:
     id: str
     triggers: List[Dict[str, Any]]
-    load: LoadCondition
-    regionType: str
-    visual: Dict[str, Any] = field(default_factory=lambda: DEFAULT_AURA_VALUES["visual"].copy())
-    position: Dict[str, Any] = field(default_factory=lambda: DEFAULT_AURA_VALUES["position"].copy())
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    subRegions: List[SubRegion] = field(default_factory=list)
-    parent: Optional[str] = None
-    conditions: List[Dict[str, Any]] = field(default_factory=list)
-    actions: Dict[str, Any] = field(default_factory=dict)
-    animation: Dict[str, Any] = field(default_factory=dict)
-    
-    @classmethod
-    def from_lua_table(cls, aura_id: str, data: Dict[str, Any]) -> 'WeakAura':
-        # Handle triggers
-        triggers_data = data.get("triggers", {})
-        if isinstance(triggers_data, str):
-            triggers = [{"trigger": {"type": "invalid", "raw": triggers_data}}]
-        elif isinstance(triggers_data, dict):
-            if "trigger" in triggers_data:
-                triggers = [triggers_data]
-            else:
-                triggers = [{"trigger": triggers_data}]
-        else:
-            triggers = list(triggers_data)
+    regionType: str = "icon"
+    position: Dict[str, Any] = None
+    visual: Dict[str, Any] = None
+    parent: str = None
+    load: Dict[str, Any] = None
+    conditions: Dict[str, Any] = None
+    actions: Dict[str, Any] = None
+    animation: Dict[str, Any] = None
 
-        # Separate visual properties
-        visual = {
-            "regionType": data.get("regionType", "icon"),
-            "color": data.get("color", [1, 1, 1, 1]),
-            "desaturate": data.get("desaturate", False),
-            "icon": data.get("icon", True),
-            "cooldown": data.get("cooldown", False),
-            "glow": data.get("glow", False),
-            "alpha": data.get("alpha", 1),
-        }
+    def __post_init__(self):
+        """Initialize default values for optional fields"""
+        self.position = self.position or {}
+        self.visual = self.visual or {}
+        self.load = self.load or {}
+        self.conditions = self.conditions or {}
+        self.actions = self.actions or {}
+        self.animation = self.animation or {}
 
-        # Position properties
-        position = {
-            "xOffset": data.get("xOffset", 0),
-            "yOffset": data.get("yOffset", 0),
-            "anchorPoint": data.get("anchorPoint", "CENTER"),
-            "width": data.get("width", 30),
-            "height": data.get("height", 30),
-        }
-
-        # Everything else goes to metadata
-        used_keys = set().union(
-            triggers_data.keys() if isinstance(triggers_data, dict) else set(),
-            visual.keys(),
-            position.keys(),
-            {"id", "load", "subRegions", "conditions", "actions", "animation"}
-        )
-        
-        metadata = {
-            k: v for k, v in data.items()
-            if k not in used_keys
-        }
-
-        return cls(
-            id=aura_id,
-            triggers=triggers,
-            load=LoadCondition.from_dict(data.get("load", {})),
-            regionType=data.get("regionType", "icon"),
-            visual=visual,
-            position=position,
-            metadata=metadata,
-            subRegions=[SubRegion.from_dict(sr) for sr in data.get("subRegions", [])],
-            parent=data.get("parent"),
-            conditions=data.get("conditions", []),
-            actions=data.get("actions", {}),
-            animation=data.get("animation", {})
-        )
-    
-    def to_lua_table(self) -> Dict[str, Any]:
-        """Convert back to Lua table format"""
-        result = {
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert WeakAura to dictionary format"""
+        return {
             "id": self.id,
             "triggers": self.triggers,
             "regionType": self.regionType,
+            "position": self.position,
+            "visual": self.visual,
+            "parent": self.parent,
+            "load": self.load,
+            "conditions": self.conditions,
+            "actions": self.actions,
+            "animation": self.animation
         }
-        
-        # Add all sections
-        result.update(self.visual)
-        result.update(self.position)
-        result.update(self.metadata)
-        
-        # Add structured data
-        if self.load:
-            result["load"] = self.load.to_dict()
-        if self.subRegions:
-            result["subRegions"] = [sr.to_dict() for sr in self.subRegions]
-        if self.conditions:
-            result["conditions"] = self.conditions
-        if self.actions:
-            result["actions"] = self.actions
-        if self.animation:
-            result["animation"] = self.animation
-        if self.parent:
-            result["parent"] = self.parent
-            
-        return result
-    
+
     def validate(self) -> List[str]:
         """Validate the WeakAura configuration"""
         errors = []
         
-        # Validate triggers
-        for i, trigger_group in enumerate(self.triggers):
-            print(f"\nValidating trigger {i} for {self.id}:")
-            
-            # Each trigger_group should have a 'trigger' key
-            if not isinstance(trigger_group, dict) or "trigger" not in trigger_group:
-                print("  No 'trigger' key in group")
-                errors.append(f"Trigger {i}: Invalid trigger group structure")
-                continue
+        # Check required fields
+        for field in REQUIRED_FIELDS:
+            if not getattr(self, field, None):
+                errors.append(f"Missing required field: {field}")
+        
+        # Validate region type
+        if self.regionType not in VALID_REGION_TYPES:
+            errors.append(f"Invalid region type: {self.regionType}")
+        
+        # Validate triggers structure
+        if not isinstance(self.triggers, list):
+            errors.append("Invalid trigger structure: triggers must be a list")
+        else:
+            for i, trigger_group in enumerate(self.triggers):
+                if not isinstance(trigger_group, dict):
+                    errors.append(f"Invalid trigger {i}: must be a dictionary")
+                    continue
                 
-            trigger_container = trigger_group["trigger"]
-            print(f"  Trigger container: {json.dumps(trigger_container, indent=2)}")
-            
-            # The container should have a '0' key for the main trigger
-            if not isinstance(trigger_container, dict) or "0" not in trigger_container:
-                print("  No '0' key in container")
-                errors.append(f"Trigger {i}: Invalid trigger container")
-                continue
-            
-            main_trigger = trigger_container["0"]
-            if not isinstance(main_trigger, dict) or "trigger" not in main_trigger:
-                print("  Invalid main trigger structure")
-                errors.append(f"Trigger {i}: Invalid main trigger structure")
-                continue
+                if "trigger" not in trigger_group:
+                    errors.append(f"Invalid trigger {i}: missing 'trigger' key")
+                    continue
                 
-            trigger_settings = main_trigger["trigger"]
-            print(f"  Trigger settings: {json.dumps(trigger_settings, indent=2)}")
-            
-            if not isinstance(trigger_settings, dict) or "type" not in trigger_settings:
-                print("  No 'type' in settings")
-                errors.append(f"Trigger {i}: Missing trigger type")
-                continue
+                trigger = trigger_group["trigger"]
+                if not isinstance(trigger, dict):
+                    errors.append(f"Invalid trigger {i}: trigger must be a dictionary")
+                    continue
                 
-            trigger_type = trigger_settings["type"]
-            print(f"  Found trigger type: {trigger_type}")
+                if "type" not in trigger:
+                    errors.append(f"Invalid trigger {i}: missing trigger type")
+                elif trigger["type"] not in VALID_TRIGGER_TYPES:
+                    errors.append(f"Invalid trigger type: {trigger['type']}")
+        
+        # Validate visual properties
+        if self.visual:
+            if "color" in self.visual:
+                color = self.visual["color"]
+                if not isinstance(color, list) or len(color) != 4:
+                    errors.append("Invalid color: must be a list of 4 values")
+                else:
+                    for val in color:
+                        if not isinstance(val, (int, float)) or val < 0 or val > 1:
+                            errors.append("Invalid color: values must be between 0 and 1")
+                            break
+        
+        # Validate position
+        if self.position:
+            required_pos_fields = ["xOffset", "yOffset", "anchorPoint"]
+            for field in required_pos_fields:
+                if field not in self.position:
+                    errors.append(f"Missing position field: {field}")
             
-            # Validate the trigger type
-            if trigger_type not in VALID_TRIGGER_TYPES:
-                print(f"  Invalid trigger type: {trigger_type}")
-                errors.append(f"Trigger {i}: Invalid trigger type '{trigger_type}'")
-            else:
-                print(f"  Valid trigger type: {trigger_type}")
+            if "anchorPoint" in self.position and self.position["anchorPoint"] not in ["CENTER", "TOP", "BOTTOM", "LEFT", "RIGHT", "TOPLEFT", "TOPRIGHT", "BOTTOMLEFT", "BOTTOMRIGHT"]:
+                errors.append(f"Invalid anchor point: {self.position['anchorPoint']}")
         
         return errors
     
@@ -287,3 +229,147 @@ class WeakAura:
             
         if "conditions" in template and not self.conditions:
             self.conditions = template["conditions"]
+
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "WeakAura":
+        """Create WeakAura from dictionary data"""
+        return cls(
+            id=data["id"],
+            triggers=data["triggers"],
+            regionType=data.get("regionType", "icon"),
+            position=data.get("position", {}),
+            visual=data.get("visual", {}),
+            parent=data.get("parent"),
+            load=data.get("load", {}),
+            conditions=data.get("conditions", {}),
+            actions=data.get("actions", {}),
+            animation=data.get("animation", {})
+        )
+
+    @classmethod
+    def from_lua_table(cls, aura_id: str, data: Dict[str, Any]) -> "WeakAura":
+        """Create WeakAura from Lua table data"""
+        # Extract triggers
+        triggers_data = data.get("triggers", {})
+        triggers = []
+        
+        # Handle numeric keys in triggers
+        if isinstance(triggers_data, dict):
+            # If it's a single trigger in the old format
+            if "trigger" in triggers_data:
+                triggers.append({
+                    "trigger": triggers_data.get("trigger", {}),
+                    "untrigger": triggers_data.get("untrigger", {})
+                })
+            # If it's multiple triggers in the new format
+            else:
+                # Get all numeric keys (both int and str types)
+                trigger_keys = []
+                for k in triggers_data.keys():
+                    if k == "activeTriggerMode":
+                        continue
+                    try:
+                        if isinstance(k, (int, str)) and str(k).isdigit():
+                            trigger_keys.append(int(str(k)))
+                    except (ValueError, TypeError):
+                        continue
+                
+                # Sort and process triggers
+                for key in sorted(trigger_keys):
+                    # Try both integer and string keys
+                    trigger_data = triggers_data.get(key) or triggers_data.get(str(key))
+                    if isinstance(trigger_data, dict):
+                        triggers.append(trigger_data)
+        
+        # Ensure at least one trigger exists
+        if not triggers:
+            triggers = [{
+                "trigger": {"type": "aura2"},
+                "untrigger": {}
+            }]
+        
+        return cls(
+            id=aura_id,
+            triggers=triggers,
+            regionType=data.get("regionType", "icon"),
+            position={
+                "xOffset": data.get("xOffset", 0),
+                "yOffset": data.get("yOffset", 0),
+                "anchorPoint": data.get("anchorPoint", "CENTER"),
+                "frameStrata": data.get("frameStrata", 1)
+            },
+            visual={
+                "regionType": data.get("regionType", "icon"),
+                "color": data.get("color", [1, 1, 1, 1]),
+                "desaturate": data.get("desaturate", False),
+                "alpha": data.get("alpha", 1),
+                "cooldown": data.get("cooldown", False),
+                "glow": data.get("glow", False)
+            },
+            parent=None,
+            load=data.get("load", {}),
+            conditions=data.get("conditions", {}),
+            actions=data.get("actions", {}),
+            animation=data.get("animation", {})
+        )
+
+    def to_lua_table(self) -> Dict[str, Any]:
+        """Convert WeakAura to Lua table format"""
+        # Start with basic fields
+        data = {
+            "id": self.id,
+            "regionType": self.regionType,
+            "parent": self.parent,
+        }
+        
+        # Add position fields at root level
+        if self.position:
+            data.update({
+                "xOffset": self.position.get("xOffset", 0),
+                "yOffset": self.position.get("yOffset", 0),
+                "anchorPoint": self.position.get("anchorPoint", "CENTER"),
+                "frameStrata": self.position.get("frameStrata", 1)
+            })
+        
+        # Add visual fields at root level
+        if self.visual:
+            data.update({
+                "color": self.visual.get("color", [1, 1, 1, 1]),
+                "desaturate": self.visual.get("desaturate", False),
+                "alpha": self.visual.get("alpha", 1),
+                "cooldown": self.visual.get("cooldown", False),
+                "glow": self.visual.get("glow", False)
+            })
+        
+        # Add triggers in WeakAuras.lua format
+        triggers = {}
+        for i, trigger_group in enumerate(self.triggers):
+            triggers[i] = {
+                "trigger": trigger_group.get("trigger", {}),
+                "untrigger": trigger_group.get("untrigger", {})
+            }
+        triggers["activeTriggerMode"] = -10  # Default value
+        data["triggers"] = triggers
+        
+        # Add other sections if they exist
+        if self.load:
+            data["load"] = self.load
+        if self.conditions:
+            data["conditions"] = self.conditions
+        if self.actions:
+            data["actions"] = self.actions
+        if self.animation:
+            data["animation"] = self.animation
+            
+        # Add default fields that WeakAuras expects
+        data.update({
+            "internalVersion": 78,  # From config.WEAKAURAS_DB_VERSION
+            "keepAspectRatio": False,
+            "selfPoint": "CENTER",
+            "icon": True,
+            "iconSource": 0,
+            "cooldownSwipe": False,
+            "uid": self.id[:12]  # Simple UID generation
+        })
+        
+        return data
