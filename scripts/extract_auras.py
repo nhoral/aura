@@ -6,67 +6,159 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
-from src.core.manager import WeakAuraManager
-from src.core.parser import WeakAurasParser
-from src.config import DEFAULT_WEAKAURAS_LUA_PATH, DEFAULT_AURAS_DIR, DEFAULT_BACKUP_DIR
+from src.config import (
+    DEFAULT_WEAKAURAS_LUA_PATH,
+    DEFAULT_AURAS_DIR
+)
 
-def main():
-    """Extract WeakAuras from WoW to YAML files"""
-    print(f"Loading WeakAuras from: {DEFAULT_WEAKAURAS_LUA_PATH}")
-    print(f"Saving to: {DEFAULT_AURAS_DIR}")
+def extract_auras(source_path: Path, output_dir: Path) -> None:
+    """Extract individual auras from WeakAuras.lua"""
+    # Read WeakAuras.lua
+    with open(source_path, 'r', encoding='utf-8') as f:
+        content = f.read()
     
-    try:
-        # Initialize manager
-        manager = WeakAuraManager(
-            weakauras_path=DEFAULT_WEAKAURAS_LUA_PATH,
-            auras_dir=DEFAULT_AURAS_DIR,
-            backup_dir=DEFAULT_BACKUP_DIR
-        )
+    # Find the displays table
+    displays_start = content.find('["displays"] = {')
+    if displays_start == -1:
+        raise ValueError("Could not find displays table")
+    
+    content = content[displays_start:]
+    
+    # Extract each aura
+    current_pos = content.find('{') + 1
+    while True:
+        # Find next aura start
+        aura_start = content.find('[', current_pos)
+        if aura_start == -1:
+            break
         
-        # Create backup of current WeakAuras.lua
-        manager.backup_weakauras_file()
-        print("Created backup of WeakAuras.lua")
+        # Extract aura ID
+        id_end = content.find(']', aura_start)
+        aura_id = content[aura_start+2:id_end-1]  # Remove quotes
         
-        # Parse all displays to count groups vs auras
-        parsed = WeakAurasParser.parse_file(manager.weakauras_path)
-        displays = parsed.get("displays", {})
+        # Find aura content
+        content_start = content.find('{', id_end)
+        content_end = find_matching_brace(content, content_start)
         
-        groups = [aura_id for aura_id, data in displays.items() 
-                 if data.get("regionType") == "group"]
+        if content_end == -1:
+            break
         
-        # Load non-group auras
-        manager.load_from_game()
-        print(f"\nFound {len(displays)} total displays:")
-        print(f"  - {len(manager.auras)} auras")
-        print(f"  - {len(groups)} groups (skipped)")
+        # Get the aura content
+        aura_content = content[content_start:content_end+1]
         
-        if groups:
-            print("\nSkipped groups:")
-            for group in sorted(groups):
-                print(f"  - {group}")
+        # Remove the parent key
+        aura_content = remove_parent_key(aura_content)
         
-        # Validate auras
-        errors = manager.validate_all()
-        if errors:
-            print("\nValidation errors found:")
-            for aura_id, aura_errors in errors.items():
-                print(f"\n{aura_id}:")
-                for error in aura_errors:
-                    print(f"  - {error}")
-            return 1
+        # Pretty-print the aura content
+        pretty_aura_content = pretty_print_lua(aura_content)
         
-        # Export to YAML
-        manager.export_to_yaml()
-        print(f"\nSuccessfully exported auras to {DEFAULT_AURAS_DIR}/")
-        print("\nExported auras:")
-        for aura_id in sorted(manager.auras.keys()):
-            print(f"  - {aura_id}")
-            
-    except Exception as e:
-        print(f"Error: {e}")
-        return 1
+        # Save to file
+        output_dir.mkdir(exist_ok=True)
+        with open(output_dir / f"{aura_id}.lua", 'w', encoding='utf-8') as f:
+            f.write("return {\n")
+            f.write(pretty_aura_content)
+            f.write("\n}")
         
-    return 0
+        current_pos = content_end
+
+def find_matching_brace(content: str, start: int = 0) -> int:
+    """Find the matching closing brace for the first opening brace"""
+    brace_count = 0
+    in_string = False
+    string_char = None
+    
+    for i, char in enumerate(content[start:], start):
+        if char in ['"', "'"] and (i == 0 or content[i-1] != '\\'):
+            if not in_string:
+                in_string = True
+                string_char = char
+            elif char == string_char:
+                in_string = False
+                string_char = None
+        
+        if not in_string:
+            if char == '{':
+                brace_count += 1
+            elif char == '}':
+                brace_count -= 1
+                if brace_count == 0:
+                    return i
+    
+    return -1
+
+def remove_parent_key(content: str) -> str:
+    """Remove the parent key from the Lua content"""
+    lines = content.splitlines()
+    result = []
+    in_string = False
+    string_char = None
+    
+    for line in lines:
+        stripped_line = line.strip()
+        
+        # Check if the line contains the parent key
+        if not in_string and stripped_line.startswith('["parent"]'):
+            continue
+        
+        # Handle string state
+        for char in stripped_line:
+            if char in ['"', "'"] and (len(result) == 0 or result[-1][-1] != '\\'):
+                if not in_string:
+                    in_string = True
+                    string_char = char
+                elif char == string_char:
+                    in_string = False
+                    string_char = None
+        
+        result.append(line)
+    
+    return '\n'.join(result)
+
+def pretty_print_lua(content: str, indent: int = 4) -> str:
+    """Pretty-print Lua content with consistent indentation"""
+    result = []
+    current_indent = 0
+    in_string = False
+    string_char = None
+    
+    for line in content.splitlines():
+        stripped_line = line.strip()
+        
+        if not stripped_line:
+            continue
+        
+        if not in_string:
+            if stripped_line.startswith('}'):
+                current_indent -= indent
+        
+        result.append(' ' * current_indent + stripped_line)
+        
+        if not in_string:
+            if stripped_line.endswith('{'):
+                current_indent += indent
+        
+        # Handle string state
+        for char in stripped_line:
+            if char in ['"', "'"] and (len(result[-1]) == 0 or result[-1][-1] != '\\'):
+                if not in_string:
+                    in_string = True
+                    string_char = char
+                elif char == string_char:
+                    in_string = False
+                    string_char = None
+    
+    return '\n'.join(result)
 
 if __name__ == "__main__":
-    exit(main())
+    # Use DEFAULT_WEAKAURAS_LUA_PATH directly
+    source_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_WEAKAURAS_LUA_PATH
+    output_dir = Path(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_AURAS_DIR
+    
+    print(f"Loading WeakAuras from: {source_path}")
+    print(f"Saving to: {output_dir}")
+    
+    try:
+        extract_auras(source_path, output_dir)
+    except Exception as e:
+        print(f"Error: {e}")
+        sys.exit(1)

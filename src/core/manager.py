@@ -56,62 +56,55 @@ class WeakAuraManager:
             raise ValueError(f"Failed to load WeakAuras.lua: {e}")
     
     def save_to_game(self) -> None:
-        """Save auras to WeakAuras.lua"""
+        """Save auras to WeakAuras.lua with exact WeakAuras formatting"""
         # Create backup before saving
         if self.weakauras_path.exists():
             self.backup_weakauras_file()
         
-        output = {
-            "displays": {},
-            "dbVersion": WEAKAURAS_DB_VERSION,
-            "minimap": {"hide": False},
-            "editor_theme": "Monokai",
-            "editor_font_size": 12,
-            "editor_tab_spaces": 4,
-            "login_squelch_time": 10,
-            "historyCutoff": 730,
-            "migrationCutoff": 730,
-            "registered": {},
-            "features": {},
-            "dynamicIconCache": {}
-        }
+        # Start with the header
+        content = [
+            "WeakAurasSaved = {",
+            "    [\"dynamicIconCache\"] = {",
+            "    },",
+            "    [\"editor_tab_spaces\"] = 4,",
+            "    [\"editor_font_size\"] = 12,",
+            "    [\"features\"] = {",
+            "    },",
+            "    [\"login_squelch_time\"] = 10,",
+            "    [\"lastArchiveClear\"] = 1731794042,",
+            "    [\"minimap\"] = {",
+            "        [\"hide\"] = false,",
+            "    },",
+            "    [\"lastUpgrade\"] = 1731794044,",
+            "    [\"dbVersion\"] = 78,",
+            "    [\"migrationCutoff\"] = 730,",
+            "    [\"registered\"] = {",
+            "    },",
+            "    [\"displays\"] = {"
+        ]
         
-        # Convert auras to Lua format
-        for aura_id, aura in self.auras.items():
-            aura_data = {
-                "id": aura.id,
-                "regionType": aura.regionType,
-                "triggers": aura.triggers,
-                "load": aura.load,
-                "conditions": aura.conditions,
-                "actions": aura.actions,
-                "animation": aura.animation,
-                # Position
-                "xOffset": aura.position.get("xOffset", 0),
-                "yOffset": aura.position.get("yOffset", 0),
-                "anchorPoint": aura.position.get("anchorPoint", "CENTER"),
-                "frameStrata": aura.position.get("frameStrata", 1),
-                # Visual
-                "color": aura.visual.get("color", [1, 1, 1, 1]),
-                "desaturate": aura.visual.get("desaturate", False),
-                "alpha": aura.visual.get("alpha", 1),
-                # Other required fields
-                "uid": aura_id,  # Use aura_id as uid
-                "internalVersion": 78,  # Current version
-                "authorOptions": {},
-                "config": {},
-                "subRegions": [
-                    {"type": "subbackground"},
-                    {"type": "subforeground"}
-                ]
-            }
-            
-            output["displays"][aura_id] = aura_data
+        # Add each aura file's content
+        for aura_file in sorted(self.auras_dir.glob("*.lua")):
+            with open(aura_file, 'r', encoding='utf-8') as f:
+                # Read file content and remove "return {" and final "}"
+                aura_content = f.read().strip()
+                aura_content = aura_content[8:-1]  # Remove "return {" and "}"
+                
+                # Add the aura ID wrapper
+                aura_id = aura_file.stem
+                content.append(f'        [\"{aura_id}\"] = {aura_content},')
         
-        # Save to file
-        lua_content = f"WeakAurasSaved = {self.parser.to_lua_string(output)}\n"
-        with self.weakauras_path.open('w', encoding='utf-8') as f:
-            f.write(lua_content)
+        # Add the footer
+        content.extend([
+            "    },",
+            "    [\"historyCutoff\"] = 730,",
+            "    [\"editor_theme\"] = \"Monokai\",",
+            "}"
+        ])
+        
+        # Write to file
+        with open(self.weakauras_path, "w", encoding='utf-8') as f:
+            f.write('\n'.join(content))
     
     def export_to_yaml(self) -> None:
         """Export all auras to individual YAML files"""
