@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -225.4,
@@ -10,9 +12,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -28,8 +30,8 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_showCost"] = false,
-                ["unit"] = "player",
                 ["use_unit"] = true,
+                ["unit"] = "player",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -65,9 +67,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -82,8 +84,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["WARRIOR"] = true,
                 ["ROGUE"] = true,
+                ["WARRIOR"] = true,
             },
         },
         ["spec"] = {
@@ -97,10 +99,27 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "eFdY33D7mdY",
-    ["authorOptions"] = {
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
     },
-    ["preferToUpdate"] = false,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["color"] = {
@@ -109,15 +128,30 @@ return {
         1,
         1,
     },
-    ["information"] = {
+    ["xOffset"] = 615.0333129882813,
+    ["cooldown"] = false,
+    ["displayIcon"] = 136173,
+    ["config"] = {
     },
+    ["zoom"] = 0,
+    ["cooldownTextDisabled"] = false,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Power 20",
+    ["frameStrata"] = 1,
+    ["useCooldownModRate"] = true,
+    ["anchorFrameType"] = "SCREEN",
+    ["alpha"] = 1,
+    ["uid"] = "eFdY33D7mdY",
+    ["inverse"] = false,
+    ["icon"] = false,
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["value"] = "20",
                 ["op"] = "<",
+                ["value"] = "20",
             },
             ["changes"] = {
                 {
@@ -132,42 +166,8 @@ return {
             },
         },
     },
-    ["icon"] = false,
-    ["animation"] = {
-        ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
+    ["information"] = {
     },
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 20",
-    ["alpha"] = 1,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["config"] = {
-    },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = 136173,
-    ["cooldown"] = false,
-    ["xOffset"] = 615.0333129882813,
+    ["preferToUpdate"] = false,
 }
 }

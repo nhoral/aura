@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -135.5999862670899,
@@ -10,9 +12,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -22,31 +24,31 @@ return {
                 ["use_genericShowOn"] = true,
                 ["genericShowOn"] = "showOnCooldown",
                 ["subeventPrefix"] = "SPELL",
-                ["names"] = {
-                },
+                ["unit"] = "target",
                 ["use_spec"] = true,
-                ["use_track"] = true,
+                ["use_messageType"] = false,
+                ["use_unit"] = true,
+                ["use_ismoving"] = true,
                 ["spellName"] = 5176,
-                ["use_message"] = false,
-                ["debuffType"] = "HELPFUL",
                 ["instance_size"] = {
                 },
                 ["use_sourceName"] = false,
-                ["use_inverse"] = false,
+                ["type"] = "unit",
                 ["use_targetRequired"] = false,
                 ["subeventSuffix"] = "_CAST_START",
-                ["use_itemName"] = true,
                 ["use_moveSpeed"] = false,
+                ["use_itemName"] = true,
                 ["event"] = "Conditions",
                 ["realSpellName"] = "Wrath",
                 ["use_spellName"] = true,
                 ["spellIds"] = {
                 },
-                ["type"] = "unit",
-                ["use_ismoving"] = true,
-                ["use_unit"] = true,
-                ["use_messageType"] = false,
-                ["unit"] = "target",
+                ["use_inverse"] = false,
+                ["use_message"] = false,
+                ["debuffType"] = "HELPFUL",
+                ["use_track"] = true,
+                ["names"] = {
+                },
             },
             ["untrigger"] = {
             },
@@ -111,9 +113,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -140,58 +142,56 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "WCnPFoN6N2H",
-    ["authorOptions"] = {
+    ["zoom"] = 0,
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
     },
-    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["xOffset"] = 615.0237322126118,
-    ["information"] = {
+    ["icon"] = true,
+    ["cooldown"] = true,
+    ["displayIcon"] = 134301,
+    ["config"] = {
     },
-    ["conditions"] = {
-    },
-    ["preferToUpdate"] = false,
+    ["frameStrata"] = 1,
     ["cooldownTextDisabled"] = false,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["alpha"] = 1,
+    ["anchorFrameType"] = "SCREEN",
     ["tocversion"] = 11500,
     ["id"] = "Player is moving",
+    ["useCooldownModRate"] = true,
+    ["alpha"] = 1,
+    ["width"] = 30,
     ["color"] = {
         1,
         1,
         1,
         1,
     },
-    ["useCooldownModRate"] = true,
-    ["anchorFrameType"] = "SCREEN",
-    ["frameStrata"] = 1,
-    ["config"] = {
-    },
+    ["uid"] = "WCnPFoN6N2H",
     ["inverse"] = false,
-    ["animation"] = {
-        ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
+    ["preferToUpdate"] = false,
+    ["conditions"] = {
     },
-    ["displayIcon"] = 134301,
-    ["cooldown"] = true,
-    ["icon"] = true,
+    ["information"] = {
+    },
+    ["keepAspectRatio"] = false,
 }
 }

@@ -16,9 +16,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -31,9 +31,9 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_unit"] = true,
-                ["unit"] = "player",
                 ["names"] = {
                 },
+                ["unit"] = "player",
                 ["debuffType"] = "HELPFUL",
             },
             ["untrigger"] = {
@@ -45,20 +45,20 @@ return {
     ["keepAspectRatio"] = false,
     ["animation"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -92,17 +92,29 @@ return {
         },
     },
     ["useAdjustededMax"] = false,
-    ["uid"] = "VYXlh1iMyFX",
-    ["progressSource"] = {
-        -1,
-        "",
+    ["config"] = {
     },
-    ["selfPoint"] = "CENTER",
+    ["icon"] = true,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
-    ["xOffset"] = 466.1777709960936,
-    ["information"] = {
+    ["selfPoint"] = "CENTER",
+    ["preferToUpdate"] = false,
+    ["cooldown"] = false,
+    ["displayIcon"] = 136099,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["cooldownTextDisabled"] = false,
+    ["alpha"] = 1,
+    ["tocversion"] = 11500,
+    ["id"] = "Casting",
+    ["frameStrata"] = 1,
+    ["useCooldownModRate"] = true,
+    ["anchorFrameType"] = "SCREEN",
+    ["authorOptions"] = {
     },
+    ["uid"] = "VYXlh1iMyFX",
+    ["inverse"] = false,
+    ["xOffset"] = 466.1777709960936,
     ["conditions"] = {
         {
             ["check"] = {
@@ -135,23 +147,11 @@ return {
             },
         },
     },
-    ["icon"] = true,
-    ["authorOptions"] = {
+    ["information"] = {
     },
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Casting",
-    ["frameStrata"] = 1,
-    ["alpha"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["config"] = {
+    ["progressSource"] = {
+        -1,
+        "",
     },
-    ["inverse"] = false,
-    ["displayIcon"] = 136099,
-    ["cooldown"] = false,
-    ["preferToUpdate"] = false,
 }
 }

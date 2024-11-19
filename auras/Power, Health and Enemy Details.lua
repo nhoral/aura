@@ -1,42 +1,9 @@
 return {
 {
     ["controlledChildren"] = {
-        "Power 5",
-        "Power 10",
-        "Power 15",
-        "Power 20",
-        "Power 30",
-        "Power 40",
-        "Power 50",
-        "Power 60",
-        "Power 70",
-        "Power 80",
-        "Power 90",
-        "Power 100",
-        "Target Health Below 75",
-        "Target Health Below 50",
-        "Target Health Below 20",
-        "Health Below 75",
-        "Health Below 50",
-        "Health Below 20",
-        "Combat",
-        "Enemy Casting",
-        "Undead or Mechanical",
-        "Enemy In Melee Range",
-        "Enemy Range 20",
-        "Target Is Moving",
-        "Player is moving",
-        "Target Aggro",
-        "Enemy Loose",
-        "Casting",
-        "Party 1 Is Hurt",
-        "Party 2 Is Hurt",
-        "Party 3 Is Hurt",
-        "Party 4 Is Hurt",
     },
     ["borderBackdrop"] = "Blizzard Tooltip",
-    ["authorOptions"] = {
-    },
+    ["xOffset"] = -273.8443603515625,
     ["preferToUpdate"] = false,
     ["yOffset"] = -1.000030517578125,
     ["anchorPoint"] = "CENTER",
@@ -49,15 +16,15 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
         {
             ["trigger"] = {
-                ["debuffType"] = "HELPFUL",
+                ["subeventPrefix"] = "SPELL",
                 ["type"] = "aura2",
                 ["spellIds"] = {
                 },
@@ -66,18 +33,37 @@ return {
                 ["names"] = {
                 },
                 ["event"] = "Health",
-                ["subeventPrefix"] = "SPELL",
+                ["debuffType"] = "HELPFUL",
             },
             ["untrigger"] = {
             },
         },
     },
     ["internalVersion"] = 78,
-    ["selfPoint"] = "CENTER",
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+    },
     ["subRegions"] = {
     },
     ["load"] = {
-        ["talent"] = {
+        ["size"] = {
             ["multi"] = {
             },
         },
@@ -89,7 +75,7 @@ return {
             ["multi"] = {
             },
         },
-        ["size"] = {
+        ["talent"] = {
             ["multi"] = {
             },
         },
@@ -108,37 +94,19 @@ return {
     ["borderOffset"] = 4,
     ["tocversion"] = 11500,
     ["id"] = "Power, Health and Enemy Details",
-    ["animation"] = {
-        ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-    },
+    ["borderInset"] = 1,
     ["alpha"] = 1,
     ["anchorFrameType"] = "SCREEN",
-    ["frameStrata"] = 1,
+    ["uid"] = "oyd4JDRwNo9",
     ["config"] = {
     },
-    ["xOffset"] = -273.8443603515625,
-    ["borderInset"] = 1,
+    ["authorOptions"] = {
+    },
+    ["selfPoint"] = "CENTER",
     ["conditions"] = {
     },
     ["information"] = {
     },
-    ["uid"] = "oyd4JDRwNo9",
+    ["frameStrata"] = 1,
 }
 }

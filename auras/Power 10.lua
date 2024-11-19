@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -225.4999847412109,
@@ -10,9 +12,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -20,18 +22,18 @@ return {
             ["trigger"] = {
                 ["type"] = "unit",
                 ["subeventSuffix"] = "_CAST_START",
-                ["unit"] = "player",
+                ["use_unit"] = true,
                 ["use_power"] = false,
                 ["use_showCost"] = false,
-                ["use_unit"] = true,
+                ["unit"] = "player",
                 ["names"] = {
                 },
                 ["powertype"] = 3,
                 ["spellIds"] = {
                 },
-                ["subeventPrefix"] = "SPELL",
-                ["use_percentpower"] = false,
                 ["event"] = "Power",
+                ["use_percentpower"] = false,
+                ["subeventPrefix"] = "SPELL",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -63,8 +65,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["WARRIOR"] = true,
                 ["ROGUE"] = true,
+                ["WARRIOR"] = true,
             },
         },
         ["spec"] = {
@@ -78,10 +80,27 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "uzuzZJ6U79G",
-    ["authorOptions"] = {
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
     },
-    ["preferToUpdate"] = false,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["color"] = {
@@ -90,15 +109,30 @@ return {
         1,
         1,
     },
-    ["information"] = {
+    ["xOffset"] = 644.9333129882812,
+    ["cooldown"] = false,
+    ["displayIcon"] = "135913",
+    ["config"] = {
     },
+    ["zoom"] = 0,
+    ["cooldownTextDisabled"] = false,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Power 10",
+    ["frameStrata"] = 1,
+    ["useCooldownModRate"] = true,
+    ["anchorFrameType"] = "SCREEN",
+    ["alpha"] = 1,
+    ["uid"] = "uzuzZJ6U79G",
+    ["inverse"] = false,
+    ["icon"] = false,
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["value"] = "10",
                 ["op"] = "<",
+                ["value"] = "10",
             },
             ["changes"] = {
                 {
@@ -113,42 +147,8 @@ return {
             },
         },
     },
-    ["icon"] = false,
-    ["animation"] = {
-        ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
+    ["information"] = {
     },
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 10",
-    ["alpha"] = 1,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["config"] = {
-    },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = "135913",
-    ["cooldown"] = false,
-    ["xOffset"] = 644.9333129882812,
+    ["preferToUpdate"] = false,
 }
 }

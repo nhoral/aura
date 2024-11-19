@@ -15,18 +15,18 @@ return {
             ["trigger"] = {
                 ["type"] = "unit",
                 ["subeventSuffix"] = "_CAST_START",
-                ["event"] = "Health",
-                ["use_power"] = false,
                 ["use_showCost"] = true,
+                ["use_power"] = false,
+                ["event"] = "Health",
                 ["unit"] = "target",
                 ["names"] = {
                 },
                 ["powertype"] = 3,
                 ["spellIds"] = {
                 },
-                ["use_percentpower"] = false,
-                ["subeventPrefix"] = "SPELL",
                 ["use_unit"] = true,
+                ["subeventPrefix"] = "SPELL",
+                ["use_percentpower"] = false,
                 ["use_powertype"] = true,
                 ["debuffType"] = "HELPFUL",
             },
@@ -62,9 +62,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -93,52 +93,61 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = ")u5IFAi1R()",
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
-    },
+    ["cooldownTextDisabled"] = false,
+    ["keepAspectRatio"] = false,
+    ["useAdjustededMin"] = false,
+    ["regionType"] = "icon",
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
         },
+        ["finish"] = {
+        },
     },
-    ["useAdjustededMin"] = false,
-    ["regionType"] = "icon",
+    ["preferToUpdate"] = false,
+    ["cooldown"] = false,
+    ["displayIcon"] = 132111,
+    ["config"] = {
+    },
+    ["xOffset"] = 495.5333129882813,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Target Health Below 20",
+    ["useCooldownModRate"] = true,
+    ["frameStrata"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["alpha"] = 1,
+    ["uid"] = ")u5IFAi1R()",
+    ["inverse"] = false,
     ["animation"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
-    },
-    ["information"] = {
     },
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percenthealth",
-                ["value"] = "20",
                 ["op"] = ">",
+                ["value"] = "20",
             },
             ["changes"] = {
                 {
@@ -153,22 +162,13 @@ return {
             },
         },
     },
-    ["zoom"] = 0,
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["frameStrata"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Target Health Below 20",
-    ["alpha"] = 1,
-    ["useCooldownModRate"] = true,
-    ["width"] = 30,
-    ["xOffset"] = 495.5333129882813,
-    ["config"] = {
+    ["information"] = {
     },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = 132111,
-    ["cooldown"] = false,
-    ["preferToUpdate"] = false,
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
+    },
 }
 }

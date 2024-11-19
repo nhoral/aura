@@ -8,8 +8,7 @@ sys.path.append(str(project_root))
 
 from src.config import (
     DEFAULT_WEAKAURAS_LUA_PATH,
-    DEFAULT_AURAS_DIR,
-    DEFAULT_BACKUP_DIR
+    DEFAULT_AURAS_DIR
 )
 
 def build_weakauras(source_dir: Path = DEFAULT_AURAS_DIR,
@@ -22,7 +21,7 @@ def build_weakauras(source_dir: Path = DEFAULT_AURAS_DIR,
         # Create backup of current WeakAuras.lua if it exists
         if target_path.exists():
             backup_path = target_path.with_suffix('.bak')
-            target_path.rename(backup_path)
+            target_path.replace(backup_path)
             print(f"Created backup of existing WeakAuras.lua at {backup_path}")
         
         # Initialize content with the header

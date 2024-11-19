@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -225.3999847412109,
@@ -10,9 +12,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["init"] = {
-        },
         ["finish"] = {
+        },
+        ["init"] = {
         },
     },
     ["triggers"] = {
@@ -28,8 +30,8 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_showCost"] = false,
-                ["unit"] = "player",
                 ["subeventPrefix"] = "SPELL",
+                ["unit"] = "player",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -45,20 +47,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -84,9 +86,9 @@ return {
             },
             ["useGlowColor"] = false,
             ["glowXOffset"] = 0,
-            ["glow"] = false,
-            ["glowScale"] = 1,
             ["glowThickness"] = 1,
+            ["glowScale"] = 1,
+            ["glow"] = false,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -105,8 +107,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["WARRIOR"] = true,
                 ["ROGUE"] = true,
+                ["WARRIOR"] = true,
             },
         },
         ["size"] = {
@@ -116,11 +118,8 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["config"] = {
-    },
-    ["authorOptions"] = {
-    },
-    ["icon"] = false,
+    ["useCooldownModRate"] = true,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["color"] = {
@@ -129,29 +128,16 @@ return {
         1,
         1,
     },
-    ["cooldown"] = false,
-    ["displayIcon"] = "136135",
-    ["selfPoint"] = "CENTER",
-    ["alpha"] = 1,
-    ["anchorFrameType"] = "SCREEN",
-    ["zoom"] = 0,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 40",
-    ["xOffset"] = 555.3334350585938,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["cooldownTextDisabled"] = false,
-    ["uid"] = "FeEgssL2qtc",
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
+    ["preferToUpdate"] = false,
+    ["information"] = {
+    },
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["op"] = "<",
                 ["value"] = "40",
+                ["op"] = "<",
             },
             ["changes"] = {
                 {
@@ -166,8 +152,22 @@ return {
             },
         },
     },
-    ["information"] = {
+    ["uid"] = "FeEgssL2qtc",
+    ["cooldownTextDisabled"] = false,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Power 40",
+    ["frameStrata"] = 1,
+    ["alpha"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["xOffset"] = 555.3334350585938,
+    ["config"] = {
     },
-    ["preferToUpdate"] = false,
+    ["inverse"] = false,
+    ["selfPoint"] = "CENTER",
+    ["displayIcon"] = "136135",
+    ["cooldown"] = false,
+    ["icon"] = false,
 }
 }

@@ -1,6 +1,7 @@
 return {
 {
     ["iconSource"] = 0,
+    ["xOffset"] = 525.4333129882812,
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -225.3999847412109,
@@ -21,8 +22,8 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_showCost"] = false,
-                ["unit"] = "player",
                 ["use_unit"] = true,
+                ["unit"] = "player",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -58,9 +59,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -75,8 +76,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["WARRIOR"] = true,
                 ["ROGUE"] = true,
+                ["WARRIOR"] = true,
             },
         },
         ["spec"] = {
@@ -90,22 +91,67 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "xME7ji7QaSx",
-    ["xOffset"] = 525.4333129882812,
-    ["preferToUpdate"] = false,
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+    },
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["authorOptions"] = {
     },
-    ["information"] = {
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
+    },
+    ["cooldown"] = false,
+    ["displayIcon"] = "136141",
+    ["config"] = {
+    },
+    ["cooldownTextDisabled"] = false,
+    ["zoom"] = 0,
+    ["anchorFrameType"] = "SCREEN",
+    ["tocversion"] = 11500,
+    ["id"] = "Power 50",
+    ["useCooldownModRate"] = true,
+    ["frameStrata"] = 1,
+    ["width"] = 30,
+    ["alpha"] = 1,
+    ["uid"] = "xME7ji7QaSx",
+    ["inverse"] = false,
+    ["actions"] = {
+        ["start"] = {
+        },
+        ["init"] = {
+        },
+        ["finish"] = {
+        },
     },
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["value"] = "50",
                 ["op"] = "<",
+                ["value"] = "50",
             },
             ["changes"] = {
                 {
@@ -120,54 +166,8 @@ return {
             },
         },
     },
-    ["actions"] = {
-        ["start"] = {
-        },
-        ["finish"] = {
-        },
-        ["init"] = {
-        },
+    ["information"] = {
     },
-    ["animation"] = {
-        ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-    },
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["frameStrata"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 50",
-    ["alpha"] = 1,
-    ["useCooldownModRate"] = true,
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["config"] = {
-    },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = "136141",
-    ["cooldown"] = false,
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
-    },
+    ["preferToUpdate"] = false,
 }
 }

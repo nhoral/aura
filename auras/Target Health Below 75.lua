@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -195.5000152587891,
@@ -10,9 +12,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -20,18 +22,18 @@ return {
             ["trigger"] = {
                 ["type"] = "unit",
                 ["subeventSuffix"] = "_CAST_START",
-                ["event"] = "Health",
-                ["use_power"] = false,
                 ["use_showCost"] = true,
+                ["use_power"] = false,
+                ["event"] = "Health",
                 ["unit"] = "target",
                 ["names"] = {
                 },
                 ["powertype"] = 3,
                 ["spellIds"] = {
                 },
-                ["use_percentpower"] = false,
-                ["subeventPrefix"] = "SPELL",
                 ["use_unit"] = true,
+                ["subeventPrefix"] = "SPELL",
+                ["use_percentpower"] = false,
                 ["use_powertype"] = true,
                 ["debuffType"] = "HELPFUL",
             },
@@ -47,20 +49,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -86,9 +88,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -117,10 +119,8 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "BxtkPQQlFWJ",
-    ["authorOptions"] = {
-    },
-    ["preferToUpdate"] = false,
+    ["icon"] = false,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["color"] = {
@@ -129,15 +129,30 @@ return {
         1,
         1,
     },
-    ["information"] = {
+    ["xOffset"] = 555.3333129882812,
+    ["cooldown"] = false,
+    ["displayIcon"] = 132110,
+    ["config"] = {
     },
+    ["zoom"] = 0,
+    ["cooldownTextDisabled"] = false,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Target Health Below 75",
+    ["frameStrata"] = 1,
+    ["useCooldownModRate"] = true,
+    ["anchorFrameType"] = "SCREEN",
+    ["alpha"] = 1,
+    ["uid"] = "BxtkPQQlFWJ",
+    ["inverse"] = false,
+    ["selfPoint"] = "CENTER",
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percenthealth",
-                ["value"] = "75",
                 ["op"] = ">",
+                ["value"] = "75",
             },
             ["changes"] = {
                 {
@@ -152,23 +167,8 @@ return {
             },
         },
     },
-    ["selfPoint"] = "CENTER",
-    ["icon"] = false,
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Target Health Below 75",
-    ["alpha"] = 1,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["config"] = {
+    ["information"] = {
     },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = 132110,
-    ["cooldown"] = false,
-    ["xOffset"] = 555.3333129882812,
+    ["preferToUpdate"] = false,
 }
 }

@@ -18,14 +18,14 @@ return {
                 ["event"] = "Health",
                 ["subeventPrefix"] = "SPELL",
                 ["unit"] = "player",
+                ["custom"] = "function()\n    return UnitExists(\"target\") and (UnitCreatureType(\"target\") == \"Undead\" or UnitCreatureType(\"target\") == \"Mechanical\")\nend",
                 ["spellIds"] = {
                 },
-                ["events"] = "PLAYER_TARGET_CHANGED",
-                ["custom_type"] = "status",
-                ["check"] = "event",
                 ["names"] = {
                 },
-                ["custom"] = "function()\n    return UnitExists(\"target\") and (UnitCreatureType(\"target\") == \"Undead\" or UnitCreatureType(\"target\") == \"Mechanical\")\nend",
+                ["check"] = "event",
+                ["custom_type"] = "status",
+                ["events"] = "PLAYER_TARGET_CHANGED",
                 ["debuffType"] = "HELPFUL",
             },
             ["untrigger"] = {
@@ -40,20 +40,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -78,9 +78,9 @@ return {
             },
             ["useGlowColor"] = false,
             ["glowXOffset"] = 0,
-            ["glow"] = false,
-            ["glowScale"] = 1,
             ["glowThickness"] = 1,
+            ["glowScale"] = 1,
+            ["glow"] = false,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -107,40 +107,21 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["config"] = {
-    },
-    ["selfPoint"] = "CENTER",
+    ["uid"] = "aNMpteUzJ7h",
+    ["keepAspectRatio"] = false,
+    ["useAdjustededMin"] = false,
+    ["regionType"] = "icon",
     ["actions"] = {
         ["start"] = {
         },
-        ["init"] = {
-        },
         ["finish"] = {
         },
+        ["init"] = {
+        },
     },
-    ["useAdjustededMin"] = false,
-    ["regionType"] = "icon",
-    ["xOffset"] = 525.373312988281,
-    ["cooldown"] = true,
-    ["displayIcon"] = 132507,
-    ["keepAspectRatio"] = false,
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
+    ["preferToUpdate"] = false,
+    ["information"] = {
     },
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["frameStrata"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Undead or Mechanical",
-    ["useCooldownModRate"] = true,
-    ["alpha"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["uid"] = "aNMpteUzJ7h",
-    ["inverse"] = false,
     ["conditions"] = {
         {
             ["check"] = {
@@ -173,8 +154,27 @@ return {
             },
         },
     },
-    ["information"] = {
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["cooldownTextDisabled"] = false,
+    ["alpha"] = 1,
+    ["tocversion"] = 11500,
+    ["id"] = "Undead or Mechanical",
+    ["useCooldownModRate"] = true,
+    ["frameStrata"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
     },
-    ["preferToUpdate"] = false,
+    ["config"] = {
+    },
+    ["inverse"] = false,
+    ["xOffset"] = 525.373312988281,
+    ["displayIcon"] = 132507,
+    ["cooldown"] = true,
+    ["selfPoint"] = "CENTER",
 }
 }

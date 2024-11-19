@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -225.5000152587891,
@@ -21,8 +23,8 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_showCost"] = false,
-                ["unit"] = "player",
                 ["use_unit"] = true,
+                ["unit"] = "player",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -58,9 +60,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -75,8 +77,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["WARRIOR"] = true,
                 ["ROGUE"] = true,
+                ["WARRIOR"] = true,
             },
         },
         ["spec"] = {
@@ -90,29 +92,59 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "lB4f3j)(HaO",
-    ["actions"] = {
-        ["start"] = {
-        },
-        ["finish"] = {
-        },
-        ["init"] = {
-        },
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
     },
-    ["preferToUpdate"] = false,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
-    ["authorOptions"] = {
+    ["preferToUpdate"] = false,
+    ["xOffset"] = 465.5333129882813,
+    ["cooldown"] = false,
+    ["displayIcon"] = "136154",
+    ["config"] = {
     },
-    ["information"] = {
+    ["zoom"] = 0,
+    ["cooldownTextDisabled"] = false,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Power 70",
+    ["alpha"] = 1,
+    ["useCooldownModRate"] = true,
+    ["anchorFrameType"] = "SCREEN",
+    ["frameStrata"] = 1,
+    ["uid"] = "lB4f3j)(HaO",
+    ["inverse"] = false,
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
     },
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["value"] = "70",
                 ["op"] = "<",
+                ["value"] = "70",
             },
             ["changes"] = {
                 {
@@ -127,47 +159,15 @@ return {
             },
         },
     },
-    ["animation"] = {
+    ["information"] = {
+    },
+    ["actions"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
         },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
+        ["init"] = {
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
         },
     },
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
-    },
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 70",
-    ["frameStrata"] = 1,
-    ["alpha"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["config"] = {
-    },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = "136154",
-    ["cooldown"] = false,
-    ["xOffset"] = 465.5333129882813,
 }
 }

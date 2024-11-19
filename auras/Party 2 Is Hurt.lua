@@ -3,70 +3,37 @@ return {
     ["outline"] = "OUTLINE",
     ["iconSource"] = -1,
     ["wagoID"] = "xPU0qj4Ap",
-    ["color"] = {
-        0.96470588235294,
-        0.89803921568627,
-        0.91764705882353,
-        1,
+    ["authorOptions"] = {
     },
-    ["displayText"] = "%c",
-    ["customText"] = "function()\n    if not UnitClass(\"target\")  then return end\n    local col = RAID_CLASS_COLORS[select(2, UnitClass(\"target\"))].colorStr    \n    local cc,_,_,_ = GetUnitSpeed(\"target\")           \n    if not col or not cc then return end\n    \n    cc= string.format('%.0f',cc*100/BASE_MOVEMENT_SPEED)    \n    \n    if aura_env.config.n then \n        local m=GetUnitName('target')\n        return WrapTextInColorCode(m, col) ..cc    \n    else\n        return WrapTextInColorCode(cc, col) \n    end\nend\n--local col = RAID_CLASS_COLORS[select(2, UnitClass(\"target\"))].colorStr    \n--WrapTextInColorCode(cc, col) \n\n\n",
-    ["yOffset"] = -150.5818120783026,
+    ["preferToUpdate"] = false,
+    ["adjustedMin"] = "",
+    ["shadowYOffset"] = -1,
     ["anchorPoint"] = "CENTER",
-    ["animation"] = {
-        ["start"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["type"] = "none",
-            ["easeType"] = "none",
-            ["easeStrength"] = 3,
-            ["preset"] = "alphaPulse",
-            ["duration_type"] = "seconds",
-        },
-        ["finish"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-    },
     ["cooldownSwipe"] = true,
-    ["frameStrata"] = 1,
     ["customTextUpdate"] = "update",
-    ["url"] = "https://wago.io/xPU0qj4Ap/1",
-    ["actions"] = {
-        ["start"] = {
-        },
-        ["init"] = {
-        },
-        ["finish"] = {
-        },
-    },
+    ["cooldownEdge"] = false,
+    ["icon"] = true,
     ["triggers"] = {
         {
             ["trigger"] = {
-                ["customVariables"] = "{}",
+                ["debuffType"] = "HELPFUL",
                 ["type"] = "custom",
-                ["custom_hide"] = "timed",
+                ["subeventSuffix"] = "_CAST_START",
                 ["custom_type"] = "stateupdate",
-                ["use_unit"] = true,
+                ["unit"] = "player",
                 ["duration"] = "1",
                 ["event"] = "Health",
-                ["names"] = {
-                },
+                ["use_unit"] = true,
                 ["unevent"] = "auto",
+                ["subeventPrefix"] = "SPELL",
                 ["custom"] = "function(allstates)\n    if not aura_env.last or GetTime() - aura_env.last > 0.5 then\n        aura_env.last = GetTime()\n        \n        local numGroup = GetNumGroupMembers()\n        if (numGroup < 3) then\n            allstates[\"\"] = allstates[\"\"] or {show = false}\n            allstates[\"\"].show = false\n            allstates[\"\"].changed = true\n            return true\n        end\n        \n        local hp,hpMax = UnitHealth(\"party2\"),UnitHealthMax(\"party2\")\n        \n        if (math.ceil((hp / hpMax) * 100) <= 60 and not UnitIsDead(\"party2\")) then\n            allstates[\"\"] = allstates[\"\"] or {show = true}\n            allstates[\"\"].changed = true\n            return true\n        else\n            allstates[\"\"] = allstates[\"\"] or {show = false}\n            allstates[\"\"].show = false\n            allstates[\"\"].changed = true\n            return true\n        end\n    end\nend\n\n\n\n",
                 ["spellIds"] = {
                 },
-                ["subeventPrefix"] = "SPELL",
                 ["check"] = "update",
-                ["unit"] = "player",
-                ["subeventSuffix"] = "_CAST_START",
-                ["debuffType"] = "HELPFUL",
+                ["names"] = {
+                },
+                ["custom_hide"] = "timed",
+                ["customVariables"] = "{}",
             },
             ["untrigger"] = {
                 ["custom"] = "function()\n    return not aura_env.isTriggered\nend",
@@ -75,15 +42,23 @@ return {
         ["disjunctive"] = "all",
         ["activeTriggerMode"] = 1,
     },
-    ["authorOptions"] = {
+    ["alpha"] = 1,
+    ["useTooltip"] = true,
+    ["progressSource"] = {
+        -1,
+        "",
     },
-    ["internalVersion"] = 78,
-    ["keepAspectRatio"] = false,
     ["selfPoint"] = "BOTTOM",
-    ["preferToUpdate"] = false,
-    ["adjustedMin"] = "",
-    ["shadowYOffset"] = -1,
+    ["color"] = {
+        0.96470588235294,
+        0.89803921568627,
+        0.91764705882353,
+        1,
+    },
+    ["displayText"] = "%c",
+    ["customText"] = "function()\n    if not UnitClass(\"target\")  then return end\n    local col = RAID_CLASS_COLORS[select(2, UnitClass(\"target\"))].colorStr    \n    local cc,_,_,_ = GetUnitSpeed(\"target\")           \n    if not col or not cc then return end\n    \n    cc= string.format('%.0f',cc*100/BASE_MOVEMENT_SPEED)    \n    \n    if aura_env.config.n then \n        local m=GetUnitName('target')\n        return WrapTextInColorCode(m, col) ..cc    \n    else\n        return WrapTextInColorCode(cc, col) \n    end\nend\n--local col = RAID_CLASS_COLORS[select(2, UnitClass(\"target\"))].colorStr    \n--WrapTextInColorCode(cc, col) \n\n\n",
     ["desaturate"] = false,
+    ["yOffset"] = -150.5818120783026,
     ["font"] = "聊天",
     ["version"] = 1,
     ["subRegions"] = {
@@ -106,9 +81,9 @@ return {
             ["text_text_format_p_time_legacy_floor"] = false,
             ["text_justify"] = "CENTER",
             ["rotateText"] = "NONE",
-            ["anchorYOffset"] = 0,
+            ["text_text_format_p_format"] = "timed",
             ["type"] = "subtext",
-            ["text_text_format_p_time_dynamic_threshold"] = 60,
+            ["anchorXOffset"] = 0,
             ["text_color"] = {
                 1,
                 1,
@@ -118,19 +93,19 @@ return {
             ["text_font"] = "Friz Quadrata TT",
             ["text_shadowXOffset"] = 0,
             ["text_shadowYOffset"] = 0,
-            ["text_text_format_p_time_mod_rate"] = true,
+            ["text_fontType"] = "OUTLINE",
             ["text_wordWrap"] = "WordWrap",
             ["text_visible"] = true,
             ["text_anchorPoint"] = "CENTER",
             ["text_text_format_p_time_format"] = 0,
-            ["text_fontType"] = "OUTLINE",
+            ["text_text_format_p_time_mod_rate"] = true,
             ["text_fontSize"] = 12,
-            ["anchorXOffset"] = 0,
-            ["text_text_format_p_format"] = "timed",
+            ["text_text_format_p_time_dynamic_threshold"] = 60,
+            ["anchorYOffset"] = 0,
         },
     },
     ["height"] = 30,
-    ["automaticWidth"] = "Auto",
+    ["adjustedMax"] = "",
     ["load"] = {
         ["use_level"] = false,
         ["talent"] = {
@@ -141,70 +116,95 @@ return {
             "~=",
         },
         ["use_spellknown"] = false,
-        ["size"] = {
-            ["multi"] = {
-            },
-        },
-        ["spec"] = {
-            ["multi"] = {
-            },
-        },
-        ["use_never"] = false,
-        ["level"] = {
-            "120",
-        },
+        ["zoneIds"] = "",
         ["class"] = {
             ["single"] = "WARLOCK",
             ["multi"] = {
                 ["WARLOCK"] = true,
             },
         },
-        ["zoneIds"] = "",
+        ["use_never"] = false,
+        ["level"] = {
+            "120",
+        },
+        ["spec"] = {
+            ["multi"] = {
+            },
+        },
+        ["size"] = {
+            ["multi"] = {
+            },
+        },
     },
-    ["icon"] = true,
+    ["url"] = "https://wago.io/xPU0qj4Ap/1",
     ["useAdjustededMax"] = false,
     ["fontSize"] = 13,
     ["source"] = "import",
-    ["information"] = {
-        ["forceEvents"] = true,
-        ["ignoreOptionsEventErrors"] = true,
+    ["actions"] = {
+        ["start"] = {
+        },
+        ["finish"] = {
+        },
+        ["init"] = {
+        },
     },
     ["shadowXOffset"] = 1,
-    ["useTooltip"] = true,
-    ["progressSource"] = {
-        -1,
-        "",
-    },
+    ["xOffset"] = 555.1951607840401,
+    ["internalVersion"] = 78,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
-    ["wordWrap"] = "WordWrap",
-    ["fixedWidth"] = 200,
-    ["cooldownEdge"] = false,
-    ["adjustedMax"] = "",
-    ["config"] = {
+    ["keepAspectRatio"] = false,
+    ["animation"] = {
+        ["start"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeType"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["preset"] = "alphaPulse",
+        },
+        ["finish"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
     },
-    ["width"] = 30,
-    ["alpha"] = 1,
+    ["cooldown"] = false,
+    ["displayIcon"] = 134153,
+    ["semver"] = "1.0.0",
+    ["automaticWidth"] = "Auto",
+    ["uid"] = "jNOmkEXpWC1",
+    ["conditions"] = {
+    },
     ["zoom"] = 0,
     ["justify"] = "RIGHT",
     ["tocversion"] = 11500,
     ["id"] = "Party 2 Is Hurt",
-    ["cooldownTextDisabled"] = false,
-    ["useCooldownModRate"] = true,
     ["anchorFrameType"] = "SCREEN",
-    ["conditions"] = {
+    ["frameStrata"] = 1,
+    ["width"] = 30,
+    ["useCooldownModRate"] = true,
+    ["config"] = {
     },
-    ["uid"] = "jNOmkEXpWC1",
     ["inverse"] = false,
-    ["semver"] = "1.0.0",
+    ["cooldownTextDisabled"] = false,
     ["shadowColor"] = {
         0,
         0,
         0,
         1,
     },
-    ["displayIcon"] = 134153,
-    ["cooldown"] = false,
-    ["xOffset"] = 555.1951607840401,
+    ["fixedWidth"] = 200,
+    ["information"] = {
+        ["forceEvents"] = true,
+        ["ignoreOptionsEventErrors"] = true,
+    },
+    ["wordWrap"] = "WordWrap",
 }
 }

@@ -16,9 +16,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -35,9 +35,9 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_remaining"] = false,
-                ["use_unit"] = true,
-                ["subeventPrefix"] = "SPELL",
                 ["unit"] = "target",
+                ["subeventPrefix"] = "SPELL",
+                ["use_unit"] = true,
                 ["debuffType"] = "HELPFUL",
             },
             ["untrigger"] = {
@@ -79,33 +79,28 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "8YW6jgjk4nd",
-    ["animation"] = {
-        ["start"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["easeStrength"] = 3,
-            ["type"] = "none",
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
+    ["config"] = {
     },
-    ["icon"] = true,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
+    ["icon"] = true,
+    ["preferToUpdate"] = false,
+    ["cooldown"] = false,
+    ["displayIcon"] = 134164,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["cooldownTextDisabled"] = false,
+    ["useCooldownModRate"] = true,
+    ["tocversion"] = 11500,
+    ["id"] = "Enemy Casting",
+    ["alpha"] = 1,
+    ["frameStrata"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["xOffset"] = 555.2531909179688,
+    ["uid"] = "8YW6jgjk4nd",
+    ["inverse"] = false,
     ["authorOptions"] = {
-    },
-    ["information"] = {
     },
     ["conditions"] = {
         {
@@ -145,22 +140,27 @@ return {
             },
         },
     },
-    ["keepAspectRatio"] = false,
-    ["xOffset"] = 555.2531909179688,
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["frameStrata"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Enemy Casting",
-    ["alpha"] = 1,
-    ["useCooldownModRate"] = true,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["config"] = {
+    ["information"] = {
     },
-    ["inverse"] = false,
-    ["displayIcon"] = 134164,
-    ["cooldown"] = false,
-    ["preferToUpdate"] = false,
+    ["animation"] = {
+        ["start"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["type"] = "none",
+            ["easeStrength"] = 3,
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+    },
 }
 }

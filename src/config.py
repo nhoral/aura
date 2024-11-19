@@ -4,7 +4,6 @@ from pathlib import Path
 DEFAULT_WOW_PATH = Path("C:/Program Files (x86)/World of Warcraft/_retail_/WTF/Account/")
 DEFAULT_WEAKAURAS_LUA_PATH = Path("C:/Program Files (x86)/World of Warcraft/_retail_/WTF/Account/YABUCHI/SavedVariables/WeakAuras.lua")
 DEFAULT_AURAS_DIR = Path("auras")
-DEFAULT_BACKUP_DIR = Path("backups")
 
 # WeakAuras settings
 WEAKAURAS_FILE = "WeakAuras.lua"

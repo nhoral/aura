@@ -1,6 +1,8 @@
 return {
 {
     ["iconSource"] = 0,
+    ["authorOptions"] = {
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -165.5999847412109,
@@ -10,9 +12,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["init"] = {
-        },
         ["finish"] = {
+        },
+        ["init"] = {
         },
     },
     ["triggers"] = {
@@ -20,18 +22,18 @@ return {
             ["trigger"] = {
                 ["type"] = "unit",
                 ["subeventSuffix"] = "_CAST_START",
-                ["use_showCost"] = true,
-                ["use_power"] = false,
                 ["event"] = "Health",
+                ["use_power"] = false,
+                ["use_showCost"] = true,
                 ["unit"] = "player",
                 ["names"] = {
                 },
                 ["powertype"] = 3,
                 ["spellIds"] = {
                 },
-                ["use_unit"] = true,
-                ["subeventPrefix"] = "SPELL",
                 ["use_percentpower"] = false,
+                ["subeventPrefix"] = "SPELL",
+                ["use_unit"] = true,
                 ["use_powertype"] = true,
                 ["debuffType"] = "HELPFUL",
             },
@@ -67,9 +69,9 @@ return {
             },
             ["useGlowColor"] = false,
             ["glowXOffset"] = 0,
-            ["glow"] = false,
-            ["glowScale"] = 1,
             ["glowThickness"] = 1,
+            ["glowScale"] = 1,
+            ["glow"] = false,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -98,61 +100,26 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["config"] = {
-    },
-    ["animation"] = {
-        ["start"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-    },
-    ["preferToUpdate"] = false,
-    ["useAdjustededMin"] = false,
-    ["regionType"] = "icon",
-    ["authorOptions"] = {
-    },
-    ["cooldown"] = false,
-    ["displayIcon"] = 135915,
-    ["icon"] = false,
     ["color"] = {
         1,
         1,
         1,
         1,
     },
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["alpha"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Health Below 20",
-    ["useCooldownModRate"] = true,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["uid"] = "YA3Gcj4D4F5",
-    ["inverse"] = false,
     ["keepAspectRatio"] = false,
+    ["useAdjustededMin"] = false,
+    ["regionType"] = "icon",
+    ["preferToUpdate"] = false,
+    ["xOffset"] = 615.0331909179688,
+    ["information"] = {
+    },
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percenthealth",
-                ["op"] = ">",
                 ["value"] = "20",
+                ["op"] = ">",
             },
             ["changes"] = {
                 {
@@ -167,8 +134,41 @@ return {
             },
         },
     },
-    ["information"] = {
+    ["uid"] = "YA3Gcj4D4F5",
+    ["zoom"] = 0,
+    ["cooldownTextDisabled"] = false,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Health Below 20",
+    ["frameStrata"] = 1,
+    ["alpha"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["useCooldownModRate"] = true,
+    ["config"] = {
     },
-    ["xOffset"] = 615.0331909179688,
+    ["inverse"] = false,
+    ["icon"] = false,
+    ["displayIcon"] = 135915,
+    ["cooldown"] = false,
+    ["animation"] = {
+        ["start"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+    },
 }
 }

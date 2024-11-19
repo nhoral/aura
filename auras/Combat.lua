@@ -1,6 +1,7 @@
 return {
 {
     ["iconSource"] = 0,
+    ["xOffset"] = 585.1331909179687,
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -165.6,
@@ -10,36 +11,36 @@ return {
     ["actions"] = {
         ["start"] = {
         },
+        ["init"] = {
+        },
         ["finish"] = {
             ["do_custom"] = false,
             ["hide_all_glows"] = false,
-        },
-        ["init"] = {
         },
     },
     ["triggers"] = {
         {
             ["trigger"] = {
-                ["useRem"] = false,
+                ["debuffType"] = "BOTH",
                 ["useName"] = true,
                 ["use_incombat"] = true,
                 ["auranames"] = {
                     "Demon Skin",
                 },
-                ["use_unit"] = true,
+                ["subeventSuffix"] = "_CAST_START",
                 ["ownOnly"] = true,
                 ["event"] = "Conditions",
-                ["subeventPrefix"] = "SPELL",
+                ["use_unit"] = true,
                 ["unitExists"] = false,
-                ["matchesShowOn"] = "showOnActive",
-                ["spellIds"] = {
-                },
-                ["unit"] = "player",
-                ["type"] = "unit",
                 ["names"] = {
                 },
-                ["subeventSuffix"] = "_CAST_START",
-                ["debuffType"] = "BOTH",
+                ["spellIds"] = {
+                },
+                ["type"] = "unit",
+                ["unit"] = "player",
+                ["matchesShowOn"] = "showOnActive",
+                ["subeventPrefix"] = "SPELL",
+                ["useRem"] = false,
             },
             ["untrigger"] = {
             },
@@ -53,20 +54,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -101,40 +102,39 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["alpha"] = 1,
-    ["uid"] = "CrtyJoBAnr7",
-    ["selfPoint"] = "CENTER",
-    ["xOffset"] = 585.1331909179687,
+    ["config"] = {
+    },
+    ["frameStrata"] = 1,
+    ["icon"] = true,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
-    ["information"] = {
+    ["authorOptions"] = {
     },
-    ["displayIcon"] = 134396,
-    ["icon"] = true,
+    ["cooldown"] = false,
+    ["conditions"] = {
+    },
+    ["keepAspectRatio"] = false,
+    ["preferToUpdate"] = false,
+    ["width"] = 30,
+    ["zoom"] = 0,
+    ["useCooldownModRate"] = true,
+    ["tocversion"] = 11500,
+    ["id"] = "Combat",
+    ["cooldownTextDisabled"] = true,
+    ["alpha"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["useTooltip"] = false,
+    ["uid"] = "CrtyJoBAnr7",
+    ["inverse"] = false,
     ["color"] = {
         1,
         1,
         1,
         1,
     },
-    ["anchorFrameType"] = "SCREEN",
-    ["frameStrata"] = 1,
-    ["zoom"] = 0,
-    ["useTooltip"] = false,
-    ["tocversion"] = 11500,
-    ["id"] = "Combat",
-    ["cooldownTextDisabled"] = true,
-    ["useCooldownModRate"] = true,
-    ["width"] = 30,
-    ["preferToUpdate"] = false,
-    ["config"] = {
+    ["displayIcon"] = 134396,
+    ["information"] = {
     },
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["conditions"] = {
-    },
-    ["cooldown"] = false,
-    ["authorOptions"] = {
-    },
+    ["selfPoint"] = "CENTER",
 }
 }

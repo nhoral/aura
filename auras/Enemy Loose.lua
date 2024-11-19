@@ -26,17 +26,17 @@ return {
                 ["type"] = "custom",
                 ["unevent"] = "auto",
                 ["subeventSuffix"] = "_CAST_START",
-                ["unit"] = "player",
+                ["subeventPrefix"] = "SPELL",
                 ["event"] = "Health",
                 ["customStacks"] = "function() return aura_env.count end\n",
-                ["custom_type"] = "stateupdate",
-                ["custom"] = "function(allstates)\n    -- Throttle the check for perf?  What is config?\n    if not aura_env.last or GetTime() - aura_env.last > 0.2 then\n        -- Set the last time\n        aura_env.last = GetTime()\n        \n        -- Start a count\n        local enemyIndex = 0\n        \n        -- Iterate 40 times\n        for i = 1, 40 do\n            -- Concat string with index\n            local unit = \"nameplate\"..i\n            local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation(\"player\", unit)\n            \n            local unitCanAttack = UnitCanAttack(\"player\", unit)\n            local unitAffectingCombat = UnitAffectingCombat(unit)\n            \n            if unitCanAttack and unitAffectingCombat and not isTanking then\n                enemyIndex = enemyIndex + 1\n            end\n        end\n        \n        if enemyIndex > 0 then\n            allstates[\"\"] = allstates[\"\"] or {show = true}\n            allstates[\"\"].show = true\n            allstates[\"\"].changed = true\n        else\n            allstates[\"\"] = allstates[\"\"] or {show = false}\n            allstates[\"\"].show = false\n            allstates[\"\"].changed = true\n        end\n        \n        return true\n    end\nend",
+                ["use_absorbMode"] = true,
                 ["spellIds"] = {
                 },
+                ["custom"] = "function(allstates)\n    -- Throttle the check for perf?  What is config?\n    if not aura_env.last or GetTime() - aura_env.last > 0.2 then\n        -- Set the last time\n        aura_env.last = GetTime()\n        \n        -- Start a count\n        local enemyIndex = 0\n        \n        -- Iterate 40 times\n        for i = 1, 40 do\n            -- Concat string with index\n            local unit = \"nameplate\"..i\n            local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation(\"player\", unit)\n            \n            local unitCanAttack = UnitCanAttack(\"player\", unit)\n            local unitAffectingCombat = UnitAffectingCombat(unit)\n            \n            if unitCanAttack and unitAffectingCombat and not isTanking then\n                enemyIndex = enemyIndex + 1\n            end\n        end\n        \n        if enemyIndex > 0 then\n            allstates[\"\"] = allstates[\"\"] or {show = true}\n            allstates[\"\"].show = true\n            allstates[\"\"].changed = true\n        else\n            allstates[\"\"] = allstates[\"\"] or {show = false}\n            allstates[\"\"].show = false\n            allstates[\"\"].changed = true\n        end\n        \n        return true\n    end\nend",
                 ["use_unit"] = true,
                 ["check"] = "update",
-                ["use_absorbMode"] = true,
-                ["subeventPrefix"] = "SPELL",
+                ["custom_type"] = "stateupdate",
+                ["unit"] = "player",
                 ["customVariables"] = "{\n  stacks = true,\n}",
             },
             ["untrigger"] = {
@@ -44,7 +44,6 @@ return {
         },
         ["activeTriggerMode"] = -10,
     },
-    ["zoom"] = 0,
     ["internalVersion"] = 78,
     ["progressSource"] = {
         -1,
@@ -52,40 +51,31 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
     },
-    ["alpha"] = 1,
-    ["actions"] = {
-        ["start"] = {
-        },
-        ["finish"] = {
-        },
-        ["init"] = {
-            ["custom"] = "",
-            ["do_custom"] = false,
-        },
-    },
+    ["url"] = "",
+    ["frameStrata"] = 1,
     ["authorOptions"] = {
     },
     ["stickyDuration"] = false,
     ["rotation"] = 0,
-    ["cooldown"] = false,
+    ["selfPoint"] = "CENTER",
     ["version"] = 8,
     ["subRegions"] = {
         {
@@ -132,10 +122,7 @@ return {
             ["multi"] = {
             },
         },
-        ["size"] = {
-            ["multi"] = {
-            },
-        },
+        ["zoneIds"] = "",
         ["spec"] = {
             ["multi"] = {
             },
@@ -146,41 +133,54 @@ return {
                 ["WARRIOR"] = true,
             },
         },
-        ["zoneIds"] = "",
+        ["size"] = {
+            ["multi"] = {
+            },
+        },
     },
-    ["conditions"] = {
-    },
-    ["useAdjustededMax"] = false,
-    ["textureWrapMode"] = "CLAMPTOBLACKADDITIVE",
-    ["source"] = "import",
-    ["desaturate"] = false,
-    ["config"] = {
-    },
-    ["mirror"] = false,
-    ["useAdjustededMin"] = false,
-    ["regionType"] = "icon",
-    ["xOffset"] = 435.5000447591146,
-    ["blendMode"] = "BLEND",
-    ["anchorFrameType"] = "SCREEN",
-    ["useCooldownModRate"] = true,
-    ["texture"] = "Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_Squirrel",
-    ["auto"] = true,
-    ["cooldownTextDisabled"] = false,
-    ["semver"] = "1.0.7",
-    ["tocversion"] = 11500,
-    ["id"] = "Enemy Loose",
-    ["url"] = "",
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["preferToUpdate"] = false,
-    ["uid"] = "EeOYElnJOLf",
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
-    ["displayIcon"] = 134140,
     ["information"] = {
         ["forceEvents"] = true,
         ["ignoreOptionsEventErrors"] = true,
     },
-    ["selfPoint"] = "CENTER",
+    ["useAdjustededMax"] = false,
+    ["textureWrapMode"] = "CLAMPTOBLACKADDITIVE",
+    ["source"] = "import",
+    ["displayIcon"] = 134140,
+    ["keepAspectRatio"] = false,
+    ["xOffset"] = 435.5000447591146,
+    ["mirror"] = false,
+    ["useAdjustededMin"] = false,
+    ["regionType"] = "icon",
+    ["uid"] = "EeOYElnJOLf",
+    ["blendMode"] = "BLEND",
+    ["preferToUpdate"] = false,
+    ["width"] = 30,
+    ["texture"] = "Interface\\AddOns\\WeakAuras\\Media\\Textures\\Square_Squirrel",
+    ["semver"] = "1.0.7",
+    ["zoom"] = 0,
+    ["auto"] = true,
+    ["tocversion"] = 11500,
+    ["id"] = "Enemy Loose",
+    ["cooldownTextDisabled"] = false,
+    ["alpha"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["useCooldownModRate"] = true,
+    ["config"] = {
+    },
+    ["inverse"] = false,
+    ["desaturate"] = false,
+    ["conditions"] = {
+    },
+    ["cooldown"] = false,
+    ["actions"] = {
+        ["start"] = {
+        },
+        ["init"] = {
+            ["custom"] = "",
+            ["do_custom"] = false,
+        },
+        ["finish"] = {
+        },
+    },
 }
 }

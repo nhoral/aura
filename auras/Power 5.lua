@@ -1,6 +1,7 @@
 return {
 {
     ["iconSource"] = 0,
+    ["xOffset"] = 435.4665893554688,
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -195.6428510393415,
@@ -13,18 +14,18 @@ return {
             ["trigger"] = {
                 ["type"] = "unit",
                 ["subeventSuffix"] = "_CAST_START",
-                ["unit"] = "player",
+                ["use_percentpower"] = false,
                 ["use_power"] = false,
                 ["event"] = "Power",
-                ["use_percentpower"] = false,
+                ["unit"] = "player",
                 ["names"] = {
                 },
                 ["powertype"] = 3,
                 ["spellIds"] = {
                 },
-                ["subeventPrefix"] = "SPELL",
-                ["use_unit"] = true,
                 ["use_showCost"] = false,
+                ["use_unit"] = true,
+                ["subeventPrefix"] = "SPELL",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -40,20 +41,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -75,8 +76,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["ROGUE"] = true,
                 ["WARRIOR"] = true,
+                ["ROGUE"] = true,
             },
         },
         ["spec"] = {
@@ -90,49 +91,21 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["config"] = {
-    },
-    ["xOffset"] = 435.4665893554688,
-    ["actions"] = {
-        ["start"] = {
-        },
-        ["init"] = {
-        },
-        ["finish"] = {
-        },
-    },
+    ["cooldownTextDisabled"] = false,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["selfPoint"] = "CENTER",
-    ["cooldown"] = false,
-    ["displayIcon"] = 136070,
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
+    ["preferToUpdate"] = false,
+    ["information"] = {
     },
-    ["zoom"] = 0,
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["frameStrata"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 5",
-    ["useCooldownModRate"] = true,
-    ["alpha"] = 1,
-    ["width"] = 30,
-    ["authorOptions"] = {
-    },
-    ["uid"] = "xAVZLAwDoZG",
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["op"] = "<",
                 ["value"] = "5",
+                ["op"] = "<",
             },
             ["changes"] = {
                 {
@@ -147,8 +120,35 @@ return {
             },
         },
     },
-    ["information"] = {
+    ["uid"] = "xAVZLAwDoZG",
+    ["authorOptions"] = {
     },
-    ["preferToUpdate"] = false,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Power 5",
+    ["alpha"] = 1,
+    ["frameStrata"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["useCooldownModRate"] = true,
+    ["config"] = {
+    },
+    ["inverse"] = false,
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
+    },
+    ["displayIcon"] = 136070,
+    ["cooldown"] = false,
+    ["actions"] = {
+        ["start"] = {
+        },
+        ["finish"] = {
+        },
+        ["init"] = {
+        },
+    },
 }
 }

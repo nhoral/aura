@@ -16,9 +16,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["finish"] = {
-        },
         ["init"] = {
+        },
+        ["finish"] = {
         },
     },
     ["triggers"] = {
@@ -34,8 +34,8 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_range"] = true,
-                ["use_unit"] = true,
                 ["subeventPrefix"] = "SPELL",
+                ["use_unit"] = true,
                 ["range_operator"] = "<=",
                 ["debuffType"] = "HELPFUL",
             },
@@ -51,20 +51,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["easeStrength"] = 3,
             ["type"] = "none",
+            ["easeStrength"] = 3,
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -121,9 +121,9 @@ return {
             },
             ["useGlowColor"] = false,
             ["glowXOffset"] = 0,
-            ["glowThickness"] = 1,
-            ["glowScale"] = 1,
             ["glow"] = false,
+            ["glowScale"] = 1,
+            ["glowThickness"] = 1,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -150,14 +150,29 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["uid"] = "y9SKOBfsVYr",
-    ["selfPoint"] = "CENTER",
-    ["icon"] = true,
+    ["config"] = {
+    },
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
-    ["xOffset"] = 435.4865893554688,
-    ["information"] = {
+    ["icon"] = true,
+    ["preferToUpdate"] = false,
+    ["cooldown"] = true,
+    ["displayIcon"] = 135129,
+    ["cooldownTextDisabled"] = false,
+    ["anchorFrameType"] = "SCREEN",
+    ["zoom"] = 0,
+    ["frameStrata"] = 1,
+    ["tocversion"] = 11500,
+    ["id"] = "Enemy Range 20",
+    ["useCooldownModRate"] = true,
+    ["alpha"] = 1,
+    ["width"] = 30,
+    ["authorOptions"] = {
     },
+    ["uid"] = "y9SKOBfsVYr",
+    ["inverse"] = false,
+    ["xOffset"] = 435.4865893554688,
     ["conditions"] = {
         {
             ["check"] = {
@@ -185,23 +200,8 @@ return {
             },
         },
     },
-    ["keepAspectRatio"] = false,
-    ["authorOptions"] = {
+    ["information"] = {
     },
-    ["width"] = 30,
-    ["zoom"] = 0,
-    ["alpha"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Enemy Range 20",
-    ["useCooldownModRate"] = true,
-    ["frameStrata"] = 1,
-    ["anchorFrameType"] = "SCREEN",
-    ["cooldownTextDisabled"] = false,
-    ["config"] = {
-    },
-    ["inverse"] = false,
-    ["displayIcon"] = 135129,
-    ["cooldown"] = true,
-    ["preferToUpdate"] = false,
+    ["selfPoint"] = "CENTER",
 }
 }

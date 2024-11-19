@@ -1,6 +1,12 @@
 return {
 {
     ["iconSource"] = -1,
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -165.633331044515,
@@ -10,9 +16,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["init"] = {
-        },
         ["finish"] = {
+        },
+        ["init"] = {
         },
     },
     ["triggers"] = {
@@ -27,9 +33,9 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_range"] = true,
+                ["subeventPrefix"] = "SPELL",
                 ["names"] = {
                 },
-                ["subeventPrefix"] = "SPELL",
                 ["range_operator"] = "<=",
                 ["debuffType"] = "HELPFUL",
             },
@@ -45,20 +51,20 @@ return {
     },
     ["animation"] = {
         ["start"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["main"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
         ["finish"] = {
-            ["type"] = "none",
             ["easeStrength"] = 3,
+            ["type"] = "none",
             ["duration_type"] = "seconds",
             ["easeType"] = "none",
         },
@@ -115,9 +121,9 @@ return {
             },
             ["glowDuration"] = 1,
             ["glowXOffset"] = 0,
-            ["glow"] = false,
-            ["glowScale"] = 1,
             ["glowThickness"] = 1,
+            ["glowScale"] = 1,
+            ["glow"] = false,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -144,34 +150,14 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["config"] = {
+    ["xOffset"] = 495.4265893554689,
+    ["authorOptions"] = {
     },
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
-    },
-    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
     ["selfPoint"] = "CENTER",
-    ["cooldown"] = true,
-    ["displayIcon"] = 135615,
-    ["icon"] = true,
-    ["xOffset"] = 495.4265893554689,
-    ["anchorFrameType"] = "SCREEN",
-    ["zoom"] = 0,
-    ["useCooldownModRate"] = true,
-    ["tocversion"] = 11500,
-    ["id"] = "Enemy In Melee Range",
-    ["alpha"] = 1,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["cooldownTextDisabled"] = false,
-    ["uid"] = "ZS(VGt32dqK",
-    ["inverse"] = false,
-    ["authorOptions"] = {
+    ["preferToUpdate"] = false,
+    ["information"] = {
     },
     ["conditions"] = {
         {
@@ -200,8 +186,22 @@ return {
             },
         },
     },
-    ["information"] = {
+    ["uid"] = "ZS(VGt32dqK",
+    ["cooldownTextDisabled"] = false,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Enemy In Melee Range",
+    ["frameStrata"] = 1,
+    ["useCooldownModRate"] = true,
+    ["anchorFrameType"] = "SCREEN",
+    ["alpha"] = 1,
+    ["config"] = {
     },
-    ["preferToUpdate"] = false,
+    ["inverse"] = false,
+    ["icon"] = true,
+    ["displayIcon"] = 135615,
+    ["cooldown"] = true,
+    ["keepAspectRatio"] = false,
 }
 }

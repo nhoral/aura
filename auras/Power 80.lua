@@ -1,6 +1,12 @@
 return {
 {
     ["iconSource"] = 0,
+    ["color"] = {
+        1,
+        1,
+        1,
+        1,
+    },
     ["adjustedMax"] = "",
     ["adjustedMin"] = "",
     ["yOffset"] = -195.4999847412109,
@@ -10,9 +16,9 @@ return {
     ["actions"] = {
         ["start"] = {
         },
-        ["init"] = {
-        },
         ["finish"] = {
+        },
+        ["init"] = {
         },
     },
     ["triggers"] = {
@@ -28,8 +34,8 @@ return {
                 ["spellIds"] = {
                 },
                 ["use_showCost"] = false,
-                ["unit"] = "player",
                 ["subeventPrefix"] = "SPELL",
+                ["unit"] = "player",
                 ["use_powertype"] = false,
                 ["debuffType"] = "HELPFUL",
             },
@@ -65,9 +71,9 @@ return {
             },
             ["useGlowColor"] = false,
             ["glowXOffset"] = 0,
-            ["glow"] = false,
-            ["glowScale"] = 1,
             ["glowThickness"] = 1,
+            ["glowScale"] = 1,
+            ["glow"] = false,
             ["glowLines"] = 8,
             ["glowBorder"] = false,
         },
@@ -86,8 +92,8 @@ return {
         ["class"] = {
             ["single"] = "WARRIOR",
             ["multi"] = {
-                ["WARRIOR"] = true,
                 ["ROGUE"] = true,
+                ["WARRIOR"] = true,
             },
         },
         ["size"] = {
@@ -97,60 +103,22 @@ return {
     },
     ["useAdjustededMax"] = false,
     ["source"] = "import",
-    ["config"] = {
-    },
-    ["animation"] = {
-        ["start"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["main"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-        ["finish"] = {
-            ["type"] = "none",
-            ["easeStrength"] = 3,
-            ["duration_type"] = "seconds",
-            ["easeType"] = "none",
-        },
-    },
-    ["preferToUpdate"] = false,
+    ["xOffset"] = 645.0331909179688,
+    ["keepAspectRatio"] = false,
     ["useAdjustededMin"] = false,
     ["regionType"] = "icon",
-    ["color"] = {
-        1,
-        1,
-        1,
-        1,
+    ["preferToUpdate"] = false,
+    ["authorOptions"] = {
     },
-    ["cooldown"] = false,
-    ["displayIcon"] = "136157",
-    ["icon"] = false,
-    ["xOffset"] = 645.0331909179688,
-    ["anchorFrameType"] = "SCREEN",
-    ["zoom"] = 0,
-    ["alpha"] = 1,
-    ["tocversion"] = 11500,
-    ["id"] = "Power 80",
-    ["useCooldownModRate"] = true,
-    ["frameStrata"] = 1,
-    ["width"] = 30,
-    ["cooldownTextDisabled"] = false,
-    ["uid"] = "ony4LRmK9i7",
-    ["inverse"] = false,
-    ["keepAspectRatio"] = false,
+    ["information"] = {
+    },
     ["conditions"] = {
         {
             ["check"] = {
                 ["trigger"] = 1,
                 ["variable"] = "percentpower",
-                ["op"] = "<",
                 ["value"] = "80",
+                ["op"] = "<",
             },
             ["changes"] = {
                 {
@@ -165,9 +133,41 @@ return {
             },
         },
     },
-    ["information"] = {
+    ["uid"] = "ony4LRmK9i7",
+    ["cooldownTextDisabled"] = false,
+    ["zoom"] = 0,
+    ["width"] = 30,
+    ["tocversion"] = 11500,
+    ["id"] = "Power 80",
+    ["frameStrata"] = 1,
+    ["alpha"] = 1,
+    ["anchorFrameType"] = "SCREEN",
+    ["useCooldownModRate"] = true,
+    ["config"] = {
     },
-    ["authorOptions"] = {
+    ["inverse"] = false,
+    ["icon"] = false,
+    ["displayIcon"] = "136157",
+    ["cooldown"] = false,
+    ["animation"] = {
+        ["start"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["main"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
+        ["finish"] = {
+            ["easeStrength"] = 3,
+            ["type"] = "none",
+            ["duration_type"] = "seconds",
+            ["easeType"] = "none",
+        },
     },
 }
 }
