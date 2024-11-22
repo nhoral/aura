@@ -146,7 +146,7 @@ class AuraGenerator:
                         if isinstance(t["customVariables"], str):
                             t["customVariables"] = t["customVariables"].replace('\\n', '\n')
         
-        return {
+        result = {
             "id": name,
             "uid": transformed.get("uid", "WeakAuras.GenerateUniqueID()"),
             "regionType": transformed.get("regionType", "icon"),
@@ -175,6 +175,18 @@ class AuraGenerator:
             "zoom": transformed.get("zoom", 0),
             "subRegions": transformed.get("subRegions", [])
         }
+
+        # Add aurabar-specific properties if the regionType is "aurabar"
+        if transformed.get("regionType") == "aurabar":
+            result.update({
+                "barColor": transformed.get("barColor", [1, 0, 0, 1]),
+                "barColor2": transformed.get("barColor2", [1, 0, 0, 1]),
+                "backgroundColor": transformed.get("backgroundColor", [0, 0, 0, 0.5]),
+                "texture": transformed.get("texture", "Solid"),
+                "textureSource": transformed.get("textureSource", "LSM")
+            })
+
+        return result
 
     def _transform_triggers(self, triggers: Dict) -> Dict:
         """Transform triggers to match our format"""
