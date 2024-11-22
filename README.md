@@ -1,16 +1,44 @@
-# aura
+I have a World of Warcraft addon project that consists of two main parts:
 
-This project is a tool to extract auras from a WeakAuras.lua file to be edited outside of the World of Warcraft client.
+1. A Python generator (using lupa) that:
+- Reads WeakAuras saved variables from WoW
+- Transforms auras using a sample template for consistent visual styling
+- Preserves each aura's original trigger/condition logic
+- Arranges auras in a 10-column grid with 1px spacing
+- Outputs individual Lua files for each aura
 
-It models the WeakAuras.lua file as a JSON schema and allows you to edit the auras in a text editor or IDE.
+2. A WoW addon that:
+- Loads the generated aura files
+- Provides /am export command
+- Safely exports auras to WeakAuras while:
+  - Checking WeakAuras version compatibility
+  - Handling combat lockdown
+  - Validating load conditions
+  - Managing existing auras
 
-## Constraints
-- The structure of the WeakAuras.lua is not always valid Lua code.
-- The WeakAuras.lua file contains a lot of nested tables with no documentation and a very particular structure.
+Each generated aura contains:
+Core fields:
+- id: Aura name
+- uid: Unique identifier
+- regionType: "aurabar"
+- internalVersion: WeakAuras version number
+
+Visual settings (from template):
+- width/height: 5x5 pixels
+- barColor/barColor2/backgroundColor: Color settings
+- texture: "Solid"
+- anchorPoint/selfPoint: "CENTER"
+- xOffset/yOffset: Grid position calculations
+
+Functional settings (preserved from original):
+- triggers: Show/hide conditions
+- conditions: State-based modifications
+- load: Class/spec requirements
+- actions: On show/hide/init actions
+
+The project maintains visual consistency across auras while preserving their individual functionality. Key files are the aura generator (Python) and AuraManager.lua (WoW addon).
 
 ## Context
-- WeakAuras is a popular addon for World of Warcraft that allows you to create complex auras.
-- Auras are imported in the game via the WeakAuras save file at "C:\Program Files (x86)\World of Warcraft\_retail_\WTF\Account\YABUCHI\SavedVariables\WeakAuras.lua"
 - WeakAuras github repository: https://github.com/WeakAuras/WeakAuras2
 
 
