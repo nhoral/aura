@@ -20,6 +20,27 @@ class AuraGenerator:
         self.parser = LuaParser(str(self.weakauras_path))
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         
+        # Load sample template
+        sample_path = Path(__file__).parent / "templates" / "sample.lua"
+        print(f"Loading sample template from: {sample_path}")
+        
+        # Read and execute the sample file content
+        with open(sample_path, 'r', encoding='utf-8') as f:
+            sample_content = f.read()
+            # Extract just the table content between ns.auras["sample"] = { ... }
+            table_start = sample_content.find('ns.auras["sample"] = {') + len('ns.auras["sample"] = ')
+            table_end = sample_content.rfind('}')
+            table_content = sample_content[table_start:table_end+1]
+            
+            # Wrap the table content for evaluation
+            wrapped_content = f"return {table_content}"
+            
+            # Execute and get the result
+            result = self.lua.execute(wrapped_content)
+            # Create a new parser instance for converting Lua to Python
+            sample_parser = LuaParser(str(sample_path))
+            self.sample_template = sample_parser._lua_to_python(result)
+
     def _validate_lua(self, lua_code: str) -> bool:
         """Validate Lua code by attempting to load it"""
         try:
@@ -115,77 +136,59 @@ class AuraGenerator:
                 return "\n".join(lines)
         return str(value)
 
-    def _transform_aura_data(self, name: str, data: Dict) -> Dict:
+    def _transform_aura_data(self, name: str, data: Dict, index: int) -> Dict:
         """Transform WeakAuras data into our addon format"""
-        # Deep copy the data to avoid modifying the original
-        transformed = data.copy()
+        # Grid settings
+        COLUMNS = 10
+        AURA_WIDTH = 5   # Width of each aura
+        AURA_HEIGHT = 5  # Height of each aura
+        SPACING = 1      # 1 pixel spacing between auras
         
-        # Clean up any loadstring calls in triggers
-        if "triggers" in transformed:
-            for trigger in transformed["triggers"]:
-                if "trigger" in trigger:
-                    t = trigger["trigger"]
-                    # Handle customStacks - preserve as raw function
-                    if "customStacks" in t:
-                        if isinstance(t["customStacks"], str) and 'loadstring(' in t["customStacks"]:
-                            # Extract the raw function
-                            func_str = t["customStacks"].split('loadstring("')[1].split('")()')[0]
-                            # Unescape newlines and convert to raw function
-                            t["customStacks"] = func_str.replace('\\n', '\n')
-                    
-                    # Handle custom - preserve as raw function
-                    if "custom" in t:
-                        if isinstance(t["custom"], str) and 'loadstring(' in t["custom"]:
-                            # Extract the raw function
-                            func_str = t["custom"].split('loadstring("')[1].split('")()')[0]
-                            # Unescape newlines and convert to raw function
-                            t["custom"] = func_str.replace('\\n', '\n')
-                    
-                    # Handle customVariables - preserve as raw string
-                    if "customVariables" in t:
-                        if isinstance(t["customVariables"], str):
-                            t["customVariables"] = t["customVariables"].replace('\\n', '\n')
+        # Calculate total size needed for each grid cell
+        CELL_WIDTH = AURA_WIDTH + SPACING
+        CELL_HEIGHT = AURA_HEIGHT + SPACING
+        
+        # Calculate grid position
+        row = index // COLUMNS
+        col = index % COLUMNS
         
         result = {
+            # Core identification
             "id": name,
-            "uid": transformed.get("uid", "WeakAuras.GenerateUniqueID()"),
-            "regionType": transformed.get("regionType", "icon"),
-            "internalVersion": transformed.get("internalVersion", "WeakAuras.InternalVersion()"),
-            "iconSource": transformed.get("iconSource", 0),
-            "color": transformed.get("color", [1, 1, 1, 1]),
-            "yOffset": transformed.get("yOffset", 0),
-            "anchorPoint": transformed.get("anchorPoint", "CENTER"),
-            "cooldown": transformed.get("cooldown", False),
-            "cooldownSwipe": transformed.get("cooldownSwipe", False),
-            "cooldownEdge": transformed.get("cooldownEdge", False),
-            "cooldownTextDisabled": transformed.get("cooldownTextDisabled", True),
-            "icon": transformed.get("icon", True),
-            "triggers": transformed.get("triggers", {}),
-            "load": transformed.get("load", {}),
-            "animation": transformed.get("animation", {}),
-            "conditions": transformed.get("conditions", {}),
-            "config": transformed.get("config", {}),
-            "displayIcon": transformed.get("displayIcon"),
-            "information": transformed.get("information", {}),
-            "width": transformed.get("width", 30),
-            "height": transformed.get("height", 30),
-            "frameStrata": transformed.get("frameStrata", 1),
-            "selfPoint": transformed.get("selfPoint", "CENTER"),
-            "xOffset": transformed.get("xOffset", 0),
-            "zoom": transformed.get("zoom", 0),
-            "subRegions": transformed.get("subRegions", [])
+            "uid": data.get("uid", "WeakAuras.GenerateUniqueID()"),
+            "internalVersion": data.get("internalVersion", "WeakAuras.InternalVersion()"),
+            "regionType": "aurabar",  # Force aurabar type
+            
+            # Position/Size (from sample, but with calculated offsets)
+            "anchorPoint": self.sample_template.get("anchorPoint", "CENTER"),
+            "selfPoint": self.sample_template.get("selfPoint", "CENTER"),
+            "xOffset": col * CELL_WIDTH,   # Offset by column * (width + spacing)
+            "yOffset": -row * CELL_HEIGHT, # Offset by row * (height + spacing)
+            "width": AURA_WIDTH,
+            "height": AURA_HEIGHT,
+            "frameStrata": self.sample_template.get("frameStrata", 1),
+            
+            # Aurabar-specific visual settings (from sample)
+            "barColor": self.sample_template.get("barColor", [1, 0, 0, 1]),
+            "barColor2": self.sample_template.get("barColor2", [1, 0, 0, 1]),
+            "backgroundColor": self.sample_template.get("backgroundColor", [1, 0, 0, 1]),
+            "texture": self.sample_template.get("texture", "Solid"),
+            "textureSource": self.sample_template.get("textureSource", "LSM"),
+            
+            # Functional settings (from original aura)
+            "triggers": data.get("triggers", {}),
+            "conditions": data.get("conditions", {}),
+            "load": data.get("load", {}),
+            
+            # Required additional settings
+            "animation": self.sample_template.get("animation", {}),
+            "subRegions": self.sample_template.get("subRegions", [
+                {"type": "subbackground"},
+                {"type": "subforeground"}
+            ]),
+            "information": {}
         }
-
-        # Add aurabar-specific properties if the regionType is "aurabar"
-        if transformed.get("regionType") == "aurabar":
-            result.update({
-                "barColor": transformed.get("barColor", [1, 0, 0, 1]),
-                "barColor2": transformed.get("barColor2", [1, 0, 0, 1]),
-                "backgroundColor": transformed.get("backgroundColor", [0, 0, 0, 0.5]),
-                "texture": transformed.get("texture", "Solid"),
-                "textureSource": transformed.get("textureSource", "LSM")
-            })
-
+        
         return result
 
     def _transform_triggers(self, triggers: Dict) -> Dict:
@@ -257,13 +260,15 @@ class AuraGenerator:
             # Track all generated aura names for the export function
             generated_auras = []
             
-            for aura_name, aura_data in displays.items():
+            # Sort aura names and use enumeration for index
+            sorted_auras = sorted(displays.items())
+            for index, (aura_name, aura_data) in enumerate(sorted_auras):
                 print(f"\nProcessing aura: {aura_name}")
                 file_name = aura_name.lower().replace(" ", "_") + ".lua"
                 output_file = self.output_path / file_name
                 
                 # Transform the data into our format
-                transformed_data = self._transform_aura_data(aura_name, aura_data)
+                transformed_data = self._transform_aura_data(aura_name, aura_data, index)
                 
                 # Generate the Lua code
                 lua_code = f"""
