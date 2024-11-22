@@ -193,6 +193,45 @@ class AuraGenerator:
         
         return result
 
+    def _update_toc_file(self):
+        """Update the TOC file with all generated aura files"""
+        toc_path = self.output_path.parent / "AuraManager.toc"
+        
+        # Get all aura files
+        aura_files = sorted(self.output_path.glob("*.lua"))
+        
+        # Read existing TOC content
+        existing_content = []
+        if toc_path.exists():
+            with toc_path.open('r', encoding='utf-8') as f:
+                existing_content = [line.strip() for line in f.readlines()]
+        
+        # Find where auras section starts/ends
+        try:
+            auras_start = next(i for i, line in enumerate(existing_content) if line.startswith("# Auras"))
+            try:
+                next_section = next(i for i, line in enumerate(existing_content[auras_start + 1:]) if line.startswith("# "))
+                auras_end = auras_start + next_section
+            except StopIteration:
+                auras_end = len(existing_content)
+        except StopIteration:
+            # No auras section found, add it at the end
+            existing_content.append("")
+            existing_content.append("# Auras")
+            auras_start = len(existing_content) - 1
+            auras_end = len(existing_content)
+        
+        # Create new content
+        new_content = existing_content[:auras_start + 1]  # Include "# Auras" line
+        new_content.extend(f"auras/{file.name}" for file in aura_files)
+        new_content.extend(existing_content[auras_end:])
+        
+        # Write updated TOC file
+        with toc_path.open('w', encoding='utf-8') as f:
+            f.write('\n'.join(new_content))
+        
+        print(f"Updated TOC file: {toc_path}")
+
     def generate_aura_files(self):
         """Parse WeakAuras.lua and generate individual aura files"""
         print(f"Writing aura files to: {self.output_path}")
@@ -202,6 +241,9 @@ class AuraGenerator:
             displays = wa_export.addons["WeakAurasSaved"]["displays"]
             
             self.output_path.mkdir(parents=True, exist_ok=True)
+            
+            # Track all generated aura names for the export function
+            generated_auras = []
             
             for aura_name, aura_data in displays.items():
                 print(f"\nProcessing aura: {aura_name}")
@@ -227,8 +269,22 @@ ns.auras["{aura_name.lower().replace(" ", "_")}"] = {self._format_lua_value(tran
                 with output_file.open('w', encoding='utf-8') as f:
                     f.write(lua_code)
                 
+                generated_auras.append(aura_name.lower().replace(" ", "_"))
                 print(f"Generated aura file: {output_file}")
-                
+            
+            # Generate the export list file
+            export_file = self.output_path.parent / "aura_list.lua"
+            with export_file.open('w', encoding='utf-8') as f:
+                f.write("""local ADDON_NAME, ns = ...
+ns.aura_list = {
+""")
+                for aura in sorted(generated_auras):
+                    f.write(f'    "{aura}",\n')
+                f.write("}\n")
+            
+            # Update the TOC file after generating all auras
+            self._update_toc_file()
+            
         except Exception as e:
             print(f"Error generating aura files: {e}")
             raise

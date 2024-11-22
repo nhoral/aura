@@ -4,16 +4,12 @@ local ADDON_NAME, ns = ...
 local frame = CreateFrame("Frame")
 local isWeakAurasLoaded = false
 
--- Function to check if WeakAuras is fully loaded
+-- Function to check if WeakAuras is ready
 local function IsWeakAurasReady()
-    return WeakAuras and 
-           WeakAuras.IsLoginFinished and 
-           WeakAuras.IsLoginFinished() and 
-           WeakAuras.Add and 
-           WeakAuras.GetData
+    return WeakAuras and WeakAuras.Add and true or false
 end
 
--- Function to load an aura definition
+-- Function to load an aura definition from a file
 local function LoadAuraDefinition(filename)
     local auraDefinition = ns.auras[filename]
     if not auraDefinition then
@@ -25,61 +21,52 @@ end
 
 -- Function to export our auras to WeakAuras
 local function ExportToWeakAuras()
+    print("DEBUG: Starting export")
+    
+    -- Verify WeakAuras is ready
     if not IsWeakAurasReady() then
         print("ERROR: WeakAuras is not fully loaded yet. Please try again in a moment.")
         return
     end
     
-    print("DEBUG: Starting export")
+    -- Verify ns.aura_list exists
+    if not ns.aura_list then
+        print("ERROR: No auras found in ns.aura_list!")
+        return
+    end
     
-    -- List of aura files to load
-    local auraFiles = {
-        "enemy_loose",
-        "casting"
-    }
+    print("DEBUG: Found", #ns.aura_list, "auras to export")
     
     -- Load and export each aura
-    for _, filename in ipairs(auraFiles) do
+    for _, filename in ipairs(ns.aura_list) do
         local aura = LoadAuraDefinition(filename)
         if aura then
+            print("DEBUG: Exporting aura:", aura.id)
             local success, err = pcall(function()
+                -- Delete existing aura if it exists
                 if WeakAuras.GetData(aura.id) then
                     print("DEBUG: Found existing WeakAura '" .. aura.id .. "', replacing it...")
-                    
-                    -- First remove from WeakAuras display
-                    if WeakAuras.regions and WeakAuras.regions[aura.id] then
-                        WeakAuras.regions[aura.id]:Cancel()
-                    end
-                    
-                    -- Delete using protected call
-                    local deleteSuccess = pcall(function()
-                        WeakAuras.Delete(aura.id)
-                    end)
-                    
-                    if not deleteSuccess then
-                        print("DEBUG: Delete operation failed, trying alternative approach")
-                        if WeakAuras.data then
-                            WeakAuras.data[aura.id] = nil
-                        else
-                            print("DEBUG: WeakAuras.data not available, skipping cleanup")
-                        end
-                    end
+                    WeakAuras.Delete(aura.id)
                 end
                 
-                -- Always add after potential deletion
+                -- Add the new aura
                 WeakAuras.Add(aura)
-                if WeakAuras.ScanForLoads then
-                    WeakAuras.ScanForLoads()
-                end
             end)
             
             if not success then
                 print("ERROR during export of '" .. aura.id .. "': " .. tostring(err))
             else
-                print("DEBUG: Successfully created/updated WeakAura '" .. aura.id .. "'")
+                print("DEBUG: Successfully exported '" .. aura.id .. "'")
             end
         end
     end
+    
+    -- Update WeakAuras display
+    if WeakAuras.ScanForLoads then
+        WeakAuras.ScanForLoads()
+    end
+    
+    print("DEBUG: Export complete")
 end
 
 -- Wait for player login
@@ -101,9 +88,10 @@ SLASH_AURAMANAGER1 = "/am"
 SLASH_AURAMANAGER2 = "/auramanager"
 SlashCmdList["AURAMANAGER"] = function(msg)
     if msg == "export" then
+        print("DEBUG: Export command received")
         ExportToWeakAuras()
     else
-        print(ADDON_NAME .. " commands:")
+        print("AuraManager commands:")
         print("  /am export - Export auras to WeakAuras")
     end
 end
