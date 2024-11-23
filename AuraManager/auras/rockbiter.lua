@@ -37,14 +37,14 @@ ns.auras["rockbiter"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "item",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Weapon Enchant",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 itemName = 0,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
@@ -52,8 +52,8 @@ ns.auras["rockbiter"] = {
                 enchant = "Rockbiter",
                 use_weapon = true,
                 use_showOn = true,
-                showOn = "showOnActive",
                 use_enchant = true,
+                showOn = "showOnActive",
                 weapon = "main",
             },
             untrigger = {},
@@ -61,7 +61,7 @@ ns.auras["rockbiter"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -70,7 +70,7 @@ ns.auras["rockbiter"] = {
         class = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

@@ -37,20 +37,20 @@ ns.auras["stoneclaw_totem"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "spell",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Action Usable",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
-                use_track = true,
                 spellName = 5730,
                 realSpellName = "Stoneclaw Totem",
                 use_spellName = true,
+                use_track = true,
             },
             untrigger = {},
         },
@@ -88,7 +88,7 @@ ns.auras["stoneclaw_totem"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -97,7 +97,7 @@ ns.auras["stoneclaw_totem"] = {
         class = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

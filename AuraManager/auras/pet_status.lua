@@ -37,14 +37,14 @@ ns.auras["pet_status"] = {
         activeTriggerMode = 1,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "unit",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Conditions",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_HasPet = true,
             },
             untrigger = {},
@@ -52,7 +52,7 @@ ns.auras["pet_status"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -64,7 +64,7 @@ ns.auras["pet_status"] = {
             },
             single = "WARLOCK",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

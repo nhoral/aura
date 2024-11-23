@@ -37,19 +37,19 @@ ns.auras["aspect_of_the_cheetah"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "aura2",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Conditions",
-                debuffType = "HELPFUL",
-                useName = true,
+                subeventPrefix = "SPELL",
+                use_unit = true,
                 auranames = {
                     "Aspect of the Cheetah",
                 },
-                use_unit = true,
+                useName = true,
             },
             untrigger = {},
         },
@@ -87,7 +87,7 @@ ns.auras["aspect_of_the_cheetah"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -99,7 +99,7 @@ ns.auras["aspect_of_the_cheetah"] = {
             },
             single = "WARLOCK",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

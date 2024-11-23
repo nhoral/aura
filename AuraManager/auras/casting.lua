@@ -37,14 +37,14 @@ ns.auras["casting"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "unit",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Cast",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
             },
             untrigger = {},
@@ -83,7 +83,7 @@ ns.auras["casting"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -95,7 +95,7 @@ ns.auras["casting"] = {
             },
             single = "WARLOCK",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

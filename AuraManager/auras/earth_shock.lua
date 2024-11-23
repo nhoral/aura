@@ -37,20 +37,20 @@ ns.auras["earth_shock"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "spell",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Action Usable",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
-                use_track = true,
                 spellName = 8042,
                 realSpellName = "Earth Shock",
                 use_spellName = true,
+                use_track = true,
             },
             untrigger = {},
         },
@@ -76,7 +76,7 @@ ns.auras["earth_shock"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -86,7 +86,7 @@ ns.auras["earth_shock"] = {
             multi = {},
             single = "SHAMAN",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_class = true,

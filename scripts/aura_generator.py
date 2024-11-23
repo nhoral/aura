@@ -3,6 +3,7 @@ import sys
 from typing import Dict, Any
 from collections import OrderedDict
 from lupa import LuaRuntime
+import json
 
 # Add the project root to Python path
 PROJECT_ROOT = Path(__file__).parent.parent
@@ -289,6 +290,7 @@ aura_list.lua
             
             self.output_path.mkdir(parents=True, exist_ok=True)
             generated_auras = []
+            transformed_auras = []  # Store transformed aura data
             sorted_auras = sorted(displays.items())
             
             for index, (aura_name, aura_data) in enumerate(sorted_auras):
@@ -298,6 +300,8 @@ aura_list.lua
                     output_file = self.output_path / file_name
                     
                     transformed_data = self._transform_aura_data(aura_name, aura_data, index)
+                    transformed_auras.append(transformed_data)  # Store for layout.json
+                    
                     lua_code = f"""
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {{}}
@@ -329,7 +333,9 @@ ns.aura_list = {
                     f.write(f'    "{aura}",\n')
                 f.write("}\n")
             
+            # Update TOC and write layout.json
             self._update_toc_file()
+            self._write_layout_json(transformed_auras)
             
             # Print summary
             print("\nAura Generation Summary:")
@@ -345,6 +351,33 @@ ns.aura_list = {
         except Exception as e:
             print(f"Fatal error during aura generation: {e}")
             raise
+
+    def _write_layout_json(self, auras_data: list):
+        """Write layout information to layout.json"""
+        layout_data = []
+        
+        for aura in auras_data:
+            # Convert display name to filename format
+            filename_id = aura["id"].lower().replace(" ", "_")
+            
+            layout_info = {
+                "id": filename_id,
+                "name": aura["id"],  # Keep original display name
+                "xOffset": aura["xOffset"],
+                "yOffset": aura["yOffset"],
+                "backgroundColor": aura["backgroundColor"]
+            }
+            layout_data.append(layout_info)
+        
+        # Sort by position (top-left to bottom-right)
+        layout_data.sort(key=lambda x: (-x["yOffset"], x["xOffset"]))
+        
+        # Write to layout.json in the scripts directory
+        layout_path = Path(__file__).parent / "layout.json"
+        with layout_path.open('w', encoding='utf-8') as f:
+            json.dump(layout_data, f, indent=4)
+        
+        print(f"Layout information written to: {layout_path}")
 
 def main():
     generator = AuraGenerator()

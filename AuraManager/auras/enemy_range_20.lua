@@ -37,14 +37,14 @@ ns.auras["enemy_range_20"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "unit",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "target",
                 names = {},
                 event = "Range Check",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 range = "20",
                 use_range = true,
@@ -81,7 +81,7 @@ ns.auras["enemy_range_20"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -90,7 +90,7 @@ ns.auras["enemy_range_20"] = {
         class = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

@@ -38,19 +38,20 @@ ns.auras["target_is_moving"] = {
         disjunctive = "all",
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "custom",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 check = "update",
+                customVariables = "{}",
                 custom_type = "stateupdate",
+                unevent = "auto",
                 duration = "1",
-                custom_hide = "timed",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -70,15 +71,14 @@ ns.auras["target_is_moving"] = {
         end
     end
 end]],
-                unevent = "auto",
-                customVariables = "{}",
+                custom_hide = "timed",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -90,18 +90,18 @@ end]],
             },
             single = "WARLOCK",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
+        zoneIds = "",
+        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
-        use_level = false,
-        zoneIds = "",
     },
     animation = {
         start = {

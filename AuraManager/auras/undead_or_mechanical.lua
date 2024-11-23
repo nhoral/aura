@@ -37,14 +37,14 @@ ns.auras["undead_or_mechanical"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "custom",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 check = "event",
                 custom_type = "status",
                 custom = [[function()
@@ -88,7 +88,7 @@ end]],
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -97,7 +97,7 @@ end]],
         class = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

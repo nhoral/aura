@@ -38,25 +38,25 @@ ns.auras["lightning_shield"] = {
         disjunctive = "any",
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "aura2",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
-                useName = true,
+                subeventPrefix = "SPELL",
+                use_unit = true,
                 auranames = {
                     "Lightning Shield",
                 },
-                use_unit = true,
+                useName = true,
                 use_genericShowOn = true,
                 genericShowOn = "showAlways",
-                use_track = true,
                 spellName = 324,
                 realSpellName = "Lightning Shield",
                 use_spellName = true,
+                use_track = true,
             },
             untrigger = {},
         },
@@ -100,7 +100,7 @@ ns.auras["lightning_shield"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -110,7 +110,7 @@ ns.auras["lightning_shield"] = {
             multi = {},
             single = "SHAMAN",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_class = true,

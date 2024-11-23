@@ -37,7 +37,7 @@ ns.auras["my_cool_aura"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "aura2",
                 spellIds = {
                     83243,
@@ -47,14 +47,14 @@ ns.auras["my_cool_aura"] = {
                 unit = "player",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -65,7 +65,7 @@ ns.auras["my_cool_aura"] = {
                 HUNTER = true,
             },
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

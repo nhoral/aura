@@ -37,14 +37,14 @@ ns.auras["target_health_below_75"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "unit",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "target",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 use_power = false,
                 use_showCost = true,
@@ -60,8 +60,8 @@ ns.auras["target_health_below_75"] = {
             check = {
                 trigger = 1,
                 variable = "percenthealth",
-                op = ">",
                 value = "75",
+                op = ">",
             },
             changes = {
                 {
@@ -77,7 +77,7 @@ ns.auras["target_health_below_75"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -89,7 +89,7 @@ ns.auras["target_health_below_75"] = {
             },
             single = "ROGUE",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

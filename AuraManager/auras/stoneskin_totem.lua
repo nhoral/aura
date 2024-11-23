@@ -37,25 +37,25 @@ ns.auras["stoneskin_totem"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "aura2",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Stoneskin",
                 },
+                useName = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -64,7 +64,7 @@ ns.auras["stoneskin_totem"] = {
         class = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

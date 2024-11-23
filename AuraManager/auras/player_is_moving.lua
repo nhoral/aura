@@ -37,39 +37,39 @@ ns.auras["player_is_moving"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "unit",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "target",
                 names = {},
                 event = "Conditions",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 itemName = 0,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
+                use_messageType = false,
                 use_spec = true,
-                use_track = true,
-                use_ismoving = true,
+                use_message = false,
                 spellName = 5176,
-                instance_size = {},
                 use_sourceName = false,
+                instance_size = {},
+                use_inverse = false,
                 use_targetRequired = false,
                 use_itemName = true,
                 use_moveSpeed = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                use_inverse = false,
-                use_message = false,
-                use_messageType = false,
+                use_ismoving = true,
+                use_track = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -78,7 +78,7 @@ ns.auras["player_is_moving"] = {
         class = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

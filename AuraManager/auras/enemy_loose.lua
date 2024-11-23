@@ -37,17 +37,21 @@ ns.auras["enemy_loose"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "custom",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 check = "update",
+                customVariables = [[{
+  stacks = true,
+}]],
                 custom_type = "stateupdate",
+                unevent = "auto",
                 duration = "1",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
@@ -85,19 +89,15 @@ ns.auras["enemy_loose"] = {
         return true
     end
 end]],
-                unevent = "auto",
-                customVariables = [[{
-  stacks = true,
-}]],
-                customStacks = [[function() return aura_env.count end]],
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -109,7 +109,7 @@ end]],
             },
             single = "WARRIOR",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

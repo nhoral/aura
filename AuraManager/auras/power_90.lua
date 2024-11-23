@@ -37,14 +37,14 @@ ns.auras["power_90"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                subeventPrefix = "SPELL",
+                debuffType = "HELPFUL",
                 type = "unit",
                 spellIds = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 names = {},
                 event = "Power",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 use_showCost = false,
                 powertype = 3,
@@ -58,8 +58,8 @@ ns.auras["power_90"] = {
             check = {
                 trigger = 1,
                 variable = "percentpower",
-                op = "<",
                 value = "90",
+                op = "<",
             },
             changes = {
                 {
@@ -75,7 +75,7 @@ ns.auras["power_90"] = {
         },
     },
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
@@ -88,7 +88,7 @@ ns.auras["power_90"] = {
             },
             single = "WARRIOR",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
