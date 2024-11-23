@@ -1,0 +1,54 @@
+## Interface: 100200
+## Title: AuraManager
+## Author: Your Name
+## Version: 1.0
+## SavedVariables: AuraManagerDB
+
+# Core
+AuraManager.lua
+aura_list.lua
+
+# Auras
+auras/aspect_of_the_cheetah.lua
+auras/casting.lua
+auras/combat.lua
+auras/earth_shock.lua
+auras/earthbind_totem.lua
+auras/enemy_casting.lua
+auras/enemy_in_melee_range.lua
+auras/enemy_loose.lua
+auras/enemy_range_20.lua
+auras/example_enemy_loose.lua
+auras/health_below_20.lua
+auras/health_below_50.lua
+auras/health_below_75.lua
+auras/lightning_shield.lua
+auras/my_cool_aura.lua
+auras/party_1_is_hurt.lua
+auras/party_2_is_hurt.lua
+auras/party_3_is_hurt.lua
+auras/party_4_is_hurt.lua
+auras/pet_status.lua
+auras/player_is_moving.lua
+auras/power_10.lua
+auras/power_100.lua
+auras/power_15.lua
+auras/power_20.lua
+auras/power_30.lua
+auras/power_40.lua
+auras/power_5.lua
+auras/power_50.lua
+auras/power_60.lua
+auras/power_70.lua
+auras/power_80.lua
+auras/power_90.lua
+auras/rockbiter.lua
+auras/sample.lua
+auras/stoneclaw_totem.lua
+auras/stoneskin_totem.lua
+auras/target_aggro.lua
+auras/target_health_below_20.lua
+auras/target_health_below_50.lua
+auras/target_health_below_75.lua
+auras/target_is_moving.lua
+auras/undead_or_mechanical.lua

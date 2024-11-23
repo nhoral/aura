@@ -5,23 +5,31 @@ from collections import OrderedDict
 from lupa import LuaRuntime
 
 # Add the project root to Python path
-sys.path.append(str(Path(__file__).parent.parent))
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.append(str(PROJECT_ROOT))
 
+from config import (
+    AURAS_DIR, 
+    TEMPLATES_DIR, 
+    WEAKAURAS_PATH, 
+    GRID_SETTINGS,
+    ADDON_INFO
+)
 from src.parser.lua_parser import LuaParser
 
 class AuraGenerator:
     def __init__(self):
-        # Fixed paths
-        self.wow_path = Path(r"c:\Program Files (x86)\World of Warcraft\_retail_")
-        self.weakauras_path = self.wow_path / "WTF" / "Account" / "YABUCHI" / "SavedVariables" / "WeakAuras.lua"
-        self.output_path = self.wow_path / "Interface" / "AddOns" / "AuraManager" / "auras"
+        # Use paths from config
+        self.weakauras_path = WEAKAURAS_PATH
+        self.output_path = AURAS_DIR
+        
         print(f"WeakAuras path: {self.weakauras_path}")
         print(f"Output path: {self.output_path}")
         self.parser = LuaParser(str(self.weakauras_path))
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         
-        # Load sample template
-        sample_path = Path(__file__).parent / "templates" / "sample.lua"
+        # Load sample template using config path
+        sample_path = TEMPLATES_DIR / "sample.lua"
         print(f"Loading sample template from: {sample_path}")
         
         # Read and execute the sample file content
@@ -138,11 +146,11 @@ class AuraGenerator:
 
     def _transform_aura_data(self, name: str, data: Dict, index: int) -> Dict:
         """Transform WeakAuras data into our addon format"""
-        # Grid settings
-        COLUMNS = 10
-        AURA_WIDTH = 5   # Width of each aura
-        AURA_HEIGHT = 5  # Height of each aura
-        SPACING = 1      # 1 pixel spacing between auras
+        # Grid settings from config
+        COLUMNS = GRID_SETTINGS["COLUMNS"]
+        AURA_WIDTH = GRID_SETTINGS["AURA_WIDTH"]
+        AURA_HEIGHT = GRID_SETTINGS["AURA_HEIGHT"]
+        SPACING = GRID_SETTINGS["SPACING"]
         
         # Calculate total size needed for each grid cell
         CELL_WIDTH = AURA_WIDTH + SPACING
@@ -209,8 +217,26 @@ class AuraGenerator:
         return result
 
     def _update_toc_file(self):
-        """Update the TOC file with all generated aura files"""
+        """Update the TOC file in our project directory"""
         toc_path = self.output_path.parent / "AuraManager.toc"
+        
+        # Create TOC if it doesn't exist
+        if not toc_path.exists():
+            with toc_path.open('w', encoding='utf-8') as f:
+                f.write(f"""## Interface: {ADDON_INFO['interface_version']}
+## Title: {ADDON_INFO['title']}
+## Notes: {ADDON_INFO['notes']}
+## Author: {ADDON_INFO['author']}
+## Version: {ADDON_INFO['version']}
+## SavedVariables: AuraManagerDB
+
+# Core
+core.lua
+AuraManager.lua
+aura_list.lua
+
+# Auras
+""")
         
         # Get all aura files
         aura_files = sorted(self.output_path.glob("*.lua"))
@@ -249,45 +275,48 @@ class AuraGenerator:
 
     def generate_aura_files(self):
         """Parse WeakAuras.lua and generate individual aura files"""
-        print(f"Writing aura files to: {self.output_path}")
+        stats = {
+            "processed": 0,
+            "success": 0,
+            "errors": 0,
+            "error_details": []
+        }
         
         try:
             wa_export = self.parser.parse()
             displays = wa_export.addons["WeakAurasSaved"]["displays"]
             
             self.output_path.mkdir(parents=True, exist_ok=True)
-            
-            # Track all generated aura names for the export function
             generated_auras = []
-            
-            # Sort aura names and use enumeration for index
             sorted_auras = sorted(displays.items())
+            
             for index, (aura_name, aura_data) in enumerate(sorted_auras):
-                print(f"\nProcessing aura: {aura_name}")
-                file_name = aura_name.lower().replace(" ", "_") + ".lua"
-                output_file = self.output_path / file_name
-                
-                # Transform the data into our format
-                transformed_data = self._transform_aura_data(aura_name, aura_data, index)
-                
-                # Generate the Lua code
-                lua_code = f"""
+                stats["processed"] += 1
+                try:
+                    file_name = aura_name.lower().replace(" ", "_") + ".lua"
+                    output_file = self.output_path / file_name
+                    
+                    transformed_data = self._transform_aura_data(aura_name, aura_data, index)
+                    lua_code = f"""
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {{}}
 ns.auras["{aura_name.lower().replace(" ", "_")}"] = {self._format_lua_value(transformed_data)}
 """
-                
-                # Validate the Lua code
-                if not self._validate_lua(lua_code):
-                    print(f"Error: Invalid Lua code generated for {aura_name}")
-                    continue
-                
-                # Write the validated code to file
-                with output_file.open('w', encoding='utf-8') as f:
-                    f.write(lua_code)
-                
-                generated_auras.append(aura_name.lower().replace(" ", "_"))
-                print(f"Generated aura file: {output_file}")
+                    
+                    if not self._validate_lua(lua_code):
+                        stats["errors"] += 1
+                        stats["error_details"].append(f"Invalid Lua code: {aura_name}")
+                        continue
+                    
+                    with output_file.open('w', encoding='utf-8') as f:
+                        f.write(lua_code)
+                    
+                    generated_auras.append(aura_name.lower().replace(" ", "_"))
+                    stats["success"] += 1
+                    
+                except Exception as e:
+                    stats["errors"] += 1
+                    stats["error_details"].append(f"Error processing {aura_name}: {str(e)}")
             
             # Generate the export list file
             export_file = self.output_path.parent / "aura_list.lua"
@@ -299,11 +328,21 @@ ns.aura_list = {
                     f.write(f'    "{aura}",\n')
                 f.write("}\n")
             
-            # Update the TOC file after generating all auras
             self._update_toc_file()
             
+            # Print summary
+            print("\nAura Generation Summary:")
+            print(f"Total processed: {stats['processed']}")
+            print(f"Successful: {stats['success']}")
+            print(f"Errors: {stats['errors']}")
+            
+            if stats["errors"] > 0:
+                print("\nError Details:")
+                for error in stats["error_details"]:
+                    print(f"- {error}")
+            
         except Exception as e:
-            print(f"Error generating aura files: {e}")
+            print(f"Fatal error during aura generation: {e}")
             raise
 
 def main():
