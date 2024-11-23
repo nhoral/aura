@@ -52,20 +52,45 @@ ns.auras["target_aggro"] = {
                 use_spec = true,
                 use_track = true,
                 use_ismoving = true,
+                spellName = 5176,
                 instance_size = {},
                 use_sourceName = false,
-                use_inverse = false,
-                use_moveSpeed = false,
-                use_itemName = true,
                 use_targetRequired = false,
+                use_itemName = true,
+                use_moveSpeed = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                spellName = 5176,
+                use_inverse = false,
                 use_message = false,
                 use_messageType = false,
                 check = "update",
-                custom = "function(allstates)\n    if not UnitAffectingCombat(\"player\") then\n        allstates[\"\"] = allstates[\"\"] or {show = false}\n        allstates[\"\"].show = false\n        allstates[\"\"].changed = true\n        \n        return true\n    end\n    \n    local unit = \"target\"\n    \n    local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation(\"player\", unit)\n    local unitAffectingCombat = UnitAffectingCombat(unit)\n    \n    if isTanking or not unitAffectingCombat then\n        allstates[\"\"] = allstates[\"\"] or {show = true}\n        allstates[\"\"].show = true\n        allstates[\"\"].changed = true\n    else\n        allstates[\"\"] = allstates[\"\"] or {show = false}\n        allstates[\"\"].show = false\n        allstates[\"\"].changed = true\n    end\n    \n    return true\nend",
                 custom_type = "stateupdate",
+                custom = [[function(allstates)
+    if not UnitAffectingCombat("player") then
+        allstates[""] = allstates[""] or {show = false}
+        allstates[""].show = false
+        allstates[""].changed = true
+        
+        return true
+    end
+    
+    local unit = "target"
+    
+    local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation("player", unit)
+    local unitAffectingCombat = UnitAffectingCombat(unit)
+    
+    if isTanking or not unitAffectingCombat then
+        allstates[""] = allstates[""] or {show = true}
+        allstates[""].show = true
+        allstates[""].changed = true
+    else
+        allstates[""] = allstates[""] or {show = false}
+        allstates[""].show = false
+        allstates[""].changed = true
+    end
+    
+    return true
+end]],
                 customVariables = "{}",
             },
             untrigger = {},

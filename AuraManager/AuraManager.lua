@@ -5,6 +5,7 @@ local WEAKAURAS_VERSION = 78  -- Match WeakAuras internal version
 local frame = CreateFrame("Frame")
 local isWeakAurasLoaded = false
 local pendingExport = false
+local pendingDelete = false
 
 -- Enhanced WeakAuras readiness check
 local function IsWeakAurasReady()
@@ -44,22 +45,34 @@ local function LoadAuraDefinition(filename)
     return auraDefinition
 end
 
--- Function to validate load conditions
-local function ValidateLoadConditions(aura)
-    if aura.load then
-        if aura.load.class and next(aura.load.class.multi) == nil then
-            print("WARNING: Aura '" .. aura.id .. "' has empty class condition")
-        end
-        if aura.load.spec and next(aura.load.spec.multi) == nil then
-            print("WARNING: Aura '" .. aura.id .. "' has empty spec condition")
+-- Helper function to delete existing auras
+local function DeleteExistingAuras()
+    local stats = {
+        deleted = 0,
+        notFound = 0,
+        errors = 0
+    }
+    
+    for _, filename in ipairs(ns.aura_list) do
+        local aura = LoadAuraDefinition(filename)
+        if aura and aura.id then
+            local existingAura = WeakAuras.GetData(aura.id)
+            if existingAura then
+                WeakAuras.Delete(existingAura)
+                stats.deleted = stats.deleted + 1
+            else
+                stats.notFound = stats.notFound + 1
+            end
+        else
+            stats.errors = stats.errors + 1
         end
     end
+    
+    return stats
 end
 
 -- Function to export our auras to WeakAuras
 local function ExportToWeakAuras()
-    print("DEBUG: Starting export")
-    
     -- Check WeakAuras readiness
     if not IsWeakAurasReady() then
         print("ERROR: WeakAuras is not fully loaded yet. Please try again in a moment.")
@@ -85,37 +98,33 @@ local function ExportToWeakAuras()
         return
     end
     
-    -- Setup progress tracking
-    local total = #ns.aura_list
-    local current = 0
+    -- Delete existing auras first
+    local deleteStats = DeleteExistingAuras()
     
-    print("DEBUG: Found " .. total .. " auras to export")
+    -- Setup tracking for export
+    local stats = {
+        total = #ns.aura_list,
+        success = 0,
+        errors = 0,
+        deleted = deleteStats.deleted
+    }
     
     -- Load and export each aura
     for _, filename in ipairs(ns.aura_list) do
         local aura = LoadAuraDefinition(filename)
         if aura then
-            current = current + 1
-            print(string.format("Progress: %d/%d - %s", current, total, aura.id))
-            
-            ValidateLoadConditions(aura)
-            
             local success, err = pcall(function()
-                -- Delete existing aura if it exists
-                if WeakAuras.GetData(aura.id) then
-                    print("DEBUG: Found existing WeakAura '" .. aura.id .. "', replacing it...")
-                    WeakAuras.Delete(aura.id)
-                end
-                
                 -- Add the new aura
                 WeakAuras.Add(aura)
+                stats.success = stats.success + 1
             end)
             
             if not success then
-                print("ERROR during export of '" .. aura.id .. "': " .. tostring(err))
-            else
-                print("DEBUG: Successfully exported '" .. aura.id .. "'")
+                stats.errors = stats.errors + 1
+                print(string.format("ERROR exporting '%s': %s", aura.id, tostring(err)))
             end
+        else
+            stats.errors = stats.errors + 1
         end
     end
     
@@ -124,26 +133,83 @@ local function ExportToWeakAuras()
         WeakAuras.ScanForLoads()
     end
     
-    print("DEBUG: Export complete")
+    -- Print summary
+    print(string.format("\nExport Summary:"))
+    print(string.format("Total auras: %d", stats.total))
+    if stats.deleted > 0 then
+        print(string.format("Deleted: %d", stats.deleted))
+    end
+    print(string.format("Exported: %d", stats.success))
+    if stats.errors > 0 then
+        print(string.format("Errors: %d", stats.errors))
+    end
+end
+
+-- Function to delete our auras from WeakAuras
+local function DeleteFromWeakAuras()
+    -- Check WeakAuras readiness
+    if not IsWeakAurasReady() then
+        print("ERROR: WeakAuras is not fully loaded yet. Please try again in a moment.")
+        return
+    end
+    
+    -- Handle combat lockdown
+    if InCombatLockdown() then
+        print("Delete queued for after combat")
+        pendingDelete = true
+        frame:RegisterEvent("PLAYER_REGEN_ENABLED")
+        return
+    end
+    
+    -- Verify ns.aura_list exists
+    if not ns.aura_list then
+        print("ERROR: No auras found in ns.aura_list!")
+        return
+    end
+    
+    -- Delete existing auras first
+    local deleteStats = DeleteExistingAuras()
+    
+    -- Setup tracking for delete
+    local stats = {
+        total = #ns.aura_list,
+        deleted = deleteStats.deleted,
+        notFound = deleteStats.notFound,
+        errors = deleteStats.errors
+    }
+    
+    -- Update WeakAuras display
+    if WeakAuras.ScanForLoads then
+        WeakAuras.ScanForLoads()
+    end
+    
+    -- Print summary
+    print(string.format("\nDelete Summary:"))
+    print(string.format("Total auras: %d", stats.total))
+    print(string.format("Deleted: %d", stats.deleted))
+    if stats.notFound > 0 then
+        print(string.format("Not found: %d", stats.notFound))
+    end
+    if stats.errors > 0 then
+        print(string.format("Errors: %d", stats.errors))
+    end
 end
 
 -- Event handling
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function(self, event)
     if event == "PLAYER_LOGIN" then
-        -- Wait a short bit for WeakAuras to finish initialization
         C_Timer.After(2, function()
-            if IsWeakAurasReady() then
-                isWeakAurasLoaded = true
-                print(ADDON_NAME .. " is ready to use!")
-            else
-                print(ADDON_NAME .. ": WeakAuras not fully initialized yet. Please wait a moment.")
-            end
+            isWeakAurasLoaded = IsWeakAurasReady()
         end)
     elseif event == "PLAYER_REGEN_ENABLED" and pendingExport then
         pendingExport = false
         self:UnregisterEvent("PLAYER_REGEN_ENABLED")
         ExportToWeakAuras()
+    elseif event == "PLAYER_REGEN_ENABLED" and pendingDelete then
+        pendingDelete = false
+        self:UnregisterEvent("PLAYER_REGEN_ENABLED")
+        DeleteFromWeakAuras()
     end
 end)
 
@@ -152,10 +218,12 @@ SLASH_AURAMANAGER1 = "/am"
 SLASH_AURAMANAGER2 = "/auramanager"
 SlashCmdList["AURAMANAGER"] = function(msg)
     if msg == "export" then
-        print("DEBUG: Export command received")
         ExportToWeakAuras()
+    elseif msg == "delete" then
+        DeleteFromWeakAuras()
     else
         print("AuraManager commands:")
         print("  /am export - Export auras to WeakAuras")
+        print("  /am delete - Delete all AuraManager auras from WeakAuras")
     end
 end

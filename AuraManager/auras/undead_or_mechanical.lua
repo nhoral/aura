@@ -46,8 +46,10 @@ ns.auras["undead_or_mechanical"] = {
                 event = "Health",
                 debuffType = "HELPFUL",
                 check = "event",
-                custom = "function()\n    return UnitExists(\"target\") and (UnitCreatureType(\"target\") == \"Undead\" or UnitCreatureType(\"target\") == \"Mechanical\")\nend",
                 custom_type = "status",
+                custom = [[function()
+    return UnitExists("target") and (UnitCreatureType("target") == "Undead" or UnitCreatureType("target") == "Mechanical")
+end]],
                 events = "PLAYER_TARGET_CHANGED",
             },
             untrigger = {},

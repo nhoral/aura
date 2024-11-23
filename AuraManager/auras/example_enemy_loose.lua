@@ -46,8 +46,43 @@ ns.auras["example_enemy_loose"] = {
                 event = "Health",
                 debuffType = "HELPFUL",
                 check = "update",
-                custom = "function(allstates)\n    -- Throttle the check for perf?  What is config?\n    if not aura_env.last or GetTime() - aura_env.last > 0.2 then\n        -- Set the last time\n        aura_env.last = GetTime()\n        \n        -- Start a count\n        local enemyIndex = 0\n        \n        -- Iterate 40 times\n        for i = 1, 40 do\n            -- Concat string with index\n            local unit = \"nameplate\"..i\n            local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation(\"player\", unit)\n            \n            local unitCanAttack = UnitCanAttack(\"player\", unit)\n            local unitAffectingCombat = UnitAffectingCombat(unit)\n            \n            if unitCanAttack and unitAffectingCombat and not isTanking then\n                enemyIndex = enemyIndex + 1\n            end\n        end\n        \n        if enemyIndex > 0 then\n            allstates[\"\"] = allstates[\"\"] or {show = true}\n            allstates[\"\"].show = true\n            allstates[\"\"].changed = true\n        else\n            allstates[\"\"] = allstates[\"\"] or {show = false}\n            allstates[\"\"].show = false\n            allstates[\"\"].changed = true\n        end\n        \n        return true\n    end\nend",
                 custom_type = "stateupdate",
+                custom = [[function(allstates)
+    -- Throttle the check for perf?  What is config?
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
+        -- Set the last time
+        aura_env.last = GetTime()
+        
+        -- Start a count
+        local enemyIndex = 0
+        
+        -- Iterate 40 times
+        for i = 1, 40 do
+            -- Concat string with index
+            local unit = "nameplate"..i
+            local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation("player", unit)
+            
+            local unitCanAttack = UnitCanAttack("player", unit)
+            local unitAffectingCombat = UnitAffectingCombat(unit)
+            
+            if unitCanAttack and unitAffectingCombat and not isTanking then
+                enemyIndex = enemyIndex + 1
+            end
+        end
+        
+        if enemyIndex > 0 then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].show = true
+            allstates[""].changed = true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+        end
+        
+        return true
+    end
+end]],
             },
             untrigger = {},
         },

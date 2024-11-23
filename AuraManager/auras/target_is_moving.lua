@@ -48,11 +48,29 @@ ns.auras["target_is_moving"] = {
                 debuffType = "HELPFUL",
                 use_unit = true,
                 check = "update",
+                custom_type = "stateupdate",
                 duration = "1",
                 custom_hide = "timed",
-                custom = "function(allstates)\n    if not aura_env.last or GetTime() - aura_env.last > 0.5 then\n        aura_env.last = GetTime()\n        \n        local unitSpeed, _, _, _ = GetUnitSpeed(\"target\")           \n        if not unitSpeed then return end\n        \n        if unitSpeed > 0 then\n            allstates[\"\"] = allstates[\"\"] or {show = true}\n            allstates[\"\"].changed = true\n            return true\n        else\n            allstates[\"\"] = allstates[\"\"] or {show = false}\n            allstates[\"\"].show = false\n            allstates[\"\"].changed = true\n            return true\n        end\n    end\nend",
+                custom = [[function(allstates)
+    if not aura_env.last or GetTime() - aura_env.last > 0.5 then
+        aura_env.last = GetTime()
+        
+        local unitSpeed, _, _, _ = GetUnitSpeed("target")           
+        if not unitSpeed then return end
+        
+        if unitSpeed > 0 then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].changed = true
+            return true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+            return true
+        end
+    end
+end]],
                 unevent = "auto",
-                custom_type = "stateupdate",
                 customVariables = "{}",
             },
             untrigger = {},

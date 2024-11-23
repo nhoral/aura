@@ -114,9 +114,10 @@ class AuraGenerator:
         elif isinstance(value, str):
             # Handle function strings
             if value.strip().startswith("function"):
-                # Clean up the function string: remove extra newlines and escape properly
-                clean_func = value.strip().replace('\n', '\\n').replace('"', '\\"')
-                return f'"{clean_func}"'
+                # Remove any existing \n escapes and restore actual newlines
+                clean_func = value.replace('\\n', '\n').strip()
+                # Use Lua's [[ ]] syntax for multiline functions
+                return f"[[{clean_func}]]"
             # Handle WeakAuras function calls
             elif value.startswith("WeakAuras."):
                 return value

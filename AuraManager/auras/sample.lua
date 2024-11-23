@@ -46,16 +46,43 @@ ns.auras["sample"] = {
                 event = "Health",
                 debuffType = "HELPFUL",
                 check = "update",
+                custom_type = "stateupdate",
                 duration = "1",
                 custom_hide = "custom",
-                custom = "function(allstates)\n    if not aura_env.last or GetTime() - aura_env.last > 0.2 then\n        aura_env.last = GetTime()\n        local count = 0\n        for i=1,40 do\n            local unit = 'nameplate'..i\n            local unitExists = UnitExists(unit)    \n            local unitCanAttack = UnitCanAttack('player', unit)\n            local isInRange = IsItemInRange(10645, unit)\n            \n            if unitExists and unitCanAttack and isInRange then\n                count = count + 1\n            end\n        end\n        \n        if count >= 2 then\n            allstates[\"\"] = allstates[\"\"] or {show = true}\n            allstates[\"\"].show = true\n            allstates[\"\"].changed = true\n            return true\n        end\n        \n        allstates[\"\"] = allstates[\"\"] or {show = false}\n        allstates[\"\"].show = false\n        allstates[\"\"].changed = true\n        return true\n    end\nend",
+                custom = [[function(allstates)
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
+        aura_env.last = GetTime()
+        local count = 0
+        for i=1,40 do
+            local unit = 'nameplate'..i
+            local unitExists = UnitExists(unit)    
+            local unitCanAttack = UnitCanAttack('player', unit)
+            local isInRange = IsItemInRange(10645, unit)
+            
+            if unitExists and unitCanAttack and isInRange then
+                count = count + 1
+            end
+        end
+        
+        if count >= 2 then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].show = true
+            allstates[""].changed = true
+            return true
+        end
+        
+        allstates[""] = allstates[""] or {show = false}
+        allstates[""].show = false
+        allstates[""].changed = true
+        return true
+    end
+end]],
                 unevent = "auto",
-                custom_type = "stateupdate",
                 customVariables = [[{
   stacks = true,
 }]],
+                customStacks = [[function() return aura_env.count end]],
                 use_absorbMode = true,
-                customStacks = "function() return aura_env.count end",
             },
             untrigger = {},
         },
