@@ -42,3 +42,12 @@ The project maintains visual consistency across auras while preserving their ind
 - WeakAuras github repository: https://github.com/WeakAuras/WeakAuras2
 
 
+I am making a python script that checks the screen at specific positions for specific colors.  When detecting those colors, it presses keys.
+
+Context:
+- Here is a layout file that can be used to resolve which positions refer to specific conditions: @layout.json 
+- Here is my previous project that used image analysis.  I have since simplifed the on screen displays to just be a specific color.  This is to make the comparison more efficient. @https://github.com/nhoral/python-loop 
+- Like the example project, it needs to consider resolution and mac retina display.  If you have suggestions on how to normalize the resolution handling, let me know
+
+Install:
+pip install -r requirements.txt
