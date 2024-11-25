@@ -8,7 +8,7 @@ ns.auras["sample"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 24,
+    xOffset = 18,
     yOffset = -18,
     width = 5,
     height = 5,
@@ -39,19 +39,14 @@ ns.auras["sample"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "custom",
-                spellIds = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 names = {},
                 event = "Health",
                 subeventPrefix = "SPELL",
-                check = "update",
-                customVariables = [[{
-  stacks = true,
-}]],
-                custom_type = "stateupdate",
-                unevent = "auto",
+                unit = "player",
+                spellIds = {},
                 duration = "1",
+                custom_hide = "custom",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
@@ -80,7 +75,12 @@ ns.auras["sample"] = {
         return true
     end
 end]],
-                custom_hide = "custom",
+                custom_type = "stateupdate",
+                check = "update",
+                unevent = "auto",
+                customVariables = [[{
+  stacks = true,
+}]],
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
             },

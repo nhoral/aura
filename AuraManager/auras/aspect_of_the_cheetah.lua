@@ -39,17 +39,17 @@ ns.auras["aspect_of_the_cheetah"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "aura2",
-                spellIds = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 names = {},
                 event = "Conditions",
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Aspect of the Cheetah",
                 },
-                useName = true,
+                use_unit = true,
             },
             untrigger = {},
         },
@@ -87,6 +87,7 @@ ns.auras["aspect_of_the_cheetah"] = {
         },
     },
     load = {
+        use_never = false,
         talent = {
             multi = {},
         },
@@ -102,7 +103,6 @@ ns.auras["aspect_of_the_cheetah"] = {
         size = {
             multi = {},
         },
-        use_never = false,
     },
     animation = {
         start = {

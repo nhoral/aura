@@ -8,7 +8,7 @@ ns.auras["health_below_75"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 12,
+    xOffset = 6,
     yOffset = -6,
     width = 5,
     height = 5,
@@ -39,44 +39,34 @@ ns.auras["health_below_75"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                spellIds = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 names = {},
                 event = "Health",
                 subeventPrefix = "SPELL",
+                unit = "player",
+                spellIds = {},
                 use_unit = true,
                 use_power = false,
                 use_showCost = true,
                 powertype = 3,
-                use_percentpower = false,
                 use_powertype = true,
+                percenthealth = {
+                    "75",
+                },
+                use_percentpower = false,
+                use_percenthealth = true,
+                percenthealth_operator = {
+                    "<",
+                },
+                use_health = false,
+                use_maxhealth = false,
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "percenthealth",
-                value = "75",
-                op = ">",
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
+        use_never = false,
         talent = {
             multi = {},
         },
@@ -92,7 +82,6 @@ ns.auras["health_below_75"] = {
         size = {
             multi = {},
         },
-        use_never = false,
     },
     animation = {
         start = {

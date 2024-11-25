@@ -8,7 +8,7 @@ ns.auras["pet_status"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 54,
+    xOffset = 42,
     yOffset = -6,
     width = 5,
     height = 5,
@@ -39,12 +39,12 @@ ns.auras["pet_status"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                spellIds = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 names = {},
                 event = "Conditions",
                 subeventPrefix = "SPELL",
+                unit = "player",
+                spellIds = {},
                 use_HasPet = true,
             },
             untrigger = {},
@@ -52,6 +52,7 @@ ns.auras["pet_status"] = {
     },
     conditions = {},
     load = {
+        use_never = false,
         talent = {
             multi = {},
         },
@@ -67,7 +68,6 @@ ns.auras["pet_status"] = {
         size = {
             multi = {},
         },
-        use_never = false,
     },
     animation = {
         start = {

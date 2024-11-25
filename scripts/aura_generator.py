@@ -357,27 +357,63 @@ ns.aura_list = {
         layout_data = []
         
         for aura in auras_data:
-            # Convert display name to filename format
             filename_id = aura["id"].lower().replace(" ", "_")
+            print(f"\nProcessing aura: {filename_id}")
             
+            # Basic info
             layout_info = {
                 "id": filename_id,
-                "name": aura["id"],  # Keep original display name
+                "name": aura["id"],
                 "xOffset": aura["xOffset"],
                 "yOffset": aura["yOffset"],
-                "backgroundColor": aura["backgroundColor"]
+                "backgroundColor": {
+                    "r": float(aura["backgroundColor"]["1"]),
+                    "g": float(aura["backgroundColor"]["2"]),
+                    "b": float(aura["backgroundColor"]["3"]),
+                    "a": float(aura["backgroundColor"]["4"])
+                }
             }
+            
+            # Collect background colors from conditions
+            if "conditions" in aura:
+                conditions = aura["conditions"]
+                if isinstance(conditions, (dict, OrderedDict)):
+                    background_colors = []
+                    # Add default state (initial backgroundColor)
+                    background_colors.append({
+                        "r": float(aura["backgroundColor"]["1"]),
+                        "g": float(aura["backgroundColor"]["2"]),
+                        "b": float(aura["backgroundColor"]["3"]),
+                        "a": float(aura["backgroundColor"]["4"])
+                    })
+                    
+                    # Add colors from conditions
+                    for condition in conditions.values():
+                        if "changes" in condition:
+                            for change in condition["changes"].values():
+                                if change.get("property") == "backgroundColor":
+                                    color_value = change["value"]
+                                    background_colors.append({
+                                        "r": float(color_value["1"]),
+                                        "g": float(color_value["2"]),
+                                        "b": float(color_value["3"]),
+                                        "a": float(color_value["4"])
+                                    })
+                    
+                    if len(background_colors) > 1:  # Only add if we have changes
+                        layout_info["states"] = background_colors
+                        print(f"Added {len(background_colors)} color states")
+            
+            print(f"Final layout_info: {layout_info}")
             layout_data.append(layout_info)
         
         # Sort by position (top-left to bottom-right)
         layout_data.sort(key=lambda x: (-x["yOffset"], x["xOffset"]))
         
-        # Write to layout.json in the scripts directory
+        # Write to layout.json
         layout_path = Path(__file__).parent / "layout.json"
         with layout_path.open('w', encoding='utf-8') as f:
             json.dump(layout_data, f, indent=4)
-        
-        print(f"Layout information written to: {layout_path}")
 
 def main():
     generator = AuraGenerator()

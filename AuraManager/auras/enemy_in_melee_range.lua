@@ -39,12 +39,12 @@ ns.auras["enemy_in_melee_range"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                spellIds = {},
                 subeventSuffix = "_CAST_START",
-                unit = "target",
                 names = {},
                 event = "Range Check",
                 subeventPrefix = "SPELL",
+                unit = "target",
+                spellIds = {},
                 use_unit = true,
                 range = "5",
                 use_range = true,
@@ -81,6 +81,7 @@ ns.auras["enemy_in_melee_range"] = {
         },
     },
     load = {
+        use_never = false,
         talent = {
             multi = {},
         },
@@ -93,7 +94,6 @@ ns.auras["enemy_in_melee_range"] = {
         size = {
             multi = {},
         },
-        use_never = false,
     },
     animation = {
         start = {

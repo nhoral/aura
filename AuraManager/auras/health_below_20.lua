@@ -8,8 +8,8 @@ ns.auras["health_below_20"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
-    yOffset = -6,
+    xOffset = 54,
+    yOffset = 0,
     width = 5,
     height = 5,
     frameStrata = 1,
@@ -39,44 +39,32 @@ ns.auras["health_below_20"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                spellIds = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 names = {},
                 event = "Health",
                 subeventPrefix = "SPELL",
+                unit = "player",
+                spellIds = {},
                 use_unit = true,
                 use_power = false,
                 use_showCost = true,
                 powertype = 3,
-                use_percentpower = false,
                 use_powertype = true,
+                percenthealth = {
+                    "20",
+                },
+                use_percentpower = false,
+                use_percenthealth = true,
+                percenthealth_operator = {
+                    "<",
+                },
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "percenthealth",
-                value = "20",
-                op = ">",
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
+        use_never = false,
         talent = {
             multi = {},
         },
@@ -92,7 +80,6 @@ ns.auras["health_below_20"] = {
         size = {
             multi = {},
         },
-        use_never = false,
     },
     animation = {
         start = {
