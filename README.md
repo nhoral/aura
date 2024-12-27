@@ -24,6 +24,17 @@ This project bridges WeakAuras (a WoW addon) with automated actions by:
 - Executes keyboard actions based on active conditions
 - Handles cooldowns and compound conditions
 
+The action triggering flow:
+1. Main loop checks all conditions via Screen Checker
+2. `get_next_action()` evaluates active conditions against profile rules:
+   - Checks if primary condition is met
+   - Verifies action isn't on cooldown
+   - Confirms all additional required conditions are met
+3. `execute_action()` performs the key press:
+   - Presses the configured key
+   - Holds for specified duration
+   - Updates cooldown tracking
+
 ### Profiles (`scripts/profiles/*.json`)
 JSON files that define:
 - What key to press for each condition

@@ -3,8 +3,11 @@ from PIL import Image, ImageDraw
 import os
 from datetime import datetime
 from src.core.screen_checker import ScreenChecker
+from scripts.screen_monitor import ScreenMonitor
 from typing import Dict, Tuple, List
 import sys
+import json
+import time
 
 class TestScreenMonitor:
     @pytest.fixture
@@ -14,6 +17,10 @@ class TestScreenMonitor:
     @pytest.fixture
     def layout_path(self):
         return 'scripts/layout.json'
+        
+    @pytest.fixture
+    def profile_path(self):
+        return 'scripts/profiles/rogue.json'
 
     def find_red_boxes(self, image: Image.Image) -> List[Tuple[int, int]]:
         """Scan the image for red boxes and return their coordinates"""
@@ -208,6 +215,215 @@ class TestScreenMonitor:
         
         # Assert that we detected at least one condition
         assert len(detected) > 0, "No conditions were detected in the screenshot"
+
+    def test_trigger_state_behavior(self, screenshot_path, layout_path, profile_path):
+        """Test that actions only occur when trigger is held"""
+        # Setup
+        checker = ScreenChecker(layout_path)
+        
+        # Create a test profile with a condition we know exists
+        test_profile = {
+            "name": "Test Profile",
+            "check_interval": 0.1,
+            "actions": [
+                {
+                    "key": "3",
+                    "conditions": ["power_40"]
+                }
+            ]
+        }
+        
+        # Write test profile to a temporary file
+        test_profile_path = "tests/fixtures/test_profile.json"
+        os.makedirs(os.path.dirname(test_profile_path), exist_ok=True)
+        with open(test_profile_path, "w") as f:
+            json.dump(test_profile, f)
+        
+        try:
+            monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+            
+            # Mock the pixel reading to use our test screenshot
+            test_image = Image.open(screenshot_path)
+            def mock_pixel(x, y):
+                # Always return red to trigger our condition
+                return (255, 0, 0)
+            checker._get_pixel = mock_pixel
+            
+            # Track executed actions
+            executed_actions = []
+            def mock_execute_action(action):
+                executed_actions.append(action)
+            monitor.execute_action = mock_execute_action
+            
+            # Test: No actions when trigger not held
+            monitor.trigger_held = False
+            active_conditions = checker.check_conditions()
+            action = monitor.get_next_action(active_conditions)
+            if action:
+                monitor.execute_action(action)
+            assert len(executed_actions) == 0, "Actions executed while trigger not held"
+            
+            # Test: Actions occur when trigger held
+            monitor.trigger_held = True
+            active_conditions = checker.check_conditions()
+            action = monitor.get_next_action(active_conditions)
+            if action:
+                monitor.execute_action(action)
+            assert len(executed_actions) > 0, "No actions executed while trigger held"
+            
+            # Test: Actions stop when trigger released
+            executed_actions.clear()
+            monitor.trigger_held = False
+            active_conditions = checker.check_conditions()
+            action = monitor.get_next_action(active_conditions)
+            if action:
+                monitor.execute_action(action)
+            assert len(executed_actions) == 0, "Actions executed after trigger released"
+        
+        finally:
+            # Clean up
+            if os.path.exists(test_profile_path):
+                os.remove(test_profile_path)
+
+    def test_condition_state_consistency(self, screenshot_path, layout_path):
+        """Test that conditions remain consistent until pixel colors change"""
+        # Setup
+        checker = ScreenChecker(layout_path)
+        
+        # Mock the pixel reading to use our test screenshot
+        test_image = Image.open(screenshot_path)
+        def mock_pixel(x, y):
+            x = min(max(0, int(x)), test_image.width - 1)
+            y = min(max(0, int(y)), test_image.height - 1)
+            return test_image.getpixel((x, y))
+        checker._get_pixel = mock_pixel
+        
+        # Get initial conditions
+        initial_conditions = checker.check_conditions()
+        
+        # Check multiple times - should remain consistent
+        for _ in range(5):
+            current_conditions = checker.check_conditions()
+            assert current_conditions == initial_conditions, "Conditions changed without pixel color changes"
+        
+        # Modify one pixel color and verify change is detected
+        original_get_pixel = checker._get_pixel
+        modified_condition = next(iter(initial_conditions)) if initial_conditions else None
+        if modified_condition:
+            condition = checker.conditions[modified_condition]
+            def modified_pixel(x, y):
+                if x == condition.x and y == condition.y:
+                    return (0, 0, 0)  # Different color
+                return original_get_pixel(x, y)
+            checker._get_pixel = modified_pixel
+            
+            new_conditions = checker.check_conditions()
+            assert new_conditions != initial_conditions, "Condition state didn't change when pixel color changed"
+
+    def test_multiple_conditions(self, layout_path):
+        """Test that actions properly handle multiple required conditions"""
+        checker = ScreenChecker(layout_path)
+        
+        # Create test profile with multiple conditions
+        test_profile = {
+            "name": "Multiple Conditions Test",
+            "check_interval": 0.1,
+            "actions": [
+                {
+                    "key": "1",
+                    "conditions": ["power_40", "combat", "enemy_in_melee_range"]
+                }
+            ]
+        }
+        
+        test_profile_path = "tests/fixtures/conditions_test.json"
+        os.makedirs(os.path.dirname(test_profile_path), exist_ok=True)
+        with open(test_profile_path, "w") as f:
+            json.dump(test_profile, f)
+            
+        try:
+            monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+            monitor.trigger_held = True
+            
+            # Mock pixel reading to always return red
+            def mock_pixel(x, y):
+                return (255, 0, 0)
+            checker._get_pixel = mock_pixel
+            
+            # Track executed actions
+            executed_actions = []
+            def mock_execute_action(action):
+                executed_actions.append(action)
+            monitor.execute_action = mock_execute_action
+            
+            # Test: Primary condition only
+            active_conditions = ["power_40"]
+            action = monitor.get_next_action(active_conditions)
+            assert action is None, "Action executed with only primary condition"
+            
+            # Test: One additional condition
+            active_conditions = ["power_40", "combat"]
+            action = monitor.get_next_action(active_conditions)
+            assert action is None, "Action executed with missing conditions"
+            
+            # Test: All conditions met
+            active_conditions = ["power_40", "combat", "enemy_in_melee_range"]
+            action = monitor.get_next_action(active_conditions)
+            assert action is not None, "Action not executed with all conditions met"
+            
+            # Test: Conditions in different order
+            active_conditions = ["enemy_in_melee_range", "power_40", "combat"]
+            action = monitor.get_next_action(active_conditions)
+            assert action is not None, "Action not executed with conditions in different order"
+            
+        finally:
+            if os.path.exists(test_profile_path):
+                os.remove(test_profile_path)
+    
+    def test_profile_validation(self, layout_path):
+        """Test that invalid profiles are handled properly"""
+        checker = ScreenChecker(layout_path)
+        
+        # Test: Missing required fields
+        invalid_profile = {
+            "name": "Invalid Profile"
+            # Missing actions
+        }
+        
+        test_profile_path = "tests/fixtures/invalid_profile.json"
+        os.makedirs(os.path.dirname(test_profile_path), exist_ok=True)
+        with open(test_profile_path, "w") as f:
+            json.dump(invalid_profile, f)
+            
+        try:
+            with pytest.raises(KeyError):
+                monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+        finally:
+            if os.path.exists(test_profile_path):
+                os.remove(test_profile_path)
+        
+        # Test: Invalid action format
+        invalid_action_profile = {
+            "name": "Invalid Action Profile",
+            "check_interval": 0.1,
+            "actions": [
+                {
+                    # Missing required 'key' field
+                    "conditions": ["power_40"]
+                }
+            ]
+        }
+        
+        test_profile_path = "tests/fixtures/invalid_action_profile.json"
+        with open(test_profile_path, "w") as f:
+            json.dump(invalid_action_profile, f)
+            
+        try:
+            with pytest.raises(KeyError):
+                monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+        finally:
+            if os.path.exists(test_profile_path):
+                os.remove(test_profile_path)
 
 if __name__ == "__main__":
     pytest.main([__file__, "-s"])

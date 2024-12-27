@@ -6,66 +6,93 @@ from typing import Dict, List, Optional
 import argparse
 import json
 import sys
+from inputs import get_gamepad
+import threading
 
 @dataclass
 class Action:
     key: str
-    hold_duration: float = 0.1
-    cooldown: float = 0.0
-    conditions: List[str] = None  # Additional conditions that must be true
+    conditions: List[str]
 
 class ScreenMonitor:
+    # Fixed duration for all key presses
+    KEY_HOLD_DURATION = 0.1
+    # Fixed interval for condition checking
+    CHECK_INTERVAL = 0.1
+
     def __init__(self, checker: ScreenChecker, profile_path: str, debug: bool = False):
         self.checker = checker
         self.keyboard = Controller()
         self.debug = debug
-        self.last_action_time = {}  # Track cooldowns
         self.running = True
+        self.trigger_held = False  # Track if right trigger is held
         
         # Load profile
         with open(profile_path, 'r') as f:
             profile_data = json.load(f)
             self.actions = self._load_actions(profile_data)
-            self.check_interval = profile_data.get('check_interval', 0.1)
         
-        # Setup keyboard listener
-        self.listener = Listener(on_press=self._on_press)
+        # Setup keyboard listener for escape key
+        self.listener = Listener(on_press=self._on_key_press)
         self.listener.start()
+        
+        # Start gamepad monitoring in separate thread
+        self.gamepad_thread = threading.Thread(target=self._monitor_gamepad)
+        self.gamepad_thread.daemon = True
+        self.gamepad_thread.start()
     
-    def _on_press(self, key):
-        """Handle key press events"""
+    def _on_key_press(self, key):
+        """Handle keyboard press events"""
         if key == Key.esc:
             self.running = False
             return False  # Stop listener
+        elif hasattr(key, 'char') and key.char == 'r':  # Keep 'r' for testing
+            self.trigger_held = True
+            if self.debug:
+                print("R key pressed - monitoring active")
     
-    def _load_actions(self, profile_data: dict) -> Dict[str, Action]:
+    def _monitor_gamepad(self):
+        """Monitor gamepad input in separate thread"""
+        try:
+            while self.running:
+                events = get_gamepad()
+                for event in events:
+                    if event.code == "ABS_RZ":  # Right trigger axis
+                        # Convert trigger value (0-255) to boolean
+                        self.trigger_held = event.state > 128
+                        if self.debug and event.state > 128:
+                            print(f"Trigger pressed: {event.state}")
+        except Exception as e:
+            if self.debug:
+                print(f"Gamepad error: {str(e)}")
+    
+    def _load_actions(self, profile_data: dict) -> List[Action]:
         """Convert profile JSON into Action objects"""
-        actions = {}
-        for trigger, action_data in profile_data.get('actions', {}).items():
-            actions[trigger] = Action(
+        if 'actions' not in profile_data:
+            raise KeyError("Profile must contain 'actions' field")
+            
+        actions = []
+        for action_data in profile_data['actions']:
+            if 'key' not in action_data:
+                raise KeyError("Action must contain 'key' field")
+            if 'conditions' not in action_data:
+                raise KeyError("Action must contain 'conditions' field")
+                
+            actions.append(Action(
                 key=action_data['key'],
-                hold_duration=action_data.get('hold_duration', 0.1),
-                cooldown=action_data.get('cooldown', 0.0),
-                conditions=action_data.get('conditions', [])
-            )
+                conditions=action_data['conditions']
+            ))
         return actions
     
     def get_next_action(self, active_conditions: List[str]) -> Optional[Action]:
         """Determine next action based on active conditions"""
-        current_time = time.time()
-        
-        for condition, action in self.actions.items():
-            # Skip if primary condition isn't met
-            if condition not in active_conditions:
-                continue
-                
-            # Skip if on cooldown
-            last_time = self.last_action_time.get(condition, 0)
-            if current_time - last_time < action.cooldown:
-                continue
-                
-            # Skip if additional conditions aren't met
-            if action.conditions and not all(c in active_conditions for c in action.conditions):
+        # Don't process actions if trigger isn't held
+        if not self.trigger_held:
+            return None
+            
+        for action in self.actions:
+            # Skip if any condition isn't met
+            if not all(c in active_conditions for c in action.conditions):
                 continue
                 
             return action
@@ -78,32 +105,32 @@ class ScreenMonitor:
             print(f"Pressing key: {action.key}")
             
         self.keyboard.press(action.key)
-        time.sleep(action.hold_duration)
+        time.sleep(self.KEY_HOLD_DURATION)
         self.keyboard.release(action.key)
-        
-        # Update cooldown
-        self.last_action_time[action.key] = time.time()
     
     def run(self):
         """Main monitoring loop"""
         print("Starting monitor...")
+        print("Hold right trigger (or 'r' key) to activate monitoring")
         print("Press 'esc' to exit")
         
         while self.running:
             try:
-                # Get current conditions
-                active_conditions = self.checker.check_conditions()
-                
-                if self.debug:
-                    print(f"Active conditions: {active_conditions}")
-                
-                # Get and execute next action if any
-                action = self.get_next_action(active_conditions)
-                if action:
-                    self.execute_action(action)
+                # Only check conditions and execute actions if trigger is held
+                if self.trigger_held:
+                    # Get current conditions
+                    active_conditions = self.checker.check_conditions()
+                    
+                    if self.debug:
+                        print(f"Active conditions: {active_conditions}")
+                    
+                    # Get and execute next action if any
+                    action = self.get_next_action(active_conditions)
+                    if action:
+                        self.execute_action(action)
                 
                 # Sleep for interval
-                time.sleep(self.check_interval)
+                time.sleep(self.CHECK_INTERVAL)
                     
             except KeyboardInterrupt:
                 print("\nStopping monitor.")
@@ -116,6 +143,7 @@ class ScreenMonitor:
         
         # Clean up
         self.listener.stop()
+        self.gamepad_thread.join(timeout=1.0)
 
 def main():
     parser = argparse.ArgumentParser(description='Screen condition monitor')
