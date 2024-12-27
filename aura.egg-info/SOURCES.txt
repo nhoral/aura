@@ -1,0 +1,14 @@
+README.md
+setup.py
+aura.egg-info/PKG-INFO
+aura.egg-info/SOURCES.txt
+aura.egg-info/dependency_links.txt
+aura.egg-info/requires.txt
+aura.egg-info/top_level.txt
+src/__init__.py
+src/core/__init__.py
+src/core/containers.py
+src/core/screen_checker.py
+src/parser/__init__.py
+src/parser/lua_parser.py
+tests/test_screen_monitor.py

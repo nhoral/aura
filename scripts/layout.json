@@ -144,9 +144,21 @@
         }
     },
     {
+        "id": "kick_off_cooldown",
+        "name": "Kick Off Cooldown",
+        "xOffset": 12,
+        "yOffset": -6,
+        "backgroundColor": {
+            "r": 1.0,
+            "g": 0.0,
+            "b": 0.0,
+            "a": 1.0
+        }
+    },
+    {
         "id": "lightning_shield",
         "name": "Lightning Shield",
-        "xOffset": 12,
+        "xOffset": 18,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -158,7 +170,7 @@
     {
         "id": "party_1_is_hurt",
         "name": "Party 1 Is Hurt",
-        "xOffset": 18,
+        "xOffset": 24,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -170,7 +182,7 @@
     {
         "id": "party_2_is_hurt",
         "name": "Party 2 Is Hurt",
-        "xOffset": 24,
+        "xOffset": 30,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -182,7 +194,7 @@
     {
         "id": "party_3_is_hurt",
         "name": "Party 3 Is Hurt",
-        "xOffset": 30,
+        "xOffset": 36,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -194,7 +206,7 @@
     {
         "id": "party_4_is_hurt",
         "name": "Party 4 Is Hurt",
-        "xOffset": 36,
+        "xOffset": 42,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -206,7 +218,7 @@
     {
         "id": "pet_status",
         "name": "Pet Status",
-        "xOffset": 42,
+        "xOffset": 48,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -218,7 +230,7 @@
     {
         "id": "player_is_moving",
         "name": "Player is moving",
-        "xOffset": 48,
+        "xOffset": 54,
         "yOffset": -6,
         "backgroundColor": {
             "r": 1.0,
@@ -230,8 +242,8 @@
     {
         "id": "power",
         "name": "Power",
-        "xOffset": 54,
-        "yOffset": -6,
+        "xOffset": 0,
+        "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
             "g": 0.0,
@@ -310,7 +322,7 @@
     {
         "id": "power_10",
         "name": "Power 10",
-        "xOffset": 0,
+        "xOffset": 6,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -322,7 +334,7 @@
     {
         "id": "power_100",
         "name": "Power 100",
-        "xOffset": 6,
+        "xOffset": 12,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -334,7 +346,7 @@
     {
         "id": "power_15",
         "name": "Power 15",
-        "xOffset": 12,
+        "xOffset": 18,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -346,7 +358,7 @@
     {
         "id": "power_20",
         "name": "Power 20",
-        "xOffset": 18,
+        "xOffset": 24,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -358,7 +370,7 @@
     {
         "id": "power_30",
         "name": "Power 30",
-        "xOffset": 24,
+        "xOffset": 30,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -370,7 +382,7 @@
     {
         "id": "power_40",
         "name": "Power 40",
-        "xOffset": 30,
+        "xOffset": 36,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -382,7 +394,7 @@
     {
         "id": "power_5",
         "name": "Power 5",
-        "xOffset": 36,
+        "xOffset": 42,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -394,7 +406,7 @@
     {
         "id": "power_50",
         "name": "Power 50",
-        "xOffset": 42,
+        "xOffset": 48,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -406,7 +418,7 @@
     {
         "id": "power_60",
         "name": "Power 60",
-        "xOffset": 48,
+        "xOffset": 54,
         "yOffset": -12,
         "backgroundColor": {
             "r": 1.0,
@@ -418,8 +430,8 @@
     {
         "id": "power_70",
         "name": "Power 70",
-        "xOffset": 54,
-        "yOffset": -12,
+        "xOffset": 0,
+        "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
             "g": 0.0,
@@ -430,7 +442,7 @@
     {
         "id": "power_80",
         "name": "Power 80",
-        "xOffset": 0,
+        "xOffset": 6,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -442,7 +454,7 @@
     {
         "id": "power_90",
         "name": "Power 90",
-        "xOffset": 6,
+        "xOffset": 12,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -454,7 +466,7 @@
     {
         "id": "rockbiter",
         "name": "Rockbiter",
-        "xOffset": 12,
+        "xOffset": 18,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -466,7 +478,7 @@
     {
         "id": "sample",
         "name": "Sample",
-        "xOffset": 18,
+        "xOffset": 24,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -478,7 +490,7 @@
     {
         "id": "stoneclaw_totem",
         "name": "Stoneclaw Totem",
-        "xOffset": 24,
+        "xOffset": 30,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -490,7 +502,7 @@
     {
         "id": "stoneskin_totem",
         "name": "Stoneskin Totem",
-        "xOffset": 30,
+        "xOffset": 36,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -502,7 +514,7 @@
     {
         "id": "target_aggro",
         "name": "Target Aggro",
-        "xOffset": 36,
+        "xOffset": 42,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -514,7 +526,7 @@
     {
         "id": "target_health_below_20",
         "name": "Target Health Below 20",
-        "xOffset": 42,
+        "xOffset": 48,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -526,7 +538,7 @@
     {
         "id": "target_health_below_50",
         "name": "Target Health Below 50",
-        "xOffset": 48,
+        "xOffset": 54,
         "yOffset": -18,
         "backgroundColor": {
             "r": 1.0,
@@ -538,8 +550,8 @@
     {
         "id": "target_health_below_75",
         "name": "Target Health Below 75",
-        "xOffset": 54,
-        "yOffset": -18,
+        "xOffset": 0,
+        "yOffset": -24,
         "backgroundColor": {
             "r": 1.0,
             "g": 0.0,
@@ -550,7 +562,7 @@
     {
         "id": "target_is_moving",
         "name": "Target Is Moving",
-        "xOffset": 0,
+        "xOffset": 6,
         "yOffset": -24,
         "backgroundColor": {
             "r": 1.0,
@@ -562,7 +574,7 @@
     {
         "id": "undead_or_mechanical",
         "name": "Undead or Mechanical",
-        "xOffset": 6,
+        "xOffset": 12,
         "yOffset": -24,
         "backgroundColor": {
             "r": 1.0,

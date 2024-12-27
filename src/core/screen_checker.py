@@ -1,6 +1,6 @@
 import pyautogui
 from dataclasses import dataclass
-from typing import Tuple, Dict
+from typing import Tuple, Dict, List
 import json
 import platform
 from PIL import Image, ImageDraw
@@ -23,7 +23,6 @@ class ScreenChecker:
         self.screen_width, self.screen_height = pyautogui.size()
         
         # Calculate WeakAuras scaling factor
-        # WA seems to use a different approach to scaling
         self.scale_factor = (self.screen_width / self.BASE_WIDTH)
         
         # For compatibility with tests
@@ -63,56 +62,23 @@ class ScreenChecker:
         self.CROSSHAIR_SIZE = 20  # Size of the crosshair in pixels
         self.REGION_SIZE = 100    # Size of the screenshot region
 
-    def _is_retina_display(self) -> bool:
-        """Check if running on a Mac retina display"""
-        return platform.system() == 'Darwin' and getattr(pyautogui, '_pyautogui_x11', None) is None
-
-    def _get_pixel(self, x: int, y: int) -> Tuple[int, ...]:
-        """Get the color of a pixel at the specified coordinates"""
-        return pyautogui.pixel(x, y)
-
-    def _take_debug_screenshot(self, x: int, y: int, condition_id: str) -> None:
-        """Take a screenshot with a crosshair at the specified coordinates"""
-        # Calculate region bounds
-        left = max(0, x - self.REGION_SIZE // 2)
-        top = max(0, y - self.REGION_SIZE // 2)
-        width = self.REGION_SIZE
-        height = self.REGION_SIZE
-        
-        # Capture the region
-        screenshot = pyautogui.screenshot(region=(left, top, width, height))
-        
-        # Convert to PIL Image and draw crosshair
-        draw = ImageDraw.Draw(screenshot)
-        
-        # Calculate crosshair center relative to region
-        center_x = x - left
-        center_y = y - top
-        
-        # Draw crosshair lines
-        draw.line((center_x - self.CROSSHAIR_SIZE//2, center_y, 
-                   center_x + self.CROSSHAIR_SIZE//2, center_y), fill='yellow', width=1)
-        draw.line((center_x, center_y - self.CROSSHAIR_SIZE//2,
-                   center_x, center_y + self.CROSSHAIR_SIZE//2), fill='yellow', width=1)
-        
-        # Save the screenshot
-        screenshot.save(f'outputs/{condition_id}_check.png')
+    def check_conditions(self) -> List[str]:
+        """Return list of all currently true conditions"""
+        active = []
+        for condition_id in self.conditions:
+            if self.check_condition(condition_id):
+                active.append(condition_id)
+        return active
 
     def check_condition(self, condition_id: str) -> bool:
         """Check if a specific condition is met by comparing screen color"""
         condition = self.conditions[condition_id]
-        
         screen_color = self._get_pixel(condition.x, condition.y)
-        
-        # Take debug screenshot with crosshair
-        self._take_debug_screenshot(condition.x, condition.y, condition_id)
-        
-        print(f"Checking {condition_id}:")
-        print(f"  Expected color: {condition.color}")
-        print(f"  Found color: {screen_color}")
-        print(f"  Position: ({condition.x}, {condition.y})")
-        
         return self._colors_match(screen_color, condition.color)
+
+    def _get_pixel(self, x: int, y: int) -> Tuple[int, ...]:
+        """Get the color of a pixel at the specified coordinates"""
+        return pyautogui.pixel(x, y)
 
     def _colors_match(self, color1: Tuple[int, ...], color2: Tuple[int, ...], tolerance: int = 5) -> bool:
         """Compare colors with tolerance for slight variations"""

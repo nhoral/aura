@@ -21,6 +21,7 @@ auras/enemy_range_20.lua
 auras/health_below_20.lua
 auras/health_below_50.lua
 auras/health_below_75.lua
+auras/kick_off_cooldown.lua
 auras/lightning_shield.lua
 auras/party_1_is_hurt.lua
 auras/party_2_is_hurt.lua

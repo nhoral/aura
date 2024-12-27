@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["power_70"] = {
-    id = "Power 70",
-    uid = "lB4f3j)(HaO",
+ns.auras["kick_off_cooldown"] = {
+    id = "Kick Off Cooldown",
+    uid = "j4PO(GTswGS",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
-    yOffset = -18,
+    xOffset = 12,
+    yOffset = -6,
     width = 5,
     height = 5,
     frameStrata = 1,
@@ -38,42 +38,40 @@ ns.auras["power_70"] = {
         {
             trigger = {
                 debuffType = "HELPFUL",
-                type = "unit",
+                type = "spell",
                 subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
-                event = "Power",
+                event = "Cooldown Progress (Spell)",
                 names = {},
                 unit = "player",
                 spellIds = {},
                 use_unit = true,
-                use_showCost = false,
+                use_genericShowOn = true,
+                genericShowOn = "showOnReady",
+                use_track = true,
+                use_spellName = true,
+                spellName = 1766,
+                use_power = false,
+                use_showCost = true,
                 powertype = 3,
-                use_powertype = false,
+                use_powertype = true,
+                percenthealth = {
+                    "75",
+                },
+                use_percentpower = false,
+                use_percenthealth = true,
+                percenthealth_operator = {
+                    "<",
+                },
+                use_health = false,
+                use_maxhealth = false,
+                track = "cooldown",
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "percentpower",
-                op = "<",
-                value = "70",
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
         use_never = false,
         talent = {
@@ -85,9 +83,8 @@ ns.auras["power_70"] = {
         class = {
             multi = {
                 ROGUE = true,
-                WARRIOR = true,
             },
-            single = "WARRIOR",
+            single = "ROGUE",
         },
         size = {
             multi = {},

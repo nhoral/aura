@@ -1,0 +1,30 @@
+{
+    "name": "Rogue",
+    "check_interval": 0.1,
+    "actions": {
+        "power_40": {
+            "key": "3",
+            "cooldown": 0.1,
+            "conditions": ["combat", "enemy_in_melee_range"]
+        },
+        "power_60": {
+            "key": "4",
+            "cooldown": 0.1,
+            "conditions": ["combat", "enemy_in_melee_range"]
+        },
+        "health_below_20": {
+            "key": "1",
+            "cooldown": 120.0
+        },
+        "enemy_casting": {
+            "key": "i",
+            "cooldown": 10.0,
+            "conditions": ["enemy_in_melee_range"]
+        },
+        "target_health_below_20": {
+            "key": "5",
+            "cooldown": 0.1,
+            "conditions": ["combat", "enemy_in_melee_range", "power_40"]
+        }
+    }
+} 

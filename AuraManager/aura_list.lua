@@ -12,6 +12,7 @@ ns.aura_list = {
     "health_below_20",
     "health_below_50",
     "health_below_75",
+    "kick_off_cooldown",
     "lightning_shield",
     "party_1_is_hurt",
     "party_2_is_hurt",

@@ -40,13 +40,15 @@ ns.auras["enemy_loose"] = {
                 debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                names = {},
-                event = "Health",
                 subeventPrefix = "SPELL",
+                event = "Health",
+                names = {},
                 unit = "player",
                 spellIds = {},
                 use_unit = true,
+                unevent = "auto",
                 duration = "1",
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -83,14 +85,12 @@ ns.auras["enemy_loose"] = {
         return true
     end
 end]],
-                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
                 customVariables = [[{
   stacks = true,
 }]],
-                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
+                use_absorbMode = true,
             },
             untrigger = {},
         },
