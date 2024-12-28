@@ -8,10 +8,10 @@ ns.auras["target_is_moving"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 36,
-    yOffset = -24,
-    width = 5,
-    height = 5,
+    xOffset = 8,
+    yOffset = -20,
+    width = 3,
+    height = 3,
     frameStrata = 1,
     barColor = {
         1,
@@ -38,18 +38,17 @@ ns.auras["target_is_moving"] = {
         disjunctive = "all",
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Health",
-                names = {},
                 unit = "player",
+                subeventPrefix = "SPELL",
                 spellIds = {},
                 use_unit = true,
-                check = "update",
+                names = {},
+                event = "Health",
+                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -69,16 +68,16 @@ ns.auras["target_is_moving"] = {
         end
     end
 end]],
-                custom_type = "stateupdate",
                 unevent = "auto",
+                check = "update",
                 customVariables = "{}",
+                custom_hide = "timed",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        use_never = false,
         talent = {
             multi = {},
         },
@@ -94,14 +93,15 @@ end]],
         size = {
             multi = {},
         },
+        use_never = false,
+        zoneIds = "",
+        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
-        use_level = false,
-        zoneIds = "",
     },
     animation = {
         start = {

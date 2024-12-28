@@ -19,9 +19,9 @@ INPUT_SETTINGS = {
 
 # Aura generation settings
 GRID_SETTINGS = {
-    "COLUMNS": 10,
-    "AURA_WIDTH": 5,
-    "AURA_HEIGHT": 5,
+    "COLUMNS": 30,
+    "AURA_WIDTH": 3,
+    "AURA_HEIGHT": 3,
     "SPACING": 1
 }
 

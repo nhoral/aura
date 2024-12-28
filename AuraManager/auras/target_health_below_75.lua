@@ -8,10 +8,10 @@ ns.auras["target_health_below_75"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 30,
-    yOffset = -24,
-    width = 5,
-    height = 5,
+    xOffset = 0,
+    yOffset = -20,
+    width = 3,
+    height = 3,
     frameStrata = 1,
     barColor = {
         1,
@@ -37,47 +37,33 @@ ns.auras["target_health_below_75"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Health",
-                names = {},
                 unit = "target",
+                use_showCost = true,
+                use_percentpower = false,
+                subeventPrefix = "SPELL",
+                powertype = 3,
                 spellIds = {},
                 use_unit = true,
-                use_power = false,
-                use_showCost = true,
-                powertype = 3,
+                names = {},
+                event = "Health",
                 use_powertype = true,
-                use_percentpower = false,
+                debuffType = "HELPFUL",
+                use_power = false,
+                percenthealth = {
+                    "75",
+                },
+                use_percenthealth = true,
+                percenthealth_operator = {
+                    "<",
+                },
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "percenthealth",
-                value = "75",
-                op = ">",
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
-        use_never = false,
         talent = {
             multi = {},
         },

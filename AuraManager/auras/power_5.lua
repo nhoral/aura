@@ -3,15 +3,15 @@ local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
 ns.auras["power_5"] = {
     id = "Power 5",
-    uid = "xAVZLAwDoZG",
+    uid = "KDZakIxYqME",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 12,
-    yOffset = -18,
-    width = 5,
-    height = 5,
+    xOffset = 8,
+    yOffset = -16,
+    width = 3,
+    height = 3,
     frameStrata = 1,
     barColor = {
         1,
@@ -37,33 +37,32 @@ ns.auras["power_5"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Power",
-                names = {},
-                unit = "player",
-                spellIds = {},
-                use_unit = true,
-                use_power = false,
-                use_showCost = false,
-                powertype = 3,
-                use_powertype = false,
-                use_percentpower = true,
-                percentpower = {
-                    "5",
-                },
                 percentpower_operator = {
                     ">=",
                 },
+                subeventSuffix = "_CAST_START",
+                percentpower = {
+                    "5",
+                },
+                unit = "player",
+                use_showCost = false,
+                use_percentpower = true,
+                subeventPrefix = "SPELL",
+                powertype = 0,
+                spellIds = {},
+                use_unit = true,
+                names = {},
+                event = "Power",
+                use_powertype = false,
+                debuffType = "HELPFUL",
+                use_power = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        use_never = false,
         talent = {
             multi = {},
         },
@@ -73,9 +72,8 @@ ns.auras["power_5"] = {
         class = {
             multi = {
                 ROGUE = true,
-                WARRIOR = true,
             },
-            single = "WARRIOR",
+            single = "ROGUE",
         },
         size = {
             multi = {},

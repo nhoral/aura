@@ -8,10 +8,10 @@ ns.auras["party_2_is_hurt"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 54,
-    yOffset = -6,
-    width = 5,
-    height = 5,
+    xOffset = 108,
+    yOffset = -8,
+    width = 3,
+    height = 3,
     frameStrata = 1,
     barColor = {
         1,
@@ -38,18 +38,17 @@ ns.auras["party_2_is_hurt"] = {
         disjunctive = "all",
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Health",
-                names = {},
                 unit = "player",
+                subeventPrefix = "SPELL",
                 spellIds = {},
                 use_unit = true,
-                check = "update",
+                names = {},
+                event = "Health",
+                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -76,9 +75,10 @@ ns.auras["party_2_is_hurt"] = {
         end
     end
 end]],
-                custom_type = "stateupdate",
                 unevent = "auto",
+                check = "update",
                 customVariables = "{}",
+                custom_hide = "timed",
             },
             untrigger = {
                 custom = [[function()
@@ -89,7 +89,6 @@ end]],
     },
     conditions = {},
     load = {
-        use_never = false,
         talent = {
             multi = {},
         },
@@ -105,15 +104,16 @@ end]],
         size = {
             multi = {},
         },
+        use_never = false,
+        zoneIds = "",
         use_spellknown = false,
+        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
-        use_level = false,
-        zoneIds = "",
     },
     animation = {
         start = {

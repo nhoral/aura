@@ -8,10 +8,10 @@ ns.auras["enemy_casting"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 54,
-    yOffset = 0,
-    width = 5,
-    height = 5,
+    xOffset = 4,
+    yOffset = -4,
+    width = 3,
+    height = 3,
     frameStrata = 1,
     barColor = {
         1,
@@ -37,63 +37,27 @@ ns.auras["enemy_casting"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Cast",
-                names = {},
                 unit = "target",
+                subeventPrefix = "SPELL",
                 spellIds = {},
                 use_unit = true,
-                use_interruptible = true,
-                remaining_operator = "<",
-                remaining = "1",
+                names = {},
+                event = "Cast",
+                debuffType = "HELPFUL",
+                use_castType = false,
+                remaining_operator = ">",
                 use_remaining = false,
+                remaining = "1",
+                use_interruptible = true,
+                use_destUnit = false,
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "show",
-                value = 1,
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        1,
-                    },
-                    property = "color",
-                },
-            },
-        },
-        {
-            check = {
-                trigger = 1,
-                variable = "show",
-                value = 0,
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
-        use_never = false,
         talent = {
             multi = {},
         },

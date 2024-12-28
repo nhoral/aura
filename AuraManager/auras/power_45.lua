@@ -3,15 +3,15 @@ local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
 ns.auras["power_45"] = {
     id = "Power 45",
-    uid = "EUYVm4W(pQx",
+    uid = "NFR5oqgA5Tj",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 6,
-    yOffset = -18,
-    width = 5,
-    height = 5,
+    xOffset = 4,
+    yOffset = -16,
+    width = 3,
+    height = 3,
     frameStrata = 1,
     barColor = {
         1,
@@ -37,32 +37,31 @@ ns.auras["power_45"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Power",
-                names = {},
-                unit = "player",
-                spellIds = {},
-                use_unit = true,
-                use_showCost = false,
-                powertype = 3,
-                use_powertype = false,
-                use_percentpower = true,
-                percentpower = {
-                    "45",
-                },
                 percentpower_operator = {
                     ">=",
                 },
+                subeventSuffix = "_CAST_START",
+                percentpower = {
+                    "45",
+                },
+                unit = "player",
+                use_showCost = false,
+                use_percentpower = true,
+                subeventPrefix = "SPELL",
+                powertype = 0,
+                spellIds = {},
+                use_unit = true,
+                names = {},
+                event = "Power",
+                use_powertype = false,
+                debuffType = "HELPFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        use_never = false,
         talent = {
             multi = {},
         },
@@ -72,9 +71,8 @@ ns.auras["power_45"] = {
         class = {
             multi = {
                 ROGUE = true,
-                WARRIOR = true,
             },
-            single = "WARRIOR",
+            single = "ROGUE",
         },
         size = {
             multi = {},
