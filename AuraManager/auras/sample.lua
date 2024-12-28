@@ -40,19 +40,14 @@ ns.auras["sample"] = {
                 debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                names = {},
-                event = "Health",
                 subeventPrefix = "SPELL",
+                event = "Health",
+                names = {},
                 unit = "player",
                 spellIds = {},
                 check = "update",
-                custom_hide = "custom",
-                custom_type = "stateupdate",
-                unevent = "auto",
                 duration = "1",
-                customVariables = [[{
-  stacks = true,
-}]],
+                custom_hide = "custom",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
@@ -81,6 +76,11 @@ ns.auras["sample"] = {
         return true
     end
 end]],
+                custom_type = "stateupdate",
+                unevent = "auto",
+                customVariables = [[{
+  stacks = true,
+}]],
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
             },
