@@ -161,7 +161,12 @@ def test_state_change_behavior():
     - Each state must have valid colors
     - States must be preserved in layout.json
     """
-    generator = AuraGenerator()
+    # Create a temporary layout file path
+    test_layout_path = Path("tests/fixtures/test_layout.json")
+    test_layout_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Initialize generator with test layout path
+    generator = AuraGenerator(layout_path=test_layout_path)
     
     test_aura = {
         "id": "StateTest",
@@ -180,18 +185,27 @@ def test_state_change_behavior():
         }
     }
     
-    # Generate layout data
-    generator._write_layout_json([test_aura])
+    try:
+        # Generate layout data
+        generator._write_layout_json([test_aura])
+        
+        # Read generated layout
+        with test_layout_path.open() as f:
+            layout_data = json.load(f)
+        
+        # Verify state preservation
+        aura_data = layout_data[0]
+        assert "states" in aura_data, "State changes must be preserved"
+        assert len(aura_data["states"]) > 1, "Multiple states must be preserved"
+        
+        # Verify color values
+        assert aura_data["states"][0]["r"] == 1, "First state should be red"
+        assert aura_data["states"][1]["g"] == 1, "Second state should be green"
     
-    # Read generated layout
-    layout_path = Path("scripts/layout.json")
-    with layout_path.open() as f:
-        layout_data = json.load(f)
-    
-    # Verify state preservation
-    aura_data = layout_data[0]
-    assert "states" in aura_data, "State changes must be preserved"
-    assert len(aura_data["states"]) > 1, "Multiple states must be preserved"
+    finally:
+        # Clean up temporary file
+        if test_layout_path.exists():
+            test_layout_path.unlink()
 
 def test_lua_structure_requirements():
     """

@@ -19,13 +19,15 @@ from config import (
 from src.parser.lua_parser import LuaParser
 
 class AuraGenerator:
-    def __init__(self):
+    def __init__(self, layout_path: Path = None):
         # Use paths from config
         self.weakauras_path = WEAKAURAS_PATH
         self.output_path = AURAS_DIR
+        self.layout_path = layout_path or Path("scripts/layout.json")
         
         print(f"WeakAuras path: {self.weakauras_path}")
         print(f"Output path: {self.output_path}")
+        print(f"Layout path: {self.layout_path}")
         self.parser = LuaParser(str(self.weakauras_path))
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         
@@ -352,67 +354,52 @@ ns.aura_list = {
             print(f"Fatal error during aura generation: {e}")
             raise
 
-    def _write_layout_json(self, auras_data: list):
-        """Write layout information to layout.json"""
+    def _write_layout_json(self, auras: list):
+        """Write layout information to JSON file"""
         layout_data = []
-        
-        for aura in auras_data:
-            filename_id = aura["id"].lower().replace(" ", "_")
-            print(f"\nProcessing aura: {filename_id}")
-            
-            # Basic info
-            layout_info = {
-                "id": filename_id,
+        for aura in auras:
+            # Extract basic info
+            aura_data = {
+                "id": aura["id"].lower(),
                 "name": aura["id"],
                 "xOffset": aura["xOffset"],
                 "yOffset": aura["yOffset"],
                 "backgroundColor": {
-                    "r": float(aura["backgroundColor"]["1"]),
-                    "g": float(aura["backgroundColor"]["2"]),
-                    "b": float(aura["backgroundColor"]["3"]),
-                    "a": float(aura["backgroundColor"]["4"])
+                    "r": aura["backgroundColor"]["1"],
+                    "g": aura["backgroundColor"]["2"],
+                    "b": aura["backgroundColor"]["3"],
+                    "a": aura["backgroundColor"]["4"]
                 }
             }
             
-            # Collect background colors from conditions
-            if "conditions" in aura:
-                conditions = aura["conditions"]
-                if isinstance(conditions, (dict, OrderedDict)):
-                    background_colors = []
-                    # Add default state (initial backgroundColor)
-                    background_colors.append({
-                        "r": float(aura["backgroundColor"]["1"]),
-                        "g": float(aura["backgroundColor"]["2"]),
-                        "b": float(aura["backgroundColor"]["3"]),
-                        "a": float(aura["backgroundColor"]["4"])
-                    })
-                    
-                    # Add colors from conditions
-                    for condition in conditions.values():
-                        if "changes" in condition:
-                            for change in condition["changes"].values():
-                                if change.get("property") == "backgroundColor":
-                                    color_value = change["value"]
-                                    background_colors.append({
-                                        "r": float(color_value["1"]),
-                                        "g": float(color_value["2"]),
-                                        "b": float(color_value["3"]),
-                                        "a": float(color_value["4"])
-                                    })
-                    
-                    if len(background_colors) > 1:  # Only add if we have changes
-                        layout_info["states"] = background_colors
-                        print(f"Added {len(background_colors)} color states")
+            # Extract state colors if they exist
+            if "conditions" in aura and aura["conditions"]:
+                states = []
+                # Add default state
+                states.append({
+                    "r": aura["backgroundColor"]["1"],
+                    "g": aura["backgroundColor"]["2"],
+                    "b": aura["backgroundColor"]["3"],
+                    "a": aura["backgroundColor"]["4"]
+                })
+                
+                # Add condition states
+                for condition in aura["conditions"].values():
+                    if "changes" in condition:
+                        for change in condition["changes"].values():
+                            if change["property"] == "backgroundColor":
+                                states.append({
+                                    "r": change["value"]["1"],
+                                    "g": change["value"]["2"],
+                                    "b": change["value"]["3"],
+                                    "a": change["value"]["4"]
+                                })
+                aura_data["states"] = states
             
-            print(f"Final layout_info: {layout_info}")
-            layout_data.append(layout_info)
+            layout_data.append(aura_data)
         
-        # Sort by position (top-left to bottom-right)
-        layout_data.sort(key=lambda x: (-x["yOffset"], x["xOffset"]))
-        
-        # Write to layout.json
-        layout_path = Path(__file__).parent / "layout.json"
-        with layout_path.open('w', encoding='utf-8') as f:
+        # Write to file
+        with open(self.layout_path, 'w') as f:
             json.dump(layout_data, f, indent=4)
 
 def main():
