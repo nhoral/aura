@@ -309,26 +309,38 @@ def test_toc_file_structure():
     - Must list all generated aura files
     - Must maintain proper load order
     """
-    generator = AuraGenerator()
-    generator.output_path = Path("AuraManager/auras")
+    # Create temporary test directory
+    test_dir = Path("tests/fixtures/test_addon")
+    test_auras_dir = test_dir / "auras"
+    test_auras_dir.mkdir(parents=True, exist_ok=True)
     
-    # Create test aura files
-    generator.output_path.mkdir(parents=True, exist_ok=True)
-    (generator.output_path / "test1.lua").touch()
-    (generator.output_path / "test2.lua").touch()
+    try:
+        # Initialize generator with test directory
+        generator = AuraGenerator()
+        generator.output_path = test_auras_dir
+        
+        # Create test aura files in test directory
+        (test_auras_dir / "test1.lua").touch()
+        (test_auras_dir / "test2.lua").touch()
+        
+        generator._update_toc_file()
+        
+        toc_path = test_dir / "AuraManager.toc"
+        assert toc_path.exists()
+        
+        content = toc_path.read_text()
+        
+        # Verify core files are listed first
+        assert "AuraManager.lua" in content
+        assert "aura_list.lua" in content
+        assert content.index("AuraManager.lua") < content.index("auras/")
+        
+        # Verify aura files are listed
+        assert "auras/test1.lua" in content
+        assert "auras/test2.lua" in content
     
-    generator._update_toc_file()
-    
-    toc_path = generator.output_path.parent / "AuraManager.toc"
-    assert toc_path.exists()
-    
-    content = toc_path.read_text()
-    
-    # Verify core files are listed first
-    assert "AuraManager.lua" in content
-    assert "aura_list.lua" in content
-    assert content.index("AuraManager.lua") < content.index("auras/")
-    
-    # Verify aura files are listed
-    assert "auras/test1.lua" in content
-    assert "auras/test2.lua" in content 
+    finally:
+        # Clean up test files
+        import shutil
+        if test_dir.exists():
+            shutil.rmtree(test_dir) 
