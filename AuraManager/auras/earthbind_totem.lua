@@ -37,18 +37,18 @@ ns.auras["earthbind_totem"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                event = "Health",
                 subeventPrefix = "SPELL",
+                event = "Health",
+                names = {},
+                unit = "target",
                 spellIds = {},
+                useName = true,
                 auranames = {
                     "Earthbind",
                 },
-                useName = true,
-                unit = "target",
-                names = {},
-                debuffType = "HARMFUL",
             },
             untrigger = {},
         },

@@ -38,21 +38,21 @@ ns.auras["party_1_is_hurt"] = {
         disjunctive = "all",
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                event = "Health",
                 subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
+                event = "Health",
                 names = {},
-                debuffType = "HELPFUL",
+                unit = "player",
+                spellIds = {},
+                use_unit = true,
                 check = "update",
-                customVariables = "{}",
                 custom_hide = "timed",
                 unevent = "auto",
-                duration = "1",
                 custom_type = "stateupdate",
+                duration = "1",
+                customVariables = "{}",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -107,10 +107,10 @@ end]],
         },
         use_spellknown = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
+        use_level = false,
         level = {
             "120",
         },

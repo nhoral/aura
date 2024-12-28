@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["target_health_below_75"] = {
-    id = "Target Health Below 75",
-    uid = "BxtkPQQlFWJ",
+ns.auras["power_45"] = {
+    id = "Power 45",
+    uid = "EUYVm4W(pQx",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 30,
-    yOffset = -24,
+    xOffset = 6,
+    yOffset = -18,
     width = 5,
     height = 5,
     frameStrata = 1,
@@ -41,41 +41,26 @@ ns.auras["target_health_below_75"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
-                event = "Health",
+                event = "Power",
                 names = {},
-                unit = "target",
+                unit = "player",
                 spellIds = {},
                 use_unit = true,
-                use_power = false,
-                use_showCost = true,
+                use_showCost = false,
                 powertype = 3,
-                use_powertype = true,
-                use_percentpower = false,
+                use_powertype = false,
+                use_percentpower = true,
+                percentpower = {
+                    "45",
+                },
+                percentpower_operator = {
+                    ">=",
+                },
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "percenthealth",
-                value = "75",
-                op = ">",
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
         use_never = false,
         talent = {
@@ -87,8 +72,9 @@ ns.auras["target_health_below_75"] = {
         class = {
             multi = {
                 ROGUE = true,
+                WARRIOR = true,
             },
-            single = "ROGUE",
+            single = "WARRIOR",
         },
         size = {
             multi = {},

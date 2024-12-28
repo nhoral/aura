@@ -10,6 +10,13 @@ TEMPLATES_DIR = SCRIPTS_DIR / "templates"
 WOW_PATH = Path(r"c:\Program Files (x86)\World of Warcraft\_classic_era_")
 WEAKAURAS_PATH = WOW_PATH / "WTF" / "Account" / "YABUCHI" / "SavedVariables" / "WeakAuras.lua"
 
+# Input settings
+INPUT_SETTINGS = {
+    "keyboard_trigger": "r",  # Key to hold for keyboard activation
+    "key_hold_duration": 0.1,  # Duration in seconds to hold keys when executing actions
+    "check_interval": 0.1     # Interval in seconds between condition checks
+}
+
 # Aura generation settings
 GRID_SETTINGS = {
     "COLUMNS": 10,

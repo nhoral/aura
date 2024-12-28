@@ -37,14 +37,14 @@ ns.auras["pet_status"] = {
         activeTriggerMode = 1,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                event = "Conditions",
                 subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "player",
+                event = "Conditions",
                 names = {},
-                debuffType = "HELPFUL",
+                unit = "player",
+                spellIds = {},
                 use_HasPet = true,
             },
             untrigger = {},

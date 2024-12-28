@@ -40,7 +40,9 @@ auras/power_100.lua
 auras/power_15.lua
 auras/power_20.lua
 auras/power_30.lua
+auras/power_35.lua
 auras/power_40.lua
+auras/power_45.lua
 auras/power_5.lua
 auras/power_50.lua
 auras/power_60.lua

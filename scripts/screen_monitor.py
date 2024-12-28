@@ -8,6 +8,14 @@ import json
 import sys
 from inputs import get_gamepad
 import threading
+import os
+import sys
+
+# Add project root to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
+
+from config import INPUT_SETTINGS
 
 @dataclass
 class Action:
@@ -15,11 +23,6 @@ class Action:
     conditions: List[str]
 
 class ScreenMonitor:
-    # Fixed duration for all key presses
-    KEY_HOLD_DURATION = 0.1
-    # Fixed interval for condition checking
-    CHECK_INTERVAL = 0.1
-
     def __init__(self, checker: ScreenChecker, profile_path: str, debug: bool = False):
         self.checker = checker
         self.keyboard = Controller()
@@ -27,13 +30,18 @@ class ScreenMonitor:
         self.running = True
         self.trigger_held = False  # Track if right trigger is held
         
+        # Load settings from config
+        self.key_hold_duration = INPUT_SETTINGS["key_hold_duration"]
+        self.check_interval = INPUT_SETTINGS["check_interval"]
+        self.keyboard_trigger = INPUT_SETTINGS["keyboard_trigger"]
+        
         # Load profile
         with open(profile_path, 'r') as f:
             profile_data = json.load(f)
             self.actions = self._load_actions(profile_data)
         
-        # Setup keyboard listener for escape key
-        self.listener = Listener(on_press=self._on_key_press)
+        # Setup keyboard listener for escape key and trigger
+        self.listener = Listener(on_press=self._on_key_press, on_release=self._on_key_release)
         self.listener.start()
         
         # Start gamepad monitoring in separate thread
@@ -46,11 +54,18 @@ class ScreenMonitor:
         if key == Key.esc:
             self.running = False
             return False  # Stop listener
-        elif hasattr(key, 'char') and key.char == 'r':  # Keep 'r' for testing
+        elif hasattr(key, 'char') and key.char == self.keyboard_trigger:
             self.trigger_held = True
             if self.debug:
-                print("R key pressed - monitoring active")
+                print(f"{self.keyboard_trigger.upper()} key pressed - monitoring active")
     
+    def _on_key_release(self, key):
+        """Handle keyboard release events"""
+        if hasattr(key, 'char') and key.char == self.keyboard_trigger:
+            self.trigger_held = False
+            if self.debug:
+                print(f"{self.keyboard_trigger.upper()} key released - monitoring inactive")
+
     def _monitor_gamepad(self):
         """Monitor gamepad input in separate thread"""
         try:
@@ -105,13 +120,13 @@ class ScreenMonitor:
             print(f"Pressing key: {action.key}")
             
         self.keyboard.press(action.key)
-        time.sleep(self.KEY_HOLD_DURATION)
+        time.sleep(self.key_hold_duration)
         self.keyboard.release(action.key)
     
     def run(self):
         """Main monitoring loop"""
         print("Starting monitor...")
-        print("Hold right trigger (or 'r' key) to activate monitoring")
+        print(f"Hold right trigger (or '{self.keyboard_trigger}' key) to activate monitoring")
         print("Press 'esc' to exit")
         
         while self.running:
@@ -130,7 +145,7 @@ class ScreenMonitor:
                         self.execute_action(action)
                 
                 # Sleep for interval
-                time.sleep(self.CHECK_INTERVAL)
+                time.sleep(self.check_interval)
                     
             except KeyboardInterrupt:
                 print("\nStopping monitor.")
