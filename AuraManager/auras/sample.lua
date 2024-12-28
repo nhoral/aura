@@ -8,7 +8,7 @@ ns.auras["sample"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 24,
+    xOffset = 42,
     yOffset = -18,
     width = 5,
     height = 5,
@@ -45,10 +45,9 @@ ns.auras["sample"] = {
                 names = {},
                 unit = "player",
                 spellIds = {},
-                unevent = "auto",
+                check = "update",
                 duration = "1",
                 custom_type = "stateupdate",
-                custom_hide = "custom",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
@@ -77,7 +76,8 @@ ns.auras["sample"] = {
         return true
     end
 end]],
-                check = "update",
+                unevent = "auto",
+                custom_hide = "custom",
                 customVariables = [[{
   stacks = true,
 }]],

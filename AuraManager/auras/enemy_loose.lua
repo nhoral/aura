@@ -8,8 +8,8 @@ ns.auras["enemy_loose"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 42,
-    yOffset = 0,
+    xOffset = 6,
+    yOffset = -6,
     width = 5,
     height = 5,
     frameStrata = 1,
@@ -46,7 +46,7 @@ ns.auras["enemy_loose"] = {
                 unit = "player",
                 spellIds = {},
                 use_unit = true,
-                unevent = "auto",
+                check = "update",
                 duration = "1",
                 custom_type = "stateupdate",
                 custom = [[function(allstates)
@@ -85,7 +85,7 @@ ns.auras["enemy_loose"] = {
         return true
     end
 end]],
-                check = "update",
+                unevent = "auto",
                 customVariables = [[{
   stacks = true,
 }]],

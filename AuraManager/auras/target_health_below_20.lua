@@ -8,8 +8,8 @@ ns.auras["target_health_below_20"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 48,
-    yOffset = -18,
+    xOffset = 6,
+    yOffset = -24,
     width = 5,
     height = 5,
     frameStrata = 1,
@@ -60,8 +60,8 @@ ns.auras["target_health_below_20"] = {
             check = {
                 trigger = 1,
                 variable = "percenthealth",
-                op = ">",
                 value = "20",
+                op = ">",
             },
             changes = {
                 {

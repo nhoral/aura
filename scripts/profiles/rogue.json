@@ -2,6 +2,10 @@
     "name": "Rogue",
     "actions": [
         {
+            "key": "2",
+            "conditions": ["power_60", "combo_2", "enemy_in_melee_range"]
+        },
+        {
             "key": "1",
             "conditions": ["power_40", "enemy_in_melee_range"]
         }

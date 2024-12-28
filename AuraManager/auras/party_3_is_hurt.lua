@@ -8,8 +8,8 @@ ns.auras["party_3_is_hurt"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 36,
-    yOffset = -6,
+    xOffset = 0,
+    yOffset = -12,
     width = 5,
     height = 5,
     frameStrata = 1,
@@ -47,10 +47,9 @@ ns.auras["party_3_is_hurt"] = {
                 unit = "player",
                 spellIds = {},
                 use_unit = true,
-                unevent = "auto",
+                check = "update",
                 duration = "1",
                 custom_type = "stateupdate",
-                custom_hide = "timed",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -77,7 +76,8 @@ ns.auras["party_3_is_hurt"] = {
         end
     end
 end]],
-                check = "update",
+                unevent = "auto",
+                custom_hide = "timed",
                 customVariables = "{}",
             },
             untrigger = {

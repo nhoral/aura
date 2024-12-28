@@ -12,6 +12,11 @@ aura_list.lua
 auras/aspect_of_the_cheetah.lua
 auras/casting.lua
 auras/combat.lua
+auras/combo_1.lua
+auras/combo_2.lua
+auras/combo_3.lua
+auras/combo_4.lua
+auras/combo_5.lua
 auras/earth_shock.lua
 auras/earthbind_totem.lua
 auras/enemy_casting.lua

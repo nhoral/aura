@@ -1,8 +1,12 @@
 local ADDON_NAME, ns = ...
 ns.aura_list = {
-    "aspect_of_the_cheetah",
     "casting",
     "combat",
+    "combo_1",
+    "combo_2",
+    "combo_3",
+    "combo_4",
+    "combo_5",
     "earth_shock",
     "earthbind_totem",
     "enemy_casting",
@@ -20,7 +24,6 @@ ns.aura_list = {
     "party_4_is_hurt",
     "pet_status",
     "player_is_moving",
-    "power",
     "power_10",
     "power_100",
     "power_15",

@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["casting"] = {
-    id = "Casting",
-    uid = "VYXlh1iMyFX",
+ns.auras["combo_5"] = {
+    id = "Combo 5",
+    uid = "ghFUXqLK4Ye",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
+    xOffset = 36,
     yOffset = 0,
     width = 5,
     height = 5,
@@ -37,51 +37,38 @@ ns.auras["casting"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                debuffType = "BOTH",
                 type = "unit",
+                use_incombat = true,
                 subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
-                event = "Cast",
+                ownOnly = true,
+                event = "Power",
                 names = {},
+                unitExists = false,
                 unit = "player",
                 spellIds = {},
+                useName = true,
+                auranames = {
+                    "Demon Skin",
+                },
                 use_unit = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
+                use_power = true,
+                powertype = 4,
+                use_powertype = true,
+                power_operator = {
+                    ">=",
+                },
+                power = {
+                    "5",
+                },
             },
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "show",
-                value = 1,
-            },
-            changes = {
-                {
-                    property = "color",
-                },
-            },
-        },
-        {
-            check = {
-                trigger = 1,
-                variable = "show",
-                value = 0,
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
         use_never = false,
         talent = {
@@ -92,9 +79,9 @@ ns.auras["casting"] = {
         },
         class = {
             multi = {
-                WARLOCK = true,
+                DRUID = true,
             },
-            single = "WARLOCK",
+            single = "DRUID",
         },
         size = {
             multi = {},
