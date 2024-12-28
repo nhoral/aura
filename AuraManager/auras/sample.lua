@@ -37,15 +37,20 @@ ns.auras["sample"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
                 event = "Health",
-                names = {},
-                unit = "player",
+                subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 check = "update",
+                customVariables = [[{
+  stacks = true,
+}]],
+                custom_hide = "custom",
+                unevent = "auto",
                 duration = "1",
                 custom_type = "stateupdate",
                 custom = [[function(allstates)
@@ -76,13 +81,8 @@ ns.auras["sample"] = {
         return true
     end
 end]],
-                unevent = "auto",
-                custom_hide = "custom",
-                customVariables = [[{
-  stacks = true,
-}]],
-                customStacks = [[function() return aura_env.count end]],
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
             },
             untrigger = {},
         },

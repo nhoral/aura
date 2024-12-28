@@ -56,4 +56,6 @@ auras/target_health_below_20.lua
 auras/target_health_below_50.lua
 auras/target_health_below_75.lua
 auras/target_is_moving.lua
+auras/test1.lua
+auras/test2.lua
 auras/undead_or_mechanical.lua

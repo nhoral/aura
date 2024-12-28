@@ -38,16 +38,19 @@ ns.auras["party_3_is_hurt"] = {
         disjunctive = "all",
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
                 event = "Health",
-                names = {},
-                unit = "player",
-                spellIds = {},
+                subeventPrefix = "SPELL",
                 use_unit = true,
+                spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 check = "update",
+                customVariables = "{}",
+                custom_hide = "timed",
+                unevent = "auto",
                 duration = "1",
                 custom_type = "stateupdate",
                 custom = [[function(allstates)
@@ -76,9 +79,6 @@ ns.auras["party_3_is_hurt"] = {
         end
     end
 end]],
-                unevent = "auto",
-                custom_hide = "timed",
-                customVariables = "{}",
             },
             untrigger = {
                 custom = [[function()
@@ -106,14 +106,14 @@ end]],
             multi = {},
         },
         use_spellknown = false,
+        zoneIds = "",
+        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
-        use_level = false,
-        zoneIds = "",
     },
     animation = {
         start = {

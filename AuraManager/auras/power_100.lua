@@ -37,24 +37,24 @@ ns.auras["power_100"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
                 event = "Power",
-                names = {},
-                unit = "player",
-                spellIds = {},
+                subeventPrefix = "SPELL",
                 use_unit = true,
+                spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 use_showCost = false,
                 powertype = 3,
                 use_powertype = false,
                 use_percentpower = true,
-                percentpower = {
-                    "100",
-                },
                 percentpower_operator = {
                     "==",
+                },
+                percentpower = {
+                    "100",
                 },
             },
             untrigger = {},
