@@ -40,9 +40,9 @@ ns.auras["stoneclaw_totem"] = {
                 debuffType = "HELPFUL",
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Action Usable",
                 names = {},
+                event = "Action Usable",
+                subeventPrefix = "SPELL",
                 unit = "player",
                 spellIds = {},
                 use_genericShowOn = true,
@@ -55,38 +55,7 @@ ns.auras["stoneclaw_totem"] = {
             untrigger = {},
         },
     },
-    conditions = {
-        {
-            check = {
-                trigger = 1,
-                variable = "show",
-                value = 1,
-            },
-            changes = {
-                {
-                    property = "color",
-                },
-            },
-        },
-        {
-            check = {
-                trigger = 1,
-                variable = "show",
-                value = 0,
-            },
-            changes = {
-                {
-                    value = {
-                        1,
-                        1,
-                        1,
-                        0,
-                    },
-                    property = "color",
-                },
-            },
-        },
-    },
+    conditions = {},
     load = {
         talent = {
             multi = {},

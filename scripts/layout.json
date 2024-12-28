@@ -5,11 +5,19 @@
         "xOffset": 0,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
         "id": "combat",
@@ -17,442 +25,482 @@
         "xOffset": 6,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "combo_1",
+        "id": "combo 1",
         "name": "Combo 1",
         "xOffset": 12,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "combo_2",
+        "id": "combo 2",
         "name": "Combo 2",
         "xOffset": 18,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "combo_3",
+        "id": "combo 3",
         "name": "Combo 3",
         "xOffset": 24,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "combo_4",
+        "id": "combo 4",
         "name": "Combo 4",
         "xOffset": 30,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "combo_5",
+        "id": "combo 5",
         "name": "Combo 5",
         "xOffset": 36,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "earth_shock",
+        "id": "earth shock",
         "name": "Earth Shock",
         "xOffset": 42,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "earthbind_totem",
+        "id": "earthbind totem",
         "name": "Earthbind Totem",
         "xOffset": 48,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "enemy_casting",
+        "id": "enemy casting",
         "name": "Enemy Casting",
         "xOffset": 54,
         "yOffset": 0,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "enemy_in_melee_range",
+        "id": "enemy in melee range",
         "name": "Enemy In Melee Range",
         "xOffset": 0,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "enemy_loose",
+        "id": "enemy loose",
         "name": "Enemy Loose",
         "xOffset": 6,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "enemy_range_20",
+        "id": "enemy range 20",
         "name": "Enemy Range 20",
         "xOffset": 12,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "health_below_20",
+        "id": "health below 20",
         "name": "Health Below 20",
         "xOffset": 18,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "health_below_50",
+        "id": "health below 50",
         "name": "Health Below 50",
         "xOffset": 24,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "health_below_75",
+        "id": "health below 75",
         "name": "Health Below 75",
         "xOffset": 30,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "kick_off_cooldown",
+        "id": "kick off cooldown",
         "name": "Kick Off Cooldown",
         "xOffset": 36,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "lightning_shield",
+        "id": "lightning shield",
         "name": "Lightning Shield",
         "xOffset": 42,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "party_1_is_hurt",
+        "id": "party 1 is hurt",
         "name": "Party 1 Is Hurt",
         "xOffset": 48,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "party_2_is_hurt",
+        "id": "party 2 is hurt",
         "name": "Party 2 Is Hurt",
         "xOffset": 54,
         "yOffset": -6,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "party_3_is_hurt",
+        "id": "party 3 is hurt",
         "name": "Party 3 Is Hurt",
         "xOffset": 0,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "party_4_is_hurt",
+        "id": "party 4 is hurt",
         "name": "Party 4 Is Hurt",
         "xOffset": 6,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "pet_status",
+        "id": "pet status",
         "name": "Pet Status",
         "xOffset": 12,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "player_is_moving",
+        "id": "player is moving",
         "name": "Player is moving",
         "xOffset": 18,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_10",
+        "id": "power 10",
         "name": "Power 10",
         "xOffset": 24,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_100",
+        "id": "power 100",
         "name": "Power 100",
         "xOffset": 30,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_15",
+        "id": "power 15",
         "name": "Power 15",
         "xOffset": 36,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_20",
+        "id": "power 20",
         "name": "Power 20",
         "xOffset": 42,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_30",
+        "id": "power 30",
         "name": "Power 30",
         "xOffset": 48,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_35",
+        "id": "power 35",
         "name": "Power 35",
         "xOffset": 54,
         "yOffset": -12,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_40",
+        "id": "power 40",
         "name": "Power 40",
         "xOffset": 0,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_45",
+        "id": "power 45",
         "name": "Power 45",
         "xOffset": 6,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_5",
+        "id": "power 5",
         "name": "Power 5",
         "xOffset": 12,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_50",
+        "id": "power 50",
         "name": "Power 50",
         "xOffset": 18,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_60",
+        "id": "power 60",
         "name": "Power 60",
         "xOffset": 24,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_70",
+        "id": "power 70",
         "name": "Power 70",
         "xOffset": 30,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_80",
+        "id": "power 80",
         "name": "Power 80",
         "xOffset": 36,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "power_90",
+        "id": "power 90",
         "name": "Power 90",
         "xOffset": 42,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
@@ -461,10 +509,10 @@
         "xOffset": 48,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
@@ -473,106 +521,138 @@
         "xOffset": 54,
         "yOffset": -18,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "stoneclaw_totem",
+        "id": "stoneclaw totem",
         "name": "Stoneclaw Totem",
         "xOffset": 0,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "stoneskin_totem",
+        "id": "stoneskin totem",
         "name": "Stoneskin Totem",
         "xOffset": 6,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "target_aggro",
+        "id": "target aggro",
         "name": "Target Aggro",
         "xOffset": 12,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "target_health_below_20",
+        "id": "target health below 20",
         "name": "Target Health Below 20",
         "xOffset": 18,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "target_health_below_50",
+        "id": "target health below 50",
         "name": "Target Health Below 50",
         "xOffset": 24,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "target_health_below_75",
+        "id": "target health below 75",
         "name": "Target Health Below 75",
         "xOffset": 30,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     },
     {
-        "id": "target_is_moving",
+        "id": "target is moving",
         "name": "Target Is Moving",
         "xOffset": 36,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
         }
     },
     {
-        "id": "undead_or_mechanical",
+        "id": "undead or mechanical",
         "name": "Undead or Mechanical",
         "xOffset": 42,
         "yOffset": -24,
         "backgroundColor": {
-            "r": 1.0,
-            "g": 0.0,
-            "b": 0.0,
-            "a": 1.0
-        }
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+        },
+        "states": [
+            {
+                "r": 1,
+                "g": 0,
+                "b": 0,
+                "a": 1
+            }
+        ]
     }
 ]

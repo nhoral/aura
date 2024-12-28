@@ -360,7 +360,7 @@ ns.aura_list = {
         for aura in auras:
             # Extract basic info
             aura_data = {
-                "id": aura["id"].lower(),
+                "id": aura["id"].lower().replace(" ", "_"),
                 "name": aura["id"],
                 "xOffset": aura["xOffset"],
                 "yOffset": aura["yOffset"],

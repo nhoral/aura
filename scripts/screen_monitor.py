@@ -68,18 +68,24 @@ class ScreenMonitor:
 
     def _monitor_gamepad(self):
         """Monitor gamepad input in separate thread"""
+        if self.debug:
+            print("Starting gamepad monitoring thread")
         try:
             while self.running:
                 events = get_gamepad()
                 for event in events:
+                    if self.debug:
+                        print(f"Gamepad event: {event.code} = {event.state}")
                     if event.code == "ABS_RZ":  # Right trigger axis
                         # Convert trigger value (0-255) to boolean
                         self.trigger_held = event.state > 128
-                        if self.debug and event.state > 128:
-                            print(f"Trigger pressed: {event.state}")
+                        if self.debug:
+                            print(f"Right trigger state: {event.state}, trigger_held: {self.trigger_held}")
         except Exception as e:
+            print(f"Gamepad error: {str(e)}")  # Always print gamepad errors
             if self.debug:
-                print(f"Gamepad error: {str(e)}")
+                import traceback
+                traceback.print_exc()
     
     def _load_actions(self, profile_data: dict) -> List[Action]:
         """Convert profile JSON into Action objects"""
@@ -103,15 +109,29 @@ class ScreenMonitor:
         """Determine next action based on active conditions"""
         # Don't process actions if trigger isn't held
         if not self.trigger_held:
+            if self.debug:
+                print("Trigger not held, skipping action processing")
             return None
+            
+        if self.debug:
+            print(f"Checking actions against conditions: {active_conditions}")
+            
+        # Normalize active conditions by replacing spaces with underscores
+        normalized_conditions = [c.replace(" ", "_") for c in active_conditions]
             
         for action in self.actions:
             # Skip if any condition isn't met
-            if not all(c in active_conditions for c in action.conditions):
+            if not all(c in normalized_conditions for c in action.conditions):
+                if self.debug:
+                    print(f"Conditions not met for action {action.key}: {action.conditions}")
                 continue
                 
+            if self.debug:
+                print(f"Found matching action: {action.key}")
             return action
             
+        if self.debug:
+            print("No matching actions found")
         return None
     
     def execute_action(self, action: Action):
