@@ -1,18 +1,15 @@
-import time
-from pynput.keyboard import Key, Controller, Listener
-from src.core.screen_checker import ScreenChecker
-from dataclasses import dataclass
-from typing import Dict, List, Optional
-import argparse
 import json
-import sys
-from inputs import get_gamepad
-import threading
+import time
 import os
 import sys
-from pynput import keyboard
-from pynput.keyboard import Key, KeyCode
+import argparse
 from pathlib import Path
+from typing import Dict, List, Optional, Any
+import threading
+import inputs
+from pynput import keyboard
+from pynput.keyboard import Key, Controller, Listener, KeyCode
+from src.core.screen_checker import ScreenChecker
 
 # Add project root to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,20 +17,30 @@ sys.path.insert(0, project_root)
 
 from config import INPUT_SETTINGS
 
-@dataclass
-class Action:
-    key: str
-    conditions: List[str]
-
 class ScreenMonitor:
     def __init__(self, checker: ScreenChecker, profile_path: str, debug: bool = False):
+        """Initialize the screen monitor with a checker and profile"""
         self.checker = checker
         self.keyboard = Controller()
         self.debug = debug
         self.running = True
-        self.trigger_held = False  # Track if right trigger is held
-        self.monitoring_active = False  # Track if monitoring is active (for toggle mode)
+        self.monitoring_active = False
+        self.last_check = 0
         
+        # Load profile
+        with open(profile_path, 'r') as f:
+            self.profile = json.load(f)
+            
+        # Validate profile
+        if "actions" not in self.profile:
+            raise KeyError("Profile must contain 'actions' list")
+            
+        for action in self.profile["actions"]:
+            if "key" not in action:
+                raise KeyError("Each action must contain a 'key' field")
+            if "conditions" not in action:
+                raise KeyError("Each action must contain a 'conditions' list")
+                
         # Load settings from config
         self.key_hold_duration = INPUT_SETTINGS["key_hold_duration"]
         self.check_interval = INPUT_SETTINGS["check_interval"]
@@ -42,20 +49,15 @@ class ScreenMonitor:
         self.exit_key = INPUT_SETTINGS.get("exit_key", Key.esc)  # Default to escape key
         self.debug_key = INPUT_SETTINGS.get("debug_key", "u")  # Default to 'u' key
         
-        # Load profile
-        with open(profile_path, 'r') as f:
-            profile_data = json.load(f)
-            self.actions = self._load_actions(profile_data)
+        # Initialize keyboard listener
+        self.keyboard_listener = Listener(on_press=self._on_key_press, on_release=self._on_key_release)
+        self.keyboard_listener.start()
         
-        # Setup keyboard listener for escape key and trigger
-        self.listener = Listener(on_press=self._on_key_press, on_release=self._on_key_release)
-        self.listener.start()
-        
-        # Try to start gamepad monitoring in separate thread
+        # Try to initialize gamepad
         self.gamepad_available = False
         try:
             # Test if gamepad is available
-            get_gamepad()
+            inputs.get_gamepad()
             self.gamepad_available = True
             self.gamepad_thread = threading.Thread(target=self._monitor_gamepad)
             self.gamepad_thread.daemon = True
@@ -63,6 +65,9 @@ class ScreenMonitor:
             print("Gamepad detected and monitoring started")
         except Exception as e:
             print("No gamepad detected, using keyboard controls only")
+            
+        # Initialize state
+        self.trigger_held = False
     
     def _on_key_press(self, key):
         """Handle keyboard press events"""
@@ -122,47 +127,36 @@ class ScreenMonitor:
             return self.monitoring_active
         return self.trigger_held
     
-    def _load_actions(self, profile_data: dict) -> List[Action]:
-        """Convert profile JSON into Action objects"""
-        if 'actions' not in profile_data:
-            raise KeyError("Profile must contain 'actions' field")
-            
-        actions = []
-        for action_data in profile_data['actions']:
-            if 'key' not in action_data:
-                raise KeyError("Action must contain 'key' field")
-            if 'conditions' not in action_data:
-                raise KeyError("Action must contain 'conditions' field")
-                
-            actions.append(Action(
-                key=action_data['key'],
-                conditions=action_data['conditions']
-            ))
-        return actions
-    
-    def get_next_action(self, active_conditions: List[str]) -> Optional[Action]:
-        """Determine next action based on active conditions"""
+    def get_next_action(self, active_conditions):
+        """Get the next action to execute based on active conditions"""
         if not self.is_monitoring_active():
             return None
+
+        for action in self.profile["actions"]:
+            all_conditions_met = True
+            for condition in action["conditions"]:
+                # Handle negated conditions
+                if condition.startswith("!"):
+                    condition_name = condition[1:]  # Remove the ! prefix
+                    if condition_name in active_conditions:
+                        all_conditions_met = False
+                        break
+                else:
+                    if condition not in active_conditions:
+                        all_conditions_met = False
+                        break
             
-        # Normalize active conditions by replacing spaces with underscores
-        normalized_conditions = [c.replace(" ", "_") for c in active_conditions]
-            
-        for action in self.actions:
-            # Skip if any condition isn't met
-            if not all(c in normalized_conditions for c in action.conditions):
-                continue
-                
-            return action
-            
+            if all_conditions_met:
+                return action
+
         return None
     
-    def execute_action(self, action: Action):
+    def execute_action(self, action: Dict[str, Any]):
         """Execute a keyboard action"""
-        print(f"Executing action: {action.key}")
-        self.keyboard.press(action.key)
+        print(f"Executing action: {action['key']}")
+        self.keyboard.press(action['key'])
         time.sleep(self.key_hold_duration)
-        self.keyboard.release(action.key)
+        self.keyboard.release(action['key'])
     
     def run(self):
         """Main monitoring loop"""
@@ -202,7 +196,7 @@ class ScreenMonitor:
                 print(f"\nError: {str(e)}")
         
         # Clean up
-        self.listener.stop()
+        self.keyboard_listener.stop()
         if self.gamepad_available:
             self.gamepad_thread.join(timeout=1.0)
 

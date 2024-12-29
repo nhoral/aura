@@ -268,5 +268,56 @@ class TestScreenMonitor:
             if os.path.exists(test_profile_path):
                 os.remove(test_profile_path)
 
+    def test_negated_conditions(self, layout_path):
+        """Test that negated conditions (prefixed with !) work correctly"""
+        checker = ScreenChecker(layout_path)
+        
+        # Create test profile with negated conditions
+        test_profile = {
+            "name": "Negated Conditions Test",
+            "check_interval": 0.1,
+            "actions": [
+                {
+                    "key": "1",
+                    "conditions": ["power_40", "!enemy_in_melee_range"]  # Press 1 when power > 40 and NOT in melee range
+                }
+            ]
+        }
+        
+        test_profile_path = "tests/fixtures/negated_conditions_test.json"
+        os.makedirs(os.path.dirname(test_profile_path), exist_ok=True)
+        with open(test_profile_path, "w") as f:
+            json.dump(test_profile, f)
+            
+        try:
+            monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+            monitor.monitoring_active = True
+            
+            # Track executed actions
+            executed_actions = []
+            def mock_execute_action(action):
+                executed_actions.append(action)
+            monitor.execute_action = mock_execute_action
+            
+            # Test: Condition met but negated condition also met (should not execute)
+            active_conditions = ["power_40", "enemy_in_melee_range"]
+            action = monitor.get_next_action(active_conditions)
+            assert action is None, "Action executed when negated condition was met"
+            
+            # Test: Condition met and negated condition not met (should execute)
+            active_conditions = ["power_40"]  # enemy_in_melee_range is not in the list
+            action = monitor.get_next_action(active_conditions)
+            assert action is not None, "Action not executed when conditions were correct"
+            
+            # Test: Neither condition met
+            active_conditions = ["combat"]
+            action = monitor.get_next_action(active_conditions)
+            assert action is None, "Action executed when required condition was not met"
+            
+        finally:
+            # Clean up
+            if os.path.exists(test_profile_path):
+                os.remove(test_profile_path)
+
 if __name__ == "__main__":
     pytest.main([__file__, "-s"])
