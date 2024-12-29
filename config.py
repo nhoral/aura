@@ -1,4 +1,5 @@
 from pathlib import Path
+from pynput.keyboard import Key
 
 # Project paths
 PROJECT_ROOT = Path(__file__).parent
@@ -12,9 +13,11 @@ WEAKAURAS_PATH = WOW_PATH / "WTF" / "Account" / "YABUCHI" / "SavedVariables" / "
 
 # Input settings
 INPUT_SETTINGS = {
-    "keyboard_trigger": "r",  # Key to hold for keyboard activation
-    "key_hold_duration": 0.1,  # Duration in seconds to hold keys when executing actions
-    "check_interval": 0.1     # Interval in seconds between condition checks
+    "key_hold_duration": 0.1,  # How long to hold down keys when executing actions
+    "check_interval": 0.01,    # How often to check for conditions (in seconds)
+    "keyboard_trigger": "t",   # Key to use as trigger when no gamepad available
+    "trigger_mode": "toggle",  # Can be "hold" or "toggle"
+    "exit_key": Key.esc,       # Key to terminate the program
 }
 
 # Aura generation settings
