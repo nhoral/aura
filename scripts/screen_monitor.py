@@ -10,6 +10,9 @@ from inputs import get_gamepad
 import threading
 import os
 import sys
+from pynput import keyboard
+from pynput.keyboard import Key, KeyCode
+from pathlib import Path
 
 # Add project root to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,6 +47,10 @@ class ScreenMonitor:
         self.listener = Listener(on_press=self._on_key_press, on_release=self._on_key_release)
         self.listener.start()
         
+        # Set up keyboard listener for debug
+        self.keyboard_listener = keyboard.Listener(on_press=self._on_key_press)
+        self.keyboard_listener.start()
+        
         # Start gamepad monitoring in separate thread
         self.gamepad_thread = threading.Thread(target=self._monitor_gamepad)
         self.gamepad_thread.daemon = True
@@ -58,6 +65,9 @@ class ScreenMonitor:
             self.trigger_held = True
             if self.debug:
                 print(f"{self.keyboard_trigger.upper()} key pressed - monitoring active")
+        elif hasattr(key, 'char') and key.char == 'p':
+            print("Debug key pressed - saving screen image...")
+            self.checker.save_debug_image()
     
     def _on_key_release(self, key):
         """Handle keyboard release events"""
@@ -68,8 +78,6 @@ class ScreenMonitor:
 
     def _monitor_gamepad(self):
         """Monitor gamepad input in separate thread"""
-        if self.debug:
-            print("Starting gamepad monitoring thread")
         try:
             while self.running:
                 events = get_gamepad()
@@ -77,13 +85,8 @@ class ScreenMonitor:
                     if event.code == "ABS_RZ":  # Right trigger axis
                         # Convert trigger value (0-255) to boolean
                         self.trigger_held = event.state > 128
-                        if self.debug:
-                            print(f"Right trigger state: {event.state}, trigger_held: {self.trigger_held}")
         except Exception as e:
-            print(f"Gamepad error: {str(e)}")  # Always print gamepad errors
-            if self.debug:
-                import traceback
-                traceback.print_exc()
+            print(f"Gamepad error: {str(e)}")
     
     def _load_actions(self, profile_data: dict) -> List[Action]:
         """Convert profile JSON into Action objects"""
@@ -105,14 +108,8 @@ class ScreenMonitor:
     
     def get_next_action(self, active_conditions: List[str]) -> Optional[Action]:
         """Determine next action based on active conditions"""
-        # Don't process actions if trigger isn't held
         if not self.trigger_held:
-            if self.debug:
-                print("Trigger not held, skipping action processing")
             return None
-            
-        if self.debug:
-            print(f"Checking actions against conditions: {active_conditions}")
             
         # Normalize active conditions by replacing spaces with underscores
         normalized_conditions = [c.replace(" ", "_") for c in active_conditions]
@@ -120,23 +117,15 @@ class ScreenMonitor:
         for action in self.actions:
             # Skip if any condition isn't met
             if not all(c in normalized_conditions for c in action.conditions):
-                if self.debug:
-                    print(f"Conditions not met for action {action.key}: {action.conditions}")
                 continue
                 
-            if self.debug:
-                print(f"Found matching action: {action.key}")
             return action
             
-        if self.debug:
-            print("No matching actions found")
         return None
     
     def execute_action(self, action: Action):
         """Execute a keyboard action"""
-        if self.debug:
-            print(f"Pressing key: {action.key}")
-            
+        print(f"Executing action: {action.key}")
         self.keyboard.press(action.key)
         time.sleep(self.key_hold_duration)
         self.keyboard.release(action.key)
@@ -146,6 +135,7 @@ class ScreenMonitor:
         print("Starting monitor...")
         print(f"Hold right trigger (or '{self.keyboard_trigger}' key) to activate monitoring")
         print("Press 'esc' to exit")
+        print("Press 'p' to save a debug image")
         
         while self.running:
             try:
@@ -153,8 +143,7 @@ class ScreenMonitor:
                 if self.trigger_held:
                     # Get current conditions
                     active_conditions = self.checker.check_conditions()
-                    
-                    if self.debug:
+                    if active_conditions:
                         print(f"Active conditions: {active_conditions}")
                     
                     # Get and execute next action if any
@@ -170,9 +159,6 @@ class ScreenMonitor:
                 self.running = False
             except Exception as e:
                 print(f"\nError: {str(e)}")
-                if self.debug:
-                    import traceback
-                    traceback.print_exc()
         
         # Clean up
         self.listener.stop()

@@ -45,3 +45,10 @@ ENV/
 
 # Project specific
 WeakAuras.lua  # Generated from WoW
+
+# Debug
+debug_images/
+
+# Test files
+AuraManager/auras/test1.lua
+AuraManager/auras/test2.lua

@@ -4,6 +4,11 @@ from typing import Tuple, Dict, List
 import json
 import platform
 from PIL import Image, ImageDraw
+import dxcam
+import numpy as np
+import os
+from datetime import datetime
+import time
 
 @dataclass
 class Condition:
@@ -14,7 +19,7 @@ class Condition:
     color: Tuple[int, int, int, int]
 
 class ScreenChecker:
-    def __init__(self, layout_path: str):
+    def __init__(self, layout_path: str, test_image: Image.Image = None):
         # Base resolution that the offsets are designed for
         self.BASE_HEIGHT = 768
         self.BASE_WIDTH = 1366
@@ -36,7 +41,7 @@ class ScreenChecker:
         # Convert layout to conditions
         self.conditions = {}
         
-        # Calculate reference point
+        # Calculate reference point (screen center)
         reference_x = self.screen_width // 2
         reference_y = int(self.screen_height // 2)
         
@@ -59,26 +64,66 @@ class ScreenChecker:
                 color=color
             )
         
-        self.CROSSHAIR_SIZE = 20  # Size of the crosshair in pixels
-        self.REGION_SIZE = 100    # Size of the screenshot region
+        # For testing, use the provided test image
+        self.test_image = test_image
+        
+        # Initialize DXCam for production use
+        if test_image is None:
+            self.camera = dxcam.create()
+
+    def save_debug_image(self, screen=None):
+        """Save the raw screen capture without any overlays or color conversion"""
+        if screen is None:
+            # Try to grab the screen a few times in case of temporary failures
+            for attempt in range(3):
+                try:
+                    screen = self.camera.grab()
+                    if screen is not None:
+                        break
+                except Exception as e:
+                    if attempt < 2:  # Don't sleep on last attempt
+                        time.sleep(0.1)  # Short delay between attempts
+            
+            if screen is None:
+                return
+        
+        try:
+            # Convert directly to PIL Image without any color conversion
+            image = Image.fromarray(screen)
+            
+            # Save with timestamp
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            os.makedirs("debug_images", exist_ok=True)
+            image.save(f"debug_images/screen_debug_{timestamp}.png")
+            
+        except Exception:
+            pass
 
     def check_conditions(self) -> List[str]:
         """Return list of all currently true conditions"""
+        if self.test_image is not None:
+            screen = self.test_image
+        else:
+            screen = self.camera.grab()  # Returns numpy array in RGB format
+            if screen is None:
+                return []
+        
         active = []
-        for condition_id in self.conditions:
-            if self.check_condition(condition_id):
-                active.append(condition_id)
+        for condition_id, condition in self.conditions.items():
+            try:
+                if self.test_image is not None:
+                    screen_color = screen.getpixel((condition.x, condition.y))
+                else:
+                    pixel = screen[condition.y, condition.x]
+                    screen_color = tuple(int(x) for x in pixel)  # Convert to tuple of ints
+                
+                if self._colors_match(screen_color, condition.color):
+                    active.append(condition_id)
+                
+            except (IndexError, Exception):
+                continue
+        
         return active
-
-    def check_condition(self, condition_id: str) -> bool:
-        """Check if a specific condition is met by comparing screen color"""
-        condition = self.conditions[condition_id]
-        screen_color = self._get_pixel(condition.x, condition.y)
-        return self._colors_match(screen_color, condition.color)
-
-    def _get_pixel(self, x: int, y: int) -> Tuple[int, ...]:
-        """Get the color of a pixel at the specified coordinates"""
-        return pyautogui.pixel(x, y)
 
     def _colors_match(self, color1: Tuple[int, ...], color2: Tuple[int, ...], tolerance: int = 5) -> bool:
         """Compare colors with tolerance for slight variations"""
@@ -92,7 +137,7 @@ class ScreenChecker:
             return is_red(color1) and is_red(color2)
         
         # For non-red colors, use the standard tolerance check
-        return all(abs(c1 - c2) <= tolerance for c1, c2 in zip(color1, color2))
+        return all(abs(c1 - c2) <= tolerance for c1, c2 in zip(color1[:3], color2[:3]))
 
     def debug_coordinates(self, condition_id: str) -> None:
         """Print debug information for a specific condition's coordinates"""
