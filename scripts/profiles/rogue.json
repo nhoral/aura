@@ -3,11 +3,11 @@
     "actions": [
         {
             "key": "2",
-            "conditions": ["power_35", "combo_2", "enemy_in_melee_range"]
+            "conditions": ["power_35", "combo_2", "melee_range"]
         },
         {
             "key": "1",
-            "conditions": ["power_45", "enemy_in_melee_range"]
+            "conditions": ["power_45", "melee_range"]
         }
     ]
 } 

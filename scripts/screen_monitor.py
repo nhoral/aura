@@ -74,8 +74,6 @@ class ScreenMonitor:
             while self.running:
                 events = get_gamepad()
                 for event in events:
-                    if self.debug:
-                        print(f"Gamepad event: {event.code} = {event.state}")
                     if event.code == "ABS_RZ":  # Right trigger axis
                         # Convert trigger value (0-255) to boolean
                         self.trigger_held = event.state > 128

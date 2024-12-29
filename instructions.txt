@@ -7,12 +7,32 @@ a) Check if Python is installed:
    - Open Command Prompt (Windows key + R, type "cmd", press Enter)
    - Type: python --version
    - You should see Python 3.11 or higher. If not, download from python.org
+   - Note: If using Windows Store Python, use the alternative setup in step c)
 
 b) Install Dependencies:
    - Open Command Prompt in the project folder (hold Shift + right-click in the folder, "Open PowerShell window here")
    - Run: pip install -r requirements.txt
-   - Also run: pip install pyautogui
    - If you get errors, try: python -m pip install -r requirements.txt
+
+c) Install the Project:
+   For standard Python installation:
+   - In the same Command Prompt window
+   - Run: python setup.py develop
+   - This installs the project in development mode
+
+   For Windows Store Python:
+   - Run PowerShell as Administrator
+   - Run: pip install -e .
+   - Or alternatively, just run the project from the root directory
+   - Make sure to always run scripts from the project root
+
+   If you get permission errors:
+   - Don't worry about installing in development mode
+   - Just run all commands from the project root directory
+   - Make sure the project root is in your PYTHONPATH:
+     ```
+     $env:PYTHONPATH = "C:\Users\YourUsername\path\to\aura;$env:PYTHONPATH"
+     ```
 
 2. World of Warcraft Setup
 -------------------------
@@ -106,7 +126,7 @@ c) Debug mode:
 a) "Module not found" errors:
    - Make sure you ran pip install -r requirements.txt
    - Try running python with -m flag: python -m scripts.screen_monitor
-
+3440 * 1.875 x 1440 / 768 -> 3840 x 2160
 b) WeakAuras not showing:
    - Type /reload in WoW
    - Check if WeakAuras addon is enabled
