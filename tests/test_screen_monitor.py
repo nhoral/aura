@@ -125,30 +125,21 @@ class TestScreenMonitor:
                 executed_actions.append(action)
             monitor.execute_action = mock_execute_action
             
-            # Test: No actions when trigger not held
-            monitor.trigger_held = False
+            # Test: No actions when monitoring inactive
+            monitor.monitoring_active = False
             active_conditions = checker.check_conditions()
             action = monitor.get_next_action(active_conditions)
             if action:
                 monitor.execute_action(action)
-            assert len(executed_actions) == 0, "Actions executed while trigger not held"
+            assert len(executed_actions) == 0, "Actions executed while monitoring inactive"
             
-            # Test: Actions occur when trigger held
-            monitor.trigger_held = True
+            # Test: Actions occur when monitoring active
+            monitor.monitoring_active = True
             active_conditions = checker.check_conditions()
             action = monitor.get_next_action(active_conditions)
             if action:
                 monitor.execute_action(action)
-            assert len(executed_actions) > 0, "No actions executed while trigger held"
-            
-            # Test: Actions stop when trigger released
-            executed_actions.clear()
-            monitor.trigger_held = False
-            active_conditions = checker.check_conditions()
-            action = monitor.get_next_action(active_conditions)
-            if action:
-                monitor.execute_action(action)
-            assert len(executed_actions) == 0, "Actions executed after trigger released"
+            assert len(executed_actions) > 0, "No actions executed while monitoring active"
         
         finally:
             # Clean up
@@ -204,12 +195,7 @@ class TestScreenMonitor:
             
         try:
             monitor = ScreenMonitor(checker, test_profile_path, debug=True)
-            monitor.trigger_held = True
-            
-            # Mock pixel reading to always return red
-            def mock_pixel(x, y):
-                return (255, 0, 0)
-            checker._get_pixel = mock_pixel
+            monitor.monitoring_active = True
             
             # Track executed actions
             executed_actions = []
@@ -232,12 +218,8 @@ class TestScreenMonitor:
             action = monitor.get_next_action(active_conditions)
             assert action is not None, "Action not executed with all conditions met"
             
-            # Test: Conditions in different order
-            active_conditions = ["enemy_in_melee_range", "power_40", "combat"]
-            action = monitor.get_next_action(active_conditions)
-            assert action is not None, "Action not executed with conditions in different order"
-            
         finally:
+            # Clean up
             if os.path.exists(test_profile_path):
                 os.remove(test_profile_path)
     

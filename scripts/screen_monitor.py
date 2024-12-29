@@ -40,6 +40,7 @@ class ScreenMonitor:
         self.keyboard_trigger = INPUT_SETTINGS["keyboard_trigger"]
         self.trigger_mode = INPUT_SETTINGS.get("trigger_mode", "hold")  # Default to hold mode
         self.exit_key = INPUT_SETTINGS.get("exit_key", Key.esc)  # Default to escape key
+        self.debug_key = INPUT_SETTINGS.get("debug_key", "u")  # Default to 'u' key
         
         # Load profile
         with open(profile_path, 'r') as f:
@@ -74,9 +75,18 @@ class ScreenMonitor:
                 print(f"Monitoring {'activated' if self.monitoring_active else 'deactivated'}")
             else:
                 self.trigger_held = True
-        elif hasattr(key, 'char') and key.char == 'p':
-            print("Debug key pressed - saving screen image...")
-            self.checker.save_debug_image()
+        # Only handle debug keys if debug mode is enabled
+        elif self.debug and hasattr(key, 'char'):
+            if key.char == 'p':
+                print("Saving screen image...")
+                self.checker.save_debug_image()
+            elif key.char == self.debug_key:
+                # Check and print current conditions
+                conditions = self.checker.check_conditions()
+                if conditions:
+                    print(f"Current conditions: {conditions}")
+                else:
+                    print("No conditions detected")
     
     def _on_key_release(self, key):
         """Handle keyboard release events"""
@@ -165,7 +175,10 @@ class ScreenMonitor:
         # Get the key name in a user-friendly format
         exit_key_name = self.exit_key.name if hasattr(self.exit_key, 'name') else self.exit_key
         print(f"Press '{exit_key_name}' to exit")
-        print("Press 'p' to save a debug image")
+        # Only show debug commands if debug mode is enabled
+        if self.debug:
+            print(f"Press '{self.debug_key}' to show current conditions")
+            print("Press 'p' to save a debug image")
         
         while self.running:
             try:
@@ -173,8 +186,6 @@ class ScreenMonitor:
                 if self.is_monitoring_active():
                     # Get current conditions
                     active_conditions = self.checker.check_conditions()
-                    if active_conditions:
-                        print(f"Active conditions: {active_conditions}")
                     
                     # Get and execute next action if any
                     action = self.get_next_action(active_conditions)

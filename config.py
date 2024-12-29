@@ -18,6 +18,7 @@ INPUT_SETTINGS = {
     "keyboard_trigger": "t",   # Key to use as trigger when no gamepad available
     "trigger_mode": "toggle",  # Can be "hold" or "toggle"
     "exit_key": Key.esc,       # Key to terminate the program
+    "debug_key": "u",         # Key to print current conditions
 }
 
 # Aura generation settings
