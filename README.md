@@ -128,12 +128,18 @@ Define actions and their required conditions:
         {
             "key": "1",
             "conditions": ["power_40", "combat", "enemy_in_melee_range"]
+        },
+        {
+            "key": "2",
+            "conditions": ["power_35", "!enemy_in_melee_range"]
         }
     ]
 }
 ```
 - `key`: Keyboard key to press
 - `conditions`: List of condition IDs that must be true for the action to trigger
+  - Regular conditions must be true (e.g., "power_40")
+  - Conditions prefixed with "!" must be false (e.g., "!enemy_in_melee_range")
 
 ### WeakAuras Files (`AuraManager/auras/*.lua`)
 Generated WeakAura definitions that create visual indicators:

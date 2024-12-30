@@ -43,6 +43,8 @@ auras/enemies_in_melee_range.lua
 auras/enemy_casting.lua
 auras/enemy_loose.lua
 auras/enemy_over_30_yards_range.lua
+auras/enemy_over_35_yards_range.lua
+auras/enemy_over_8_yards_range.lua
 auras/enemy_within_13_yards_range.lua
 auras/enemy_within_20_yards_range.lua
 auras/entangled.lua

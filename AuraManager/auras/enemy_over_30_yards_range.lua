@@ -38,14 +38,14 @@ ns.auras["enemy_over_30_yards_range"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
+                event = "Range Check",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Range Check",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
                 range = "30",
                 use_range = true,
                 range_operator = ">=",
@@ -55,7 +55,7 @@ ns.auras["enemy_over_30_yards_range"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -64,7 +64,7 @@ ns.auras["enemy_over_30_yards_range"] = {
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

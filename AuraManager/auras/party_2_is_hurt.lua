@@ -8,7 +8,7 @@ ns.auras["party_2_is_hurt"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 108,
+    xOffset = 116,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -39,16 +39,16 @@ ns.auras["party_2_is_hurt"] = {
         {
             trigger = {
                 type = "custom",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
+                event = "Health",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "player",
                 duration = "1",
-                custom_type = "stateupdate",
+                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -75,7 +75,7 @@ ns.auras["party_2_is_hurt"] = {
         end
     end
 end]],
-                unevent = "auto",
+                custom_type = "stateupdate",
                 check = "update",
                 customVariables = "{}",
                 custom_hide = "timed",
@@ -89,7 +89,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -101,16 +101,16 @@ end]],
             },
             single = "WARLOCK",
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
         use_spellknown = false,
-        use_level = false,
         level_operator = {
             "~=",
         },
+        use_level = false,
         level = {
             "120",
         },

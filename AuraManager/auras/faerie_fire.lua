@@ -8,7 +8,7 @@ ns.auras["faerie_fire"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 40,
+    xOffset = 48,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,28 +38,28 @@ ns.auras["faerie_fire"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HARMFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Faerie Fire",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -71,7 +71,7 @@ ns.auras["faerie_fire"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

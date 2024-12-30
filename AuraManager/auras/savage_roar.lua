@@ -8,7 +8,7 @@ ns.auras["savage_roar"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 64,
+    xOffset = 72,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -39,35 +39,35 @@ ns.auras["savage_roar"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "407988",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
             },
             untrigger = {},
         },
         {
             trigger = {
                 type = "spell",
-                unit = "player",
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                event = "Action Usable",
+                unit = "player",
+                spellName = 407988,
                 use_genericShowOn = true,
                 realSpellName = "Savage Roar",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 407988,
                 use_track = true,
                 use_inverse = true,
             },
@@ -76,7 +76,7 @@ ns.auras["savage_roar"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -88,7 +88,7 @@ ns.auras["savage_roar"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

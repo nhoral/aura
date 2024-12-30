@@ -8,7 +8,7 @@ ns.auras["lacerate_usable"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 12,
+    xOffset = 20,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -39,18 +39,18 @@ ns.auras["lacerate_usable"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 414644,
                 use_genericShowOn = true,
                 realSpellName = "Lacerate",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 414644,
                 use_track = true,
                 use_inverse = false,
             },
@@ -59,7 +59,7 @@ ns.auras["lacerate_usable"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -67,13 +67,13 @@ ns.auras["lacerate_usable"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 ROGUE = true,
+                DRUID = true,
                 HUNTER = true,
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

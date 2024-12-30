@@ -8,7 +8,7 @@ ns.auras["mongoose_bite_cooldown"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 88,
+    xOffset = 96,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,26 +38,26 @@ ns.auras["mongoose_bite_cooldown"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HARMFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Concussive Shot",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
+                spellName = 5116,
                 use_genericShowOn = true,
                 realSpellName = "Concussive Shot",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5116,
                 use_track = true,
             },
             untrigger = {},
@@ -65,7 +65,7 @@ ns.auras["mongoose_bite_cooldown"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -77,7 +77,7 @@ ns.auras["mongoose_bite_cooldown"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

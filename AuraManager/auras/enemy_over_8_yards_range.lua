@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["health_below_20"] = {
-    id = "Health Below 20",
-    uid = "YA3Gcj4D4F5",
+ns.auras["enemy_over_8_yards_range"] = {
+    id = "Enemy over 8 Yards Range",
+    uid = "idGTaM5Hgdi",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 20,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -40,24 +40,15 @@ ns.auras["health_below_20"] = {
                 type = "unit",
                 debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                use_powertype = true,
-                use_showCost = true,
-                event = "Health",
-                use_percentpower = false,
+                event = "Range Check",
                 names = {},
-                powertype = 3,
                 spellIds = {},
                 use_unit = true,
                 subeventPrefix = "SPELL",
-                unit = "player",
-                use_power = false,
-                percenthealth = {
-                    "20",
-                },
-                use_percenthealth = true,
-                percenthealth_operator = {
-                    "<",
-                },
+                unit = "target",
+                range = "8",
+                use_range = true,
+                range_operator = ">=",
             },
             untrigger = {},
         },
@@ -71,10 +62,7 @@ ns.auras["health_below_20"] = {
             multi = {},
         },
         class = {
-            multi = {
-                ROGUE = true,
-            },
-            single = "ROGUE",
+            multi = {},
         },
         talent = {
             multi = {},

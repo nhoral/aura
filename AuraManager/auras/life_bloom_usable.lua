@@ -8,7 +8,7 @@ ns.auras["life_bloom_usable"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 8,
+    xOffset = 16,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,31 +38,31 @@ ns.auras["life_bloom_usable"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = false,
                 auranames = {
                     "",
                 },
-                useName = false,
-                useRem = false,
+                ownOnly = true,
+                spellName = 408124,
                 use_genericShowOn = true,
                 realSpellName = "Lifebloom",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 408124,
                 use_track = true,
-                useExactSpellId = true,
                 auraspellids = {
                     "408124",
                 },
+                useExactSpellId = true,
                 stacks = "1",
                 use_inverse = true,
                 useStacks = true,
@@ -73,7 +73,7 @@ ns.auras["life_bloom_usable"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -85,7 +85,7 @@ ns.auras["life_bloom_usable"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -16,7 +16,7 @@ INPUT_SETTINGS = {
     "key_hold_duration": 0.1,  # How long to hold down keys when executing actions
     "check_interval": 0.01,    # How often to check for conditions (in seconds)
     "keyboard_trigger": "t",   # Key to use as trigger when no gamepad available
-    "trigger_mode": "toggle",  # Can be "hold" or "toggle"
+    "trigger_mode": "hold",  # Can be "hold" or "toggle"
     "exit_key": Key.esc,       # Key to terminate the program
     "debug_key": "u",         # Key to print current conditions
 }

@@ -8,7 +8,7 @@ ns.auras["summon_imp"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 88,
+    xOffset = 96,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -38,14 +38,14 @@ ns.auras["summon_imp"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
+                event = "Conditions",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Conditions",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "player",
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 itemName = 0,
@@ -60,7 +60,7 @@ ns.auras["summon_imp"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -72,7 +72,7 @@ ns.auras["summon_imp"] = {
             },
             single = "WARLOCK",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

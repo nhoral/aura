@@ -8,7 +8,7 @@ ns.auras["thorns"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 28,
+    xOffset = 36,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,21 +38,21 @@ ns.auras["thorns"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Thorns",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
                 useNamePattern = false,
             },
@@ -61,7 +61,7 @@ ns.auras["thorns"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -73,7 +73,7 @@ ns.auras["thorns"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

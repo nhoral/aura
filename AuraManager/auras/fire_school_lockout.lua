@@ -8,7 +8,7 @@ ns.auras["fire_school_lockout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 52,
+    xOffset = 60,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,29 +38,29 @@ ns.auras["fire_school_lockout"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
+                event = "Crowd Controlled",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Crowd Controlled",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                useRem = false,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
                 use_inverse = false,
                 use_controlType = true,
                 use_interruptSchool = true,
@@ -72,7 +72,7 @@ ns.auras["fire_school_lockout"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -85,7 +85,7 @@ ns.auras["fire_school_lockout"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["mangle_usable"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 76,
+    xOffset = 84,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["mangle_usable"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 407995,
                 use_genericShowOn = true,
                 realSpellName = "Mangle",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 407995,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -59,19 +59,19 @@ ns.auras["mangle_usable"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 407995,
                 use_genericShowOn = true,
                 realSpellName = "Mangle",
                 use_spellName = true,
                 genericShowOn = "showOnReady",
-                spellName = 407995,
+                use_exact_spellName = false,
                 use_track = true,
                 use_inverse = true,
             },
@@ -80,7 +80,7 @@ ns.auras["mangle_usable"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -88,12 +88,12 @@ ns.auras["mangle_usable"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 ROGUE = true,
+                DRUID = true,
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

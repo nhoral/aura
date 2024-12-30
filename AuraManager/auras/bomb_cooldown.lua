@@ -38,27 +38,27 @@ ns.auras["bomb_cooldown"] = {
         {
             trigger = {
                 type = "item",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Item)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Item)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Enrage",
                 },
-                useName = true,
-                useRem = false,
                 use_debuffClass = false,
                 useNamePattern = false,
+                spellName = 355,
                 use_genericShowOn = true,
                 realSpellName = "Taunt",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 355,
                 use_track = true,
                 itemName = 4360,
                 use_itemName = true,
@@ -68,7 +68,7 @@ ns.auras["bomb_cooldown"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -81,7 +81,7 @@ ns.auras["bomb_cooldown"] = {
             },
             single = "WARRIOR",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

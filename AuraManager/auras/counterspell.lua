@@ -38,18 +38,18 @@ ns.auras["counterspell"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 2139,
                 use_genericShowOn = true,
                 realSpellName = "Counterspell",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 2139,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["counterspell"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -70,7 +70,7 @@ ns.auras["counterspell"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

@@ -8,7 +8,7 @@ ns.auras["melee_range"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
+    xOffset = 92,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,14 +38,14 @@ ns.auras["melee_range"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
+                event = "Range Check",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Range Check",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
                 range = "5",
                 use_range = true,
                 range_operator = "<=",
@@ -55,7 +55,7 @@ ns.auras["melee_range"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -64,7 +64,7 @@ ns.auras["melee_range"] = {
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["sun_fire_usable"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
+    xOffset = 104,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -38,32 +38,32 @@ ns.auras["sun_fire_usable"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HARMFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = false,
                 auranames = {
                     "",
                 },
-                useName = false,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
+                spellName = 414684,
                 use_genericShowOn = true,
                 realSpellName = "Sunfire",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 414684,
                 use_track = true,
-                useExactSpellId = true,
                 auraspellids = {
                     "414684",
                 },
+                useExactSpellId = true,
                 use_inverse = true,
             },
             untrigger = {},
@@ -71,7 +71,7 @@ ns.auras["sun_fire_usable"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -83,7 +83,7 @@ ns.auras["sun_fire_usable"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -38,22 +38,22 @@ ns.auras["cat_form"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "BOTH",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
+                event = "Stance/Form/Aura",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Stance/Form/Aura",
-                debuffType = "BOTH",
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Cat Form",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
                 useNamePattern = false,
                 use_form = true,
@@ -66,7 +66,7 @@ ns.auras["cat_form"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -78,7 +78,7 @@ ns.auras["cat_form"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

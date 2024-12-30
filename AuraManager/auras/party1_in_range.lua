@@ -8,7 +8,7 @@ ns.auras["party1_in_range"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
+    xOffset = 8,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,19 +38,19 @@ ns.auras["party1_in_range"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "party1",
-                subeventPrefix = "SPELL",
+                event = "Range Check",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Range Check",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "party1",
+                spellName = 5176,
                 use_genericShowOn = true,
                 realSpellName = "Wrath",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5176,
                 use_track = true,
                 range = "35",
                 use_range = true,
@@ -60,11 +60,11 @@ ns.auras["party1_in_range"] = {
                 use_hand = true,
                 use_inverse = false,
                 use_messageType = false,
+                use_message = false,
+                use_sourceName = false,
+                instance_size = {},
                 use_targetRequired = false,
                 use_moveSpeed = false,
-                use_sourceName = false,
-                use_message = false,
-                instance_size = {},
                 use_spellNames = true,
                 use_specific_unit = true,
             },
@@ -73,7 +73,7 @@ ns.auras["party1_in_range"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -82,7 +82,7 @@ ns.auras["party1_in_range"] = {
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["fire_blast"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 48,
+    xOffset = 56,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,18 +38,18 @@ ns.auras["fire_blast"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 2136,
                 use_genericShowOn = true,
                 realSpellName = "Fire Blast",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 2136,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["fire_blast"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -70,7 +70,7 @@ ns.auras["fire_blast"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

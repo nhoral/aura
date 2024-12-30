@@ -8,7 +8,7 @@ ns.auras["pet_in_combat"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 40,
+    xOffset = 48,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,22 +38,22 @@ ns.auras["pet_in_combat"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HARMFUL",
                 subeventSuffix = "",
-                unit = "pet",
-                subeventPrefix = "DAMAGE_SHIELD",
+                event = "Unit Characteristics",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Unit Characteristics",
-                debuffType = "HARMFUL",
+                subeventPrefix = "DAMAGE_SHIELD",
+                unit = "pet",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Moonfire",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 itemName = 5317,
@@ -68,14 +68,14 @@ ns.auras["pet_in_combat"] = {
                 threatpct = {
                     "100",
                 },
-                use_status = false,
+                use_aggro = true,
+                use_eventtype = true,
+                status = 3,
+                use_threatpct = false,
                 threatpct_operator = {
                     ">=",
                 },
-                use_threatpct = false,
-                status = 3,
-                use_eventtype = true,
-                use_aggro = true,
+                use_status = false,
                 use_messageType = true,
                 use_behavior = false,
                 use_inCombat = true,
@@ -85,7 +85,7 @@ ns.auras["pet_in_combat"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -97,7 +97,7 @@ ns.auras["pet_in_combat"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

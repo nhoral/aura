@@ -8,7 +8,7 @@ ns.auras["temporal_beacon_on_self"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 24,
+    xOffset = 32,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,21 +38,21 @@ ns.auras["temporal_beacon_on_self"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = true,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "400735",
                 },
-                useName = true,
-                useRem = true,
+                ownOnly = true,
                 use_debuffClass = false,
                 rem = "5",
                 remOperator = ">",
@@ -62,7 +62,7 @@ ns.auras["temporal_beacon_on_self"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -75,7 +75,7 @@ ns.auras["temporal_beacon_on_self"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

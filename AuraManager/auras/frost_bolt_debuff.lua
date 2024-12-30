@@ -8,7 +8,7 @@ ns.auras["frost_bolt_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 64,
+    xOffset = 72,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,36 +38,36 @@ ns.auras["frost_bolt_debuff"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HARMFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Frostbolt",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -80,7 +80,7 @@ ns.auras["frost_bolt_debuff"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

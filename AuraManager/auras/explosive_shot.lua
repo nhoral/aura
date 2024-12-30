@@ -8,7 +8,7 @@ ns.auras["explosive_shot"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 36,
+    xOffset = 44,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,19 +38,19 @@ ns.auras["explosive_shot"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 409552,
                 use_genericShowOn = true,
                 realSpellName = "Explosive Shot",
                 use_spellName = true,
                 genericShowOn = "showOnReady",
-                spellName = 409552,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -58,19 +58,19 @@ ns.auras["explosive_shot"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 409552,
                 use_genericShowOn = true,
                 realSpellName = "Explosive Shot",
                 use_spellName = true,
                 genericShowOn = "showOnReady",
-                spellName = 409552,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -78,7 +78,7 @@ ns.auras["explosive_shot"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -86,13 +86,13 @@ ns.auras["explosive_shot"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 ROGUE = true,
+                DRUID = true,
                 HUNTER = true,
             },
             single = "HUNTER",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

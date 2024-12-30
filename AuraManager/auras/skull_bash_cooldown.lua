@@ -8,7 +8,7 @@ ns.auras["skull_bash_cooldown"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 72,
+    xOffset = 80,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["skull_bash_cooldown"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 410176,
                 use_genericShowOn = true,
                 realSpellName = "Skull Bash",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 410176,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -59,14 +59,14 @@ ns.auras["skull_bash_cooldown"] = {
         {
             trigger = {
                 type = "spell",
-                unit = "player",
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                event = "Action Usable",
+                unit = "player",
+                spellName = 410176,
                 use_genericShowOn = true,
                 realSpellName = "Skull Bash",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 410176,
                 use_track = true,
                 use_inverse = true,
             },
@@ -75,7 +75,7 @@ ns.auras["skull_bash_cooldown"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -83,13 +83,13 @@ ns.auras["skull_bash_cooldown"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 ROGUE = true,
+                DRUID = true,
                 HUNTER = true,
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

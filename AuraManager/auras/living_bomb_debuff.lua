@@ -8,7 +8,7 @@ ns.auras["living_bomb_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
+    xOffset = 28,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,36 +38,36 @@ ns.auras["living_bomb_debuff"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HARMFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "400613",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -80,7 +80,7 @@ ns.auras["living_bomb_debuff"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

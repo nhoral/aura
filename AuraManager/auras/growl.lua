@@ -8,7 +8,7 @@ ns.auras["growl"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 88,
+    xOffset = 96,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,19 +38,19 @@ ns.auras["growl"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 6795,
                 use_genericShowOn = true,
                 realSpellName = "Growl",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 6795,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["growl"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -66,13 +66,13 @@ ns.auras["growl"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 ROGUE = true,
+                DRUID = true,
                 HUNTER = true,
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

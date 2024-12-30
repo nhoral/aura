@@ -8,7 +8,7 @@ ns.auras["leaving_combat"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 16,
+    xOffset = 24,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,22 +38,22 @@ ns.auras["leaving_combat"] = {
         {
             trigger = {
                 type = "event",
+                debuffType = "HARMFUL",
                 subeventSuffix = "",
-                unit = "target",
-                subeventPrefix = "DAMAGE_SHIELD",
+                event = "Combat Events",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Combat Events",
-                debuffType = "HARMFUL",
+                subeventPrefix = "DAMAGE_SHIELD",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Moonfire",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 itemName = 0,
@@ -68,14 +68,14 @@ ns.auras["leaving_combat"] = {
                 threatpct = {
                     "100",
                 },
-                use_status = false,
+                use_aggro = true,
+                use_eventtype = true,
+                status = 3,
+                use_threatpct = false,
                 threatpct_operator = {
                     ">=",
                 },
-                use_threatpct = false,
-                status = 3,
-                use_eventtype = true,
-                use_aggro = true,
+                use_status = false,
                 use_messageType = true,
             },
             untrigger = {},
@@ -83,7 +83,7 @@ ns.auras["leaving_combat"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -95,7 +95,7 @@ ns.auras["leaving_combat"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

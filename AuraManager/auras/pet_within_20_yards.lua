@@ -8,7 +8,7 @@ ns.auras["pet_within_20_yards"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 44,
+    xOffset = 52,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,22 +38,22 @@ ns.auras["pet_within_20_yards"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HARMFUL",
                 subeventSuffix = "",
-                unit = "pet",
-                subeventPrefix = "DAMAGE_SHIELD",
+                event = "Range Check",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Range Check",
-                debuffType = "HARMFUL",
+                subeventPrefix = "DAMAGE_SHIELD",
+                unit = "pet",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Moonfire",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 range = "20",
@@ -71,14 +71,14 @@ ns.auras["pet_within_20_yards"] = {
                 threatpct = {
                     "100",
                 },
-                use_status = false,
+                use_aggro = true,
+                use_eventtype = true,
+                status = 3,
+                use_threatpct = false,
                 threatpct_operator = {
                     ">=",
                 },
-                use_threatpct = false,
-                status = 3,
-                use_eventtype = true,
-                use_aggro = true,
+                use_status = false,
                 use_messageType = true,
             },
             untrigger = {},
@@ -86,7 +86,7 @@ ns.auras["pet_within_20_yards"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -98,7 +98,7 @@ ns.auras["pet_within_20_yards"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

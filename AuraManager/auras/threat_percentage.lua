@@ -8,7 +8,7 @@ ns.auras["threat_percentage"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 32,
+    xOffset = 40,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,31 +38,31 @@ ns.auras["threat_percentage"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
+                use_powertype = true,
                 use_showCost = true,
-                subeventPrefix = "SPELL",
+                event = "Threat Situation",
+                names = {},
                 powertype = 0,
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Threat Situation",
-                use_powertype = true,
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
                 threatpct = {
                     "80",
                 },
+                use_threatpct = true,
                 threatpct_operator = {
                     "<",
                 },
-                use_threatpct = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -74,7 +74,7 @@ ns.auras["threat_percentage"] = {
             },
             single = "ROGUE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

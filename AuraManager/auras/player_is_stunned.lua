@@ -8,7 +8,7 @@ ns.auras["player_is_stunned"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 76,
+    xOffset = 84,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,29 +38,29 @@ ns.auras["player_is_stunned"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
+                event = "Crowd Controlled",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Crowd Controlled",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
+                useRem = false,
                 matchesShowOn = "showOnActive",
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                useRem = false,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
                 use_inverse = false,
                 use_controlType = true,
                 use_interruptSchool = true,
@@ -72,7 +72,7 @@ ns.auras["player_is_stunned"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -85,7 +85,7 @@ ns.auras["player_is_stunned"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

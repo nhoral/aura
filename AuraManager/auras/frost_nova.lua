@@ -8,7 +8,7 @@ ns.auras["frost_nova"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 68,
+    xOffset = 76,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,18 +38,18 @@ ns.auras["frost_nova"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 122,
                 use_genericShowOn = true,
                 realSpellName = "Frost Nova",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 122,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["frost_nova"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -70,7 +70,7 @@ ns.auras["frost_nova"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

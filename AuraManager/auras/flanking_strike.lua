@@ -8,7 +8,7 @@ ns.auras["flanking_strike"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 56,
+    xOffset = 64,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,19 +38,19 @@ ns.auras["flanking_strike"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 415320,
                 use_genericShowOn = true,
                 realSpellName = "Flanking Strike",
                 use_spellName = true,
                 genericShowOn = "showOnReady",
-                spellName = 415320,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -58,19 +58,19 @@ ns.auras["flanking_strike"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
-                use_exact_spellName = false,
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 415320,
                 use_genericShowOn = true,
                 realSpellName = "Flanking Strike",
                 use_spellName = true,
                 genericShowOn = "showOnReady",
-                spellName = 415320,
+                use_exact_spellName = false,
                 use_track = true,
             },
             untrigger = {},
@@ -78,7 +78,7 @@ ns.auras["flanking_strike"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -86,13 +86,13 @@ ns.auras["flanking_strike"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 ROGUE = true,
+                DRUID = true,
                 HUNTER = true,
             },
             single = "HUNTER",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

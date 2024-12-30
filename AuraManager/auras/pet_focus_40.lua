@@ -8,7 +8,7 @@ ns.auras["pet_focus_40"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 16,
+    xOffset = 24,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,29 +38,29 @@ ns.auras["pet_focus_40"] = {
         {
             trigger = {
                 type = "unit",
-                percentpower_operator = {
-                    ">=",
-                },
+                debuffType = "HARMFUL",
                 subeventSuffix = "",
+                event = "Power",
+                use_percentpower = true,
+                names = {},
+                spellIds = {},
+                use_unit = true,
+                subeventPrefix = "DAMAGE_SHIELD",
+                unit = "pet",
                 percentpower = {
                     "40",
                 },
-                unit = "pet",
-                use_percentpower = true,
-                subeventPrefix = "DAMAGE_SHIELD",
-                spellIds = {},
-                use_unit = true,
-                names = {},
-                event = "Power",
-                debuffType = "HARMFUL",
+                percentpower_operator = {
+                    ">=",
+                },
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Moonfire",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 itemName = 4253,
@@ -75,14 +75,14 @@ ns.auras["pet_focus_40"] = {
                 threatpct = {
                     "100",
                 },
-                use_status = false,
+                use_aggro = true,
+                use_eventtype = true,
+                status = 3,
+                use_threatpct = false,
                 threatpct_operator = {
                     ">=",
                 },
-                use_threatpct = false,
-                status = 3,
-                use_eventtype = true,
-                use_aggro = true,
+                use_status = false,
                 use_messageType = true,
             },
             untrigger = {},
@@ -90,7 +90,7 @@ ns.auras["pet_focus_40"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -102,7 +102,7 @@ ns.auras["pet_focus_40"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

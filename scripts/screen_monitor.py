@@ -10,6 +10,7 @@ import inputs
 from pynput import keyboard
 from pynput.keyboard import Key, Controller, Listener, KeyCode
 from src.core.screen_checker import ScreenChecker
+from inputs import get_gamepad
 
 # Add project root to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -103,7 +104,7 @@ class ScreenMonitor:
         """Monitor gamepad input in separate thread"""
         try:
             while self.running:
-                events = get_gamepad()
+                events = inputs.get_gamepad()
                 for event in events:
                     if event.code == "ABS_RZ":  # Right trigger axis
                         if self.trigger_mode == "toggle":
@@ -153,7 +154,8 @@ class ScreenMonitor:
     
     def execute_action(self, action: Dict[str, Any]):
         """Execute a keyboard action"""
-        print(f"Executing action: {action['key']}")
+        action_name = action.get('name', 'Name Missing')
+        print(f"Executing Action: {action_name} [pressing {action['key']}]")
         self.keyboard.press(action['key'])
         time.sleep(self.key_hold_duration)
         self.keyboard.release(action['key'])
@@ -206,7 +208,7 @@ def main():
                       default='scripts/layout.json',
                       help='Path to layout JSON file')
     parser.add_argument('--profile', '-p',
-                      default='scripts/profiles/rogue.json',
+                      default='scripts/profiles/hunter.json',
                       help='Path to profile JSON file')
     parser.add_argument('--debug', '-d',
                       action='store_true',

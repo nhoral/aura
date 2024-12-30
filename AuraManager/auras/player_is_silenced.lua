@@ -8,7 +8,7 @@ ns.auras["player_is_silenced"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 72,
+    xOffset = 80,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["player_is_silenced"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
+                event = "Crowd Controlled",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Crowd Controlled",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 5176,
                 use_genericShowOn = true,
                 realSpellName = "Wrath",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5176,
                 use_track = true,
                 itemName = 0,
                 use_itemName = true,
@@ -59,19 +59,19 @@ ns.auras["player_is_silenced"] = {
                 use_messageType = false,
                 use_controlType = true,
                 controlType = "SILENCE",
-                use_targetRequired = false,
-                use_moveSpeed = false,
-                use_sourceName = false,
                 use_message = false,
                 use_ismoving = true,
+                use_sourceName = false,
                 instance_size = {},
+                use_targetRequired = false,
+                use_moveSpeed = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -80,7 +80,7 @@ ns.auras["player_is_silenced"] = {
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

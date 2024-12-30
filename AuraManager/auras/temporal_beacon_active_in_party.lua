@@ -8,7 +8,7 @@ ns.auras["temporal_beacon_active_in_party"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 16,
+    xOffset = 24,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,29 +38,29 @@ ns.auras["temporal_beacon_active_in_party"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "group",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "group",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "400735",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
                 specificUnit = "party1",
                 group_count = "0",
                 ignoreInvisible = true,
-                ignoreDead = true,
+                group_countOperator = ">",
                 useGroup_count = true,
                 ignoreDisconnected = true,
-                group_countOperator = ">",
+                ignoreDead = true,
                 useAffected = false,
             },
             untrigger = {},
@@ -68,7 +68,7 @@ ns.auras["temporal_beacon_active_in_party"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -81,7 +81,7 @@ ns.auras["temporal_beacon_active_in_party"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

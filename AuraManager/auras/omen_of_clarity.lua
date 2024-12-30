@@ -8,7 +8,7 @@ ns.auras["omen_of_clarity"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 108,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -39,21 +39,21 @@ ns.auras["omen_of_clarity"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Omen of Clarity",
                 },
-                useName = true,
-                useRem = false,
+                ownOnly = true,
                 use_debuffClass = false,
                 useNamePattern = false,
             },
@@ -62,14 +62,14 @@ ns.auras["omen_of_clarity"] = {
         {
             trigger = {
                 type = "spell",
-                unit = "player",
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                event = "Action Usable",
+                unit = "player",
+                spellName = 16864,
                 use_genericShowOn = true,
                 realSpellName = "Omen of Clarity",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 16864,
                 use_track = true,
                 use_inverse = true,
             },
@@ -78,7 +78,7 @@ ns.auras["omen_of_clarity"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -90,7 +90,7 @@ ns.auras["omen_of_clarity"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

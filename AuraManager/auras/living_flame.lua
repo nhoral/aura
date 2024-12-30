@@ -8,7 +8,7 @@ ns.auras["living_flame"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 28,
+    xOffset = 36,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,18 +38,18 @@ ns.auras["living_flame"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 401556,
                 use_genericShowOn = true,
                 realSpellName = "Living Flame",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 401556,
                 use_track = true,
             },
             untrigger = {},
@@ -57,18 +57,18 @@ ns.auras["living_flame"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 401556,
                 use_genericShowOn = true,
                 realSpellName = "Living Flame",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 401556,
                 use_track = true,
                 use_inverse = true,
             },
@@ -77,7 +77,7 @@ ns.auras["living_flame"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -90,7 +90,7 @@ ns.auras["living_flame"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

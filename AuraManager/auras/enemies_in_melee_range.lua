@@ -38,18 +38,18 @@ ns.auras["enemies_in_melee_range"] = {
         {
             trigger = {
                 type = "custom",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
+                event = "Health",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Health",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "player",
                 duration = "1",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                custom_type = "stateupdate",
+                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
@@ -88,7 +88,7 @@ ns.auras["enemies_in_melee_range"] = {
         end
     end
 end]],
-                unevent = "auto",
+                custom_type = "stateupdate",
                 check = "update",
                 customVariables = [[{
   stacks = true,
@@ -99,7 +99,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -108,7 +108,7 @@ end]],
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         zoneIds = "",

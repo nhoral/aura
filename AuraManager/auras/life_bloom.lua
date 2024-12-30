@@ -8,7 +8,7 @@ ns.auras["life_bloom"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 4,
+    xOffset = 12,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,25 +38,25 @@ ns.auras["life_bloom"] = {
         {
             trigger = {
                 type = "aura2",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Health",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Health",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
-                ownOnly = true,
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "408124",
                 },
-                useName = true,
-                useRem = false,
-                useExactSpellId = false,
+                ownOnly = true,
                 auraspellids = {
                     "408124",
                 },
+                useExactSpellId = false,
                 stacks = "1",
                 useStacks = true,
                 stacksOperator = "==",
@@ -66,7 +66,7 @@ ns.auras["life_bloom"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -78,7 +78,7 @@ ns.auras["life_bloom"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

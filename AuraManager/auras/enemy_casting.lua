@@ -38,19 +38,19 @@ ns.auras["enemy_casting"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
+                event = "Cast",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Cast",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
                 use_castType = false,
                 remaining_operator = ">",
-                use_remaining = false,
-                remaining = "1",
                 use_interruptible = true,
+                remaining = "1",
+                use_remaining = false,
                 use_destUnit = false,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["enemy_casting"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -67,7 +67,7 @@ ns.auras["enemy_casting"] = {
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

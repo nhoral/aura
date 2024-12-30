@@ -34,6 +34,8 @@ ns.aura_list = {
     "enemy_casting",
     "enemy_loose",
     "enemy_over_30_yards_range",
+    "enemy_over_35_yards_range",
+    "enemy_over_8_yards_range",
     "enemy_within_13_yards_range",
     "enemy_within_20_yards_range",
     "entangled",

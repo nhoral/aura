@@ -8,7 +8,7 @@ ns.auras["kick_cooldown"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
+    xOffset = 8,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,18 +38,18 @@ ns.auras["kick_cooldown"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 1766,
                 use_genericShowOn = true,
                 realSpellName = "Kick",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 1766,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["kick_cooldown"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -69,7 +69,7 @@ ns.auras["kick_cooldown"] = {
             },
             single = "ROGUE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_class = true,

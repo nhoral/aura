@@ -8,7 +8,7 @@ ns.auras["gouge_cooldown"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 80,
+    xOffset = 88,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,18 +38,18 @@ ns.auras["gouge_cooldown"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 1776,
                 use_genericShowOn = true,
                 realSpellName = "Gouge",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 1776,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["gouge_cooldown"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -69,7 +69,7 @@ ns.auras["gouge_cooldown"] = {
             },
             single = "ROGUE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_class = true,

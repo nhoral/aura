@@ -38,27 +38,27 @@ ns.auras["druid_enraged"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Cooldown Progress (Spell)",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Cooldown Progress (Spell)",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                useRem = false,
                 matchesShowOn = "showOnActive",
                 unitExists = false,
+                useName = true,
                 auranames = {
                     "Enrage",
                 },
-                useName = true,
-                useRem = false,
                 use_debuffClass = false,
                 useNamePattern = false,
+                spellName = 5229,
                 use_genericShowOn = true,
                 realSpellName = "Enrage",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5229,
                 use_track = true,
             },
             untrigger = {},
@@ -66,7 +66,7 @@ ns.auras["druid_enraged"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -78,7 +78,7 @@ ns.auras["druid_enraged"] = {
             },
             single = "DRUID",
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

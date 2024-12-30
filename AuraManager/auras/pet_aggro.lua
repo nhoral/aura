@@ -8,7 +8,7 @@ ns.auras["pet_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 4,
+    xOffset = 12,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,23 +38,22 @@ ns.auras["pet_aggro"] = {
         {
             trigger = {
                 type = "custom",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                subeventPrefix = "SPELL",
+                event = "Conditions",
+                names = {},
                 spellIds = {},
                 use_unit = true,
-                names = {},
-                event = "Conditions",
-                debuffType = "HELPFUL",
+                subeventPrefix = "SPELL",
+                unit = "target",
+                spellName = 5176,
                 use_genericShowOn = true,
                 realSpellName = "Wrath",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5176,
                 use_track = true,
                 itemName = 0,
                 use_itemName = true,
-                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not UnitAffectingCombat("pet") then
         allstates[""] = allstates[""] or {show = false}
@@ -81,24 +80,25 @@ ns.auras["pet_aggro"] = {
     
     return true
 end]],
+                custom_type = "stateupdate",
                 check = "update",
                 customVariables = "{}",
                 use_inverse = false,
                 use_messageType = false,
+                use_message = false,
+                use_ismoving = true,
+                use_spec = true,
+                use_sourceName = false,
+                instance_size = {},
                 use_targetRequired = false,
                 use_moveSpeed = false,
-                use_sourceName = false,
-                use_message = false,
-                use_spec = true,
-                use_ismoving = true,
-                instance_size = {},
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -107,7 +107,7 @@ end]],
         class = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

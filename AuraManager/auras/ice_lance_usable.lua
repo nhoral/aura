@@ -8,8 +8,8 @@ ns.auras["ice_lance_usable"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
-    yOffset = -4,
+    xOffset = 0,
+    yOffset = -8,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,18 +38,18 @@ ns.auras["ice_lance_usable"] = {
         {
             trigger = {
                 type = "spell",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                names = {},
-                event = "Action Usable",
                 debuffType = "HELPFUL",
+                subeventSuffix = "_CAST_START",
+                event = "Action Usable",
+                names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                spellName = 400640,
                 use_genericShowOn = true,
                 realSpellName = "Ice Lance",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 400640,
                 use_track = true,
                 use_inverse = true,
             },
@@ -58,7 +58,7 @@ ns.auras["ice_lance_usable"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         spec = {
@@ -71,7 +71,7 @@ ns.auras["ice_lance_usable"] = {
             },
             single = "MAGE",
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

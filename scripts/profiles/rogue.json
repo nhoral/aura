@@ -2,10 +2,12 @@
     "name": "Rogue",
     "actions": [
         {
+            "name": "Eviscerate",
             "key": "2",
             "conditions": ["power_35", "combo_2", "melee_range"]
         },
         {
+            "name": "Sinister Strike",
             "key": "1",
             "conditions": ["power_45", "melee_range"]
         }
