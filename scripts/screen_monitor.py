@@ -12,8 +12,9 @@ from pynput.keyboard import Key, Controller, Listener, KeyCode
 from src.core.screen_checker import ScreenChecker
 
 # Add project root to Python path
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, project_root)
+project_root = str(Path(__file__).resolve().parent.parent)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
 from config import INPUT_SETTINGS
 

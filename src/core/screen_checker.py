@@ -9,6 +9,15 @@ import numpy as np
 import os
 from datetime import datetime
 import time
+import sys
+from pathlib import Path
+
+# Add project root to Python path
+project_root = str(Path(__file__).resolve().parent.parent.parent)
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+from config import WEAKAURAS_BASE_WIDTH, WEAKAURAS_BASE_HEIGHT
 
 @dataclass
 class Condition:
@@ -21,8 +30,8 @@ class Condition:
 class ScreenChecker:
     def __init__(self, layout_path: str, test_image: Image.Image = None):
         # Base resolution that the offsets are designed for
-        self.BASE_HEIGHT = 768
-        self.BASE_WIDTH = 1366
+        self.BASE_HEIGHT = WEAKAURAS_BASE_HEIGHT
+        self.BASE_WIDTH = WEAKAURAS_BASE_WIDTH
         
         # Load the test image dimensions
         self.screen_width, self.screen_height = pyautogui.size()
