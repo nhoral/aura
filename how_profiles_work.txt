@@ -1,0 +1,106 @@
+How Profiles Work - System Overview
+
+1. Core Components
+-----------------
+- Profiles: JSON files that define action sequences based on game conditions
+- Auras: WeakAuras that detect specific game states or conditions
+- Layout: JSON file that defines the screen positions of aura indicators
+- Screen Monitor: Python script that reads aura states and executes actions
+
+2. Profile Structure
+-------------------
+Profiles are JSON files containing:
+{
+    "actions": [
+        {
+            "name": "Action Name",
+            "key": "key_to_press",
+            "conditions": ["condition1", "condition2", "!negative_condition"]
+        }
+    ]
+}
+
+- Each action defines a key press and conditions that must be met
+- Conditions prefixed with "!" are negative conditions (must NOT be true)
+- Actions are checked in order, first matching action is executed
+- Keys can be single characters or special keys (defined in pynput.keyboard.Key)
+
+3. Aura System
+-------------
+- Auras are WeakAuras that show/hide based on game conditions
+- Each aura has a unique ID and displays as a colored square
+- Auras are positioned in a grid layout defined in layout.json
+- The screen monitor reads these aura indicators to determine game state
+- Auras must be exported to WoW using the WeakAuras addon
+
+4. Layout System
+---------------
+layout.json defines:
+- Aura positions using xOffset and yOffset (grid coordinates)
+- Background colors for detection
+- Aura IDs that match WeakAura names
+- Grid layout uses 4-pixel spacing between auras
+
+5. Game Interaction Flow
+-----------------------
+1. WeakAuras in game show/hide based on conditions
+2. Screen monitor reads aura states using pixel color detection
+3. Monitor matches active auras against profile conditions
+4. When conditions match, corresponding key is pressed
+5. Game receives key press and performs action
+
+6. Common Aura Types
+-------------------
+- Ability cooldowns (e.g., "kick_cooldown")
+- Resource thresholds (e.g., "power_50")
+- Combat states (e.g., "in_combat")
+- Buffs/debuffs (e.g., "slice_and_dice")
+- Range checks (e.g., "enemy_within_20_yards_range")
+- Form states (e.g., "cat_form")
+
+7. Input Control
+---------------
+- Gamepad right trigger or keyboard key ('t' by default) activates monitoring
+- Two modes: "hold" (active while held) or "toggle" (press to toggle)
+- ESC key exits the program
+- Debug mode enables additional commands ('u' for condition check, 'p' for debug image)
+
+8. Creating New Profiles
+-----------------------
+1. Identify required conditions (auras must exist for each)
+2. Create action list in priority order
+3. Define key bindings matching WoW's keybinds
+4. Test conditions individually before combining
+
+9. Common Patterns
+-----------------
+- Rotation priorities use action order
+- Negative conditions (!condition) for mutex actions
+- Resource thresholds for ability requirements
+- Range checks for melee/ranged abilities
+- Form requirements for class-specific abilities
+
+10. Debugging
+------------
+- Debug mode shows active conditions
+- Can save debug images of screen state
+- Monitor prints executed actions
+- Error messages for missing auras or invalid configs
+
+11. Limitations
+--------------
+- Auras must be visible on screen
+- Actions limited to key presses
+- Response time depends on check_interval
+- Must maintain consistent UI layout
+- Game must be in foreground
+
+12. Best Practices
+-----------------
+- Keep profiles focused on core rotation
+- Test conditions individually
+- Use meaningful action names
+- Order actions by priority
+- Document custom auras
+- Maintain consistent aura naming
+- Regular testing with debug mode 
