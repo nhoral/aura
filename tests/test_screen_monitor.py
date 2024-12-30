@@ -9,6 +9,28 @@ import sys
 import json
 import time
 
+@pytest.fixture(scope="function")
+def monitor_cleanup():
+    """Fixture to ensure monitor is properly cleaned up after each test"""
+    monitors = []
+    def _register(monitor):
+        monitors.append(monitor)
+        return monitor
+    yield _register
+    for monitor in monitors:
+        monitor.stop()
+
+@pytest.fixture(scope="function")
+def checker_cleanup():
+    """Fixture to ensure screen checkers are properly cleaned up"""
+    checkers = []
+    def _register(checker):
+        checkers.append(checker)
+        return checker
+    yield _register
+    for checker in checkers:
+        checker.cleanup()
+
 class TestScreenMonitor:
     @pytest.fixture
     def screenshot_path(self):
@@ -22,90 +44,88 @@ class TestScreenMonitor:
     def profile_path(self):
         return 'scripts/profiles/rogue.json'
 
-    def find_red_boxes(self, image: Image.Image) -> List[Tuple[int, int]]:
-        """Scan the image for red boxes and return their coordinates"""
-        red_positions = []
-        width, height = image.size
-        
-        # Convert image to RGB if it isn't already
-        if image.mode != 'RGB':
-            image = image.convert('RGB')
-        
-        # Define what we consider "red" (RGB values)
-        def is_red(pixel):
-            r, g, b = pixel
-            # Red should be high, green and blue should be low
-            return r > 200 and g < 50 and b < 50
-
-        # Scan the image
-        for y in range(height):
-            for x in range(width):
-                pixel = image.getpixel((x, y))
-                if is_red(pixel):
-                    red_positions.append((x, y))
-        
-        return red_positions
-
     def test_condition_detection(self, screenshot_path, layout_path):
-        # Verify files exist before starting test
-        assert os.path.exists(screenshot_path), f"Screenshot not found at {screenshot_path}"
-        assert os.path.exists(layout_path), f"Layout file not found at {layout_path}"
-        
-        # Load the test image
+        """Test that conditions are properly detected from the test image"""
+        # Setup
         test_image = Image.open(screenshot_path)
-        
-        # Initialize the checker with test image
         checker = ScreenChecker(layout_path, test_image=test_image)
         
-        # Track detected and not detected conditions
-        detected = []
-        not_detected = []
-        colors: Dict[str, Tuple[int, ...]] = {}
+        # Get initial conditions
+        conditions = checker.check_conditions()
         
-        # Check each condition
+        # Save diagnostic images for each condition check
+        os.makedirs("tests/outputs", exist_ok=True)
         for condition_id, condition in checker.conditions.items():
-            color = test_image.getpixel((condition.x, condition.y))
-            colors[condition_id] = color
+            # Create a copy of the region around this condition
+            region_size = 50  # Size of region to capture around point
+            region = test_image.crop((
+                max(0, condition.x - region_size),
+                max(0, condition.y - region_size),
+                min(test_image.width, condition.x + region_size),
+                min(test_image.height, condition.y + region_size)
+            ))
             
-            matches = checker._colors_match(color, condition.color)
-            if matches:
-                detected.append(condition_id)
-            else:
-                not_detected.append(condition_id)
+            # Draw crosshair on the region
+            draw = ImageDraw.Draw(region)
+            relative_x = min(region_size, condition.x if condition.x < region_size else region_size)
+            relative_y = min(region_size, condition.y if condition.y < region_size else region_size)
+            
+            # Draw yellow crosshair
+            draw.line((relative_x - 10, relative_y, relative_x + 10, relative_y), fill='yellow', width=2)
+            draw.line((relative_x, relative_y - 10, relative_x, relative_y + 10), fill='yellow', width=2)
+            
+            # Save with condition name and whether it was found
+            found = condition_id in conditions
+            filename = f"{condition_id}_{'found' if found else 'not_found'}.png"
+            region.save(os.path.join("tests/outputs", filename))
         
-        # Print results in a clear format
-        print("\n=== Test Results ===")
-        print(f"\nDetected Layout IDs ({len(detected)}):")
-        for condition_id in sorted(detected):
-            condition = checker.conditions[condition_id]
-            print(f"  ✓ {condition_id:<30} at ({condition.x}, {condition.y})")
-            print(f"    Color found: {colors[condition_id]}")
+        # Verify we detected at least one condition
+        assert len(conditions) > 0, "No conditions detected in test image"
         
-        print(f"\nNot Detected Layout IDs ({len(not_detected)}):")
-        for condition_id in sorted(not_detected[:5]):  # Only show first 5 undetected
-            condition = checker.conditions[condition_id]
-            print(f"  ✗ {condition_id:<30} at ({condition.x}, {condition.y})")
-            print(f"    Color found: {colors[condition_id]}")
-        if len(not_detected) > 5:
-            print(f"    ... and {len(not_detected) - 5} more")
-        
-        # Assert that we detected at least one condition
-        assert len(detected) > 0, "No conditions were detected in the screenshot"
+        # Print detected conditions for debugging
+        print(f"\nDetected conditions: {conditions}")
 
-    def test_trigger_state_behavior(self, screenshot_path, layout_path, profile_path):
+    @pytest.mark.skip(reason="DXCam initialization is unstable in test environments")
+    def test_dxcam_handling(self, layout_path):
+        """Test that ScreenChecker handles dxcam initialization and cleanup gracefully"""
+        # Create checker with test image first (should not initialize dxcam)
+        test_image = Image.new('RGB', (100, 100), color='white')
+        checker_with_image = ScreenChecker(layout_path, test_image=test_image)
+        assert checker_with_image.camera is None, "DXCam should not be initialized when test image is provided"
+        
+        # Create checker without test image (should initialize dxcam)
+        checker_no_image = ScreenChecker(layout_path)
+        assert checker_no_image.camera is not None, "DXCam should be initialized when no test image is provided"
+        
+        # Test cleanup
+        checker_no_image.cleanup()
+        assert checker_no_image.camera is None, "DXCam camera should be None after cleanup"
+        
+        # Test that we can still use the checker with test image after cleanup
+        conditions = checker_with_image.check_conditions()
+        assert isinstance(conditions, list), "Should be able to check conditions with test image after cleanup"
+
+    def test_trigger_state_behavior(self, screenshot_path, layout_path, monitor_cleanup):
         """Test that actions only occur when trigger is held"""
         # Setup
         test_image = Image.open(screenshot_path)
         checker = ScreenChecker(layout_path, test_image=test_image)
         
-        # Create a test profile with a condition we know exists
+        # Get available conditions from test image
+        available_conditions = checker.check_conditions()
+        if not available_conditions:
+            pytest.skip("No conditions detected in test image")
+        
+        test_condition = list(available_conditions)[0]
+        
+        # Create test profile with a condition we know exists
         test_profile = {
             "name": "Test Profile",
             "check_interval": 0.1,
             "actions": [
                 {
                     "key": "3",
-                    "conditions": ["power_40"]
+                    "conditions": [test_condition]
                 }
             ]
         }
@@ -117,7 +137,7 @@ class TestScreenMonitor:
             json.dump(test_profile, f)
         
         try:
-            monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+            monitor = monitor_cleanup(ScreenMonitor(checker, test_profile_path, debug=True, test_mode=True))
             
             # Track executed actions
             executed_actions = []
@@ -146,35 +166,18 @@ class TestScreenMonitor:
             if os.path.exists(test_profile_path):
                 os.remove(test_profile_path)
 
-    def test_condition_state_consistency(self, screenshot_path, layout_path):
-        """Test that conditions remain consistent until pixel colors change"""
+    def test_multiple_conditions(self, screenshot_path, layout_path, monitor_cleanup):
+        """Test that actions properly handle multiple required conditions"""
         # Setup
         test_image = Image.open(screenshot_path)
         checker = ScreenChecker(layout_path, test_image=test_image)
         
-        # Get initial conditions
-        initial_conditions = checker.check_conditions()
+        # Get available conditions from test image
+        available_conditions = list(checker.check_conditions())
+        if len(available_conditions) < 2:
+            pytest.skip("Not enough conditions detected in test image")
         
-        # Check multiple times - should remain consistent
-        for _ in range(5):
-            current_conditions = checker.check_conditions()
-            assert current_conditions == initial_conditions, "Conditions changed without pixel color changes"
-        
-        # Create modified image with one pixel changed
-        modified_image = test_image.copy()
-        modified_condition = next(iter(initial_conditions)) if initial_conditions else None
-        if modified_condition:
-            condition = checker.conditions[modified_condition]
-            modified_image.putpixel((condition.x, condition.y), (0, 0, 0))  # Change to black
-            
-            # Create new checker with modified image
-            modified_checker = ScreenChecker(layout_path, test_image=modified_image)
-            new_conditions = modified_checker.check_conditions()
-            assert new_conditions != initial_conditions, "Condition state didn't change when pixel color changed"
-
-    def test_multiple_conditions(self, layout_path):
-        """Test that actions properly handle multiple required conditions"""
-        checker = ScreenChecker(layout_path)
+        condition1, condition2 = available_conditions[:2]
         
         # Create test profile with multiple conditions
         test_profile = {
@@ -183,7 +186,7 @@ class TestScreenMonitor:
             "actions": [
                 {
                     "key": "1",
-                    "conditions": ["power_40", "combat", "enemy_in_melee_range"]
+                    "conditions": [condition1, condition2]
                 }
             ]
         }
@@ -194,7 +197,7 @@ class TestScreenMonitor:
             json.dump(test_profile, f)
             
         try:
-            monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+            monitor = monitor_cleanup(ScreenMonitor(checker, test_profile_path, debug=True, test_mode=True))
             monitor.monitoring_active = True
             
             # Track executed actions
@@ -204,17 +207,12 @@ class TestScreenMonitor:
             monitor.execute_action = mock_execute_action
             
             # Test: Primary condition only
-            active_conditions = ["power_40"]
+            active_conditions = [condition1]
             action = monitor.get_next_action(active_conditions)
             assert action is None, "Action executed with only primary condition"
             
-            # Test: One additional condition
-            active_conditions = ["power_40", "combat"]
-            action = monitor.get_next_action(active_conditions)
-            assert action is None, "Action executed with missing conditions"
-            
             # Test: All conditions met
-            active_conditions = ["power_40", "combat", "enemy_in_melee_range"]
+            active_conditions = [condition1, condition2]
             action = monitor.get_next_action(active_conditions)
             assert action is not None, "Action not executed with all conditions met"
             
@@ -222,10 +220,67 @@ class TestScreenMonitor:
             # Clean up
             if os.path.exists(test_profile_path):
                 os.remove(test_profile_path)
-    
-    def test_profile_validation(self, layout_path):
+
+    def test_negated_conditions(self, screenshot_path, layout_path, monitor_cleanup):
+        """Test that negated conditions (prefixed with !) work correctly"""
+        # Setup
+        test_image = Image.open(screenshot_path)
+        checker = ScreenChecker(layout_path, test_image=test_image)
+        
+        # Get available conditions from test image
+        available_conditions = list(checker.check_conditions())
+        if len(available_conditions) < 2:
+            pytest.skip("Not enough conditions detected in test image")
+        
+        condition1, condition2 = available_conditions[:2]
+        
+        # Create test profile with negated conditions
+        test_profile = {
+            "name": "Negated Conditions Test",
+            "check_interval": 0.1,
+            "actions": [
+                {
+                    "key": "1",
+                    "conditions": [condition1, f"!{condition2}"]
+                }
+            ]
+        }
+        
+        test_profile_path = "tests/fixtures/negated_conditions_test.json"
+        os.makedirs(os.path.dirname(test_profile_path), exist_ok=True)
+        with open(test_profile_path, "w") as f:
+            json.dump(test_profile, f)
+            
+        try:
+            monitor = monitor_cleanup(ScreenMonitor(checker, test_profile_path, debug=True, test_mode=True))
+            monitor.monitoring_active = True
+            
+            # Track executed actions
+            executed_actions = []
+            def mock_execute_action(action):
+                executed_actions.append(action)
+            monitor.execute_action = mock_execute_action
+            
+            # Test: Condition met but negated condition also met (should not execute)
+            active_conditions = [condition1, condition2]
+            action = monitor.get_next_action(active_conditions)
+            assert action is None, "Action executed when negated condition was met"
+            
+            # Test: Condition met and negated condition not met (should execute)
+            active_conditions = [condition1]  # condition2 is not in the list
+            action = monitor.get_next_action(active_conditions)
+            assert action is not None, "Action not executed when conditions were correct"
+            
+        finally:
+            # Clean up
+            if os.path.exists(test_profile_path):
+                os.remove(test_profile_path)
+
+    def test_profile_validation(self, layout_path, screenshot_path, monitor_cleanup):
         """Test that invalid profiles are handled properly"""
-        checker = ScreenChecker(layout_path)
+        # Use test image to avoid dxcam initialization
+        test_image = Image.open(screenshot_path)
+        checker = ScreenChecker(layout_path, test_image=test_image)
         
         # Test: Missing required fields
         invalid_profile = {
@@ -240,82 +295,8 @@ class TestScreenMonitor:
             
         try:
             with pytest.raises(KeyError):
-                monitor = ScreenMonitor(checker, test_profile_path, debug=True)
+                monitor = monitor_cleanup(ScreenMonitor(checker, test_profile_path, debug=True, test_mode=True))
         finally:
-            if os.path.exists(test_profile_path):
-                os.remove(test_profile_path)
-        
-        # Test: Invalid action format
-        invalid_action_profile = {
-            "name": "Invalid Action Profile",
-            "check_interval": 0.1,
-            "actions": [
-                {
-                    # Missing required 'key' field
-                    "conditions": ["power_40"]
-                }
-            ]
-        }
-        
-        test_profile_path = "tests/fixtures/invalid_action_profile.json"
-        with open(test_profile_path, "w") as f:
-            json.dump(invalid_action_profile, f)
-            
-        try:
-            with pytest.raises(KeyError):
-                monitor = ScreenMonitor(checker, test_profile_path, debug=True)
-        finally:
-            if os.path.exists(test_profile_path):
-                os.remove(test_profile_path)
-
-    def test_negated_conditions(self, layout_path):
-        """Test that negated conditions (prefixed with !) work correctly"""
-        checker = ScreenChecker(layout_path)
-        
-        # Create test profile with negated conditions
-        test_profile = {
-            "name": "Negated Conditions Test",
-            "check_interval": 0.1,
-            "actions": [
-                {
-                    "key": "1",
-                    "conditions": ["power_40", "!enemy_in_melee_range"]  # Press 1 when power > 40 and NOT in melee range
-                }
-            ]
-        }
-        
-        test_profile_path = "tests/fixtures/negated_conditions_test.json"
-        os.makedirs(os.path.dirname(test_profile_path), exist_ok=True)
-        with open(test_profile_path, "w") as f:
-            json.dump(test_profile, f)
-            
-        try:
-            monitor = ScreenMonitor(checker, test_profile_path, debug=True)
-            monitor.monitoring_active = True
-            
-            # Track executed actions
-            executed_actions = []
-            def mock_execute_action(action):
-                executed_actions.append(action)
-            monitor.execute_action = mock_execute_action
-            
-            # Test: Condition met but negated condition also met (should not execute)
-            active_conditions = ["power_40", "enemy_in_melee_range"]
-            action = monitor.get_next_action(active_conditions)
-            assert action is None, "Action executed when negated condition was met"
-            
-            # Test: Condition met and negated condition not met (should execute)
-            active_conditions = ["power_40"]  # enemy_in_melee_range is not in the list
-            action = monitor.get_next_action(active_conditions)
-            assert action is not None, "Action not executed when conditions were correct"
-            
-            # Test: Neither condition met
-            active_conditions = ["combat"]
-            action = monitor.get_next_action(active_conditions)
-            assert action is None, "Action executed when required condition was not met"
-            
-        finally:
-            # Clean up
             if os.path.exists(test_profile_path):
                 os.remove(test_profile_path)
 

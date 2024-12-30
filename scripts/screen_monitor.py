@@ -10,7 +10,6 @@ import inputs
 from pynput import keyboard
 from pynput.keyboard import Key, Controller, Listener, KeyCode
 from src.core.screen_checker import ScreenChecker
-from inputs import get_gamepad
 
 # Add project root to Python path
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,7 +18,7 @@ sys.path.insert(0, project_root)
 from config import INPUT_SETTINGS
 
 class ScreenMonitor:
-    def __init__(self, checker: ScreenChecker, profile_path: str, debug: bool = False):
+    def __init__(self, checker: ScreenChecker, profile_path: str, debug: bool = False, test_mode: bool = False):
         """Initialize the screen monitor with a checker and profile"""
         self.checker = checker
         self.keyboard = Controller()
@@ -27,6 +26,7 @@ class ScreenMonitor:
         self.running = True
         self.monitoring_active = False
         self.last_check = 0
+        self.test_mode = test_mode
         
         # Load profile
         with open(profile_path, 'r') as f:
@@ -50,12 +50,23 @@ class ScreenMonitor:
         self.exit_key = INPUT_SETTINGS.get("exit_key", Key.esc)  # Default to escape key
         self.debug_key = INPUT_SETTINGS.get("debug_key", "u")  # Default to 'u' key
         
+        # Initialize state
+        self.trigger_held = False
+        self.keyboard_listener = None
+        self.gamepad_thread = None
+        self.gamepad_available = False
+        
+        # In test mode, don't start input monitoring
+        if not test_mode:
+            self.start()
+    
+    def start(self):
+        """Start monitoring (initialize keyboard and gamepad)"""
         # Initialize keyboard listener
         self.keyboard_listener = Listener(on_press=self._on_key_press, on_release=self._on_key_release)
         self.keyboard_listener.start()
         
         # Try to initialize gamepad
-        self.gamepad_available = False
         try:
             # Test if gamepad is available
             inputs.get_gamepad()
@@ -66,9 +77,14 @@ class ScreenMonitor:
             print("Gamepad detected and monitoring started")
         except Exception as e:
             print("No gamepad detected, using keyboard controls only")
-            
-        # Initialize state
-        self.trigger_held = False
+    
+    def stop(self):
+        """Stop monitoring and clean up resources"""
+        self.running = False
+        if self.keyboard_listener:
+            self.keyboard_listener.stop()
+        if self.gamepad_thread and self.gamepad_thread.is_alive():
+            self.gamepad_thread.join(timeout=1.0)
     
     def _on_key_press(self, key):
         """Handle keyboard press events"""
@@ -124,6 +140,8 @@ class ScreenMonitor:
     
     def is_monitoring_active(self):
         """Check if monitoring should be active based on current mode and trigger state"""
+        if self.test_mode:
+            return self.monitoring_active
         if self.trigger_mode == "toggle":
             return self.monitoring_active
         return self.trigger_held
@@ -162,6 +180,8 @@ class ScreenMonitor:
     
     def run(self):
         """Main monitoring loop"""
+        self.start()  # Initialize keyboard and gamepad
+        
         print("Starting monitor...")
         if self.gamepad_available:
             print(f"Using gamepad (right trigger) or keyboard ('{self.keyboard_trigger}' key)")
@@ -198,9 +218,7 @@ class ScreenMonitor:
                 print(f"\nError: {str(e)}")
         
         # Clean up
-        self.keyboard_listener.stop()
-        if self.gamepad_available:
-            self.gamepad_thread.join(timeout=1.0)
+        self.stop()
 
 def main():
     parser = argparse.ArgumentParser(description='Screen condition monitor')

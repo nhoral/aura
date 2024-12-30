@@ -66,17 +66,49 @@ class ScreenChecker:
         
         # For testing, use the provided test image
         self.test_image = test_image
+        self.camera = None
         
         # Initialize DXCam for production use
         if test_image is None:
-            self.camera = dxcam.create()
+            self.init_camera()
+
+    def init_camera(self):
+        """Initialize the dxcam camera if not already initialized"""
+        if self.camera is None and self.test_image is None:
+            try:
+                self.camera = dxcam.create()
+            except Exception as e:
+                print(f"Warning: Failed to initialize dxcam: {str(e)}")
+                self.camera = None
+        return self.camera
+
+    def cleanup(self):
+        """Clean up resources, especially dxcam"""
+        if self.camera is not None:
+            try:
+                # First try to release the camera
+                self.camera.release()
+            except Exception as e:
+                print(f"Warning: Failed to release dxcam: {str(e)}")
+            finally:
+                # Always set camera to None, even if release fails
+                self.camera = None
+                
+    def __del__(self):
+        """Ensure cleanup on deletion"""
+        try:
+            self.cleanup()
+        except Exception:
+            pass  # Ignore cleanup errors during garbage collection
 
     def save_debug_image(self, screen=None):
         """Save the raw screen capture without any overlays or color conversion"""
-        if screen is None:
+        if screen is None and self.test_image is None:
             # Try to grab the screen a few times in case of temporary failures
             for attempt in range(3):
                 try:
+                    if self.camera is None:
+                        self.init_camera()
                     screen = self.camera.grab()
                     if screen is not None:
                         break
@@ -89,7 +121,10 @@ class ScreenChecker:
         
         try:
             # Convert directly to PIL Image without any color conversion
-            image = Image.fromarray(screen)
+            if screen is not None:
+                image = Image.fromarray(screen)
+            else:
+                image = self.test_image
             
             # Save with timestamp
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -104,6 +139,10 @@ class ScreenChecker:
         if self.test_image is not None:
             screen = self.test_image
         else:
+            if self.camera is None:
+                self.init_camera()
+            if self.camera is None:  # Still None after init attempt
+                return []
             screen = self.camera.grab()  # Returns numpy array in RGB format
             if screen is None:
                 return []
