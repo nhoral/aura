@@ -1,0 +1,45 @@
+{
+    "name": "Death Knight",
+    "actions": [
+        {
+            "name": "Icebound Fortitude",
+            "key": "6",
+            "conditions": ["icebound_fortitude", "health_below_50"]
+        },
+        {
+            "name": "Frost Strike",
+            "key": "7",
+            "conditions": ["range_8", "power_80"]
+        },
+        {
+            "name": "Frost Strike",
+            "key": "7",
+            "conditions": ["!rune_1", "power_30"]
+        },
+        {
+            "name": "Death Coil",
+            "key": "2",
+            "conditions": ["power_30", "range_50", "!range_8"]
+        },
+        {
+            "name": "Death Coil",
+            "key": "2",
+            "conditions": ["power_30", "range_30", "!range_8"]
+        },
+        {
+            "name": "Death Grip",
+            "key": "3",
+            "conditions": ["death_grip", "!range_8", "range_30"]
+        },
+        {
+            "name": "Death and Decay",
+            "key": "4",
+            "conditions": ["death_and_decay", "enemies_in_melee", "rune_1"]
+        },
+        {
+            "name": "Rune Strike",
+            "key": "1",
+            "conditions": ["range_8", "rune_1"]
+        }
+    ]
+} 

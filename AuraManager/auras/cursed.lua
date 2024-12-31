@@ -8,7 +8,7 @@ ns.auras["cursed"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 92,
+    xOffset = 76,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -38,17 +38,13 @@ ns.auras["cursed"] = {
         {
             trigger = {
                 type = "aura2",
-                debuffType = "HARMFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Health",
                 names = {},
-                spellIds = {},
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
+                event = "Health",
                 unit = "player",
-                useRem = false,
-                matchesShowOn = "showOnActive",
-                unitExists = false,
-                useName = false,
+                spellIds = {},
+                debuffType = "HARMFUL",
                 auranames = {
                     "Curse of Agony",
                     "17292",
@@ -73,7 +69,11 @@ ns.auras["cursed"] = {
                     "16400",
                     "8313",
                 },
+                matchesShowOn = "showOnActive",
+                unitExists = false,
                 use_debuffClass = true,
+                useName = false,
+                useRem = false,
                 debuffClass = {
                     curse = true,
                 },
@@ -83,19 +83,19 @@ ns.auras["cursed"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "ROGUE",
             multi = {
                 ROGUE = true,
             },
-            single = "ROGUE",
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

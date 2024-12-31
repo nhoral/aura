@@ -8,7 +8,7 @@ ns.auras["combat"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 68,
+    xOffset = 52,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -38,21 +38,21 @@ ns.auras["combat"] = {
         {
             trigger = {
                 type = "unit",
-                debuffType = "BOTH",
-                subeventSuffix = "_CAST_START",
-                event = "Conditions",
                 names = {},
-                spellIds = {},
-                use_unit = true,
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
+                event = "Conditions",
                 unit = "player",
-                useRem = false,
-                matchesShowOn = "showOnActive",
-                unitExists = false,
-                useName = true,
+                spellIds = {},
+                debuffType = "BOTH",
+                use_unit = true,
                 auranames = {
                     "Demon Skin",
                 },
+                matchesShowOn = "showOnActive",
+                unitExists = false,
+                useName = true,
+                useRem = false,
                 ownOnly = true,
                 use_incombat = true,
             },
@@ -61,19 +61,19 @@ ns.auras["combat"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "DRUID",
             multi = {
                 DRUID = true,
             },
-            single = "DRUID",
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

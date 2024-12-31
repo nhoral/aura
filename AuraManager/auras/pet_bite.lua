@@ -1,0 +1,142 @@
+
+local ADDON_NAME, ns = ...
+ns.auras = ns.auras or {}
+ns.auras["pet_bite"] = {
+    id = "Pet Bite",
+    uid = "TOfCRVOn7IM",
+    internalVersion = 78,
+    regionType = "aurabar",
+    anchorPoint = "CENTER",
+    selfPoint = "CENTER",
+    xOffset = 40,
+    yOffset = -8,
+    width = 3,
+    height = 3,
+    frameStrata = 1,
+    barColor = {
+        1,
+        0,
+        0,
+        1,
+    },
+    barColor2 = {
+        1,
+        0,
+        0,
+        1,
+    },
+    backgroundColor = {
+        1,
+        0,
+        0,
+        1,
+    },
+    texture = "Solid",
+    textureSource = "LSM",
+    triggers = {
+        activeTriggerMode = -10,
+        {
+            trigger = {
+                type = "spell",
+                names = {},
+                subeventSuffix = "",
+                subeventPrefix = "DAMAGE_SHIELD",
+                use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "target",
+                realSpellName = "Bite",
+                use_spellName = true,
+                spellIds = {},
+                spellName = 17255,
+                genericShowOn = "showOnCooldown",
+                use_track = true,
+                debuffType = "HARMFUL",
+                use_unit = true,
+                itemName = 7285,
+                use_count = false,
+                auranames = {
+                    "Moonfire",
+                },
+                matchesShowOn = "showOnActive",
+                unitExists = false,
+                use_itemName = true,
+                useName = true,
+                useRem = false,
+                use_threatvalue = false,
+                use_delay = true,
+                use_alertType = true,
+                eventtype = "PLAYER_REGEN_ENABLED",
+                threatpct = {
+                    "100",
+                },
+                threatpct_operator = {
+                    ">=",
+                },
+                use_threatpct = false,
+                status = 3,
+                use_aggro = true,
+                use_eventtype = true,
+                use_status = false,
+                use_sourceUnit = false,
+                duration = "1",
+                ownOnly = true,
+                use_messageType = true,
+                use_itemBonusId = true,
+                use_itemSlot = false,
+                itemTypeName = {},
+                itemBonusId = "15310",
+                use_itemSetId = true,
+                use_itemTypeName = false,
+                use_equipped = true,
+            },
+            untrigger = {},
+        },
+    },
+    conditions = {},
+    load = {
+        talent = {
+            multi = {},
+        },
+        spec = {
+            multi = {},
+        },
+        class = {
+            single = "DRUID",
+            multi = {
+                DRUID = true,
+            },
+        },
+        size = {
+            multi = {},
+        },
+    },
+    animation = {
+        start = {
+            type = "none",
+            easeStrength = 3,
+            duration_type = "seconds",
+            easeType = "none",
+        },
+        main = {
+            type = "none",
+            easeStrength = 3,
+            duration_type = "seconds",
+            easeType = "none",
+        },
+        finish = {
+            type = "none",
+            easeStrength = 3,
+            duration_type = "seconds",
+            easeType = "none",
+        },
+    },
+    subRegions = {
+        {
+            type = "subbackground",
+        },
+        {
+            type = "subforeground",
+        },
+    },
+    information = {},
+}

@@ -8,7 +8,7 @@ ns.auras["fire_school_lockout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 60,
+    xOffset = 8,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,54 +38,54 @@ ns.auras["fire_school_lockout"] = {
         {
             trigger = {
                 type = "unit",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Crowd Controlled",
                 names = {},
-                spellIds = {},
-                use_unit = true,
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
+                event = "Crowd Controlled",
                 unit = "target",
-                useRem = false,
-                matchesShowOn = "showOnActive",
-                unitExists = false,
-                useName = true,
+                spellIds = {},
+                use_inverse = false,
+                debuffType = "HELPFUL",
+                use_unit = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
+                matchesShowOn = "showOnActive",
+                unitExists = false,
                 use_debuffClass = false,
+                useName = true,
+                useRem = false,
                 debuffClass = {
                     magic = true,
                 },
-                auraspellids = {
-                    "116",
-                },
-                useExactSpellId = false,
-                use_inverse = false,
                 use_controlType = true,
                 use_interruptSchool = true,
                 interruptSchool = 4,
                 controlType = "SCHOOL_INTERRUPT",
+                auraspellids = {
+                    "116",
+                },
+                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "MAGE",
             multi = {
                 ROGUE = true,
                 MAGE = true,
             },
-            single = "MAGE",
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

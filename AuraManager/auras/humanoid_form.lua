@@ -8,7 +8,7 @@ ns.auras["humanoid_form"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
+    xOffset = 56,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,24 +38,24 @@ ns.auras["humanoid_form"] = {
         {
             trigger = {
                 type = "unit",
-                debuffType = "BOTH",
-                subeventSuffix = "_CAST_START",
-                event = "Stance/Form/Aura",
                 names = {},
-                spellIds = {},
-                use_unit = true,
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
+                event = "Stance/Form/Aura",
                 unit = "player",
-                useRem = false,
-                matchesShowOn = "showOnActive",
-                unitExists = false,
-                useName = true,
+                spellIds = {},
+                debuffType = "BOTH",
+                use_unit = true,
                 auranames = {
                     "Bear Form",
                 },
-                ownOnly = true,
+                matchesShowOn = "showOnActive",
+                unitExists = false,
                 use_debuffClass = false,
+                useName = true,
                 useNamePattern = false,
+                useRem = false,
+                ownOnly = true,
                 use_form = true,
                 form = {
                     single = 0,
@@ -66,19 +66,19 @@ ns.auras["humanoid_form"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "DRUID",
             multi = {
                 DRUID = true,
             },
-            single = "DRUID",
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

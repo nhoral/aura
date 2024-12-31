@@ -8,7 +8,7 @@ ns.auras["arcane_shot"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
+    xOffset = 12,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -38,47 +38,47 @@ ns.auras["arcane_shot"] = {
         {
             trigger = {
                 type = "spell",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Cooldown Progress (Spell)",
                 names = {},
-                spellIds = {},
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
-                unit = "player",
-                spellName = 14281,
                 use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "player",
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
+                spellIds = {},
+                spellName = 14281,
                 genericShowOn = "showOnCooldown",
-                use_exact_spellName = false,
                 use_track = true,
+                debuffType = "HELPFUL",
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
-            multi = {
-                ROGUE = true,
-                HUNTER = true,
-            },
             single = "HUNTER",
-        },
-        talent = {
-            multi = {},
-        },
-        race = {
             multi = {
-                Scourge = true,
+                HUNTER = true,
+                ROGUE = true,
             },
-            single = "Scourge",
+        },
+        size = {
+            multi = {},
         },
         use_class = false,
     },

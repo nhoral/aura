@@ -8,7 +8,7 @@ ns.auras["growl"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
+    xOffset = 40,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -38,48 +38,48 @@ ns.auras["growl"] = {
         {
             trigger = {
                 type = "spell",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Cooldown Progress (Spell)",
                 names = {},
-                spellIds = {},
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
-                unit = "player",
-                spellName = 6795,
                 use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "player",
                 realSpellName = "Growl",
                 use_spellName = true,
+                spellIds = {},
+                spellName = 6795,
                 genericShowOn = "showOnCooldown",
-                use_exact_spellName = false,
                 use_track = true,
+                debuffType = "HELPFUL",
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
-            multi = {
-                ROGUE = true,
-                DRUID = true,
-                HUNTER = true,
-            },
             single = "DRUID",
-        },
-        talent = {
-            multi = {},
-        },
-        race = {
             multi = {
-                Scourge = true,
+                HUNTER = true,
+                DRUID = true,
+                ROGUE = true,
             },
-            single = "Scourge",
+        },
+        size = {
+            multi = {},
         },
     },
     animation = {

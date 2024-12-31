@@ -8,7 +8,7 @@ ns.auras["nature's_grasp"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 12,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -38,47 +38,47 @@ ns.auras["nature's_grasp"] = {
         {
             trigger = {
                 type = "spell",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Cooldown Progress (Spell)",
                 names = {},
-                spellIds = {},
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
-                unit = "player",
-                spellName = 16689,
                 use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "player",
                 realSpellName = "Nature's Grasp",
                 use_spellName = true,
+                spellIds = {},
+                spellName = 16689,
                 genericShowOn = "showOnCooldown",
-                use_exact_spellName = false,
                 use_track = true,
+                debuffType = "HELPFUL",
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
-            multi = {
-                ROGUE = true,
-                DRUID = true,
-            },
             single = "DRUID",
-        },
-        talent = {
-            multi = {},
-        },
-        race = {
             multi = {
-                Scourge = true,
+                DRUID = true,
+                ROGUE = true,
             },
-            single = "Scourge",
+        },
+        size = {
+            multi = {},
         },
     },
     animation = {

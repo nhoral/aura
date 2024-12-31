@@ -8,7 +8,7 @@ ns.auras["savage_roar"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 72,
+    xOffset = 28,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -34,61 +34,44 @@ ns.auras["savage_roar"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        activeTriggerMode = -10,
         disjunctive = "any",
-        {
-            trigger = {
-                type = "aura2",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Health",
-                names = {},
-                spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                useRem = false,
-                matchesShowOn = "showOnActive",
-                unitExists = false,
-                useName = true,
-                auranames = {
-                    "407988",
-                },
-                ownOnly = true,
-            },
-            untrigger = {},
-        },
+        activeTriggerMode = -10,
         {
             trigger = {
                 type = "spell",
-                debuffType = "HELPFUL",
+                names = {},
+                subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
-                spellName = 407988,
-                use_genericShowOn = true,
                 realSpellName = "Savage Roar",
                 use_spellName = true,
+                spellIds = {},
+                spellName = 407988,
                 genericShowOn = "showOnCooldown",
+                use_inverse = false,
                 use_track = true,
-                use_inverse = true,
+                debuffType = "HELPFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "DRUID",
             multi = {
                 DRUID = true,
             },
-            single = "DRUID",
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

@@ -8,8 +8,8 @@ ns.auras["target_is_player"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
-    yOffset = -20,
+    xOffset = 80,
+    yOffset = -16,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,26 +34,26 @@ ns.auras["target_is_player"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        activeTriggerMode = 1,
         disjunctive = "all",
+        activeTriggerMode = 1,
         {
             trigger = {
                 type = "unit",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Unit Characteristics",
                 names = {},
-                spellIds = {},
-                use_unit = true,
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
+                event = "Unit Characteristics",
                 unit = "target",
-                use_class = false,
+                spellIds = {},
+                debuffType = "HELPFUL",
+                use_unit = true,
                 duration = "1",
-                unevent = "auto",
-                custom_type = "stateupdate",
-                check = "update",
-                customVariables = "{}",
+                use_class = false,
                 custom_hide = "timed",
+                customVariables = "{}",
+                custom_type = "stateupdate",
+                unevent = "auto",
+                check = "update",
                 use_unitisunit = false,
                 use_character = true,
                 character = "player",
@@ -64,27 +64,27 @@ ns.auras["target_is_player"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "WARLOCK",
             multi = {
                 WARLOCK = true,
             },
-            single = "WARLOCK",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
+        use_level = false,
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },

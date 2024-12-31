@@ -8,8 +8,8 @@ ns.auras["enemy_loose"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 8,
-    yOffset = -4,
+    xOffset = 104,
+    yOffset = 0,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,18 +38,20 @@ ns.auras["enemy_loose"] = {
         {
             trigger = {
                 type = "custom",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                event = "Health",
                 names = {},
-                spellIds = {},
-                use_unit = true,
+                subeventSuffix = "_CAST_START",
                 subeventPrefix = "SPELL",
+                event = "Health",
                 unit = "player",
-                duration = "1",
+                spellIds = {},
+                debuffType = "HELPFUL",
+                use_unit = true,
                 use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
-                unevent = "auto",
+                duration = "1",
+                customVariables = [[{
+  stacks = true,
+}]],
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -86,30 +88,28 @@ ns.auras["enemy_loose"] = {
         return true
     end
 end]],
-                custom_type = "stateupdate",
+                unevent = "auto",
                 check = "update",
-                customVariables = [[{
-  stacks = true,
-}]],
+                customStacks = [[function() return aura_env.count end]],
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         spec = {
             multi = {},
         },
         class = {
+            single = "WARRIOR",
             multi = {
                 WARRIOR = true,
             },
-            single = "WARRIOR",
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
