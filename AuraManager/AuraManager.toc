@@ -29,6 +29,7 @@ auras/counterspell.lua
 auras/curse_of_agony_debuff.lua
 auras/curse_of_weakness_debuff.lua
 auras/cursed.lua
+auras/death's_advance.lua
 auras/death_and_decay.lua
 auras/death_grip.lua
 auras/demon_skin_buff.lua

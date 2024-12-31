@@ -38,20 +38,20 @@ ns.auras["combat"] = {
         {
             trigger = {
                 type = "unit",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
+                names = {},
                 event = "Conditions",
                 unit = "player",
                 spellIds = {},
+                subeventPrefix = "SPELL",
                 debuffType = "BOTH",
                 use_unit = true,
                 auranames = {
                     "Demon Skin",
                 },
-                matchesShowOn = "showOnActive",
                 unitExists = false,
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
                 ownOnly = true,
                 use_incombat = true,

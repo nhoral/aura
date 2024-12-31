@@ -8,7 +8,7 @@ ns.auras["target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 56,
+    xOffset = 60,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -38,16 +38,16 @@ ns.auras["target_aggro"] = {
         {
             trigger = {
                 type = "custom",
-                names = {},
+                spellName = 5176,
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
+                names = {},
                 use_genericShowOn = true,
                 event = "Conditions",
                 unit = "target",
                 realSpellName = "Wrath",
                 use_spellName = true,
                 spellIds = {},
-                spellName = 5176,
+                subeventPrefix = "SPELL",
                 genericShowOn = "showOnCooldown",
                 use_inverse = false,
                 use_track = true,
@@ -62,8 +62,8 @@ ns.auras["target_aggro"] = {
                 use_targetRequired = false,
                 use_moveSpeed = false,
                 use_ismoving = true,
-                customVariables = "{}",
                 custom_type = "stateupdate",
+                check = "update",
                 custom = [[function(allstates)
     if not UnitAffectingCombat("player") then
         allstates[""] = allstates[""] or {show = false}
@@ -90,7 +90,7 @@ ns.auras["target_aggro"] = {
     
     return true
 end]],
-                check = "update",
+                customVariables = "{}",
                 use_spec = true,
             },
             untrigger = {},

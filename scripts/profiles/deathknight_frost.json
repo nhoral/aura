@@ -2,9 +2,24 @@
     "name": "Death Knight",
     "actions": [
         {
+            "name": "Death's Advance",
+            "key": "8",
+            "conditions": ["health_under_20", "death's advance"]
+        },
+        {
+            "name": "Death's Advance OOC",
+            "key": "8",
+            "conditions": ["!combat", "death's_advance"]
+        },
+        {
             "name": "Icebound Fortitude",
             "key": "6",
             "conditions": ["icebound_fortitude", "health_under_75"]
+        },
+        {
+            "name": "Raise Dead",
+            "key": "5",
+            "conditions": ["raise_dead", "combat"]
         },
         {
             "name": "Frost Strike",
@@ -12,7 +27,7 @@
             "conditions": ["range_8", "power_80"]
         },
         {
-            "name": "Frost Strike",
+            "name": "Frost Strike No Runes",
             "key": "7",
             "conditions": ["!rune_1", "power_30", "range_8"]
         },

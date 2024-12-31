@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["omen_of_clarity_buff"] = {
-    id = "Omen of Clarity Buff",
-    uid = "HLZneWlFxUo",
+ns.auras["death's_advance"] = {
+    id = "Death's Advance",
+    uid = "wO5N58GciJD",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
-    yOffset = -8,
+    xOffset = 88,
+    yOffset = 0,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,34 +34,36 @@ ns.auras["omen_of_clarity_buff"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        disjunctive = "any",
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "aura2",
+                type = "spell",
+                spellName = 48265,
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
+                use_genericShowOn = true,
+                event = "Action Usable",
                 unit = "player",
+                realSpellName = "Arcane Blast",
+                use_spellName = true,
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                genericShowOn = "showOnCooldown",
+                use_inverse = false,
+                use_track = true,
                 debuffType = "HELPFUL",
-                auranames = {
-                    "Omen of Clarity",
-                },
-                unitExists = false,
-                useName = true,
-                use_debuffClass = false,
-                matchesShowOn = "showOnActive",
-                useNamePattern = false,
-                useRem = false,
-                ownOnly = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
         talent = {
             multi = {},
         },
@@ -69,9 +71,10 @@ ns.auras["omen_of_clarity_buff"] = {
             multi = {},
         },
         class = {
-            single = "DRUID",
+            single = "MAGE",
             multi = {
-                DRUID = true,
+                ROGUE = true,
+                MAGE = true,
             },
         },
         size = {

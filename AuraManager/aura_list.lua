@@ -20,6 +20,7 @@ ns.aura_list = {
     "curse_of_agony_debuff",
     "curse_of_weakness_debuff",
     "cursed",
+    "death's_advance",
     "death_and_decay",
     "death_grip",
     "demon_skin_buff",

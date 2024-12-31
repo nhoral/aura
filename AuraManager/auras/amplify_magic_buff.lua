@@ -38,19 +38,19 @@ ns.auras["amplify_magic_buff"] = {
         {
             trigger = {
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
+                names = {},
                 event = "Health",
                 unit = "player",
                 spellIds = {},
+                subeventPrefix = "SPELL",
                 debuffType = "BOTH",
                 auranames = {
                     "Amplify Magic",
                 },
-                matchesShowOn = "showOnActive",
                 unitExists = false,
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
                 ownOnly = true,
             },

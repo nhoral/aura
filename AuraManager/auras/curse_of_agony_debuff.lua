@@ -38,19 +38,19 @@ ns.auras["curse_of_agony_debuff"] = {
         {
             trigger = {
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
+                names = {},
                 event = "Health",
                 unit = "target",
                 spellIds = {},
+                subeventPrefix = "SPELL",
                 debuffType = "HARMFUL",
                 auranames = {
                     "Curse of Agony",
                 },
-                matchesShowOn = "showOnActive",
                 unitExists = false,
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
                 ownOnly = true,
             },
