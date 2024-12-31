@@ -23,6 +23,7 @@ auras/bomb_in_inventory.lua
 auras/cat_form.lua
 auras/clearcasting_buff.lua
 auras/combat.lua
+auras/combat_start.lua
 auras/concussive_shot_cooldown.lua
 auras/corruption_debuff.lua
 auras/counterspell.lua
@@ -38,7 +39,6 @@ auras/demoralizing_shout_debuff.lua
 auras/distracting_shot.lua
 auras/enemy_loose.lua
 auras/entangled_debuff.lua
-auras/entered_combat.lua
 auras/evasion.lua
 auras/faerie_fire_debuff.lua
 auras/fingers_of_frost_buff.lua
@@ -60,6 +60,7 @@ auras/icebound_fortitude.lua
 auras/immolate_debuff.lua
 auras/kick.lua
 auras/leaving_combat.lua
+auras/lichborne.lua
 auras/mana_10.lua
 auras/mana_100.lua
 auras/mana_20.lua
@@ -94,7 +95,9 @@ auras/pet_range_8.lua
 auras/pet_target_aggro.lua
 auras/player_casting.lua
 auras/player_casting_heal.lua
+auras/player_charmed.lua
 auras/player_dodge.lua
+auras/player_feared.lua
 auras/player_has_pet.lua
 auras/player_moving.lua
 auras/player_rooted.lua
@@ -131,6 +134,7 @@ auras/recently_bandaged_debuff.lua
 auras/regeneration.lua
 auras/rejuvenation_buff.lua
 auras/rip_debuff.lua
+auras/rocket_barrage.lua
 auras/role_toggle.lua
 auras/rune_1.lua
 auras/rune_2.lua

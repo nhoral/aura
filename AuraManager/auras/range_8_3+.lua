@@ -8,7 +8,7 @@ ns.auras["range_8_3+"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 116,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -38,18 +38,16 @@ ns.auras["range_8_3+"] = {
         {
             trigger = {
                 type = "custom",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                names = {},
-                event = "Health",
                 unit = "player",
+                event = "Health",
+                names = {},
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 use_unit = true,
                 use_absorbMode = true,
                 duration = "1",
-                custom_type = "stateupdate",
-                check = "update",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -85,6 +83,8 @@ ns.auras["range_8_3+"] = {
         return true
     end
 end]],
+                check = "update",
+                custom_type = "stateupdate",
                 unevent = "auto",
                 customVariables = [[{
   stacks = true,

@@ -38,23 +38,23 @@ ns.auras["bear_form"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "BOTH",
                 subeventSuffix = "_CAST_START",
-                names = {},
-                event = "Stance/Form/Aura",
                 unit = "player",
+                event = "Stance/Form/Aura",
+                names = {},
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "BOTH",
                 use_unit = true,
                 auranames = {
                     "Bear Form",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
                 useNamePattern = false,
-                useRem = false,
                 ownOnly = true,
                 use_form = true,
                 form = {

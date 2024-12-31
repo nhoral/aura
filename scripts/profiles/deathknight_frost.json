@@ -2,7 +2,22 @@
     "name": "Death Knight",
     "actions": [
         {
-            "name": "Death's Advance",
+            "name": "Lichborne Fear",
+            "key": "9",
+            "conditions": ["lichborne", "player_feared"]
+        },
+        {
+            "name": "Lichborne Charm",
+            "key": "9",
+            "conditions": ["lichborne", "player_charmed"]
+        },
+        {
+            "name": "Death's Advance Escape",
+            "key": "9",
+            "conditions": ["player_slowed", "death's_advance"]
+        },
+        {
+            "name": "Death's Advance Flee",
             "key": "8",
             "conditions": ["health_under_20", "death's advance"]
         },
@@ -42,14 +57,24 @@
             "conditions": ["death_grip", "!range_8", "range_30"]
         },
         {
+            "name": "Chains of Ice",
+            "key": "0",
+            "conditions": ["rune_1", "combat", "!combat_start", "!range_8","target_moving"]
+        },
+        {
             "name": "Death and Decay",
             "key": "4",
             "conditions": ["death_and_decay", "range_8_2+", "rune_1"]
         },
         {
-            "name": "Rune Strike",
+            "name": "Rocket Barrage",
+            "key": "-",
+            "conditions": ["rocket_barrage", "range_30"]
+        },
+        {
+            "name": "Obliterate",
             "key": "1",
-            "conditions": ["range_8", "rune_1"]
+            "conditions": ["range_8", "rune_2"]
         }
     ]
 } 

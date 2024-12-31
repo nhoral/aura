@@ -38,13 +38,13 @@ ns.auras["health_under_50"] = {
         {
             trigger = {
                 type = "unit",
+                debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                names = {},
-                event = "Health",
                 unit = "player",
+                event = "Health",
+                names = {},
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 use_power = false,
                 use_showCost = true,
                 powertype = 3,

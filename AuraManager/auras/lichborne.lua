@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frost_nova"] = {
-    id = "Frost Nova",
-    uid = "x6limp3SePj",
+ns.auras["lichborne"] = {
+    id = "Lichborne",
+    uid = "iQBeKrRQiZL",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
+    xOffset = 84,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -42,15 +42,16 @@ ns.auras["frost_nova"] = {
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 use_genericShowOn = true,
-                event = "Cooldown Progress (Spell)",
+                event = "Action Usable",
                 names = {},
-                realSpellName = "Frost Nova",
+                realSpellName = "Arcane Blast",
                 use_spellName = true,
                 spellIds = {},
+                use_inverse = false,
                 genericShowOn = "showOnCooldown",
                 subeventPrefix = "SPELL",
                 use_track = true,
-                spellName = 122,
+                spellName = 49039,
             },
             untrigger = {},
         },

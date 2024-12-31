@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frost_nova"] = {
-    id = "Frost Nova",
-    uid = "x6limp3SePj",
+ns.auras["rocket_barrage"] = {
+    id = "Rocket Barrage",
+    uid = "UYJrUr3aL3v",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
     xOffset = 20,
-    yOffset = -4,
+    yOffset = -16,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -42,15 +42,16 @@ ns.auras["frost_nova"] = {
                 subeventSuffix = "_CAST_START",
                 unit = "player",
                 use_genericShowOn = true,
-                event = "Cooldown Progress (Spell)",
+                event = "Action Usable",
                 names = {},
-                realSpellName = "Frost Nova",
+                realSpellName = "Bash",
                 use_spellName = true,
                 spellIds = {},
                 genericShowOn = "showOnCooldown",
                 subeventPrefix = "SPELL",
                 use_track = true,
-                spellName = 122,
+                spellName = 69041,
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
@@ -70,15 +71,17 @@ ns.auras["frost_nova"] = {
             multi = {},
         },
         class = {
-            single = "MAGE",
+            single = "DRUID",
             multi = {
+                HUNTER = true,
+                DRUID = true,
                 ROGUE = true,
-                MAGE = true,
             },
         },
         size = {
             multi = {},
         },
+        use_class = false,
     },
     animation = {
         start = {

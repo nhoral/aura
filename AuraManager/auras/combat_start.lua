@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frost_nova"] = {
-    id = "Frost Nova",
-    uid = "x6limp3SePj",
+ns.auras["combat_start"] = {
+    id = "Combat Start",
+    uid = "VUnGeBmQhCu",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
-    yOffset = -4,
+    xOffset = 56,
+    yOffset = 0,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,32 +37,53 @@ ns.auras["frost_nova"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "spell",
-                debuffType = "HELPFUL",
-                subeventSuffix = "_CAST_START",
-                unit = "player",
+                type = "event",
+                debuffType = "HARMFUL",
+                subeventSuffix = "",
+                unit = "target",
                 use_genericShowOn = true,
-                event = "Cooldown Progress (Spell)",
+                event = "Combat Events",
                 names = {},
-                realSpellName = "Frost Nova",
-                use_spellName = true,
                 spellIds = {},
                 genericShowOn = "showOnCooldown",
-                subeventPrefix = "SPELL",
-                use_track = true,
-                spellName = 122,
+                subeventPrefix = "DAMAGE_SHIELD",
+                use_unit = true,
+                itemName = 0,
+                use_count = false,
+                auranames = {
+                    "Moonfire",
+                },
+                unitExists = false,
+                useRem = false,
+                useName = true,
+                use_itemName = true,
+                matchesShowOn = "showOnActive",
+                use_threatvalue = false,
+                use_delay = false,
+                use_alertType = true,
+                eventtype = "PLAYER_REGEN_DISABLED",
+                threatpct = {
+                    "100",
+                },
+                ownOnly = true,
+                status = 3,
+                duration = "2",
+                use_sourceUnit = false,
+                use_status = false,
+                use_aggro = true,
+                use_threatpct = false,
+                threatpct_operator = {
+                    ">=",
+                },
+                use_eventtype = true,
+                use_messageType = true,
+                delay = 2,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
             multi = {},
         },
@@ -70,10 +91,9 @@ ns.auras["frost_nova"] = {
             multi = {},
         },
         class = {
-            single = "MAGE",
+            single = "DRUID",
             multi = {
-                ROGUE = true,
-                MAGE = true,
+                DRUID = true,
             },
         },
         size = {

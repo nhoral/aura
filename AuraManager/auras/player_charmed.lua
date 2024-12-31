@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frost_nova"] = {
-    id = "Frost Nova",
-    uid = "x6limp3SePj",
+ns.auras["player_charmed"] = {
+    id = "Player Charmed",
+    uid = "dHnO(9Hom6L",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
-    yOffset = -4,
+    xOffset = 104,
+    yOffset = -8,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,32 +37,41 @@ ns.auras["frost_nova"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "spell",
+                type = "unit",
                 debuffType = "HELPFUL",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                use_genericShowOn = true,
-                event = "Cooldown Progress (Spell)",
+                unit = "target",
+                event = "Crowd Controlled",
                 names = {},
-                realSpellName = "Frost Nova",
-                use_spellName = true,
                 spellIds = {},
-                genericShowOn = "showOnCooldown",
+                use_inverse = false,
                 subeventPrefix = "SPELL",
-                use_track = true,
-                spellName = 122,
+                use_unit = true,
+                auranames = {
+                    "Quick Flame Ward",
+                },
+                unitExists = false,
+                useRem = false,
+                useName = true,
+                use_debuffClass = false,
+                matchesShowOn = "showOnActive",
+                debuffClass = {
+                    magic = true,
+                },
+                use_controlType = true,
+                use_interruptSchool = true,
+                useExactSpellId = false,
+                controlType = "CHARM",
+                auraspellids = {
+                    "116",
+                },
+                interruptSchool = 16,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
             multi = {},
         },
