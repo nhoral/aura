@@ -8,6 +8,8 @@ from typing import Dict, Tuple, List
 import sys
 import json
 import time
+from unittest.mock import Mock, patch
+from pynput.keyboard import Key, KeyCode
 
 @pytest.fixture(scope="function")
 def monitor_cleanup():
@@ -43,6 +45,18 @@ class TestScreenMonitor:
     @pytest.fixture
     def profile_path(self):
         return 'scripts/profiles/rogue.json'
+
+    @pytest.fixture
+    def mock_image(self):
+        # Create a test image with known conditions
+        img = Image.new('RGB', (1920, 1080), color='black')
+        return img
+
+    @pytest.fixture
+    def checker(self, mock_image):
+        # Initialize checker with test layout and image
+        checker = ScreenChecker("scripts/layout.json", test_image=mock_image)
+        return checker
 
     def test_condition_detection(self, screenshot_path, layout_path):
         """Test that conditions are properly detected from the test image"""
@@ -299,6 +313,102 @@ class TestScreenMonitor:
         finally:
             if os.path.exists(test_profile_path):
                 os.remove(test_profile_path)
+
+    def test_keyboard_toggle_behavior(self, checker):
+        """Test keyboard toggle mode behavior"""
+        # Initialize monitor in toggle mode
+        monitor = ScreenMonitor(checker, "scripts/profiles/hunter.json", test_mode=True)
+        monitor.trigger_mode = "toggle"
+        
+        # Initial state
+        assert monitor.is_monitoring_active() == False, "Monitoring should start inactive"
+        assert monitor.trigger_held == False, "Trigger should start not held"
+        
+        # First press
+        monitor._on_key_press(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.trigger_held == True, "Trigger should be held after press"
+        assert monitor.is_monitoring_active() == True, "Monitoring should be active after first press"
+        
+        # First release
+        monitor._on_key_release(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.trigger_held == False, "Trigger should not be held after release"
+        assert monitor.is_monitoring_active() == True, "Monitoring should stay active after release"
+        
+        # Press and hold (should not toggle while held)
+        monitor._on_key_press(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.trigger_held == True, "Trigger should be held"
+        assert monitor.is_monitoring_active() == False, "Monitoring should toggle off on second press"
+        
+        # Multiple key events while held (should not affect state)
+        monitor._on_key_press(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.is_monitoring_active() == False, "Monitoring should not change while key is held"
+        
+        # Release
+        monitor._on_key_release(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.trigger_held == False, "Trigger should not be held after release"
+        assert monitor.is_monitoring_active() == False, "Monitoring should stay inactive after release"
+
+    def test_keyboard_hold_behavior(self, checker):
+        """Test keyboard hold mode behavior"""
+        # Initialize monitor in hold mode
+        monitor = ScreenMonitor(checker, "scripts/profiles/hunter.json", test_mode=True)
+        monitor.trigger_mode = "hold"
+        
+        # Simulate key press
+        monitor._on_key_press(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.is_monitoring_active() == True, "Monitoring should be active while key is held"
+        
+        # Simulate key release
+        monitor._on_key_release(KeyCode.from_char(monitor.keyboard_trigger))
+        assert monitor.is_monitoring_active() == False, "Monitoring should be inactive after release"
+
+    def test_gamepad_toggle_behavior(self, checker):
+        """Test gamepad toggle mode behavior"""
+        # Initialize monitor in toggle mode
+        monitor = ScreenMonitor(checker, "scripts/profiles/hunter.json", test_mode=True)
+        monitor.trigger_mode = "toggle"
+        monitor.gamepad_available = True
+        
+        # Simulate trigger press (value > 128)
+        event = Mock()
+        event.code = "ABS_RZ"
+        event.state = 200
+        monitor._monitor_gamepad_event(event)
+        assert monitor.is_monitoring_active() == True, "Monitoring should be active after first trigger press"
+        
+        # Simulate trigger release
+        event.state = 0
+        monitor._monitor_gamepad_event(event)
+        assert monitor.is_monitoring_active() == True, "Monitoring should stay active after release"
+        
+        # Simulate second trigger press
+        event.state = 200
+        monitor._monitor_gamepad_event(event)
+        assert monitor.is_monitoring_active() == False, "Monitoring should be inactive after second press"
+        
+        # Simulate second trigger release
+        event.state = 0
+        monitor._monitor_gamepad_event(event)
+        assert monitor.is_monitoring_active() == False, "Monitoring should stay inactive after release"
+
+    def test_gamepad_hold_behavior(self, checker):
+        """Test gamepad hold mode behavior"""
+        # Initialize monitor in hold mode
+        monitor = ScreenMonitor(checker, "scripts/profiles/hunter.json", test_mode=True)
+        monitor.trigger_mode = "hold"
+        monitor.gamepad_available = True
+        
+        # Simulate trigger press
+        event = Mock()
+        event.code = "ABS_RZ"
+        event.state = 200
+        monitor._monitor_gamepad_event(event)
+        assert monitor.is_monitoring_active() == True, "Monitoring should be active while trigger is held"
+        
+        # Simulate trigger release
+        event.state = 0
+        monitor._monitor_gamepad_event(event)
+        assert monitor.is_monitoring_active() == False, "Monitoring should be inactive after release"
 
 if __name__ == "__main__":
     pytest.main([__file__, "-s"])

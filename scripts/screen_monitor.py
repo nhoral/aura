@@ -55,21 +55,50 @@ class ScreenMonitor:
         self.trigger_held = False
         self.keyboard_listener = None
         self.gamepad_thread = None
+        self.monitor_thread = None
         self.gamepad_available = False
         
-        # In test mode, don't start input monitoring
+        # In test mode, don't start monitoring
         if not test_mode:
             self.start()
     
+    def _monitor_loop(self):
+        """Main monitoring loop that runs in a separate thread"""
+        while self.running:
+            try:
+                # Check conditions and execute actions if monitoring is active
+                current_time = time.time()
+                if self.is_monitoring_active() and (current_time - self.last_check) >= self.check_interval:
+                    # Get current conditions
+                    active_conditions = self.checker.check_conditions()
+                    if self.debug:
+                        print(f"Active conditions: {active_conditions}")
+                    
+                    # Get and execute next action if any
+                    action = self.get_next_action(active_conditions)
+                    if action:
+                        self.execute_action(action)
+                    self.last_check = current_time
+                
+                # Small sleep to prevent CPU hogging
+                time.sleep(0.01)
+                    
+            except Exception as e:
+                print(f"\nError in monitor loop: {str(e)}")
+    
     def start(self):
-        """Start monitoring (initialize keyboard and gamepad)"""
+        """Start monitoring (initialize keyboard, gamepad, and monitoring loop)"""
         # Initialize keyboard listener
         self.keyboard_listener = Listener(on_press=self._on_key_press, on_release=self._on_key_release)
         self.keyboard_listener.start()
         
+        # Start the monitoring loop in a separate thread
+        self.monitor_thread = threading.Thread(target=self._monitor_loop)
+        self.monitor_thread.daemon = True
+        self.monitor_thread.start()
+        
         # Try to initialize gamepad
         try:
-            # Test if gamepad is available
             inputs.get_gamepad()
             self.gamepad_available = True
             self.gamepad_thread = threading.Thread(target=self._monitor_gamepad)
@@ -86,6 +115,8 @@ class ScreenMonitor:
             self.keyboard_listener.stop()
         if self.gamepad_thread and self.gamepad_thread.is_alive():
             self.gamepad_thread.join(timeout=1.0)
+        if self.monitor_thread and self.monitor_thread.is_alive():
+            self.monitor_thread.join(timeout=1.0)
     
     def _on_key_press(self, key):
         """Handle keyboard press events"""
@@ -93,18 +124,19 @@ class ScreenMonitor:
             self.running = False
             return False  # Stop listener
         elif hasattr(key, 'char') and key.char == self.keyboard_trigger:
-            if self.trigger_mode == "toggle":
-                self.monitoring_active = not self.monitoring_active
-                print(f"Monitoring {'activated' if self.monitoring_active else 'deactivated'}")
-            else:
-                self.trigger_held = True
-        # Only handle debug keys if debug mode is enabled
+            if not self.trigger_held:
+                if self.trigger_mode == "toggle":
+                    self.monitoring_active = not self.monitoring_active
+                    print(f"Monitoring {'activated' if self.monitoring_active else 'deactivated'}")
+                else:  # hold mode
+                    self.monitoring_active = True
+                    print("Monitoring activated")
+            self.trigger_held = True
         elif self.debug and hasattr(key, 'char'):
             if key.char == 'p':
                 print("Saving screen image...")
                 self.checker.save_debug_image()
             elif key.char == self.debug_key:
-                # Check and print current conditions
                 conditions = self.checker.check_conditions()
                 if conditions:
                     print(f"Current conditions: {conditions}")
@@ -115,7 +147,9 @@ class ScreenMonitor:
         """Handle keyboard release events"""
         if hasattr(key, 'char') and key.char == self.keyboard_trigger:
             if self.trigger_mode == "hold":
-                self.trigger_held = False
+                self.monitoring_active = False
+                print("Monitoring deactivated")
+            self.trigger_held = False
     
     def _monitor_gamepad(self):
         """Monitor gamepad input in separate thread"""
@@ -124,28 +158,27 @@ class ScreenMonitor:
                 events = inputs.get_gamepad()
                 for event in events:
                     if event.code == "ABS_RZ":  # Right trigger axis
-                        if self.trigger_mode == "toggle":
-                            # Toggle monitoring state on trigger press/release
-                            new_state = event.state > 128
-                            if new_state and not self.trigger_held:  # Only toggle on press
-                                self.monitoring_active = not self.monitoring_active
-                                print(f"Monitoring {'activated' if self.monitoring_active else 'deactivated'}")
-                            self.trigger_held = new_state
-                        else:
-                            # Hold mode - directly use trigger state
-                            self.trigger_held = event.state > 128
+                        self._monitor_gamepad_event(event)
         except Exception as e:
-            if self.gamepad_available:  # Only print error if gamepad was initially available
+            if self.gamepad_available:
                 print(f"Gamepad error: {str(e)}")
                 self.gamepad_available = False
+
+    def _monitor_gamepad_event(self, event):
+        """Handle a single gamepad event"""
+        if event.code == "ABS_RZ":  # Right trigger axis
+            new_state = event.state > 128
+            if self.trigger_mode == "toggle":
+                if new_state and not self.trigger_held:
+                    self.monitoring_active = not self.monitoring_active
+                    print(f"Monitoring {'activated' if self.monitoring_active else 'deactivated'}")
+            else:  # hold mode
+                self.monitoring_active = new_state
+            self.trigger_held = new_state
     
     def is_monitoring_active(self):
-        """Check if monitoring should be active based on current mode and trigger state"""
-        if self.test_mode:
-            return self.monitoring_active
-        if self.trigger_mode == "toggle":
-            return self.monitoring_active
-        return self.trigger_held
+        """Check if monitoring should be active"""
+        return self.monitoring_active
     
     def get_next_action(self, active_conditions):
         """Get the next action to execute based on active conditions"""
@@ -155,9 +188,8 @@ class ScreenMonitor:
         for action in self.profile["actions"]:
             all_conditions_met = True
             for condition in action["conditions"]:
-                # Handle negated conditions
                 if condition.startswith("!"):
-                    condition_name = condition[1:]  # Remove the ! prefix
+                    condition_name = condition[1:]
                     if condition_name in active_conditions:
                         all_conditions_met = False
                         break
@@ -168,7 +200,6 @@ class ScreenMonitor:
             
             if all_conditions_met:
                 return action
-
         return None
     
     def execute_action(self, action: Dict[str, Any]):
@@ -180,46 +211,26 @@ class ScreenMonitor:
         self.keyboard.release(action['key'])
     
     def run(self):
-        """Main monitoring loop"""
-        self.start()  # Initialize keyboard and gamepad
-        
+        """Keep the program running until exit"""
         print("Starting monitor...")
         if self.gamepad_available:
             print(f"Using gamepad (right trigger) or keyboard ('{self.keyboard_trigger}' key)")
         else:
             print(f"Using keyboard controls ('{self.keyboard_trigger}' key)")
         print(f"Trigger mode: {self.trigger_mode}")
-        # Get the key name in a user-friendly format
         exit_key_name = self.exit_key.name if hasattr(self.exit_key, 'name') else self.exit_key
         print(f"Press '{exit_key_name}' to exit")
-        # Only show debug commands if debug mode is enabled
         if self.debug:
             print(f"Press '{self.debug_key}' to show current conditions")
             print("Press 'p' to save a debug image")
         
-        while self.running:
-            try:
-                # Check conditions and execute actions if monitoring is active
-                if self.is_monitoring_active():
-                    # Get current conditions
-                    active_conditions = self.checker.check_conditions()
-                    
-                    # Get and execute next action if any
-                    action = self.get_next_action(active_conditions)
-                    if action:
-                        self.execute_action(action)
-                
-                # Sleep for interval
-                time.sleep(self.check_interval)
-                    
-            except KeyboardInterrupt:
-                print("\nStopping monitor.")
-                self.running = False
-            except Exception as e:
-                print(f"\nError: {str(e)}")
-        
-        # Clean up
-        self.stop()
+        try:
+            while self.running:
+                time.sleep(0.1)
+        except KeyboardInterrupt:
+            print("\nStopping monitor.")
+        finally:
+            self.stop()
 
 def main():
     parser = argparse.ArgumentParser(description='Screen condition monitor')
@@ -235,18 +246,13 @@ def main():
     args = parser.parse_args()
 
     try:
-        # Initialize checker
         checker = ScreenChecker(args.layout)
-        
-        # Initialize and run monitor
         monitor = ScreenMonitor(checker, args.profile, args.debug)
         monitor.run()
-        
-    except KeyboardInterrupt:
-        print("\nStopping monitor.")
     except Exception as e:
-        print(f"\nError: {str(e)}")
-        sys.exit(1)
+        print(f"Error: {str(e)}")
+        return 1
+    return 0
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
