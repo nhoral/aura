@@ -4,7 +4,7 @@
         {
             "name": "Icebound Fortitude",
             "key": "6",
-            "conditions": ["icebound_fortitude", "health_below_50"]
+            "conditions": ["icebound_fortitude", "health_under_75"]
         },
         {
             "name": "Frost Strike",
@@ -14,12 +14,7 @@
         {
             "name": "Frost Strike",
             "key": "7",
-            "conditions": ["!rune_1", "power_30"]
-        },
-        {
-            "name": "Death Coil",
-            "key": "2",
-            "conditions": ["power_30", "range_50", "!range_8"]
+            "conditions": ["!rune_1", "power_30", "range_8"]
         },
         {
             "name": "Death Coil",
@@ -34,7 +29,7 @@
         {
             "name": "Death and Decay",
             "key": "4",
-            "conditions": ["death_and_decay", "enemies_in_melee", "rune_1"]
+            "conditions": ["death_and_decay", "range_8_2+", "rune_1"]
         },
         {
             "name": "Rune Strike",
