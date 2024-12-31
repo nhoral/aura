@@ -12,6 +12,21 @@
             "conditions": ["lichborne", "player_charmed"]
         },
         {
+            "name": "Lichborne For Heal",
+            "key": "9",
+            "conditions": ["lichborne", "health_under_20"]
+        },
+        {
+            "name": "Death Coil Self",
+            "key": "!",
+            "conditions": ["lichborne_buff", "power_30", "health_under_20"]
+        },
+        {
+            "name": "Death Strike",
+            "key": "=",
+            "conditions": ["health_under_50", "power_45"]
+        },
+        {
             "name": "Death's Advance Escape",
             "key": "9",
             "conditions": ["player_slowed", "death's_advance"]

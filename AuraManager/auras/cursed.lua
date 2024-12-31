@@ -71,9 +71,9 @@ ns.auras["cursed"] = {
                 },
                 unitExists = false,
                 useRem = false,
-                useName = false,
-                use_debuffClass = true,
                 matchesShowOn = "showOnActive",
+                use_debuffClass = true,
+                useName = false,
                 debuffClass = {
                     curse = true,
                 },

@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["curse_of_weakness_debuff"] = {
-    id = "Curse of Weakness Debuff",
-    uid = "w1nhmmP)k2O",
+ns.auras["lichborne_buff"] = {
+    id = "Lichborne Buff",
+    uid = "WW2vkj)WW(b",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 76,
-    yOffset = 0,
+    xOffset = 88,
+    yOffset = -4,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,15 +38,15 @@ ns.auras["curse_of_weakness_debuff"] = {
         {
             trigger = {
                 type = "aura2",
-                debuffType = "HARMFUL",
+                debuffType = "BOTH",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
+                unit = "player",
                 event = "Health",
                 names = {},
                 spellIds = {},
                 subeventPrefix = "SPELL",
                 auranames = {
-                    "Curse of Weakness",
+                    "Lichborne",
                 },
                 unitExists = false,
                 useRem = false,
@@ -66,9 +66,10 @@ ns.auras["curse_of_weakness_debuff"] = {
             multi = {},
         },
         class = {
-            single = "WARLOCK",
+            single = "MAGE",
             multi = {
-                WARLOCK = true,
+                DRUID = true,
+                MAGE = true,
             },
         },
         size = {

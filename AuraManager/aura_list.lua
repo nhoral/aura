@@ -52,6 +52,7 @@ ns.aura_list = {
     "kick",
     "leaving_combat",
     "lichborne",
+    "lichborne_buff",
     "mana_10",
     "mana_100",
     "mana_20",

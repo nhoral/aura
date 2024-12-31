@@ -50,9 +50,9 @@ ns.auras["frostbolt_debuff"] = {
                 },
                 unitExists = false,
                 useRem = false,
-                useName = true,
-                use_debuffClass = false,
                 matchesShowOn = "showOnActive",
+                use_debuffClass = false,
+                useName = true,
                 debuffClass = {
                     magic = true,
                 },

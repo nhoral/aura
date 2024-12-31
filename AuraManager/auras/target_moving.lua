@@ -8,7 +8,7 @@ ns.auras["target_moving"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 108,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -48,6 +48,8 @@ ns.auras["target_moving"] = {
                 subeventPrefix = "SPELL",
                 use_unit = true,
                 duration = "1",
+                custom_type = "stateupdate",
+                check = "update",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -67,8 +69,6 @@ ns.auras["target_moving"] = {
         end
     end
 end]],
-                check = "update",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 customVariables = "{}",
                 custom_hide = "timed",

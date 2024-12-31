@@ -61,6 +61,7 @@ auras/immolate_debuff.lua
 auras/kick.lua
 auras/leaving_combat.lua
 auras/lichborne.lua
+auras/lichborne_buff.lua
 auras/mana_10.lua
 auras/mana_100.lua
 auras/mana_20.lua

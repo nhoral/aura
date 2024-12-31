@@ -8,7 +8,7 @@ ns.auras["target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 76,
+    xOffset = 80,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -62,6 +62,8 @@ ns.auras["target_aggro"] = {
                 use_targetRequired = false,
                 use_moveSpeed = false,
                 use_message = false,
+                custom_type = "stateupdate",
+                check = "update",
                 custom = [[function(allstates)
     if not UnitAffectingCombat("player") then
         allstates[""] = allstates[""] or {show = false}
@@ -88,8 +90,6 @@ ns.auras["target_aggro"] = {
     
     return true
 end]],
-                check = "update",
-                custom_type = "stateupdate",
                 customVariables = "{}",
                 use_spec = true,
             },
