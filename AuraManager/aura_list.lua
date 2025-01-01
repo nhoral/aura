@@ -1,6 +1,7 @@
 local ADDON_NAME, ns = ...
 ns.aura_list = {
     "amplify_magic_buff",
+    "anti-magic_shell",
     "arcane_intellect_buff",
     "arcane_school_lockout",
     "arcane_shot",

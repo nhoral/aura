@@ -18,8 +18,13 @@
         },
         {
             "name": "Death Coil Self",
-            "key": "!",
+            "key": "SHIFT-1",
             "conditions": ["lichborne_buff", "power_30", "health_under_20"]
+        },
+        {
+            "name": "Anti-Magic Shell",
+            "key": "SHIFT-2",
+            "conditions": ["anti-magic_shell", "target_casting", "range_30", "combat"]
         },
         {
             "name": "Death Strike",
@@ -28,7 +33,7 @@
         },
         {
             "name": "Death's Advance Escape",
-            "key": "9",
+            "key": "8",
             "conditions": ["player_slowed", "death's_advance"]
         },
         {

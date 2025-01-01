@@ -10,6 +10,7 @@ aura_list.lua
 
 # Auras
 auras/amplify_magic_buff.lua
+auras/anti-magic_shell.lua
 auras/arcane_intellect_buff.lua
 auras/arcane_school_lockout.lua
 auras/arcane_shot.lua

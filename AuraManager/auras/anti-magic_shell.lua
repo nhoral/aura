@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["curse_of_weakness_debuff"] = {
-    id = "Curse of Weakness Debuff",
-    uid = "w1nhmmP)k2O",
+ns.auras["anti-magic_shell"] = {
+    id = "Anti-Magic Shell",
+    uid = "CbrnWvmVTAI",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 80,
+    xOffset = 4,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -37,28 +37,33 @@ ns.auras["curse_of_weakness_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "aura2",
+                type = "spell",
+                spellName = 48707,
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
-                unit = "target",
+                use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "player",
+                realSpellName = "Arcane Blast",
+                use_spellName = true,
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
-                auranames = {
-                    "Curse of Weakness",
-                },
-                unitExists = false,
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
-                ownOnly = true,
+                genericShowOn = "showOnCooldown",
+                use_inverse = false,
+                use_track = true,
+                debuffType = "HELPFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
         talent = {
             multi = {},
         },
@@ -66,9 +71,10 @@ ns.auras["curse_of_weakness_debuff"] = {
             multi = {},
         },
         class = {
-            single = "WARLOCK",
+            single = "MAGE",
             multi = {
-                WARLOCK = true,
+                ROGUE = true,
+                MAGE = true,
             },
         },
         size = {

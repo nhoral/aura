@@ -71,8 +71,6 @@ class ScreenMonitor:
                 if self.is_monitoring_active() and (current_time - self.last_check) >= self.check_interval:
                     # Get current conditions
                     active_conditions = self.checker.check_conditions()
-                    if self.debug:
-                        print(f"Active conditions: {active_conditions}")
                     
                     # Get and execute next action if any
                     action = self.get_next_action(active_conditions)
@@ -205,10 +203,36 @@ class ScreenMonitor:
     def execute_action(self, action: Dict[str, Any]):
         """Execute a keyboard action"""
         action_name = action.get('name', 'Name Missing')
-        print(f"Executing Action: {action_name} [pressing {action['key']}]")
-        self.keyboard.press(action['key'])
-        time.sleep(self.key_hold_duration)
-        self.keyboard.release(action['key'])
+        key = action['key']
+        
+        # Build condition status string
+        active_conditions = self.checker.check_conditions()
+        condition_status = []
+        for condition in action['conditions']:
+            if condition.startswith('!'):
+                condition_name = condition[1:]
+                is_met = condition_name not in active_conditions
+                status = "FALSE" if is_met else "TRUE"
+            else:
+                is_met = condition in active_conditions
+                status = "TRUE" if is_met else "FALSE"
+            condition_status.append(f"{condition}: {status}")
+        
+        print(f"Executing: {action_name} [key: {key}]")
+        print(f"Conditions: {', '.join(condition_status)}")
+        
+        # Handle SHIFT key combinations
+        if key.startswith("SHIFT-"):
+            actual_key = key[6:]  # Remove "SHIFT-" prefix
+            self.keyboard.press(Key.shift)
+            self.keyboard.press(actual_key)
+            time.sleep(self.key_hold_duration)
+            self.keyboard.release(actual_key)
+            self.keyboard.release(Key.shift)
+        else:
+            self.keyboard.press(key)
+            time.sleep(self.key_hold_duration)
+            self.keyboard.release(key)
     
     def run(self):
         """Keep the program running until exit"""
