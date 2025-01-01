@@ -8,7 +8,7 @@ ns.auras["power_90"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
+    xOffset = 108,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -50,11 +50,11 @@ ns.auras["power_90"] = {
                 use_powertype = false,
                 use_unit = true,
                 use_percentpower = true,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "90",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
             },
             untrigger = {},

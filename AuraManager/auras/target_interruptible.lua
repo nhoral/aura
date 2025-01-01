@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["serpent_sting_debuff"] = {
-    id = "Serpent Sting Debuff",
-    uid = "o52w9k8Rol1",
+ns.auras["target_interruptible"] = {
+    id = "Target Interruptible",
+    uid = "Zr)lzILrq5k",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
-    yOffset = -16,
+    xOffset = 12,
+    yOffset = -20,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,21 @@ ns.auras["serpent_sting_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "aura2",
+                type = "unit",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
+                event = "Cast",
                 unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
-                auranames = {
-                    "Serpent Sting",
-                },
-                unitExists = false,
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
-                ownOnly = true,
+                debuffType = "HELPFUL",
+                use_unit = true,
+                use_castType = false,
+                remaining_operator = ">",
+                remaining = "1",
+                use_destUnit = false,
+                use_remaining = false,
+                use_interruptible = true,
             },
             untrigger = {},
         },
@@ -66,10 +65,7 @@ ns.auras["serpent_sting_debuff"] = {
             multi = {},
         },
         class = {
-            single = "HUNTER",
-            multi = {
-                HUNTER = true,
-            },
+            multi = {},
         },
         size = {
             multi = {},

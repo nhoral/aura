@@ -8,8 +8,8 @@ ns.auras["target_is_player"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 108,
-    yOffset = -16,
+    xOffset = 16,
+    yOffset = -20,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -51,9 +51,9 @@ ns.auras["target_is_player"] = {
                 use_class = false,
                 custom_type = "stateupdate",
                 check = "update",
+                unevent = "auto",
                 custom_hide = "timed",
                 customVariables = "{}",
-                unevent = "auto",
                 use_unitisunit = false,
                 use_character = true,
                 character = "player",
@@ -82,11 +82,11 @@ ns.auras["target_is_player"] = {
         use_never = false,
         zoneIds = "",
         use_level = false,
-        level_operator = {
-            "~=",
-        },
         level = {
             "120",
+        },
+        level_operator = {
+            "~=",
         },
     },
     animation = {

@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["serpent_sting_debuff"] = {
-    id = "Serpent Sting Debuff",
-    uid = "o52w9k8Rol1",
+ns.auras["mind_freeze"] = {
+    id = "Mind Freeze",
+    uid = "sF94Y6bTW(i",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
-    yOffset = -16,
+    xOffset = 28,
+    yOffset = -8,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,28 +37,33 @@ ns.auras["serpent_sting_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "aura2",
+                type = "spell",
+                spellName = 47528,
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
-                unit = "target",
+                use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "player",
+                realSpellName = "Arcane Shot",
+                use_spellName = true,
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
-                auranames = {
-                    "Serpent Sting",
-                },
-                unitExists = false,
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
-                ownOnly = true,
+                genericShowOn = "showOnCooldown",
+                use_track = true,
+                debuffType = "HELPFUL",
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
         talent = {
             multi = {},
         },
@@ -69,11 +74,13 @@ ns.auras["serpent_sting_debuff"] = {
             single = "HUNTER",
             multi = {
                 HUNTER = true,
+                ROGUE = true,
             },
         },
         size = {
             multi = {},
         },
+        use_class = false,
     },
     animation = {
         start = {

@@ -8,7 +8,7 @@ ns.auras["pet_target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 112,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -58,11 +58,12 @@ ns.auras["pet_target_aggro"] = {
                 use_messageType = false,
                 use_message = false,
                 instance_size = {},
-                use_sourceName = false,
-                use_targetRequired = false,
                 use_moveSpeed = false,
+                use_targetRequired = false,
                 use_ismoving = true,
+                use_sourceName = false,
                 custom_type = "stateupdate",
+                check = "update",
                 custom = [[function(allstates)
     if not UnitAffectingCombat("pet") then
         allstates[""] = allstates[""] or {show = false}
@@ -89,7 +90,6 @@ ns.auras["pet_target_aggro"] = {
     
     return true
 end]],
-                check = "update",
                 customVariables = "{}",
                 use_spec = true,
             },

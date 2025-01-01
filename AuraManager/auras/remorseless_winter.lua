@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["serpent_sting_debuff"] = {
-    id = "Serpent Sting Debuff",
-    uid = "o52w9k8Rol1",
+ns.auras["remorseless_winter"] = {
+    id = "Remorseless Winter",
+    uid = "QmFEiiwri3r",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
+    xOffset = 44,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,28 +37,33 @@ ns.auras["serpent_sting_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "aura2",
+                type = "spell",
+                spellName = 196770,
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
-                unit = "target",
+                use_genericShowOn = true,
+                event = "Action Usable",
+                unit = "player",
+                realSpellName = "Arcane Shot",
+                use_spellName = true,
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
-                auranames = {
-                    "Serpent Sting",
-                },
-                unitExists = false,
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
-                ownOnly = true,
+                genericShowOn = "showOnCooldown",
+                use_track = true,
+                debuffType = "HELPFUL",
+                use_exact_spellName = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
         talent = {
             multi = {},
         },
@@ -69,11 +74,13 @@ ns.auras["serpent_sting_debuff"] = {
             single = "HUNTER",
             multi = {
                 HUNTER = true,
+                ROGUE = true,
             },
         },
         size = {
             multi = {},
         },
+        use_class = false,
     },
     animation = {
         start = {

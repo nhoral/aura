@@ -31,6 +31,7 @@ auras/counterspell.lua
 auras/curse_of_agony_debuff.lua
 auras/curse_of_weakness_debuff.lua
 auras/cursed.lua
+auras/dark_succor_buff.lua
 auras/death's_advance.lua
 auras/death_and_decay.lua
 auras/death_grip.lua
@@ -45,6 +46,7 @@ auras/faerie_fire_debuff.lua
 auras/fingers_of_frost_buff.lua
 auras/fire_school_lockout.lua
 auras/frost_armor_buff.lua
+auras/frost_fever_debuff.lua
 auras/frost_nova.lua
 auras/frost_nova_debuff.lua
 auras/frost_school_lockout.lua
@@ -74,6 +76,7 @@ auras/mana_70.lua
 auras/mana_80.lua
 auras/mana_90.lua
 auras/mark_of_the_wild_buff.lua
+auras/mind_freeze.lua
 auras/mongoose_bite.lua
 auras/moonfire_debuff.lua
 auras/nature's_grasp.lua
@@ -127,14 +130,17 @@ auras/power_90.lua
 auras/power_word_fortitude_buff.lua
 auras/raise_dead.lua
 auras/rake_debuff.lua
+auras/range_15.lua
 auras/range_30.lua
 auras/range_8.lua
 auras/range_8_2+.lua
 auras/range_8_3+.lua
 auras/raptor_strike.lua
+auras/razorice_debuff_5.lua
 auras/recently_bandaged_debuff.lua
 auras/regeneration.lua
 auras/rejuvenation_buff.lua
+auras/remorseless_winter.lua
 auras/rip_debuff.lua
 auras/rocket_barrage.lua
 auras/role_toggle.lua
@@ -156,6 +162,7 @@ auras/target_health_under_20.lua
 auras/target_health_under_50.lua
 auras/target_health_under_75.lua
 auras/target_health_under_90.lua
+auras/target_interruptible.lua
 auras/target_is_player.lua
 auras/target_moving.lua
 auras/thorns_buff.lua

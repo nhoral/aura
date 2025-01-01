@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["serpent_sting_debuff"] = {
-    id = "Serpent Sting Debuff",
-    uid = "o52w9k8Rol1",
+ns.auras["razorice_debuff_5"] = {
+    id = "Razorice Debuff 5",
+    uid = "DNeanGmSA4S",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
+    xOffset = 28,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -38,27 +38,39 @@ ns.auras["serpent_sting_debuff"] = {
         {
             trigger = {
                 type = "aura2",
+                spellName = 14281,
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
+                use_genericShowOn = true,
+                event = "Action Usable",
                 unit = "target",
+                realSpellName = "Arcane Shot",
+                use_spellName = true,
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                genericShowOn = "showOnCooldown",
+                use_track = true,
                 debuffType = "HARMFUL",
                 auranames = {
-                    "Serpent Sting",
+                    "Razorice",
                 },
-                unitExists = false,
-                matchesShowOn = "showOnActive",
                 useName = true,
-                useRem = false,
-                ownOnly = true,
+                use_exact_spellName = false,
+                stacks = "5",
+                useStacks = true,
+                stacksOperator = "==",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
+        race = {
+            single = "Scourge",
+            multi = {
+                Scourge = true,
+            },
+        },
         talent = {
             multi = {},
         },
@@ -69,11 +81,13 @@ ns.auras["serpent_sting_debuff"] = {
             single = "HUNTER",
             multi = {
                 HUNTER = true,
+                ROGUE = true,
             },
         },
         size = {
             multi = {},
         },
+        use_class = false,
     },
     animation = {
         start = {

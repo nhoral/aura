@@ -8,7 +8,7 @@ ns.auras["party_4_health_under_70"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 52,
+    xOffset = 64,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -49,6 +49,7 @@ ns.auras["party_4_health_under_70"] = {
                 use_unit = true,
                 duration = "1",
                 custom_type = "stateupdate",
+                check = "update",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -75,10 +76,9 @@ ns.auras["party_4_health_under_70"] = {
         end
     end
 end]],
-                check = "update",
+                unevent = "auto",
                 custom_hide = "timed",
                 customVariables = "{}",
-                unevent = "auto",
             },
             untrigger = {
                 custom = [[function()
@@ -108,11 +108,11 @@ end]],
         zoneIds = "",
         use_spellknown = false,
         use_level = false,
-        level_operator = {
-            "~=",
-        },
         level = {
             "120",
+        },
+        level_operator = {
+            "~=",
         },
     },
     animation = {

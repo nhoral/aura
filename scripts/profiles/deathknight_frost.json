@@ -22,14 +22,24 @@
             "conditions": ["lichborne_buff", "power_30", "health_under_20"]
         },
         {
+            "name": "Mind Freeze",
+            "key": "SHIFT-4",
+            "conditions": ["mind_freeze", "target_interruptible", "range_15", "combat", "rune_1"]
+        },  
+        {
             "name": "Anti-Magic Shell",
             "key": "SHIFT-2",
             "conditions": ["anti-magic_shell", "target_casting", "range_30", "combat"]
-        },
+        },   
         {
             "name": "Death Strike",
             "key": "=",
-            "conditions": ["health_under_50", "power_45"]
+            "conditions": ["health_under_75", "power_35"]
+        },
+        {
+            "name": "Death Strike on Dark Succor",
+            "key": "=",
+            "conditions": ["dark_succor_buff", "range_8", "combat"]
         },
         {
             "name": "Death's Advance Escape",
@@ -85,6 +95,16 @@
             "name": "Death and Decay",
             "key": "4",
             "conditions": ["death_and_decay", "range_8_2+", "rune_1"]
+        },
+        {
+            "name": "Remorseless Winter",
+            "key": "SHIFT-3",
+            "conditions": ["remorseless_winter", "range_8_2+", "rune_1"]
+        },
+        {
+            "name": "Howling Blast",
+            "key": "SHIFT-5",
+            "conditions": ["!frost_fever_debuff", "razorice_debuff_5", "range_8_2+", "rune_1"]
         },
         {
             "name": "Rocket Barrage",

@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["serpent_sting_debuff"] = {
-    id = "Serpent Sting Debuff",
-    uid = "o52w9k8Rol1",
+ns.auras["dark_succor_buff"] = {
+    id = "Dark Succor Buff",
+    uid = "SC3ad8nn5OA",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
-    yOffset = -16,
+    xOffset = 88,
+    yOffset = 0,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -41,15 +41,16 @@ ns.auras["serpent_sting_debuff"] = {
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
-                unit = "target",
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
+                debuffType = "HELPFUL",
                 auranames = {
-                    "Serpent Sting",
+                    "Dark Succor",
                 },
                 unitExists = false,
                 matchesShowOn = "showOnActive",
+                use_debuffClass = false,
                 useName = true,
                 useRem = false,
                 ownOnly = true,
@@ -66,9 +67,10 @@ ns.auras["serpent_sting_debuff"] = {
             multi = {},
         },
         class = {
-            single = "HUNTER",
+            single = "MAGE",
             multi = {
-                HUNTER = true,
+                ROGUE = true,
+                MAGE = true,
             },
         },
         size = {

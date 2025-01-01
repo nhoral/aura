@@ -1,14 +1,14 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["serpent_sting_debuff"] = {
-    id = "Serpent Sting Debuff",
-    uid = "o52w9k8Rol1",
+ns.auras["range_15"] = {
+    id = "Range 15",
+    uid = "A407R6qWJE1",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 84,
+    xOffset = 4,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,22 +37,32 @@ ns.auras["serpent_sting_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "aura2",
+                type = "unit",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                event = "Health",
+                event = "Range Check",
                 unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
-                auranames = {
-                    "Serpent Sting",
+                debuffType = "HELPFUL",
+                use_power = false,
+                use_showCost = true,
+                powertype = 3,
+                use_powertype = true,
+                use_absorbHealMode = true,
+                use_unit = true,
+                percenthealth = {
+                    "20",
                 },
-                unitExists = false,
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
-                ownOnly = true,
+                use_percentpower = false,
+                range_operator = "<=",
+                range = "15",
+                use_range = true,
+                use_absorbMode = true,
+                use_percenthealth = true,
+                percenthealth_operator = {
+                    "<",
+                },
             },
             untrigger = {},
         },
@@ -66,9 +76,9 @@ ns.auras["serpent_sting_debuff"] = {
             multi = {},
         },
         class = {
-            single = "HUNTER",
+            single = "ROGUE",
             multi = {
-                HUNTER = true,
+                ROGUE = true,
             },
         },
         size = {
