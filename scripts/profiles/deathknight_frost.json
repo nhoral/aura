@@ -67,6 +67,16 @@
             "conditions": ["raise_dead", "combat"]
         },
         {
+            "name": "Howling Blast",
+            "key": "SHIFT-5",
+            "conditions": ["rime_buff", "range_8"]
+        },
+        {
+            "name": "Obliterate on Killing Machine",
+            "key": "1",
+            "conditions": ["killing_machine_buff", "range_8", "rune_2"]
+        },
+        {
             "name": "Frost Strike",
             "key": "7",
             "conditions": ["range_8", "power_80"]
@@ -89,7 +99,7 @@
         {
             "name": "Chains of Ice",
             "key": "0",
-            "conditions": ["rune_1", "combat", "!combat_start", "!range_8","target_moving"]
+            "conditions": ["rune_1", "combat", "!combat_start", "!range_8", "target_moving"]
         },
         {
             "name": "Death and Decay",

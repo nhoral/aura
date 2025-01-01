@@ -8,26 +8,26 @@ ns.auras["range_8_2+"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 16,
+    xOffset = 20,
     yOffset = -16,
     width = 3,
     height = 3,
     frameStrata = 1,
     barColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
     barColor2 = {
-        1,
         0,
+        1,
         0,
         1,
     },
     backgroundColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
@@ -48,8 +48,6 @@ ns.auras["range_8_2+"] = {
                 use_unit = true,
                 use_absorbMode = true,
                 duration = "1",
-                custom_type = "stateupdate",
-                check = "update",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -85,6 +83,8 @@ ns.auras["range_8_2+"] = {
         return true
     end
 end]],
+                check = "update",
+                custom_type = "stateupdate",
                 unevent = "auto",
                 customVariables = [[{
   stacks = true,

@@ -8,26 +8,26 @@ ns.auras["party_4_health_under_70"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 64,
+    xOffset = 68,
     yOffset = -8,
     width = 3,
     height = 3,
     frameStrata = 1,
     barColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
     barColor2 = {
-        1,
         0,
+        1,
         0,
         1,
     },
     backgroundColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
@@ -48,8 +48,6 @@ ns.auras["party_4_health_under_70"] = {
                 debuffType = "HELPFUL",
                 use_unit = true,
                 duration = "1",
-                custom_type = "stateupdate",
-                check = "update",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -76,6 +74,8 @@ ns.auras["party_4_health_under_70"] = {
         end
     end
 end]],
+                check = "update",
+                custom_type = "stateupdate",
                 unevent = "auto",
                 custom_hide = "timed",
                 customVariables = "{}",

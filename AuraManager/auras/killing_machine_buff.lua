@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["dark_succor_buff"] = {
-    id = "Dark Succor Buff",
-    uid = "SC3ad8nn5OA",
+ns.auras["killing_machine_buff"] = {
+    id = "Killing Machine Buff",
+    uid = "i5VuXWT01GA",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 88,
-    yOffset = 0,
+    xOffset = 92,
+    yOffset = -4,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -46,7 +46,7 @@ ns.auras["dark_succor_buff"] = {
                 subeventPrefix = "SPELL",
                 debuffType = "HELPFUL",
                 auranames = {
-                    "Dark Succor",
+                    "Killing Machine",
                 },
                 unitExists = false,
                 useName = true,

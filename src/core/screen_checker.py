@@ -175,16 +175,16 @@ class ScreenChecker:
 
     def _colors_match(self, color1: Tuple[int, ...], color2: Tuple[int, ...], tolerance: int = 5) -> bool:
         """Compare colors with tolerance for slight variations"""
-        # Special case for red detection
-        def is_red(color):
+        # Special case for green detection
+        def is_green(color):
             r, g, b = color[:3]  # Take first 3 values in case there's alpha
-            return (235 <= r <= 255) and (0 <= g <= 20) and (0 <= b <= 20)
+            return (0 <= r <= 20) and (235 <= g <= 255) and (0 <= b <= 20)
         
-        # If either color is red, check if both are red
-        if is_red(color1) or is_red(color2):
-            return is_red(color1) and is_red(color2)
+        # If either color is green, check if both are green
+        if is_green(color1) or is_green(color2):
+            return is_green(color1) and is_green(color2)
         
-        # For non-red colors, use the standard tolerance check
+        # For non-green colors, use the standard tolerance check
         return all(abs(c1 - c2) <= tolerance for c1, c2 in zip(color1[:3], color2[:3]))
 
     def debug_coordinates(self, condition_id: str) -> None:

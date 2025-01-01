@@ -1,4 +1,3 @@
-
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
 ns.auras["sample"] = {
@@ -89,20 +88,20 @@ ns.auras["sample"] = {
         },
     },
     barColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
     barColor2 = {
-        1,
         0,
+        1,
         0,
         1,
     },
     backgroundColor = {
-        1,
         0,
+        1,
         0,
         1,
     },

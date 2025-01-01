@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["dark_succor_buff"] = {
-    id = "Dark Succor Buff",
-    uid = "SC3ad8nn5OA",
+ns.auras["rime_buff"] = {
+    id = "Rime Buff",
+    uid = "J1Gk7HDiQTC",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 88,
-    yOffset = 0,
+    xOffset = 52,
+    yOffset = -16,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -46,11 +46,10 @@ ns.auras["dark_succor_buff"] = {
                 subeventPrefix = "SPELL",
                 debuffType = "HELPFUL",
                 auranames = {
-                    "Dark Succor",
+                    "Rime",
                 },
                 unitExists = false,
                 useName = true,
-                use_debuffClass = false,
                 matchesShowOn = "showOnActive",
                 useRem = false,
                 ownOnly = true,
@@ -67,10 +66,9 @@ ns.auras["dark_succor_buff"] = {
             multi = {},
         },
         class = {
-            single = "MAGE",
+            single = "DRUID",
             multi = {
-                ROGUE = true,
-                MAGE = true,
+                DRUID = true,
             },
         },
         size = {

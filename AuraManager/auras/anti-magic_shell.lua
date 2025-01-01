@@ -14,20 +14,20 @@ ns.auras["anti-magic_shell"] = {
     height = 3,
     frameStrata = 1,
     barColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
     barColor2 = {
-        1,
         0,
+        1,
         0,
         1,
     },
     backgroundColor = {
-        1,
         0,
+        1,
         0,
         1,
     },
