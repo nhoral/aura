@@ -37,20 +37,20 @@ ns.auras["frost_fever_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
-                spellName = 14281,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "target",
+                spellIds = {},
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HARMFUL",
+                spellName = 14281,
                 auranames = {
                     "Frost Fever",
                 },
@@ -65,27 +65,27 @@ ns.auras["frost_fever_debuff"] = {
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                HUNTER = true,
+                ROGUE = true,
+            },
+            single = "HUNTER",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "HUNTER",
+        race = {
             multi = {
-                HUNTER = true,
-                ROGUE = true,
+                Scourge = true,
             },
-        },
-        size = {
-            multi = {},
+            single = "Scourge",
         },
         use_class = false,
     },

@@ -8,7 +8,7 @@ ns.auras["mind_freeze"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 32,
+    xOffset = 36,
     yOffset = -8,
     width = 3,
     height = 3,
@@ -37,20 +37,20 @@ ns.auras["mind_freeze"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 47528,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 47528,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,27 +58,27 @@ ns.auras["mind_freeze"] = {
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                HUNTER = true,
+                ROGUE = true,
+            },
+            single = "HUNTER",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "HUNTER",
+        race = {
             multi = {
-                HUNTER = true,
-                ROGUE = true,
+                Scourge = true,
             },
-        },
-        size = {
-            multi = {},
+            single = "Scourge",
         },
         use_class = false,
     },

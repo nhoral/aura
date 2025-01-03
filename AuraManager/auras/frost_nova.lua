@@ -37,47 +37,47 @@ ns.auras["frost_nova"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 122,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Cooldown Progress (Spell)",
                 unit = "player",
+                spellIds = {},
                 realSpellName = "Frost Nova",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 122,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                ROGUE = true,
+                MAGE = true,
+            },
+            single = "MAGE",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "MAGE",
+        race = {
             multi = {
-                ROGUE = true,
-                MAGE = true,
+                Scourge = true,
             },
-        },
-        size = {
-            multi = {},
+            single = "Scourge",
         },
     },
     animation = {

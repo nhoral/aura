@@ -8,7 +8,7 @@ ns.auras["target_moving"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 28,
+    xOffset = 52,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,16 +38,17 @@ ns.auras["target_moving"] = {
         activeTriggerMode = 1,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "custom",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
+                duration = "1",
                 event = "Health",
                 unit = "player",
-                spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 use_unit = true,
-                duration = "1",
+                custom_type = "stateupdate",
+                spellIds = {},
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -68,7 +69,6 @@ ns.auras["target_moving"] = {
     end
 end]],
                 check = "update",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 custom_hide = "timed",
                 customVariables = "{}",
@@ -78,30 +78,30 @@ end]],
     },
     conditions = {},
     load = {
+        use_level = false,
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                WARLOCK = true,
+            },
+            single = "WARLOCK",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "WARLOCK",
-            multi = {
-                WARLOCK = true,
-            },
-        },
-        size = {
-            multi = {},
-        },
         use_never = false,
-        zoneIds = "",
-        use_level = false,
         level = {
             "120",
         },
         level_operator = {
             "~=",
         },
+        zoneIds = "",
     },
     animation = {
         start = {

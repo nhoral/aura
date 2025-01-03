@@ -8,7 +8,7 @@ ns.auras["player_slowed"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 36,
+    xOffset = 56,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -37,14 +37,14 @@ ns.auras["player_slowed"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "player",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
                 auranames = {
                     "Chains of Ice",
                     "Concussive Shot",
@@ -60,10 +60,10 @@ ns.auras["player_slowed"] = {
                     "Hamstring",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -73,16 +73,16 @@ ns.auras["player_slowed"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "ROGUE",
             multi = {
                 ROGUE = true,
             },
+            single = "ROGUE",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

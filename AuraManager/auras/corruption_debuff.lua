@@ -37,21 +37,21 @@ ns.auras["corruption_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "target",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
                 auranames = {
                     "Corruption",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -62,16 +62,16 @@ ns.auras["corruption_debuff"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "WARLOCK",
             multi = {
                 WARLOCK = true,
             },
+            single = "WARLOCK",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

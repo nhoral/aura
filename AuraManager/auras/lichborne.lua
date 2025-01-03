@@ -8,7 +8,7 @@ ns.auras["lichborne"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 104,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -37,48 +37,48 @@ ns.auras["lichborne"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 49039,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
+                use_inverse = false,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
-                use_inverse = false,
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 49039,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                ROGUE = true,
+                MAGE = true,
+            },
+            single = "MAGE",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "MAGE",
+        race = {
             multi = {
-                ROGUE = true,
-                MAGE = true,
+                Scourge = true,
             },
-        },
-        size = {
-            multi = {},
+            single = "Scourge",
         },
     },
     animation = {

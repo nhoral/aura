@@ -37,21 +37,21 @@ ns.auras["frost_armor_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "player",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 auranames = {
                     "Frost Armor",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -62,17 +62,17 @@ ns.auras["frost_armor_buff"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "MAGE",
             multi = {
                 DRUID = true,
                 MAGE = true,
             },
+            single = "MAGE",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

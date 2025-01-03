@@ -37,21 +37,21 @@ ns.auras["aspect_of_the_monkey_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "BOTH",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "player",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "BOTH",
                 auranames = {
                     "Aspect of the Monkey",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -62,18 +62,18 @@ ns.auras["aspect_of_the_monkey_buff"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "HUNTER",
             multi = {
                 HUNTER = true,
                 DRUID = true,
                 MAGE = true,
             },
+            single = "HUNTER",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

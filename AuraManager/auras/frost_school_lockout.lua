@@ -37,34 +37,34 @@ ns.auras["frost_school_lockout"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Crowd Controlled",
                 unit = "target",
-                spellIds = {},
-                subeventPrefix = "SPELL",
-                use_inverse = false,
-                debuffType = "HELPFUL",
                 use_unit = true,
+                spellIds = {},
+                use_inverse = false,
                 auranames = {
                     "Quick Flame Ward",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 debuffClass = {
                     magic = true,
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
-                interruptSchool = 16,
-                controlType = "SCHOOL_INTERRUPT",
                 auraspellids = {
                     "116",
                 },
+                controlType = "SCHOOL_INTERRUPT",
+                interruptSchool = 16,
                 useExactSpellId = false,
             },
             untrigger = {},
@@ -75,17 +75,17 @@ ns.auras["frost_school_lockout"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "MAGE",
             multi = {
                 ROGUE = true,
                 MAGE = true,
             },
+            single = "MAGE",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

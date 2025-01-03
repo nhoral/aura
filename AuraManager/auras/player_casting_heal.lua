@@ -8,7 +8,7 @@ ns.auras["player_casting_heal"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 4,
+    xOffset = 24,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["player_casting_heal"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
-                spellName = 0,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Cast",
                 unit = "player",
+                use_unit = true,
+                spellIds = {},
                 realSpellName = 0,
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
-                use_unit = true,
+                spellName = 0,
                 use_castType = false,
                 use_destUnit = false,
                 use_spellNames = true,
@@ -67,13 +67,13 @@ ns.auras["player_casting_heal"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
             multi = {},
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

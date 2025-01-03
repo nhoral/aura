@@ -8,7 +8,7 @@ ns.auras["killing_machine_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 92,
+    xOffset = 96,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -37,22 +37,22 @@ ns.auras["killing_machine_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "player",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 auranames = {
                     "Killing Machine",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -63,17 +63,17 @@ ns.auras["killing_machine_buff"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "MAGE",
             multi = {
                 ROGUE = true,
                 MAGE = true,
             },
+            single = "MAGE",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

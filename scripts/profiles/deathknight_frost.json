@@ -12,20 +12,40 @@
             "conditions": ["lichborne", "player_charmed"]
         },
         {
+            "name": "Wraith Walk",
+            "key": "SHIFT-=",
+            "conditions": ["lichborne", "player_charmed"]
+        },
+        {
+            "name": "Raise Ally",
+            "key": "SHIFT-9",
+            "conditions": ["raise_ally", "theiranus_dead", "power_30"]
+        },
+        {
             "name": "Lichborne For Heal",
             "key": "9",
-            "conditions": ["lichborne", "health_under_20"]
+            "conditions": ["lichborne", "health_under_50"]
         },
         {
             "name": "Death Coil Self",
             "key": "SHIFT-1",
-            "conditions": ["lichborne_buff", "power_30", "health_under_20"]
+            "conditions": ["lichborne_buff", "power_30", "health_under_50"]
         },
         {
             "name": "Mind Freeze",
             "key": "SHIFT-4",
             "conditions": ["mind_freeze", "target_interruptible", "range_15", "combat", "rune_1"]
-        },  
+        }, 
+        {
+            "name": "Blinding Sleet",
+            "key": "SHIFT--",
+            "conditions": ["blinding_sleet", "target_interruptible", "range_10", "combat"]
+        },
+        {
+            "name": "Empower Rune Weapon",
+            "key": "CTRL-1",
+            "conditions": ["empower_rune_weapon", "combat", "!rune_3", "!power_60"]
+        },
         {
             "name": "Anti-Magic Shell",
             "key": "SHIFT-2",
@@ -52,11 +72,6 @@
             "conditions": ["health_under_20", "death's advance"]
         },
         {
-            "name": "Death's Advance OOC",
-            "key": "8",
-            "conditions": ["!combat", "death's_advance"]
-        },
-        {
             "name": "Icebound Fortitude",
             "key": "6",
             "conditions": ["icebound_fortitude", "health_under_75"]
@@ -67,7 +82,17 @@
             "conditions": ["raise_dead", "combat"]
         },
         {
-            "name": "Howling Blast",
+            "name": "Pillar of Frost",
+            "key": "SHIFT-8",
+            "conditions": ["pillar_of_frost", "combat"]
+        },
+        {
+            "name": "Frostwyrm's Fury",
+            "key": "SHIFT-0",
+            "conditions": ["pillar_of_frost", "frostwyrm's_fury", "range_8", "combat"]
+        },
+        {
+            "name": "Howling Blast if Rime",
             "key": "SHIFT-5",
             "conditions": ["rime_buff", "range_8"]
         },
@@ -125,6 +150,16 @@
             "name": "Obliterate",
             "key": "1",
             "conditions": ["range_8", "rune_2"]
+        },
+        {
+            "name": "Path of Frost",
+            "key": "SHIFT-7",
+            "conditions": ["!combat", "rune_5", "!path_of_frost_buff"]
+        },
+        {
+            "name": "Death's Advance OOC",
+            "key": "8",
+            "conditions": ["!combat", "death's_advance"]
         }
     ]
 } 

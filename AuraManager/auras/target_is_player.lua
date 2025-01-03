@@ -8,7 +8,7 @@ ns.auras["target_is_player"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 24,
+    xOffset = 48,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,22 +38,22 @@ ns.auras["target_is_player"] = {
         activeTriggerMode = 1,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
+                duration = "1",
                 event = "Unit Characteristics",
                 unit = "target",
-                spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 use_unit = true,
-                duration = "1",
-                use_class = false,
-                check = "update",
                 custom_type = "stateupdate",
+                spellIds = {},
+                check = "update",
                 unevent = "auto",
                 custom_hide = "timed",
                 customVariables = "{}",
+                use_class = false,
                 use_unitisunit = false,
                 use_character = true,
                 character = "player",
@@ -64,30 +64,30 @@ ns.auras["target_is_player"] = {
     },
     conditions = {},
     load = {
+        use_level = false,
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                WARLOCK = true,
+            },
+            single = "WARLOCK",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "WARLOCK",
-            multi = {
-                WARLOCK = true,
-            },
-        },
-        size = {
-            multi = {},
-        },
         use_never = false,
-        zoneIds = "",
-        use_level = false,
         level = {
             "120",
         },
         level_operator = {
             "~=",
         },
+        zoneIds = "",
     },
     animation = {
         start = {

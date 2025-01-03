@@ -8,7 +8,7 @@ ns.auras["growl"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 56,
+    xOffset = 60,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -37,20 +37,20 @@ ns.auras["growl"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 6795,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
                 realSpellName = "Growl",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 6795,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,28 +58,28 @@ ns.auras["growl"] = {
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "DRUID",
             multi = {
                 HUNTER = true,
                 DRUID = true,
                 ROGUE = true,
             },
+            single = "DRUID",
         },
         size = {
             multi = {},
+        },
+        spec = {
+            multi = {},
+        },
+        race = {
+            multi = {
+                Scourge = true,
+            },
+            single = "Scourge",
         },
     },
     animation = {

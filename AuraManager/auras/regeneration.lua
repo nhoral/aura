@@ -8,7 +8,7 @@ ns.auras["regeneration"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 40,
+    xOffset = 64,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,48 +37,48 @@ ns.auras["regeneration"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 1008,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
+                use_inverse = true,
                 realSpellName = "Amplify Magic",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
-                use_inverse = true,
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 1008,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                ROGUE = true,
+                MAGE = true,
+            },
+            single = "MAGE",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "MAGE",
+        race = {
             multi = {
-                ROGUE = true,
-                MAGE = true,
+                Scourge = true,
             },
-        },
-        size = {
-            multi = {},
+            single = "Scourge",
         },
     },
     animation = {

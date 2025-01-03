@@ -51,6 +51,7 @@ auras/frost_nova.lua
 auras/frost_nova_debuff.lua
 auras/frost_school_lockout.lua
 auras/frostbolt_debuff.lua
+auras/frostwyrm's_fury.lua
 auras/gouge.lua
 auras/gouge_debuff.lua
 auras/growl.lua
@@ -87,6 +88,8 @@ auras/party_1_range_35.lua
 auras/party_2_health_under_70.lua
 auras/party_3_health_under_70.lua
 auras/party_4_health_under_70.lua
+auras/path_of_frost.lua
+auras/path_of_frost_buff.lua
 auras/pet_bite.lua
 auras/pet_combat.lua
 auras/pet_focus_15.lua
@@ -99,6 +102,8 @@ auras/pet_health_under_75.lua
 auras/pet_range_20.lua
 auras/pet_range_8.lua
 auras/pet_target_aggro.lua
+auras/pillar_of_frost.lua
+auras/pillar_of_frost_buff.lua
 auras/player_casting.lua
 auras/player_casting_heal.lua
 auras/player_charmed.lua
@@ -129,6 +134,7 @@ auras/power_70.lua
 auras/power_80.lua
 auras/power_90.lua
 auras/power_word_fortitude_buff.lua
+auras/raise_ally.lua
 auras/raise_dead.lua
 auras/rake_debuff.lua
 auras/range_15.lua
@@ -167,6 +173,7 @@ auras/target_health_under_90.lua
 auras/target_interruptible.lua
 auras/target_is_player.lua
 auras/target_moving.lua
+auras/theiranus_dead.lua
 auras/thorns_buff.lua
 auras/threat_under_80.lua
 auras/tigers_fury_buff.lua

@@ -8,8 +8,8 @@ ns.auras["skull_bash"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
-    yOffset = -16,
+    xOffset = 0,
+    yOffset = -20,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,49 +38,49 @@ ns.auras["skull_bash"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 410176,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
+                use_inverse = false,
                 realSpellName = "Skull Bash",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
-                use_inverse = false,
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 410176,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "DRUID",
             multi = {
                 HUNTER = true,
                 DRUID = true,
                 ROGUE = true,
             },
+            single = "DRUID",
         },
         size = {
             multi = {},
+        },
+        spec = {
+            multi = {},
+        },
+        race = {
+            multi = {
+                Scourge = true,
+            },
+            single = "Scourge",
         },
     },
     animation = {

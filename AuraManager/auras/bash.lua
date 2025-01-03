@@ -37,20 +37,20 @@ ns.auras["bash"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 5211,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
                 realSpellName = "Bash",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 5211,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,28 +58,28 @@ ns.auras["bash"] = {
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "DRUID",
             multi = {
                 HUNTER = true,
                 DRUID = true,
                 ROGUE = true,
             },
+            single = "DRUID",
         },
         size = {
             multi = {},
+        },
+        spec = {
+            multi = {},
+        },
+        race = {
+            multi = {
+                Scourge = true,
+            },
+            single = "Scourge",
         },
         use_class = false,
     },

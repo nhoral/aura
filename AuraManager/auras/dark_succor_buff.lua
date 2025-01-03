@@ -37,22 +37,22 @@ ns.auras["dark_succor_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "player",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HELPFUL",
                 auranames = {
                     "Dark Succor",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -63,17 +63,17 @@ ns.auras["dark_succor_buff"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "MAGE",
             multi = {
                 ROGUE = true,
                 MAGE = true,
             },
+            single = "MAGE",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

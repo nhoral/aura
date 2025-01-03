@@ -37,22 +37,22 @@ ns.auras["frost_nova_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
                 event = "Health",
                 unit = "target",
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                debuffType = "HARMFUL",
                 auranames = {
                     "122",
                 },
                 unitExists = false,
+                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
-                useRem = false,
                 debuffClass = {
                     magic = true,
                 },
@@ -69,17 +69,17 @@ ns.auras["frost_nova_debuff"] = {
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "MAGE",
             multi = {
                 ROGUE = true,
                 MAGE = true,
             },
+            single = "MAGE",
         },
         size = {
+            multi = {},
+        },
+        spec = {
             multi = {},
         },
     },

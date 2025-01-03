@@ -8,7 +8,7 @@ ns.auras["rocket_barrage"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 60,
+    xOffset = 84,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,20 +37,20 @@ ns.auras["rocket_barrage"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
-                spellName = 69041,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Action Usable",
                 unit = "player",
+                spellIds = {},
                 realSpellName = "Bash",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
+                spellName = 69041,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,28 +58,28 @@ ns.auras["rocket_barrage"] = {
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
             multi = {},
         },
-        spec = {
-            multi = {},
-        },
         class = {
-            single = "DRUID",
             multi = {
                 HUNTER = true,
                 DRUID = true,
                 ROGUE = true,
             },
+            single = "DRUID",
         },
         size = {
             multi = {},
+        },
+        spec = {
+            multi = {},
+        },
+        race = {
+            multi = {
+                Scourge = true,
+            },
+            single = "Scourge",
         },
         use_class = false,
     },

@@ -8,8 +8,8 @@ ns.auras["power_word_fortitude_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
-    yOffset = -12,
+    xOffset = 16,
+    yOffset = -16,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,21 +37,21 @@ ns.auras["power_word_fortitude_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "aura2",
-                spellName = 1243,
+                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
                 names = {},
-                use_genericShowOn = true,
                 event = "Health",
                 unit = "player",
+                use_unit = true,
+                spellIds = {},
                 realSpellName = "Power Word: Fortitude",
                 use_spellName = true,
-                spellIds = {},
-                subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                debuffType = "HELPFUL",
-                use_unit = true,
+                spellName = 1243,
                 auranames = {
                     "Power Word: Fortitude",
                 },
@@ -63,27 +63,27 @@ ns.auras["power_word_fortitude_buff"] = {
     },
     conditions = {},
     load = {
-        race = {
-            single = "Scourge",
-            multi = {
-                Scourge = true,
-            },
-        },
         talent = {
+            multi = {},
+        },
+        class = {
+            multi = {
+                ROGUE = true,
+                PRIEST = true,
+            },
+            single = "PRIEST",
+        },
+        size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        class = {
-            single = "PRIEST",
+        race = {
             multi = {
-                ROGUE = true,
-                PRIEST = true,
+                Scourge = true,
             },
-        },
-        size = {
-            multi = {},
+            single = "Scourge",
         },
     },
     animation = {
