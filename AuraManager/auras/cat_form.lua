@@ -8,7 +8,7 @@ ns.auras["cat_form"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 48,
+    xOffset = 56,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -37,24 +37,24 @@ ns.auras["cat_form"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "BOTH",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Stance/Form/Aura",
-                unit = "player",
+                names = {},
                 use_unit = true,
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "BOTH",
                 auranames = {
                     "Cat Form",
                 },
                 unitExists = false,
-                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
                 useNamePattern = false,
+                useRem = false,
                 ownOnly = true,
                 use_form = true,
                 form = {
@@ -75,10 +75,10 @@ ns.auras["cat_form"] = {
             },
             single = "DRUID",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

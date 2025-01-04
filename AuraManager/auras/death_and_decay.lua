@@ -8,7 +8,7 @@ ns.auras["death_and_decay"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
+    xOffset = 104,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["death_and_decay"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Action Usable",
-                unit = "player",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 43265,
                 use_inverse = false,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
+                use_genericShowOn = true,
                 use_track = true,
-                spellName = 43265,
             },
             untrigger = {},
         },
@@ -68,10 +68,10 @@ ns.auras["death_and_decay"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

@@ -8,7 +8,7 @@ ns.auras["anti-magic_shell"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 4,
+    xOffset = 8,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["anti-magic_shell"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Action Usable",
-                unit = "player",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 48707,
                 use_inverse = false,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
+                use_genericShowOn = true,
                 use_track = true,
-                spellName = 48707,
             },
             untrigger = {},
         },
@@ -68,10 +68,10 @@ ns.auras["anti-magic_shell"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

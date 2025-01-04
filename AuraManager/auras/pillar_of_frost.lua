@@ -8,7 +8,7 @@ ns.auras["pillar_of_frost"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 12,
+    xOffset = 24,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -37,20 +37,20 @@ ns.auras["pillar_of_frost"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Action Usable",
-                unit = "player",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 51271,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
+                use_genericShowOn = true,
                 use_track = true,
-                spellName = 51271,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -68,10 +68,10 @@ ns.auras["pillar_of_frost"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

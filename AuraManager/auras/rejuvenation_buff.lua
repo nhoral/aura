@@ -8,7 +8,7 @@ ns.auras["rejuvenation_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 68,
+    xOffset = 84,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["rejuvenation_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "aura2",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Health",
-                unit = "player",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 auranames = {
                     "Rejuvenation",
                 },
                 unitExists = false,
-                useRem = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
+                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -68,10 +68,10 @@ ns.auras["rejuvenation_buff"] = {
             },
             single = "DRUID",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

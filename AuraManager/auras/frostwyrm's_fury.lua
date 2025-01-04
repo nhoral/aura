@@ -8,7 +8,7 @@ ns.auras["frostwyrm's_fury"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 48,
+    xOffset = 60,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -37,20 +37,20 @@ ns.auras["frostwyrm's_fury"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Action Usable",
-                unit = "player",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 279302,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
+                use_genericShowOn = true,
                 use_track = true,
-                spellName = 279302,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -68,10 +68,10 @@ ns.auras["frostwyrm's_fury"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

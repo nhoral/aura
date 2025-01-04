@@ -9,6 +9,7 @@ AuraManager.lua
 aura_list.lua
 
 # Auras
+auras/a_test.lua
 auras/amplify_magic_buff.lua
 auras/anti-magic_shell.lua
 auras/arcane_intellect_buff.lua
@@ -18,6 +19,7 @@ auras/aspect_of_the_hawk_buff.lua
 auras/aspect_of_the_monkey_buff.lua
 auras/bash.lua
 auras/bear_form.lua
+auras/blinding_sleet.lua
 auras/blink.lua
 auras/bomb.lua
 auras/bomb_in_inventory.lua
@@ -39,6 +41,7 @@ auras/demon_skin_buff.lua
 auras/demoralizing_roar_debuff.lua
 auras/demoralizing_shout_debuff.lua
 auras/distracting_shot.lua
+auras/empower_rune_weapon.lua
 auras/enemy_loose.lua
 auras/entangled_debuff.lua
 auras/evasion.lua
@@ -137,6 +140,7 @@ auras/power_word_fortitude_buff.lua
 auras/raise_ally.lua
 auras/raise_dead.lua
 auras/rake_debuff.lua
+auras/range_10.lua
 auras/range_15.lua
 auras/range_30.lua
 auras/range_8.lua
@@ -171,6 +175,8 @@ auras/target_health_under_50.lua
 auras/target_health_under_75.lua
 auras/target_health_under_90.lua
 auras/target_interruptible.lua
+auras/target_interruptible_range_12.lua
+auras/target_interruptible_range_15.lua
 auras/target_is_player.lua
 auras/target_moving.lua
 auras/theiranus_dead.lua
@@ -178,3 +184,4 @@ auras/thorns_buff.lua
 auras/threat_under_80.lua
 auras/tigers_fury_buff.lua
 auras/undead_or_mechanical.lua
+auras/wraith_walk.lua

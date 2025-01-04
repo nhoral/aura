@@ -8,7 +8,7 @@ ns.auras["rune_2"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
+    xOffset = 112,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,37 +37,37 @@ ns.auras["rune_2"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Death Knight Rune",
-                unit = "player",
+                names = {},
                 use_unit = true,
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_power = true,
                 use_showCost = false,
                 powertype = 6,
                 use_powertype = true,
                 use_percentpower = false,
-                percentpower = {
-                    "10",
-                },
                 percentpower_operator = {
                     ">=",
                 },
-                use_runesCount = true,
-                power = {
-                    "2",
+                percentpower = {
+                    "10",
                 },
+                use_runesCount = true,
+                runesCount = "2",
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
+                power = {
+                    "2",
+                },
                 rune = 0,
-                runesCount = "2",
             },
             untrigger = {},
         },
@@ -83,10 +83,10 @@ ns.auras["rune_2"] = {
             },
             single = "ROGUE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

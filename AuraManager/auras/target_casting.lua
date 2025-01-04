@@ -8,7 +8,7 @@ ns.auras["target_casting"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 24,
+    xOffset = 40,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -37,20 +37,20 @@ ns.auras["target_casting"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Cast",
-                unit = "target",
+                names = {},
                 use_unit = true,
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_castType = false,
                 remaining_operator = ">",
                 remaining = "1",
-                use_destUnit = false,
                 use_remaining = false,
+                use_destUnit = false,
             },
             untrigger = {},
         },
@@ -63,10 +63,10 @@ ns.auras["target_casting"] = {
         class = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

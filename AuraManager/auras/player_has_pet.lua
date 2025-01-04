@@ -8,7 +8,7 @@ ns.auras["player_has_pet"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 40,
+    xOffset = 52,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -37,17 +37,17 @@ ns.auras["player_has_pet"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Conditions",
-                unit = "player",
+                names = {},
                 use_unit = true,
                 spellIds = {},
-                use_genericShowOn = true,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 genericShowOn = "showOnCooldown",
+                use_genericShowOn = true,
                 itemName = 0,
                 use_itemName = true,
                 behavior = "passive",
@@ -69,10 +69,10 @@ ns.auras["player_has_pet"] = {
             },
             single = "WARLOCK",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

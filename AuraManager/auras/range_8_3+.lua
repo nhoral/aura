@@ -8,7 +8,7 @@ ns.auras["range_8_3+"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 48,
+    xOffset = 64,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,16 +37,16 @@ ns.auras["range_8_3+"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                customVariables = [[{
+  stacks = true,
+}]],
                 type = "custom",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
+                unevent = "auto",
                 duration = "1",
                 event = "Health",
-                unit = "player",
+                names = {},
                 use_unit = true,
-                custom_type = "stateupdate",
                 spellIds = {},
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
@@ -83,11 +83,11 @@ ns.auras["range_8_3+"] = {
         return true
     end
 end]],
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                customVariables = [[{
-  stacks = true,
-}]],
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
             },
@@ -105,14 +105,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        size = {
-            multi = {},
-        },
+        zoneIds = "",
+        use_never = false,
         spec = {
             multi = {},
         },
-        use_never = false,
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

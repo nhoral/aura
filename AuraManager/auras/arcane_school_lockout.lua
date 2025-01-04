@@ -8,7 +8,7 @@ ns.auras["arcane_school_lockout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 12,
+    xOffset = 16,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -37,34 +37,34 @@ ns.auras["arcane_school_lockout"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Crowd Controlled",
-                unit = "target",
+                names = {},
                 use_unit = true,
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_inverse = false,
                 auranames = {
                     "Quick Flame Ward",
                 },
                 unitExists = false,
-                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
+                useRem = false,
                 debuffClass = {
                     magic = true,
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
+                interruptSchool = 64,
+                controlType = "SCHOOL_INTERRUPT",
                 auraspellids = {
                     "116",
                 },
-                controlType = "SCHOOL_INTERRUPT",
-                interruptSchool = 64,
                 useExactSpellId = false,
             },
             untrigger = {},
@@ -82,10 +82,10 @@ ns.auras["arcane_school_lockout"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

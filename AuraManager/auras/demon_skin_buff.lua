@@ -8,7 +8,7 @@ ns.auras["demon_skin_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 112,
     yOffset = 0,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["demon_skin_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "aura2",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Health",
-                unit = "player",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 auranames = {
                     "Demon Skin",
                 },
                 unitExists = false,
-                useRem = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
+                useRem = false,
                 ownOnly = true,
             },
             untrigger = {},
@@ -69,10 +69,10 @@ ns.auras["demon_skin_buff"] = {
             },
             single = "WARLOCK",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

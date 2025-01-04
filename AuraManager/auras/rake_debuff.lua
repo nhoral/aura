@@ -8,7 +8,7 @@ ns.auras["rake_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 28,
+    xOffset = 40,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,22 +37,22 @@ ns.auras["rake_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
                 type = "aura2",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Health",
-                unit = "target",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
                 auranames = {
                     "Rake",
                 },
                 unitExists = false,
-                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
+                useRem = false,
                 ownOnly = true,
                 auraspellids = {
                     "414684",
@@ -73,10 +73,10 @@ ns.auras["rake_debuff"] = {
             },
             single = "DRUID",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

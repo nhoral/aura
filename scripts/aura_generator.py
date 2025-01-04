@@ -277,6 +277,41 @@ aura_list.lua
         
         print(f"Updated TOC file: {toc_path}")
 
+    def _load_existing_auras(self):
+        """Load existing aura files from the auras directory"""
+        existing_auras = []
+        if self.output_path.exists():
+            for file_path in self.output_path.glob("*.lua"):
+                try:
+                    # Read the file content
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    
+                    # Extract aura name from filename
+                    aura_name = file_path.stem
+                    
+                    # Parse the Lua content to get the aura data
+                    # Find the table content between = { ... }
+                    table_start = content.find('= {') + 2
+                    table_end = content.rfind('}')
+                    if table_start > 2 and table_end > table_start:
+                        table_content = content[table_start:table_end+1]
+                        
+                        # Wrap the table content for evaluation
+                        wrapped_content = f"return {table_content}"
+                        
+                        # Execute and get the result
+                        result = self.lua.execute(wrapped_content)
+                        # Create a new parser instance for converting Lua to Python
+                        parser = LuaParser(str(file_path))
+                        aura_data = parser._lua_to_python(result)
+                        
+                        existing_auras.append((aura_name, aura_data))
+                except Exception as e:
+                    print(f"Warning: Could not parse existing aura file {file_path}: {e}")
+        
+        return existing_auras
+
     def generate_aura_files(self):
         """Parse WeakAuras.lua and generate individual aura files"""
         stats = {
@@ -287,27 +322,31 @@ aura_list.lua
         }
         
         try:
+            # First, load WeakAuras (they take priority)
             wa_export = self.parser.parse()
             displays = wa_export.addons["WeakAurasSaved"]["displays"]
             
             self.output_path.mkdir(parents=True, exist_ok=True)
             generated_auras = []
             transformed_auras = []  # Store transformed aura data
-            sorted_auras = sorted(displays.items())
+            processed_aura_names = set()  # Track which auras we've processed
+            current_index = 0  # Track current grid position
             
-            for index, (aura_name, aura_data) in enumerate(sorted_auras):
+            # Process WeakAuras first (they take priority)
+            sorted_auras = sorted(displays.items())
+            for aura_name, aura_data in sorted_auras:
                 stats["processed"] += 1
                 try:
-                    file_name = aura_name.lower().replace(" ", "_") + ".lua"
-                    output_file = self.output_path / file_name
+                    file_name = aura_name.lower().replace(" ", "_")
+                    output_file = self.output_path / f"{file_name}.lua"
                     
-                    transformed_data = self._transform_aura_data(aura_name, aura_data, index)
+                    transformed_data = self._transform_aura_data(aura_name, aura_data, current_index)
                     transformed_auras.append(transformed_data)  # Store for layout.json
                     
                     lua_code = f"""
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {{}}
-ns.auras["{aura_name.lower().replace(" ", "_")}"] = {self._format_lua_value(transformed_data)}
+ns.auras["{file_name}"] = {self._format_lua_value(transformed_data)}
 """
                     
                     if not self._validate_lua(lua_code):
@@ -318,12 +357,33 @@ ns.auras["{aura_name.lower().replace(" ", "_")}"] = {self._format_lua_value(tran
                     with output_file.open('w', encoding='utf-8') as f:
                         f.write(lua_code)
                     
-                    generated_auras.append(aura_name.lower().replace(" ", "_"))
+                    generated_auras.append(file_name)
+                    processed_aura_names.add(file_name)
                     stats["success"] += 1
+                    current_index += 1
                     
                 except Exception as e:
                     stats["errors"] += 1
                     stats["error_details"].append(f"Error processing {aura_name}: {str(e)}")
+            
+            # Then load and process existing auras that weren't in WeakAuras
+            existing_auras = self._load_existing_auras()
+            for aura_name, aura_data in sorted(existing_auras):
+                if aura_name in processed_aura_names:
+                    print(f"Skipping {aura_name} as it was already processed from WeakAuras")
+                    continue
+                
+                stats["processed"] += 1
+                try:
+                    # Transform the aura data to ensure it has proper grid positioning
+                    transformed_data = self._transform_aura_data(aura_name, aura_data, current_index)
+                    transformed_auras.append(transformed_data)
+                    generated_auras.append(aura_name)
+                    stats["success"] += 1
+                    current_index += 1
+                except Exception as e:
+                    stats["errors"] += 1
+                    stats["error_details"].append(f"Error processing existing aura {aura_name}: {str(e)}")
             
             # Generate the export list file
             export_file = self.output_path.parent / "aura_list.lua"

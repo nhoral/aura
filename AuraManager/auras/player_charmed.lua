@@ -8,7 +8,7 @@ ns.auras["player_charmed"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 28,
+    xOffset = 40,
     yOffset = -12,
     width = 3,
     height = 3,
@@ -37,34 +37,34 @@ ns.auras["player_charmed"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Crowd Controlled",
-                unit = "target",
+                names = {},
                 use_unit = true,
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_inverse = false,
                 auranames = {
                     "Quick Flame Ward",
                 },
                 unitExists = false,
-                useRem = false,
                 useName = true,
                 use_debuffClass = false,
                 matchesShowOn = "showOnActive",
+                useRem = false,
                 debuffClass = {
                     magic = true,
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
+                interruptSchool = 16,
+                controlType = "CHARM",
                 auraspellids = {
                     "116",
                 },
-                controlType = "CHARM",
-                interruptSchool = 16,
                 useExactSpellId = false,
             },
             untrigger = {},
@@ -82,10 +82,10 @@ ns.auras["player_charmed"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

@@ -1,5 +1,6 @@
 local ADDON_NAME, ns = ...
 ns.aura_list = {
+    "a_test",
     "amplify_magic_buff",
     "anti-magic_shell",
     "arcane_intellect_buff",
@@ -9,6 +10,7 @@ ns.aura_list = {
     "aspect_of_the_monkey_buff",
     "bash",
     "bear_form",
+    "blinding_sleet",
     "blink",
     "bomb",
     "bomb_in_inventory",
@@ -30,6 +32,7 @@ ns.aura_list = {
     "demoralizing_roar_debuff",
     "demoralizing_shout_debuff",
     "distracting_shot",
+    "empower_rune_weapon",
     "enemy_loose",
     "entangled_debuff",
     "evasion",
@@ -128,6 +131,7 @@ ns.aura_list = {
     "raise_ally",
     "raise_dead",
     "rake_debuff",
+    "range_10",
     "range_15",
     "range_30",
     "range_8",
@@ -162,6 +166,8 @@ ns.aura_list = {
     "target_health_under_75",
     "target_health_under_90",
     "target_interruptible",
+    "target_interruptible_range_12",
+    "target_interruptible_range_15",
     "target_is_player",
     "target_moving",
     "theiranus_dead",
@@ -169,4 +175,5 @@ ns.aura_list = {
     "threat_under_80",
     "tigers_fury_buff",
     "undead_or_mechanical",
+    "wraith_walk",
 }

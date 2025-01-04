@@ -8,7 +8,7 @@ ns.auras["target_moving"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 52,
+    xOffset = 72,
     yOffset = -20,
     width = 3,
     height = 3,
@@ -38,16 +38,15 @@ ns.auras["target_moving"] = {
         activeTriggerMode = 1,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                customVariables = "{}",
                 type = "custom",
-                subeventPrefix = "SPELL",
+                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
-                names = {},
+                unevent = "auto",
                 duration = "1",
                 event = "Health",
-                unit = "player",
+                names = {},
                 use_unit = true,
-                custom_type = "stateupdate",
                 spellIds = {},
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
@@ -68,10 +67,11 @@ ns.auras["target_moving"] = {
         end
     end
 end]],
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                custom_hide = "timed",
-                customVariables = "{}",
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
             },
             untrigger = {},
         },
@@ -88,20 +88,20 @@ end]],
             },
             single = "WARLOCK",
         },
-        size = {
-            multi = {},
-        },
-        spec = {
-            multi = {},
+        zoneIds = "",
+        level_operator = {
+            "~=",
         },
         use_never = false,
         level = {
             "120",
         },
-        level_operator = {
-            "~=",
+        spec = {
+            multi = {},
         },
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

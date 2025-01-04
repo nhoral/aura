@@ -8,7 +8,7 @@ ns.auras["enemy_loose"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
+    xOffset = 12,
     yOffset = -4,
     width = 3,
     height = 3,
@@ -37,16 +37,16 @@ ns.auras["enemy_loose"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                customVariables = [[{
+  stacks = true,
+}]],
                 type = "custom",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
+                unevent = "auto",
                 duration = "1",
                 event = "Health",
-                unit = "player",
+                names = {},
                 use_unit = true,
-                custom_type = "stateupdate",
                 spellIds = {},
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
@@ -84,11 +84,11 @@ ns.auras["enemy_loose"] = {
         return true
     end
 end]],
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                customVariables = [[{
-  stacks = true,
-}]],
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
             },
@@ -106,14 +106,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        size = {
-            multi = {},
-        },
+        zoneIds = "",
+        use_never = false,
         spec = {
             multi = {},
         },
-        use_never = false,
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

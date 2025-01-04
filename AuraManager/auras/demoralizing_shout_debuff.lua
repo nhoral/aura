@@ -8,8 +8,8 @@ ns.auras["demoralizing_shout_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
-    yOffset = 0,
+    xOffset = 0,
+    yOffset = -4,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,14 +38,14 @@ ns.auras["demoralizing_shout_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
                 type = "aura2",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Health",
-                unit = "target",
+                names = {},
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
                 auranames = {
                     "Demoralizing Shout",
                 },
@@ -65,10 +65,10 @@ ns.auras["demoralizing_shout_debuff"] = {
             },
             single = "DRUID",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

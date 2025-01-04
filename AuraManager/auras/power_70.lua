@@ -8,7 +8,7 @@ ns.auras["power_70"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 4,
+    xOffset = 16,
     yOffset = -16,
     width = 3,
     height = 3,
@@ -37,24 +37,24 @@ ns.auras["power_70"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                subeventPrefix = "SPELL",
                 subeventSuffix = "_CAST_START",
-                names = {},
                 event = "Power",
-                unit = "player",
+                names = {},
                 use_unit = true,
                 spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_showCost = false,
                 powertype = 0,
                 use_powertype = false,
                 use_percentpower = true,
-                percentpower = {
-                    "70",
-                },
                 percentpower_operator = {
                     ">=",
+                },
+                percentpower = {
+                    "70",
                 },
                 use_deficit = false,
             },
@@ -72,10 +72,10 @@ ns.auras["power_70"] = {
             },
             single = "ROGUE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },
