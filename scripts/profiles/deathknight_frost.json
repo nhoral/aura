@@ -14,7 +14,7 @@
         {
             "name": "Wraith Walk",
             "key": "SHIFT-=",
-            "conditions": ["lichborne", "player_charmed"]
+            "conditions": ["wraith_walk", "player_rooted"]
         },
         {
             "name": "Raise Ally",
