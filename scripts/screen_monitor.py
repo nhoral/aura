@@ -221,7 +221,7 @@ class ScreenMonitor:
         print(f"Executing: {action_name} [key: {key}]")
         print(f"Conditions: {', '.join(condition_status)}")
         
-        # Handle SHIFT key combinations
+        # Handle modifier key combinations
         if key.startswith("SHIFT-"):
             actual_key = key[6:]  # Remove "SHIFT-" prefix
             self.keyboard.press(Key.shift)
@@ -229,6 +229,13 @@ class ScreenMonitor:
             time.sleep(self.key_hold_duration)
             self.keyboard.release(actual_key)
             self.keyboard.release(Key.shift)
+        elif key.startswith("CTRL-"):
+            actual_key = key[5:]  # Remove "CTRL-" prefix
+            self.keyboard.press(Key.ctrl)
+            self.keyboard.press(actual_key)
+            time.sleep(self.key_hold_duration)
+            self.keyboard.release(actual_key)
+            self.keyboard.release(Key.ctrl)
         else:
             self.keyboard.press(key)
             time.sleep(self.key_hold_duration)
