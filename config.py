@@ -12,7 +12,7 @@ AURAS_DIR = PROJECT_ROOT / "AuraManager" / "auras"
 TEMPLATES_DIR = SCRIPTS_DIR / "templates"
 
 # WoW paths
-WOW_PATH = Path(r"c:\Program Files (x86)\World of Warcraft\_retail_")
+WOW_PATH = Path(r"c:\Program Files (x86)\World of Warcraft\_classic_era_")
 WEAKAURAS_PATH = WOW_PATH / "WTF" / "Account" / "YABUCHI" / "SavedVariables" / "WeakAuras.lua"
 
 # Input settings
@@ -30,7 +30,10 @@ GRID_SETTINGS = {
     "COLUMNS": 30,
     "AURA_WIDTH": 3,
     "AURA_HEIGHT": 3,
-    "SPACING": 1
+    "SPACING": 1,
+    # Base offset from center of screen
+    "BASE_X_OFFSET": 100,  # Positive moves right, negative moves left
+    "BASE_Y_OFFSET": 100   # Positive moves up, negative moves down
 }
 
 # Addon metadata

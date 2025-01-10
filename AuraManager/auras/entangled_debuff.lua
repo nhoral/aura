@@ -8,8 +8,8 @@ ns.auras["entangled_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 16,
-    yOffset = -4,
+    xOffset = 144,
+    yOffset = 96,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,22 @@ ns.auras["entangled_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
+                unit = "target",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Health",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
+                ownOnly = true,
+                unitExists = false,
                 auranames = {
                     "Entangling Roots",
                 },
-                unitExists = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
                 useRem = false,
-                ownOnly = true,
             },
             untrigger = {},
         },
@@ -68,10 +68,10 @@ ns.auras["entangled_debuff"] = {
             },
             single = "DRUID",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

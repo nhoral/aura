@@ -8,8 +8,8 @@ ns.auras["rune_3"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
-    yOffset = -16,
+    xOffset = 152,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,37 +37,37 @@ ns.auras["rune_3"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
-                event = "Death Knight Rune",
+                subeventPrefix = "SPELL",
+                event = "Health",
                 names = {},
                 use_unit = true,
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_power = true,
                 use_showCost = false,
                 powertype = 6,
                 use_powertype = true,
                 use_percentpower = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
                 },
+                percentpower_operator = {
+                    ">=",
+                },
                 use_runesCount = true,
-                runesCount = "3",
+                power = {
+                    "3",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                power = {
-                    "3",
-                },
                 rune = 0,
+                runesCount = "3",
             },
             untrigger = {},
         },
@@ -83,10 +83,10 @@ ns.auras["rune_3"] = {
             },
             single = "ROGUE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

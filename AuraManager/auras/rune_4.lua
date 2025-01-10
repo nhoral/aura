@@ -8,8 +8,8 @@ ns.auras["rune_4"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
-    yOffset = -20,
+    xOffset = 156,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,37 +37,37 @@ ns.auras["rune_4"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
-                event = "Death Knight Rune",
+                subeventPrefix = "SPELL",
+                event = "Health",
                 names = {},
                 use_unit = true,
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_power = true,
                 use_showCost = false,
                 powertype = 6,
                 use_powertype = true,
                 use_percentpower = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
                 },
+                percentpower_operator = {
+                    ">=",
+                },
                 use_runesCount = true,
-                runesCount = "4",
+                power = {
+                    "4",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                power = {
-                    "4",
-                },
                 rune = 0,
+                runesCount = "4",
             },
             untrigger = {},
         },
@@ -83,10 +83,10 @@ ns.auras["rune_4"] = {
             },
             single = "ROGUE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

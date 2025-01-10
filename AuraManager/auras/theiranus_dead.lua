@@ -8,8 +8,8 @@ ns.auras["theiranus_dead"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 80,
-    yOffset = -20,
+    xOffset = 124,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,16 +38,16 @@ ns.auras["theiranus_dead"] = {
         activeTriggerMode = 1,
         {
             trigger = {
-                customVariables = "{}",
+                debuffType = "HELPFUL",
                 type = "custom",
-                custom_hide = "timed",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
+                subeventPrefix = "SPELL",
                 duration = "1",
                 event = "Health",
                 names = {},
                 use_unit = true,
-                spellIds = {},
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -69,11 +69,11 @@ ns.auras["theiranus_dead"] = {
         end
     end
 end]],
-                custom_type = "stateupdate",
+                spellIds = {},
                 check = "update",
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                unevent = "auto",
+                custom_hide = "timed",
+                customVariables = "{}",
             },
             untrigger = {
                 custom = [[function()
@@ -95,20 +95,20 @@ end]],
             single = "WARLOCK",
         },
         use_spellknown = false,
-        zoneIds = "",
-        level_operator = {
-            "~=",
+        size = {
+            multi = {},
+        },
+        spec = {
+            multi = {},
         },
         use_never = false,
         level = {
             "120",
         },
-        spec = {
-            multi = {},
+        level_operator = {
+            "~=",
         },
-        size = {
-            multi = {},
-        },
+        zoneIds = "",
     },
     animation = {
         start = {

@@ -8,8 +8,8 @@ ns.auras["icebound_fortitude"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 96,
-    yOffset = -4,
+    xOffset = 112,
+    yOffset = 92,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,21 +37,21 @@ ns.auras["icebound_fortitude"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                spellName = 48792,
                 use_inverse = false,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 48792,
             },
             untrigger = {},
         },
@@ -68,10 +68,10 @@ ns.auras["icebound_fortitude"] = {
             },
             single = "MAGE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
         race = {

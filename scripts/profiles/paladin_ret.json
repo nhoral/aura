@@ -1,0 +1,76 @@
+{
+    "name": "Paladin SOD",
+    "actions": [
+        {
+            "name": "Divine Protection",
+            "key": "1",
+            "conditions": ["divine_protection", "power_10", "health_under_20"]
+        },
+        {
+            "name": "Holy Light",
+            "key": "2",
+            "conditions": ["power_20", "health_under_50"]
+        },
+        {
+            "name": "Purify Poisoned",
+            "key": "-",
+            "conditions": ["power_25", "player_poisoned"]
+        },
+        {
+            "name": "Purify Diseased",
+            "key": "-",
+            "conditions": ["power_25", "player_diseased"]
+        },
+        {
+            "name": "Blessing of Might",
+            "key": "3",
+            "conditions": ["!blessing_of_might_buff", "power_30", "!combat"]
+        },
+        {
+            "name": "Devotion Aura",
+            "key": "4",
+            "conditions": ["!devotion_aura_buff", "!combat"]
+        },
+        {
+            "name": "Hammer of Justice",
+            "key": "SHIFT-1",
+            "conditions": ["hammer_of_justice", "power_30", "range_8", "target_interruptible"]
+        }, 
+        {
+            "name": "Seal of Martyrdom",
+            "key": "5",
+            "conditions": ["!seal_of_martyrdom_buff", "power_25", "combat"]
+        },
+        {
+            "name": "Avengers Shield",
+            "key": "6",
+            "conditions": ["avengers_shield", "power_40", "range_30"]
+        },
+        {
+            "name": "Hammer of the Righteous",
+            "key": "7",
+            "conditions": ["hammer_of_the_righteous", "power_25", "range_8_2+"]
+        },
+        {
+            "name": "Crusader Strike",
+            "key": "=",
+            "conditions": ["crusader_strike", "range_8"]
+        },
+        {
+            "name": "Divine Storm",
+            "key": "8",
+            "conditions": ["divine_storm", "power_25", "range_8"]
+        },  
+        {
+            "name": "Judgement",
+            "key": "9",
+            "conditions": ["judgement", "power_25", "range_8", "seal_of_martyrdom_buff"]
+        },
+        {
+            "name": "Shield of Righteousness",
+            "key": "0",
+            "conditions": ["shield_of_righteousness", "power_25", "range_8"]
+        }
+
+    ]
+} 

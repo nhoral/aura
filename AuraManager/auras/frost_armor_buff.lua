@@ -8,8 +8,8 @@ ns.auras["frost_armor_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 36,
-    yOffset = -4,
+    xOffset = 164,
+    yOffset = 96,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,22 @@ ns.auras["frost_armor_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "aura2",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Health",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                ownOnly = true,
+                unitExists = false,
                 auranames = {
                     "Frost Armor",
                 },
-                unitExists = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
                 useRem = false,
-                ownOnly = true,
             },
             untrigger = {},
         },
@@ -69,10 +69,10 @@ ns.auras["frost_armor_buff"] = {
             },
             single = "MAGE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

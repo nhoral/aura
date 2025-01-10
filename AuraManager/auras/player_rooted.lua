@@ -8,8 +8,8 @@ ns.auras["player_rooted"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 60,
-    yOffset = -12,
+    xOffset = 216,
+    yOffset = 88,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,24 +37,24 @@ ns.auras["player_rooted"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "unit",
+                unit = "target",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Crowd Controlled",
                 names = {},
                 use_unit = true,
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
-                use_inverse = false,
+                unitExists = false,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                unitExists = false,
                 useName = true,
-                use_debuffClass = false,
                 matchesShowOn = "showOnActive",
                 useRem = false,
+                use_inverse = false,
+                use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
@@ -62,10 +62,10 @@ ns.auras["player_rooted"] = {
                 use_interruptSchool = true,
                 interruptSchool = 16,
                 controlType = "ROOT",
+                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
-                useExactSpellId = false,
             },
             untrigger = {},
         },
@@ -82,10 +82,10 @@ ns.auras["player_rooted"] = {
             },
             single = "MAGE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

@@ -8,8 +8,8 @@ ns.auras["pillar_of_frost_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 28,
-    yOffset = -12,
+    xOffset = 184,
+    yOffset = 88,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,23 +37,23 @@ ns.auras["pillar_of_frost_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "aura2",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Health",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                unitExists = false,
                 auranames = {
                     "Pillar of Frost",
                 },
-                unitExists = false,
                 useName = true,
-                use_debuffClass = false,
                 matchesShowOn = "showOnActive",
-                useNamePattern = false,
                 useRem = false,
+                use_debuffClass = false,
+                useNamePattern = false,
             },
             untrigger = {},
         },
@@ -69,10 +69,10 @@ ns.auras["pillar_of_frost_buff"] = {
             },
             single = "DRUID",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

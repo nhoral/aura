@@ -8,8 +8,8 @@ ns.auras["pet_target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 20,
-    yOffset = -12,
+    xOffset = 176,
+    yOffset = 88,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,13 +37,15 @@ ns.auras["pet_target_aggro"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                customVariables = "{}",
+                debuffType = "HELPFUL",
                 type = "custom",
+                unit = "target",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Conditions",
                 names = {},
                 use_unit = true,
-                spellIds = {},
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not UnitAffectingCombat("pet") then
         allstates[""] = allstates[""] or {show = false}
@@ -70,27 +72,25 @@ ns.auras["pet_target_aggro"] = {
     
     return true
 end]],
-                custom_type = "stateupdate",
+                spellIds = {},
                 check = "update",
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
-                spellName = 5176,
+                customVariables = "{}",
                 use_inverse = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 5176,
                 itemName = 0,
                 use_itemName = true,
                 use_messageType = false,
-                use_message = false,
+                use_ismoving = true,
+                instance_size = {},
                 use_moveSpeed = false,
                 use_targetRequired = false,
+                use_message = false,
                 use_sourceName = false,
-                instance_size = {},
-                use_ismoving = true,
                 use_spec = true,
             },
             untrigger = {},
@@ -104,13 +104,13 @@ end]],
         class = {
             multi = {},
         },
-        use_never = false,
-        spec = {
-            multi = {},
-        },
         size = {
             multi = {},
         },
+        spec = {
+            multi = {},
+        },
+        use_never = false,
     },
     animation = {
         start = {

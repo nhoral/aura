@@ -155,6 +155,8 @@ class AuraGenerator:
         AURA_WIDTH = GRID_SETTINGS["AURA_WIDTH"]
         AURA_HEIGHT = GRID_SETTINGS["AURA_HEIGHT"]
         SPACING = GRID_SETTINGS["SPACING"]
+        BASE_X_OFFSET = GRID_SETTINGS["BASE_X_OFFSET"]
+        BASE_Y_OFFSET = GRID_SETTINGS["BASE_Y_OFFSET"]
         
         # Calculate total size needed for each grid cell
         CELL_WIDTH = AURA_WIDTH + SPACING
@@ -163,6 +165,10 @@ class AuraGenerator:
         # Calculate grid position
         row = index // COLUMNS
         col = index % COLUMNS
+        
+        # Calculate final position with base offsets
+        final_x_offset = BASE_X_OFFSET + (col * CELL_WIDTH)
+        final_y_offset = BASE_Y_OFFSET + (-row * CELL_HEIGHT)  # Negative row because Y increases upward
         
         result = {
             # Core identification
@@ -174,8 +180,8 @@ class AuraGenerator:
             # Position/Size (from sample, but with calculated offsets)
             "anchorPoint": self.sample_template.get("anchorPoint", "CENTER"),
             "selfPoint": self.sample_template.get("selfPoint", "CENTER"),
-            "xOffset": col * CELL_WIDTH,   # Offset by column * (width + spacing)
-            "yOffset": -row * CELL_HEIGHT, # Offset by row * (height + spacing)
+            "xOffset": final_x_offset,   # Apply base offset + grid position
+            "yOffset": final_y_offset,   # Apply base offset + grid position
             "width": AURA_WIDTH,
             "height": AURA_HEIGHT,
             "frameStrata": self.sample_template.get("frameStrata", 1),

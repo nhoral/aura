@@ -8,8 +8,8 @@ ns.auras["razorice_debuff_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 72,
-    yOffset = -16,
+    xOffset = 108,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,24 +37,24 @@ ns.auras["razorice_debuff_5"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
+                unit = "target",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
-                spellName = 14281,
-                realSpellName = "Arcane Shot",
-                use_spellName = true,
-                genericShowOn = "showOnCooldown",
-                use_genericShowOn = true,
-                use_track = true,
                 auranames = {
                     "Razorice",
                 },
                 useName = true,
+                realSpellName = "Arcane Shot",
+                use_spellName = true,
+                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
+                use_track = true,
+                spellName = 14281,
                 use_exact_spellName = false,
                 stacks = "5",
                 useStacks = true,
@@ -69,16 +69,13 @@ ns.auras["razorice_debuff_5"] = {
             multi = {},
         },
         class = {
-            multi = {
-                HUNTER = true,
-                ROGUE = true,
-            },
+            multi = {},
             single = "HUNTER",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
         race = {
@@ -87,7 +84,6 @@ ns.auras["razorice_debuff_5"] = {
             },
             single = "Scourge",
         },
-        use_class = false,
     },
     animation = {
         start = {

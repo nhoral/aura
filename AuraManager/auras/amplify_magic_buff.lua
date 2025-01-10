@@ -8,8 +8,8 @@ ns.auras["amplify_magic_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 4,
-    yOffset = 0,
+    xOffset = 104,
+    yOffset = 100,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,22 @@ ns.auras["amplify_magic_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "BOTH",
                 type = "aura2",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Health",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "BOTH",
+                ownOnly = true,
+                unitExists = false,
                 auranames = {
                     "Amplify Magic",
                 },
-                unitExists = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
                 useRem = false,
-                ownOnly = true,
             },
             untrigger = {},
         },
@@ -69,10 +69,10 @@ ns.auras["amplify_magic_buff"] = {
             },
             single = "MAGE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

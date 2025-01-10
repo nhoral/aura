@@ -8,8 +8,8 @@ ns.auras["lichborne_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 0,
-    yOffset = -8,
+    xOffset = 136,
+    yOffset = 92,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,22 @@ ns.auras["lichborne_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "BOTH",
                 type = "aura2",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Health",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "BOTH",
+                ownOnly = true,
+                unitExists = false,
                 auranames = {
                     "Lichborne",
                 },
-                unitExists = false,
                 useName = true,
                 matchesShowOn = "showOnActive",
                 useRem = false,
-                ownOnly = true,
             },
             untrigger = {},
         },
@@ -69,10 +69,10 @@ ns.auras["lichborne_buff"] = {
             },
             single = "MAGE",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
     },

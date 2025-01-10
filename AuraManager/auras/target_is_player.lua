@@ -8,8 +8,8 @@ ns.auras["target_is_player"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 68,
-    yOffset = -20,
+    xOffset = 112,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,24 +38,24 @@ ns.auras["target_is_player"] = {
         activeTriggerMode = 1,
         {
             trigger = {
-                customVariables = "{}",
+                debuffType = "HELPFUL",
                 type = "unit",
-                custom_hide = "timed",
+                unit = "target",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
+                subeventPrefix = "SPELL",
                 duration = "1",
                 event = "Unit Characteristics",
                 names = {},
                 use_unit = true,
-                spellIds = {},
                 custom_type = "stateupdate",
+                spellIds = {},
                 check = "update",
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
-                use_class = false,
+                unevent = "auto",
+                custom_hide = "timed",
+                customVariables = "{}",
                 use_unitisunit = false,
                 use_character = true,
+                use_class = false,
                 character = "player",
                 unitisunit = "player",
             },
@@ -74,20 +74,20 @@ ns.auras["target_is_player"] = {
             },
             single = "WARLOCK",
         },
-        zoneIds = "",
-        level_operator = {
-            "~=",
+        size = {
+            multi = {},
+        },
+        spec = {
+            multi = {},
         },
         use_never = false,
         level = {
             "120",
         },
-        spec = {
-            multi = {},
+        level_operator = {
+            "~=",
         },
-        size = {
-            multi = {},
-        },
+        zoneIds = "",
     },
     animation = {
         start = {

@@ -8,8 +8,8 @@ ns.auras["empower_rune_weapon"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 8,
-    yOffset = -4,
+    xOffset = 136,
+    yOffset = 96,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,20 +37,20 @@ ns.auras["empower_rune_weapon"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                spellName = 47568,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 47568,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -63,15 +63,15 @@ ns.auras["empower_rune_weapon"] = {
         },
         class = {
             multi = {
-                HUNTER = true,
                 ROGUE = true,
+                HUNTER = true,
             },
             single = "HUNTER",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
         race = {
@@ -80,7 +80,6 @@ ns.auras["empower_rune_weapon"] = {
             },
             single = "Scourge",
         },
-        use_class = false,
     },
     animation = {
         start = {

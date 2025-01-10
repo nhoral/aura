@@ -8,8 +8,8 @@ ns.auras["blinding_sleet"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 40,
-    yOffset = 0,
+    xOffset = 148,
+    yOffset = 100,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,20 +37,20 @@ ns.auras["blinding_sleet"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HELPFUL",
                 type = "spell",
+                unit = "player",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                spellName = 207167,
                 realSpellName = "Bash",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 207167,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -63,16 +63,16 @@ ns.auras["blinding_sleet"] = {
         },
         class = {
             multi = {
+                ROGUE = true,
                 HUNTER = true,
                 DRUID = true,
-                ROGUE = true,
             },
             single = "DRUID",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
         race = {
@@ -81,7 +81,6 @@ ns.auras["blinding_sleet"] = {
             },
             single = "Scourge",
         },
-        use_class = false,
     },
     animation = {
         start = {

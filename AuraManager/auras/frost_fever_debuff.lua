@@ -8,8 +8,8 @@ ns.auras["frost_fever_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 40,
-    yOffset = -4,
+    xOffset = 168,
+    yOffset = 96,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,24 +37,24 @@ ns.auras["frost_fever_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
+                debuffType = "HARMFUL",
                 type = "aura2",
+                unit = "target",
                 subeventSuffix = "_CAST_START",
+                subeventPrefix = "SPELL",
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
-                spellName = 14281,
-                realSpellName = "Arcane Shot",
-                use_spellName = true,
-                genericShowOn = "showOnCooldown",
-                use_genericShowOn = true,
-                use_track = true,
                 auranames = {
                     "Frost Fever",
                 },
                 useName = true,
+                realSpellName = "Arcane Shot",
+                use_spellName = true,
+                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
+                use_track = true,
+                spellName = 14281,
                 use_exact_spellName = false,
                 stacks = "5",
                 useStacks = true,
@@ -70,15 +70,15 @@ ns.auras["frost_fever_debuff"] = {
         },
         class = {
             multi = {
-                HUNTER = true,
                 ROGUE = true,
+                HUNTER = true,
             },
             single = "HUNTER",
         },
-        spec = {
+        size = {
             multi = {},
         },
-        size = {
+        spec = {
             multi = {},
         },
         race = {
@@ -87,7 +87,6 @@ ns.auras["frost_fever_debuff"] = {
             },
             single = "Scourge",
         },
-        use_class = false,
     },
     animation = {
         start = {
