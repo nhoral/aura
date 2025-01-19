@@ -1,0 +1,290 @@
+Combined Instructions for AI to Build a Profile with Proper Stack Placement
+
+General Information
+
+1. Core Components
+-----------------
+- Profiles: JSON files that define action sequences based on game conditions
+- Auras: WeakAuras that detect specific game states or conditions
+- Layout: JSON file that defines the screen positions of aura indicators
+- Screen Monitor: Python script that reads aura states and executes actions
+
+2. Profile Naming:
+   - The .json files in profiles correspond to a class in World of Warcraft.
+   - If there is a class name and an additional word or acronym, that word or acronym corresponds to a version of World of Warcraft (e.g., SOD means the profile is used in World of Warcraft Classic Season of Discovery).
+   - If only the name of the class is present, it is the profile for the class in the retail version of World of Warcraft.
+   - The exception is the profile plunderstorm, which corresponds to the Plunderstorm event in the retail version of World of Warcraft.
+
+3. Profile Structure:
+   - The profile is a list of actions that the class can take when played by a player.
+   - Actions are broken down by name, key, and conditions.
+     - Name: A description of the action taken along with any conditions set on that action.
+     - Key: The actual keyboard key that will be pressed to activate this ability.
+     - Conditions: Correspond with the WeakAuras addon. Each condition is a WeakAura that will appear if true or not appear if false (denoted with a ! prior to the condition).
+
+4. Action Execution:
+   - For each action (name, key, condition), the action will only be executed if each condition is true, and only in the order they appear in the stack (top to bottom).
+   - Example: If the WeakAuras "player_crowd_controlled" and "pvp_trinket" are active, the key press would be ' because those conditions are met and the action is the highest in the stack. If no conditions are met, the next action in the stack will be checked until conditions are met and the correct key press by the player is complete.
+
+5. Conditions:
+   - The conditions correspond with auras in the World of Warcraft addon WeakAuras.
+   - Each condition is evaluated as true if the WeakAura is present, or false if the WeakAura is not present.
+   - The key for each action should only be pressed if the conditions are met.
+   - Conditions that should evaluate as false are marked with a ! before the condition.
+   - If the name of the spell is the condition, then the spell must be usable (i.e., not on cooldown) for the key to be pressed.
+   - Buffs are marked as buffs, as are debuffs. Each aura is a .lua file.
+
+6. Groups:
+   - A group is a collection of abilities corresponding to a group of actions.
+   - Groups start when the group is assigned and end with the last action before a new group is assigned.
+   - This helps provide a way to assign actions to important key priorities (groups).
+
+Group Breakdown and Priority
+
+1. CC Counters:
+   - To counter CC since no other action can be taken if CC'd, it is first.
+
+2. Emergency Actions When Low Health:
+   - If the player is hurt, they should protect themselves first since no other actions can be taken if they are dead.
+   - These are usually long cooldown damage-preventing abilities like a Paladin's Divine Shield.
+   - The goal is to use these cooldowns when at low health to help the player character survive long enough to heal if possible.
+
+3. Self Heals and Cleanses:
+   - Healing is always a priority if hurt, and you cannot do any other actions if you are dead.
+
+4. OOC Buffs:
+   - Long-term buffs used out of combat.
+   - These are generally 5-30 minutes that should always be on the player but should not be cast in combat as they will use up a global cooldown (GCD).
+
+5. Mike Heals and Buffs:
+   - Heals and buffs that can affect another friendly player.
+   - Often used when that player is low on health, so if the class can heal, it attempts to heal them.
+   - High on the priority list if playing a class with friendly heals.
+
+6. Interrupts on Target:
+   - Actions that can interrupt an enemy player or NPC from casting a spell.
+   - Most classes get an interrupt spell. A spell that stuns will also work and would be placed in this group.
+
+7. Combat Buffs:
+   - Usually short-term buffs, often with long cooldowns that buff the player for combat.
+   - Used while in combat and at the start of combat to get their full effect.
+
+8. CC on Target(s):
+   - Actions where the class can cast an ability that crowd controls an enemy NPC or player.
+   - These can be stuns or other abilities and will be different for each class.
+
+9. Ranged Attacks: Priority Over Melee:
+   - Any attacks that have a range greater than 8.
+   - High priority because you often engage other enemy players or NPCs at range and want to use these first.
+
+10. Expend Excess Resources: Priority Over Rotation:
+    - Specific to build rotations.
+    - Ensures abilities are only used when the resource is in excess but always used when it is.
+
+11. On Cooldown Abilities:
+    - Powerful abilities that usually damage enemy players or NPCs and have long cooldowns.
+    - Always used when available and high on the priority list.
+
+12. Multiple Enemies in Melee:
+    - Area of effect (AOE) abilities that do damage to multiple enemies or in a radius around the caster.
+    - High priority because they often differ greatly from the single target rotation.
+
+13. Single Target Rotation:
+    - The core rotation of the class on a single enemy NPC or enemy player.
+    - Often restricted based on cooldowns or power resources.
+
+Instructions for Proper Stack Placement
+
+1. Prioritize Finishers Based on Resources and Conditions:
+   - Place finishing moves (e.g., Eviscerate) higher in the stack to ensure they are used when the conditions are met (e.g., combo points, target health).
+   - Example: 
+     {
+         "name": "cast Eviscerate at five combo points when target health is above 75%",
+         "key": "r",
+         "conditions": ["eviscerate", "combo_points_5", "range_8", "!target_health_under_75", "power_35"]
+     }
+
+2. Use High-Damage Abilities with Additional Conditions First:
+   - Place high-damage abilities that require specific conditions (e.g., Backstab requiring the player to be behind the target) higher in the stack.
+   - Example:
+     {
+         "name": "Backstab",
+         "key": "t",
+         "conditions": ["backstab", "!not_behind_target", "range_8", "power_60"]
+     }
+
+3. Fallback to Basic Abilities When Conditions Are Not Met:
+   - Place basic abilities (e.g., Sinister Strike) lower in the stack to ensure they are used when higher-priority abilities cannot be used.
+   - Example:
+     {
+         "name": "Sinister Strike",
+         "key": "y",
+         "conditions": ["sinister_strike", "range_8", "power_45", "not_behind_target"]
+     }
+
+4. Ensure Resource Management:
+   - Consider the resource cost of abilities and ensure that abilities with higher resource costs are prioritized correctly to avoid resource starvation.
+   - Example: Ensure Eviscerate is used before Sinister Strike to avoid using up energy needed for the finisher.
+
+5. Group Abilities by Priority:
+   - Organize abilities into groups based on their priority (e.g., CC Counters, Emergency Actions When Low Health, Single Target Rotation).
+   - Example:
+     {
+         "group": "START GROUP: SINGLE TARGET ROTATION",
+         "name": "cast Eviscerate at five combo points when target health is above 75%",
+         "key": "r",
+         "conditions": ["eviscerate", "combo_points_5", "range_8", "!target_health_under_75", "power_35"]
+     },
+     {
+         "name": "Backstab",
+         "key": "t",
+         "conditions": ["backstab", "!not_behind_target", "range_8", "power_60"]
+     },
+     {
+         "name": "Sinister Strike",
+         "key": "y",
+         "conditions": ["sinister_strike", "range_8", "power_45", "not_behind_target"]
+     }
+
+6. Use Conditions to Optimize Ability Usage:
+   - Use conditions to ensure abilities are used optimally based on the current state (e.g., target health, combo points, player position).
+   - Example: Use conditions like combo_points_5, behind_target, and target_health_under_75 to control when abilities are used.
+
+7. Handle Energy Requirements and Conditions:
+   - Ensure abilities are used based on their energy requirements and conditions.
+   - Example: Place Backstab before Sinister Strike in the stack to ensure it is attempted first when the player has at least 60 energy and is behind the target. Use the `not_behind_target` condition for Sinister Strike to ensure it is used when the player has at least 45 energy and is not behind the target.
+
+8. Evaluate Restrictions on Abilities:
+   - Consider any restrictions on abilities and ensure they are accounted for in the conditions.
+   - Example: The Throw ability cannot be cast while moving and cannot be used within melee range. Add conditions to ensure these restrictions are met.
+   - Example:
+     {
+         "name": "Throw",
+         "key": "=",
+         "conditions": ["throw", "!range_8", "range_30", "!player_moving"]
+     }
+
+9. Use False Conditions:
+   - Use the `!` prefix to create false conditions.
+   - Example: To ensure Sinister Strike is used when energy is below 60, use the condition `!power_60`.
+   - Example:
+     {
+         "name": "Sinister Strike",
+         "key": "5",
+         "conditions": ["sinister_strike", "range_8", "not_behind_target", "power_45", "!power_60"]
+     }
+
+10. Review and Test Profiles:
+   - Whenever you create or update a profile, evaluate both old and new entries to ensure everything is working as intended.
+   - Test the profile in the game to verify that all conditions and actions are functioning correctly.
+
+Creating Required Auras
+
+1. Identify Missing Auras:
+   - Review the profile and identify any conditions that do not have corresponding auras in the `aura_list.lua`.
+   - Example: If the profile uses a condition like `not_behind_target` and it is not present in the `aura_list.lua`, it needs to be created.
+
+2. Create Custom Auras:
+   - Use the WeakAura addon to create custom auras for the missing conditions.
+   - Example: To create the `not_behind_target` aura, use the following steps:
+     - Open WeakAura Addon: Type `/wa` in the chat to open the WeakAura interface.
+     - Create a New Aura: Click on "New" to create a new aura and select "Custom" as the type.
+     - Set Trigger Type: Set the trigger type to "Event".
+     - Set Event: Set the event to "UI_ERROR_MESSAGE".
+     - Custom Function: Copy and paste the custom function into the custom function field:
+       ```lua
+       function(event, arg1, arg2)
+           if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
+               return true
+           end
+           return false
+       end
+       ```
+     - Custom Hide: Set the custom hide option to "Timed" and the duration to 1 second.
+     - Load Conditions: Set the load conditions to ensure the WeakAura is only active for the Rogue class.
+     - Save the WeakAura: Save the WeakAura with an appropriate name, such as "NotBehindTargetCheck".
+
+3. Test the Auras:
+   - Load the profile in your application and test it to ensure the custom auras work as expected.
+   - Debug mode can be used to show active conditions and monitor executed actions.
+
+Game Interaction Flow
+
+1. WeakAuras in game show/hide based on conditions
+2. Screen monitor reads aura states using pixel color detection
+3. Monitor matches active auras against profile conditions
+4. When conditions match, corresponding key is pressed
+5. Game receives key press and performs action
+
+Common Aura Types
+
+- Ability cooldowns (e.g., "kick_cooldown")
+- Resource thresholds (e.g., "power_50")
+- Combat states (e.g., "in_combat")
+- Buffs/debuffs (e.g., "slice_and_dice")
+- Range checks (e.g., "enemy_within_20_yards_range")
+- Form states (e.g., "cat_form")
+
+Input Control
+
+- Gamepad right trigger or keyboard key ('t' by default) activates monitoring
+- Two modes: "hold" (active while held) or "toggle" (press to toggle)
+- ESC key exits the program
+- Debug mode enables additional commands ('u' for condition check, 'p' for debug image)
+
+Creating New Profiles
+
+1. Identify required conditions (auras must exist for each)
+2. Create action list in priority order
+3. Define key bindings matching WoW's keybinds
+4. Test conditions individually before combining
+
+Common Patterns
+
+- Rotation priorities use action order
+- Negative conditions (!condition) for mutex actions
+- Resource thresholds for ability requirements
+- Range checks for melee/ranged abilities
+- Form requirements for class-specific abilities
+
+Debugging
+
+- Debug mode shows active conditions
+- Can save debug images of screen state
+- Monitor prints executed actions
+- Error messages for missing auras or invalid configs
+
+Limitations
+
+- Auras must be visible on screen
+- Actions limited to key presses
+- Response time depends on check_interval
+- Must maintain consistent UI layout
+- Game must be in foreground
+
+Best Practices
+
+- Keep profiles focused on core rotation
+- Test conditions individually
+- Use meaningful action names
+- Order actions by priority
+- Document custom auras
+- Maintain consistent aura naming
+- Regular testing with debug mode
+
+Relevant Resources and References
+
+1. [Icy Veins](https://www.icy-veins.com/): Lists of classes and rotations.
+2. [Wowpedia](https://wowpedia.fandom.com/wiki/Wowpedia): Information on WoW.
+3. [WeakAuras GitHub](https://github.com/WeakAuras/WeakAuras2): WeakAura GitHub.
+4. [Lua](https://www.lua.org/): Information on Lua programming language used by WoW macros and WeakAuras.
+5. [WoW API](https://wowpedia.fandom.com/wiki/World_of_Warcraft_API): Information on the WoW API.
+6. [Wowhead](https://www.wowhead.com/): Database for World of Warcraft items, quests, and more.
+
+Next Steps
+
+1. Review the Profile: Ensure the profile meets your requirements and includes all necessary abilities and conditions.
+2. Test the Profile: Load the profile in your application and test it to ensure it works as expected.
+3. Create Missing Auras: Identify and create any missing auras that are not currently in the project auras folder.
+
+If you need further modifications or have additional questions, please let me know!

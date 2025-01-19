@@ -8,8 +8,8 @@ ns.auras["threat_under_80"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 132,
-    yOffset = 76,
+    xOffset = 112,
+    yOffset = 72,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -52,10 +52,10 @@ ns.auras["threat_under_80"] = {
                 threatpct = {
                     "80",
                 },
+                use_threatpct = true,
                 threatpct_operator = {
                     "<",
                 },
-                use_threatpct = true,
             },
             untrigger = {},
         },

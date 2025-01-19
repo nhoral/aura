@@ -46,13 +46,13 @@ ns.auras["arcane_school_lockout"] = {
                 names = {},
                 use_unit = true,
                 spellIds = {},
+                useRem = false,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
                 use_inverse = false,
                 use_debuffClass = false,
                 debuffClass = {

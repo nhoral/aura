@@ -1,0 +1,71 @@
+Building Auras in WeakAuras for Conditions
+
+General Instructions
+
+1. Identify the Condition:
+   - Determine the specific condition you need to detect in the game.
+   - Example: Detect if the player is not behind the target when attempting to use Backstab.
+
+2. Choose the Appropriate Event:
+   - Review the available events in World of Warcraft to find the most suitable event for detecting the condition.
+   - References:
+     - [World of Warcraft API](https://wowpedia.fandom.com/wiki/World_of_Warcraft_API)
+     - [Events A-Z (full list)](https://wowwiki-archive.fandom.com/wiki/Events_A-Z_(full_list))
+
+3. Create the Custom Function:
+   - Write a custom function that listens to the chosen event and checks the relevant arguments to determine if the condition is met.
+   - Use print statements to troubleshoot and verify that the event is being detected correctly.
+
+4. Implement the WeakAura:
+   - Open the WeakAura addon in World of Warcraft.
+   - Create a new aura and select "Custom" as the type.
+   - Set the trigger type to "Event" and specify the event.
+   - Copy and paste the custom function into the custom function field.
+   - Set the custom hide option and load conditions as needed.
+   - Save the WeakAura with an appropriate name.
+
+Example: Creating the "not_behind_target" Aura
+
+1. Identify the Condition:
+   - Condition: Detect if the player is not behind the target when attempting to use Backstab.
+
+2. Choose the Appropriate Event:
+   - Event: `UI_ERROR_MESSAGE`
+   - This event is triggered when an error message is displayed in the game.
+
+3. Create the Custom Function:
+   - Custom Function:
+     ```lua
+     function(event, arg1, arg2)
+         if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
+             return true
+         end
+         return false
+     end
+     ```
+
+4. Implement the WeakAura:
+   - Open WeakAura Addon: Type `/wa` in the chat to open the WeakAura interface.
+   - Create a New Aura: Click on "New" to create a new aura and select "Custom" as the type.
+   - Set Trigger Type: Set the trigger type to "Event".
+   - Set Event: Set the event to "UI_ERROR_MESSAGE".
+   - Custom Function: Copy and paste the custom function into the custom function field.
+   - Custom Hide: Set the custom hide option to "Timed" and the duration to 1 second.
+   - Load Conditions: Set the load conditions to ensure the WeakAura is only active for the Rogue class.
+     - Check "Class" and select "Rogue".
+   - Save the WeakAura: Save the WeakAura with an appropriate name, such as "NotBehindTargetCheck".
+
+References
+
+1. [World of Warcraft API](https://wowpedia.fandom.com/wiki/World_of_Warcraft_API)
+2. [Events A-Z (full list)](https://wowwiki-archive.fandom.com/wiki/Events_A-Z_(full_list))
+3. [Lua](https://www.lua.org/)
+4. [WeakAuras GitHub](https://github.com/WeakAuras/WeakAuras2)
+
+Next Steps
+
+1. Test the WeakAura: Ensure it correctly detects the condition in the game.
+2. Integrate into Profile: Once the WeakAura is confirmed to be working, integrate it into your profile as needed.
+3. Iterate and Improve: Continue to build and refine WeakAuras for other conditions as needed.
+
+If you need further modifications or have additional questions, please let me know!

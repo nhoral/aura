@@ -8,8 +8,8 @@ ns.auras["slice_and_dice_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 184,
-    yOffset = 80,
+    xOffset = 156,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,14 +45,14 @@ ns.auras["slice_and_dice_buff"] = {
                 event = "Health",
                 names = {},
                 spellIds = {},
+                useRem = false,
                 ownOnly = true,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Slice and Dice",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -74,6 +74,7 @@ ns.auras["slice_and_dice_buff"] = {
         spec = {
             multi = {},
         },
+        use_class = true,
     },
     animation = {
         start = {

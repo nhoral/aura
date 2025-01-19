@@ -8,7 +8,7 @@ ns.auras["kick"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 120,
+    xOffset = 196,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -45,12 +45,12 @@ ns.auras["kick"] = {
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
+                spellName = 1766,
+                use_genericShowOn = true,
                 realSpellName = "Kick",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 1766,
             },
             untrigger = {},
         },
@@ -72,6 +72,7 @@ ns.auras["kick"] = {
         spec = {
             multi = {},
         },
+        use_class = true,
     },
     animation = {
         start = {

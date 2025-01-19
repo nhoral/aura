@@ -2,14 +2,29 @@
     "name": "Rogue",
     "actions": [
         {
-            "name": "Eviscerate",
-            "key": "2",
-            "conditions": ["power_35", "combo_2", "melee_range"]
+            "name": "Gouge Target Cross",
+            "key": "4",
+            "conditions": ["icon_cross_exists","can_cc_cross", "gouge", "power_45", "!target_cross"]
         },
         {
+            "name": "Gouge Cross",
+            "key": "3",
+            "conditions": ["gouge", "power_45", "target_cross", "can_cc_cross"]
+        },
+        {
+            "name": "Return to Skull (after gouging)",
+            "key": "4",
+            "conditions": ["icon_skull_exists", "!target_skull", "!can_cc_cross"]
+        },
+        {
+            "name": "Eviscerate",
+            "key": "2",
+            "conditions": ["power_35", "combo_2", "range_8"]
+        },
+        { 
             "name": "Sinister Strike",
             "key": "1",
-            "conditions": ["power_45", "melee_range"]
+            "conditions": ["power_45", "range_8"]
         }
     ]
 } 

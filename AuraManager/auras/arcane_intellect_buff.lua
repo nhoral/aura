@@ -45,14 +45,14 @@ ns.auras["arcane_intellect_buff"] = {
                 event = "Health",
                 names = {},
                 spellIds = {},
+                useRem = false,
                 ownOnly = true,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Arcane Intellect",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -64,8 +64,8 @@ ns.auras["arcane_intellect_buff"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 MAGE = true,
+                DRUID = true,
             },
             single = "MAGE",
         },

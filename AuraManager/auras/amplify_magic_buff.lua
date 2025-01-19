@@ -45,14 +45,14 @@ ns.auras["amplify_magic_buff"] = {
                 event = "Health",
                 names = {},
                 spellIds = {},
+                useRem = false,
                 ownOnly = true,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Amplify Magic",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -64,8 +64,8 @@ ns.auras["amplify_magic_buff"] = {
         },
         class = {
             multi = {
-                DRUID = true,
                 MAGE = true,
+                DRUID = true,
             },
             single = "MAGE",
         },

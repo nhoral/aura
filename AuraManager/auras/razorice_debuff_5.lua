@@ -8,7 +8,7 @@ ns.auras["razorice_debuff_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 108,
+    xOffset = 192,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -45,16 +45,16 @@ ns.auras["razorice_debuff_5"] = {
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
+                useName = true,
                 auranames = {
                     "Razorice",
                 },
-                useName = true,
+                spellName = 14281,
+                use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 14281,
                 use_exact_spellName = false,
                 stacks = "5",
                 useStacks = true,
@@ -69,7 +69,10 @@ ns.auras["razorice_debuff_5"] = {
             multi = {},
         },
         class = {
-            multi = {},
+            multi = {
+                ROGUE = true,
+                HUNTER = true,
+            },
             single = "HUNTER",
         },
         size = {
@@ -84,6 +87,7 @@ ns.auras["razorice_debuff_5"] = {
             },
             single = "Scourge",
         },
+        use_class = false,
     },
     animation = {
         start = {

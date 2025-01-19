@@ -45,14 +45,14 @@ ns.auras["blessing_of_might_buff"] = {
                 event = "Health",
                 names = {},
                 spellIds = {},
+                useRem = false,
                 ownOnly = true,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Blessing of Might",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -64,9 +64,9 @@ ns.auras["blessing_of_might_buff"] = {
         },
         class = {
             multi = {
+                MAGE = true,
                 HUNTER = true,
                 DRUID = true,
-                MAGE = true,
             },
             single = "HUNTER",
         },

@@ -45,14 +45,14 @@ ns.auras["aspect_of_the_hawk_buff"] = {
                 event = "Health",
                 names = {},
                 spellIds = {},
+                useRem = false,
                 ownOnly = true,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Aspect of the Hawk",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -64,9 +64,9 @@ ns.auras["aspect_of_the_hawk_buff"] = {
         },
         class = {
             multi = {
+                MAGE = true,
                 HUNTER = true,
                 DRUID = true,
-                MAGE = true,
             },
             single = "HUNTER",
         },

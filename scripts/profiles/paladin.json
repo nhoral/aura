@@ -1,0 +1,85 @@
+{
+    "name": "Paladin",
+    "actions": [
+        {
+            "name": "Divine Shield",
+            "key": "1",
+            "conditions": ["divine_shield", "!forbearance", "combat", "health_under_20"]
+        },
+        {
+            "name": "Lay on Hands",
+            "key": "SHIFT-4",
+            "conditions": ["lay_on_hands", "!forbearance", "combat", "health_under_20"]
+        },
+        {
+            "name": "Cleanse Magic Debuff",
+            "key": "2",
+            "conditions": ["cleanse", "power_10", "player_magic_debuff"]
+        },
+        {
+            "name": "Holy Shock Self",
+            "key": "3",
+            "conditions": ["holy_shock", "power_15", "health_under_75"]
+        },
+        {
+            "name": "Holy Shock Yourbutt",
+            "key": "SHIFT-3",
+            "conditions": ["holy_shock", "power_15", "yourbutt_health_under_50"]
+        },
+        {
+            "name": "Word of Glory",
+            "key": "4",
+            "conditions": ["word_of_glory", "holy_power_3", "health_under_75", "combat"]
+        },
+        {
+            "name": "Flash of Light Self",
+            "key": "5",
+            "conditions": ["flash_of_light", "power_10", "health_under_50"]
+        },
+        {
+            "name": "Flash of Light Yourbutt",
+            "key": "SHIFT-2",
+            "conditions": ["flash_of_light", "power_10", "yourbutt_health_under_50", "!player_moving"]
+        },
+        {
+            "name": "Hammer of Justice",
+            "key": "6",
+            "conditions": ["hammer_of_justice", "power_10", "range_8", "target_interruptible"]
+        }, 
+        {
+            "name": "Hammer of Wrath",
+            "key": "7",
+            "conditions": ["hammer_of_wrath", "power_10", "range_30", "target_health_under_20"]
+        },
+        {
+            "name": "Divine Steed",
+            "key": "8",
+            "conditions": ["divine_steed", "!judgement", "!range_8"]
+        },
+        {
+            "name": "Consecration",
+            "key": "9",
+            "conditions": ["consecration", "range_8_2+"]
+        },
+        {
+            "name": "Shield of the Righteous Retail",
+            "key": "0",
+            "conditions": ["shield_of_righteousness_retail", "holy_power_3", "range_8", "!health_under_50"]
+        },
+        {
+            "name": "cast Holy Shock at enemy",
+            "key": "-",
+            "conditions": ["holy_shock", "power_15", "range_35"]
+        },
+        {
+            "name": "Judgment",
+            "key": "=",
+            "conditions": ["judgment", "power_10", "range_30"]
+        },
+        {
+            "name": "Crusader Strike Retail",
+            "key": "SHIFT-1",
+            "conditions": ["crusader_strike_retail", "power_10", "range_8"]
+        }
+    ]
+} 

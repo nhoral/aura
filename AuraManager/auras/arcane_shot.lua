@@ -45,12 +45,12 @@ ns.auras["arcane_shot"] = {
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
+                spellName = 14281,
+                use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 14281,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -80,6 +80,7 @@ ns.auras["arcane_shot"] = {
             },
             single = "Scourge",
         },
+        use_class = false,
     },
     animation = {
         start = {

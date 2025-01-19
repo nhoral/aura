@@ -8,7 +8,7 @@ ns.auras["evasion"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
+    xOffset = 192,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -45,12 +45,12 @@ ns.auras["evasion"] = {
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
+                spellName = 5277,
+                use_genericShowOn = true,
                 realSpellName = "Evasion",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 5277,
             },
             untrigger = {},
         },
@@ -72,6 +72,7 @@ ns.auras["evasion"] = {
         spec = {
             multi = {},
         },
+        use_class = true,
     },
     animation = {
         start = {

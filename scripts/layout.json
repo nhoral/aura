@@ -192,9 +192,33 @@
         }
     },
     {
+        "id": "can_cc_cross",
+        "name": "Can CC Cross",
+        "xOffset": 164,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
         "id": "cat_form",
         "name": "Cat Form",
-        "xOffset": 164,
+        "xOffset": 168,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "cleanse",
+        "name": "Cleanse",
+        "xOffset": 172,
         "yOffset": 100,
         "backgroundColor": {
             "r": 0,
@@ -206,7 +230,7 @@
     {
         "id": "clearcasting_buff",
         "name": "Clearcasting Buff",
-        "xOffset": 168,
+        "xOffset": 176,
         "yOffset": 100,
         "backgroundColor": {
             "r": 0,
@@ -218,7 +242,7 @@
     {
         "id": "combat",
         "name": "Combat",
-        "xOffset": 172,
+        "xOffset": 180,
         "yOffset": 100,
         "backgroundColor": {
             "r": 0,
@@ -230,7 +254,67 @@
     {
         "id": "combat_start",
         "name": "Combat Start",
-        "xOffset": 176,
+        "xOffset": 184,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "combo_1",
+        "name": "Combo 1",
+        "xOffset": 188,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "combo_2",
+        "name": "Combo 2",
+        "xOffset": 192,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "combo_3",
+        "name": "Combo 3",
+        "xOffset": 196,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "combo_4",
+        "name": "Combo 4",
+        "xOffset": 200,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "combo_5",
+        "name": "Combo 5",
+        "xOffset": 204,
         "yOffset": 100,
         "backgroundColor": {
             "r": 0,
@@ -242,7 +326,19 @@
     {
         "id": "concussive_shot_cooldown",
         "name": "Concussive Shot Cooldown",
-        "xOffset": 180,
+        "xOffset": 208,
+        "yOffset": 100,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "consecration",
+        "name": "Consecration",
+        "xOffset": 212,
         "yOffset": 100,
         "backgroundColor": {
             "r": 0,
@@ -254,7 +350,7 @@
     {
         "id": "corruption_debuff",
         "name": "Corruption Debuff",
-        "xOffset": 184,
+        "xOffset": 216,
         "yOffset": 100,
         "backgroundColor": {
             "r": 0,
@@ -266,8 +362,8 @@
     {
         "id": "counterspell",
         "name": "Counterspell",
-        "xOffset": 188,
-        "yOffset": 100,
+        "xOffset": 100,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -278,8 +374,20 @@
     {
         "id": "crusader_strike",
         "name": "Crusader Strike",
-        "xOffset": 192,
-        "yOffset": 100,
+        "xOffset": 104,
+        "yOffset": 96,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "crusader_strike_retail",
+        "name": "Crusader Strike Retail",
+        "xOffset": 108,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -290,8 +398,8 @@
     {
         "id": "curse_of_agony_debuff",
         "name": "Curse of Agony Debuff",
-        "xOffset": 196,
-        "yOffset": 100,
+        "xOffset": 112,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -302,8 +410,8 @@
     {
         "id": "curse_of_weakness_debuff",
         "name": "Curse of Weakness Debuff",
-        "xOffset": 200,
-        "yOffset": 100,
+        "xOffset": 116,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -314,8 +422,8 @@
     {
         "id": "cursed",
         "name": "Cursed",
-        "xOffset": 204,
-        "yOffset": 100,
+        "xOffset": 120,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -326,8 +434,8 @@
     {
         "id": "dark_succor_buff",
         "name": "Dark Succor Buff",
-        "xOffset": 208,
-        "yOffset": 100,
+        "xOffset": 124,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -338,8 +446,8 @@
     {
         "id": "death_grip",
         "name": "Death Grip",
-        "xOffset": 212,
-        "yOffset": 100,
+        "xOffset": 128,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -350,8 +458,8 @@
     {
         "id": "death_and_decay",
         "name": "Death and Decay",
-        "xOffset": 216,
-        "yOffset": 100,
+        "xOffset": 132,
+        "yOffset": 96,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -362,7 +470,7 @@
     {
         "id": "death's_advance",
         "name": "Death's Advance",
-        "xOffset": 100,
+        "xOffset": 136,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -374,7 +482,7 @@
     {
         "id": "demon_skin_buff",
         "name": "Demon Skin Buff",
-        "xOffset": 104,
+        "xOffset": 140,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -386,7 +494,7 @@
     {
         "id": "demoralizing_roar_debuff",
         "name": "Demoralizing Roar Debuff",
-        "xOffset": 108,
+        "xOffset": 144,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -398,7 +506,7 @@
     {
         "id": "demoralizing_shout_debuff",
         "name": "Demoralizing Shout Debuff",
-        "xOffset": 112,
+        "xOffset": 148,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -410,7 +518,7 @@
     {
         "id": "devotion_aura_buff",
         "name": "Devotion Aura Buff",
-        "xOffset": 116,
+        "xOffset": 152,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -422,7 +530,7 @@
     {
         "id": "distracting_shot",
         "name": "Distracting Shot",
-        "xOffset": 120,
+        "xOffset": 156,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -434,7 +542,7 @@
     {
         "id": "divine_protection",
         "name": "Divine Protection",
-        "xOffset": 124,
+        "xOffset": 160,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -446,7 +554,31 @@
     {
         "id": "divine_protection_buff",
         "name": "Divine Protection Buff",
-        "xOffset": 128,
+        "xOffset": 164,
+        "yOffset": 96,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "divine_shield",
+        "name": "Divine Shield",
+        "xOffset": 168,
+        "yOffset": 96,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "divine_steed",
+        "name": "Divine Steed",
+        "xOffset": 172,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -458,7 +590,7 @@
     {
         "id": "divine_storm",
         "name": "Divine Storm",
-        "xOffset": 132,
+        "xOffset": 176,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -470,7 +602,7 @@
     {
         "id": "empower_rune_weapon",
         "name": "Empower Rune Weapon",
-        "xOffset": 136,
+        "xOffset": 180,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -482,7 +614,7 @@
     {
         "id": "enemy_loose",
         "name": "Enemy Loose",
-        "xOffset": 140,
+        "xOffset": 184,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -494,7 +626,7 @@
     {
         "id": "entangled_debuff",
         "name": "Entangled Debuff",
-        "xOffset": 144,
+        "xOffset": 188,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -506,7 +638,7 @@
     {
         "id": "evasion",
         "name": "Evasion",
-        "xOffset": 148,
+        "xOffset": 192,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -518,7 +650,7 @@
     {
         "id": "faerie_fire_debuff",
         "name": "Faerie Fire Debuff",
-        "xOffset": 152,
+        "xOffset": 196,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -530,7 +662,7 @@
     {
         "id": "fingers_of_frost_buff",
         "name": "Fingers of Frost Buff",
-        "xOffset": 156,
+        "xOffset": 200,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -542,7 +674,31 @@
     {
         "id": "fire_school_lockout",
         "name": "Fire School Lockout",
-        "xOffset": 160,
+        "xOffset": 204,
+        "yOffset": 96,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "flash_of_light",
+        "name": "Flash of Light",
+        "xOffset": 208,
+        "yOffset": 96,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "forbearance_debuff",
+        "name": "Forbearance Debuff",
+        "xOffset": 212,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -554,7 +710,7 @@
     {
         "id": "frost_armor_buff",
         "name": "Frost Armor Buff",
-        "xOffset": 164,
+        "xOffset": 216,
         "yOffset": 96,
         "backgroundColor": {
             "r": 0,
@@ -566,8 +722,8 @@
     {
         "id": "frost_fever_debuff",
         "name": "Frost Fever Debuff",
-        "xOffset": 168,
-        "yOffset": 96,
+        "xOffset": 100,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -578,8 +734,8 @@
     {
         "id": "frost_nova",
         "name": "Frost Nova",
-        "xOffset": 172,
-        "yOffset": 96,
+        "xOffset": 104,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -590,8 +746,8 @@
     {
         "id": "frost_nova_debuff",
         "name": "Frost Nova Debuff",
-        "xOffset": 176,
-        "yOffset": 96,
+        "xOffset": 108,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -602,8 +758,8 @@
     {
         "id": "frost_school_lockout",
         "name": "Frost School Lockout",
-        "xOffset": 180,
-        "yOffset": 96,
+        "xOffset": 112,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -614,8 +770,8 @@
     {
         "id": "frostbolt_debuff",
         "name": "Frostbolt Debuff",
-        "xOffset": 184,
-        "yOffset": 96,
+        "xOffset": 116,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -626,8 +782,8 @@
     {
         "id": "frostwyrm's_fury",
         "name": "Frostwyrm's Fury",
-        "xOffset": 188,
-        "yOffset": 96,
+        "xOffset": 120,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -638,8 +794,8 @@
     {
         "id": "gouge",
         "name": "Gouge",
-        "xOffset": 192,
-        "yOffset": 96,
+        "xOffset": 124,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -650,8 +806,8 @@
     {
         "id": "gouge_debuff",
         "name": "Gouge Debuff",
-        "xOffset": 196,
-        "yOffset": 96,
+        "xOffset": 128,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -662,8 +818,8 @@
     {
         "id": "growl",
         "name": "Growl",
-        "xOffset": 200,
-        "yOffset": 96,
+        "xOffset": 132,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -674,8 +830,20 @@
     {
         "id": "hammer_of_justice",
         "name": "Hammer of Justice",
-        "xOffset": 204,
-        "yOffset": 96,
+        "xOffset": 136,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "hammer_of_wrath",
+        "name": "Hammer of Wrath",
+        "xOffset": 140,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -686,8 +854,8 @@
     {
         "id": "hammer_of_the_righteous",
         "name": "Hammer of the Righteous",
-        "xOffset": 208,
-        "yOffset": 96,
+        "xOffset": 144,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -698,8 +866,8 @@
     {
         "id": "health_under_20",
         "name": "Health Under 20",
-        "xOffset": 212,
-        "yOffset": 96,
+        "xOffset": 148,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -710,8 +878,8 @@
     {
         "id": "health_under_50",
         "name": "Health Under 50",
-        "xOffset": 216,
-        "yOffset": 96,
+        "xOffset": 152,
+        "yOffset": 92,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -722,7 +890,31 @@
     {
         "id": "health_under_75",
         "name": "Health Under 75",
-        "xOffset": 100,
+        "xOffset": 156,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "holy_power_3",
+        "name": "Holy Power 3",
+        "xOffset": 160,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "holy_shock",
+        "name": "Holy Shock",
+        "xOffset": 164,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -734,7 +926,7 @@
     {
         "id": "humanoid_form",
         "name": "Humanoid Form",
-        "xOffset": 104,
+        "xOffset": 168,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -746,7 +938,7 @@
     {
         "id": "hunter's_mark_debuff",
         "name": "Hunter's Mark Debuff",
-        "xOffset": 108,
+        "xOffset": 172,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -758,7 +950,31 @@
     {
         "id": "icebound_fortitude",
         "name": "Icebound Fortitude",
-        "xOffset": 112,
+        "xOffset": 176,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "icon_cross_exists",
+        "name": "Icon Cross Exists",
+        "xOffset": 180,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "icon_skull_exists",
+        "name": "Icon Skull Exists",
+        "xOffset": 184,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -770,7 +986,19 @@
     {
         "id": "immolate_debuff",
         "name": "Immolate Debuff",
-        "xOffset": 116,
+        "xOffset": 188,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "judgment",
+        "name": "Judgment",
+        "xOffset": 192,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -782,7 +1010,7 @@
     {
         "id": "kick",
         "name": "Kick",
-        "xOffset": 120,
+        "xOffset": 196,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -794,7 +1022,19 @@
     {
         "id": "killing_machine_buff",
         "name": "Killing Machine Buff",
-        "xOffset": 124,
+        "xOffset": 200,
+        "yOffset": 92,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "lay_on_hands",
+        "name": "Lay on Hands",
+        "xOffset": 204,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -806,7 +1046,7 @@
     {
         "id": "leaving_combat",
         "name": "Leaving Combat",
-        "xOffset": 128,
+        "xOffset": 208,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -818,7 +1058,7 @@
     {
         "id": "lichborne",
         "name": "Lichborne",
-        "xOffset": 132,
+        "xOffset": 212,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -830,7 +1070,7 @@
     {
         "id": "lichborne_buff",
         "name": "Lichborne Buff",
-        "xOffset": 136,
+        "xOffset": 216,
         "yOffset": 92,
         "backgroundColor": {
             "r": 0,
@@ -842,8 +1082,8 @@
     {
         "id": "mana_10",
         "name": "Mana 10",
-        "xOffset": 140,
-        "yOffset": 92,
+        "xOffset": 100,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -854,8 +1094,8 @@
     {
         "id": "mana_100",
         "name": "Mana 100",
-        "xOffset": 144,
-        "yOffset": 92,
+        "xOffset": 104,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -866,8 +1106,8 @@
     {
         "id": "mana_15",
         "name": "Mana 15",
-        "xOffset": 148,
-        "yOffset": 92,
+        "xOffset": 108,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -878,8 +1118,8 @@
     {
         "id": "mana_20",
         "name": "Mana 20",
-        "xOffset": 152,
-        "yOffset": 92,
+        "xOffset": 112,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -890,8 +1130,8 @@
     {
         "id": "mana_30",
         "name": "Mana 30",
-        "xOffset": 156,
-        "yOffset": 92,
+        "xOffset": 116,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -902,8 +1142,8 @@
     {
         "id": "mana_33",
         "name": "Mana 33",
-        "xOffset": 160,
-        "yOffset": 92,
+        "xOffset": 120,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -914,8 +1154,8 @@
     {
         "id": "mana_35",
         "name": "Mana 35",
-        "xOffset": 164,
-        "yOffset": 92,
+        "xOffset": 124,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -926,8 +1166,8 @@
     {
         "id": "mana_40",
         "name": "Mana 40",
-        "xOffset": 168,
-        "yOffset": 92,
+        "xOffset": 128,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -938,8 +1178,8 @@
     {
         "id": "mana_50",
         "name": "Mana 50",
-        "xOffset": 172,
-        "yOffset": 92,
+        "xOffset": 132,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -950,8 +1190,8 @@
     {
         "id": "mana_60",
         "name": "Mana 60",
-        "xOffset": 176,
-        "yOffset": 92,
+        "xOffset": 136,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -962,8 +1202,8 @@
     {
         "id": "mana_7",
         "name": "Mana 7",
-        "xOffset": 180,
-        "yOffset": 92,
+        "xOffset": 140,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -974,8 +1214,8 @@
     {
         "id": "mana_70",
         "name": "Mana 70",
-        "xOffset": 184,
-        "yOffset": 92,
+        "xOffset": 144,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -986,8 +1226,8 @@
     {
         "id": "mana_80",
         "name": "Mana 80",
-        "xOffset": 188,
-        "yOffset": 92,
+        "xOffset": 148,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -998,8 +1238,8 @@
     {
         "id": "mana_9",
         "name": "Mana 9",
-        "xOffset": 192,
-        "yOffset": 92,
+        "xOffset": 152,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1010,8 +1250,8 @@
     {
         "id": "mana_90",
         "name": "Mana 90",
-        "xOffset": 196,
-        "yOffset": 92,
+        "xOffset": 156,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1022,8 +1262,8 @@
     {
         "id": "mark_of_the_wild_buff",
         "name": "Mark of the Wild Buff",
-        "xOffset": 200,
-        "yOffset": 92,
+        "xOffset": 160,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1034,8 +1274,8 @@
     {
         "id": "mind_freeze",
         "name": "Mind Freeze",
-        "xOffset": 204,
-        "yOffset": 92,
+        "xOffset": 164,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1046,8 +1286,8 @@
     {
         "id": "mongoose_bite",
         "name": "Mongoose Bite",
-        "xOffset": 208,
-        "yOffset": 92,
+        "xOffset": 168,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1058,8 +1298,8 @@
     {
         "id": "moonfire_debuff",
         "name": "Moonfire Debuff",
-        "xOffset": 212,
-        "yOffset": 92,
+        "xOffset": 172,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1070,8 +1310,8 @@
     {
         "id": "nature's_grasp",
         "name": "Nature's Grasp",
-        "xOffset": 216,
-        "yOffset": 92,
+        "xOffset": 176,
+        "yOffset": 88,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1082,7 +1322,7 @@
     {
         "id": "omen_of_clarity_buff",
         "name": "Omen of Clarity Buff",
-        "xOffset": 100,
+        "xOffset": 180,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1094,7 +1334,7 @@
     {
         "id": "party_1_health_under_70",
         "name": "Party 1 Health Under 70",
-        "xOffset": 104,
+        "xOffset": 184,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1106,7 +1346,7 @@
     {
         "id": "party_1_range_35",
         "name": "Party 1 Range 35",
-        "xOffset": 108,
+        "xOffset": 188,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1118,7 +1358,7 @@
     {
         "id": "party_2_health_under_70",
         "name": "Party 2 Health Under 70",
-        "xOffset": 112,
+        "xOffset": 192,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1130,7 +1370,7 @@
     {
         "id": "party_3_health_under_70",
         "name": "Party 3 Health Under 70",
-        "xOffset": 116,
+        "xOffset": 196,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1142,7 +1382,7 @@
     {
         "id": "party_4_health_under_70",
         "name": "Party 4 Health Under 70",
-        "xOffset": 120,
+        "xOffset": 200,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1154,7 +1394,7 @@
     {
         "id": "path_of_frost",
         "name": "Path of Frost",
-        "xOffset": 124,
+        "xOffset": 204,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1166,7 +1406,7 @@
     {
         "id": "path_of_frost_buff",
         "name": "Path of Frost Buff",
-        "xOffset": 128,
+        "xOffset": 208,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1178,7 +1418,7 @@
     {
         "id": "pet_bite",
         "name": "Pet Bite",
-        "xOffset": 132,
+        "xOffset": 212,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1190,7 +1430,7 @@
     {
         "id": "pet_combat",
         "name": "Pet Combat",
-        "xOffset": 136,
+        "xOffset": 216,
         "yOffset": 88,
         "backgroundColor": {
             "r": 0,
@@ -1202,8 +1442,8 @@
     {
         "id": "pet_focus_15",
         "name": "Pet Focus 15",
-        "xOffset": 140,
-        "yOffset": 88,
+        "xOffset": 100,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1214,8 +1454,8 @@
     {
         "id": "pet_focus_40",
         "name": "Pet Focus 40",
-        "xOffset": 144,
-        "yOffset": 88,
+        "xOffset": 104,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1226,8 +1466,8 @@
     {
         "id": "pet_focus_50",
         "name": "Pet Focus 50",
-        "xOffset": 148,
-        "yOffset": 88,
+        "xOffset": 108,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1238,8 +1478,8 @@
     {
         "id": "pet_growl",
         "name": "Pet Growl",
-        "xOffset": 152,
-        "yOffset": 88,
+        "xOffset": 112,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1250,8 +1490,8 @@
     {
         "id": "pet_health_under_20",
         "name": "Pet Health Under 20",
-        "xOffset": 156,
-        "yOffset": 88,
+        "xOffset": 116,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1262,8 +1502,8 @@
     {
         "id": "pet_health_under_50",
         "name": "Pet Health Under 50",
-        "xOffset": 160,
-        "yOffset": 88,
+        "xOffset": 120,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1274,8 +1514,8 @@
     {
         "id": "pet_health_under_75",
         "name": "Pet Health Under 75",
-        "xOffset": 164,
-        "yOffset": 88,
+        "xOffset": 124,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1286,8 +1526,8 @@
     {
         "id": "pet_range_20",
         "name": "Pet Range 20",
-        "xOffset": 168,
-        "yOffset": 88,
+        "xOffset": 128,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1298,8 +1538,8 @@
     {
         "id": "pet_range_8",
         "name": "Pet Range 8",
-        "xOffset": 172,
-        "yOffset": 88,
+        "xOffset": 132,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1310,8 +1550,8 @@
     {
         "id": "pet_target_aggro",
         "name": "Pet Target Aggro",
-        "xOffset": 176,
-        "yOffset": 88,
+        "xOffset": 136,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1322,8 +1562,8 @@
     {
         "id": "pillar_of_frost",
         "name": "Pillar of Frost",
-        "xOffset": 180,
-        "yOffset": 88,
+        "xOffset": 140,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1334,8 +1574,8 @@
     {
         "id": "pillar_of_frost_buff",
         "name": "Pillar of Frost Buff",
-        "xOffset": 184,
-        "yOffset": 88,
+        "xOffset": 144,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1346,8 +1586,8 @@
     {
         "id": "player_casting",
         "name": "Player Casting",
-        "xOffset": 188,
-        "yOffset": 88,
+        "xOffset": 148,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1358,8 +1598,8 @@
     {
         "id": "player_casting_heal",
         "name": "Player Casting Heal",
-        "xOffset": 192,
-        "yOffset": 88,
+        "xOffset": 152,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1370,8 +1610,8 @@
     {
         "id": "player_charmed",
         "name": "Player Charmed",
-        "xOffset": 196,
-        "yOffset": 88,
+        "xOffset": 156,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1382,8 +1622,8 @@
     {
         "id": "player_dodge",
         "name": "Player Dodge",
-        "xOffset": 200,
-        "yOffset": 88,
+        "xOffset": 160,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1394,8 +1634,8 @@
     {
         "id": "player_feared",
         "name": "Player Feared",
-        "xOffset": 204,
-        "yOffset": 88,
+        "xOffset": 164,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1406,8 +1646,20 @@
     {
         "id": "player_has_pet",
         "name": "Player Has Pet",
-        "xOffset": 208,
-        "yOffset": 88,
+        "xOffset": 168,
+        "yOffset": 84,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "player_magic_debuff",
+        "name": "Player Magic Debuff",
+        "xOffset": 172,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1418,8 +1670,8 @@
     {
         "id": "player_moving",
         "name": "Player Moving",
-        "xOffset": 212,
-        "yOffset": 88,
+        "xOffset": 176,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1430,8 +1682,8 @@
     {
         "id": "player_rooted",
         "name": "Player Rooted",
-        "xOffset": 216,
-        "yOffset": 88,
+        "xOffset": 180,
+        "yOffset": 84,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1442,7 +1694,7 @@
     {
         "id": "player_silenced",
         "name": "Player Silenced",
-        "xOffset": 100,
+        "xOffset": 184,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1454,7 +1706,7 @@
     {
         "id": "player_slowed",
         "name": "Player Slowed",
-        "xOffset": 104,
+        "xOffset": 188,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1466,7 +1718,7 @@
     {
         "id": "player_stunned",
         "name": "Player Stunned",
-        "xOffset": 108,
+        "xOffset": 192,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1478,7 +1730,7 @@
     {
         "id": "poisoned",
         "name": "Poisoned",
-        "xOffset": 112,
+        "xOffset": 196,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1490,7 +1742,7 @@
     {
         "id": "potion",
         "name": "Potion",
-        "xOffset": 116,
+        "xOffset": 200,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1502,7 +1754,7 @@
     {
         "id": "potion_in_inventory",
         "name": "Potion in Inventory",
-        "xOffset": 120,
+        "xOffset": 204,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1514,7 +1766,7 @@
     {
         "id": "power_10",
         "name": "Power 10",
-        "xOffset": 124,
+        "xOffset": 208,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1526,7 +1778,7 @@
     {
         "id": "power_100",
         "name": "Power 100",
-        "xOffset": 128,
+        "xOffset": 212,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1538,7 +1790,7 @@
     {
         "id": "power_15",
         "name": "Power 15",
-        "xOffset": 132,
+        "xOffset": 216,
         "yOffset": 84,
         "backgroundColor": {
             "r": 0,
@@ -1550,8 +1802,8 @@
     {
         "id": "power_20",
         "name": "Power 20",
-        "xOffset": 136,
-        "yOffset": 84,
+        "xOffset": 100,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1562,8 +1814,8 @@
     {
         "id": "power_25",
         "name": "Power 25",
-        "xOffset": 140,
-        "yOffset": 84,
+        "xOffset": 104,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1574,8 +1826,8 @@
     {
         "id": "power_30",
         "name": "Power 30",
-        "xOffset": 144,
-        "yOffset": 84,
+        "xOffset": 108,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1586,8 +1838,8 @@
     {
         "id": "power_35",
         "name": "Power 35",
-        "xOffset": 148,
-        "yOffset": 84,
+        "xOffset": 112,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1598,8 +1850,8 @@
     {
         "id": "power_40",
         "name": "Power 40",
-        "xOffset": 152,
-        "yOffset": 84,
+        "xOffset": 116,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1610,8 +1862,8 @@
     {
         "id": "power_45",
         "name": "Power 45",
-        "xOffset": 156,
-        "yOffset": 84,
+        "xOffset": 120,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1622,8 +1874,8 @@
     {
         "id": "power_5",
         "name": "Power 5",
-        "xOffset": 160,
-        "yOffset": 84,
+        "xOffset": 124,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1634,8 +1886,8 @@
     {
         "id": "power_50",
         "name": "Power 50",
-        "xOffset": 164,
-        "yOffset": 84,
+        "xOffset": 128,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1646,8 +1898,8 @@
     {
         "id": "power_60",
         "name": "Power 60",
-        "xOffset": 168,
-        "yOffset": 84,
+        "xOffset": 132,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1658,8 +1910,8 @@
     {
         "id": "power_70",
         "name": "Power 70",
-        "xOffset": 172,
-        "yOffset": 84,
+        "xOffset": 136,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1670,8 +1922,8 @@
     {
         "id": "power_80",
         "name": "Power 80",
-        "xOffset": 176,
-        "yOffset": 84,
+        "xOffset": 140,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1682,8 +1934,8 @@
     {
         "id": "power_90",
         "name": "Power 90",
-        "xOffset": 180,
-        "yOffset": 84,
+        "xOffset": 144,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1694,8 +1946,8 @@
     {
         "id": "power_word_fortitude_buff",
         "name": "Power Word Fortitude Buff",
-        "xOffset": 184,
-        "yOffset": 84,
+        "xOffset": 148,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1706,8 +1958,8 @@
     {
         "id": "raise_ally",
         "name": "Raise Ally",
-        "xOffset": 188,
-        "yOffset": 84,
+        "xOffset": 152,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1718,8 +1970,8 @@
     {
         "id": "raise_dead",
         "name": "Raise Dead",
-        "xOffset": 192,
-        "yOffset": 84,
+        "xOffset": 156,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1730,8 +1982,8 @@
     {
         "id": "rake_debuff",
         "name": "Rake Debuff",
-        "xOffset": 196,
-        "yOffset": 84,
+        "xOffset": 160,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1742,8 +1994,8 @@
     {
         "id": "range_10",
         "name": "Range 10",
-        "xOffset": 200,
-        "yOffset": 84,
+        "xOffset": 164,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1754,8 +2006,8 @@
     {
         "id": "range_15",
         "name": "Range 15",
-        "xOffset": 204,
-        "yOffset": 84,
+        "xOffset": 168,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1766,8 +2018,8 @@
     {
         "id": "range_30",
         "name": "Range 30",
-        "xOffset": 208,
-        "yOffset": 84,
+        "xOffset": 172,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1778,8 +2030,8 @@
     {
         "id": "range_8",
         "name": "Range 8",
-        "xOffset": 212,
-        "yOffset": 84,
+        "xOffset": 176,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1790,8 +2042,8 @@
     {
         "id": "range_8_2+",
         "name": "Range 8 2+",
-        "xOffset": 216,
-        "yOffset": 84,
+        "xOffset": 180,
+        "yOffset": 80,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1802,7 +2054,7 @@
     {
         "id": "range_8_3+",
         "name": "Range 8 3+",
-        "xOffset": 100,
+        "xOffset": 184,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1814,7 +2066,7 @@
     {
         "id": "raptor_strike",
         "name": "Raptor Strike",
-        "xOffset": 104,
+        "xOffset": 188,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1826,7 +2078,7 @@
     {
         "id": "razorice_debuff_5",
         "name": "Razorice Debuff 5",
-        "xOffset": 108,
+        "xOffset": 192,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1838,7 +2090,7 @@
     {
         "id": "recently_bandaged_debuff",
         "name": "Recently Bandaged Debuff",
-        "xOffset": 112,
+        "xOffset": 196,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1850,7 +2102,7 @@
     {
         "id": "regeneration",
         "name": "Regeneration",
-        "xOffset": 116,
+        "xOffset": 200,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1862,7 +2114,7 @@
     {
         "id": "rejuvenation_buff",
         "name": "Rejuvenation Buff",
-        "xOffset": 120,
+        "xOffset": 204,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1874,7 +2126,7 @@
     {
         "id": "remorseless_winter",
         "name": "Remorseless Winter",
-        "xOffset": 124,
+        "xOffset": 208,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1886,7 +2138,7 @@
     {
         "id": "rime_buff",
         "name": "Rime Buff",
-        "xOffset": 128,
+        "xOffset": 212,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1898,7 +2150,7 @@
     {
         "id": "rip_debuff",
         "name": "Rip Debuff",
-        "xOffset": 132,
+        "xOffset": 216,
         "yOffset": 80,
         "backgroundColor": {
             "r": 0,
@@ -1910,8 +2162,8 @@
     {
         "id": "rocket_barrage",
         "name": "Rocket Barrage",
-        "xOffset": 136,
-        "yOffset": 80,
+        "xOffset": 100,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1922,8 +2174,8 @@
     {
         "id": "role_toggle",
         "name": "Role Toggle",
-        "xOffset": 140,
-        "yOffset": 80,
+        "xOffset": 104,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1934,8 +2186,8 @@
     {
         "id": "rune_1",
         "name": "Rune 1",
-        "xOffset": 144,
-        "yOffset": 80,
+        "xOffset": 108,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1946,8 +2198,8 @@
     {
         "id": "rune_2",
         "name": "Rune 2",
-        "xOffset": 148,
-        "yOffset": 80,
+        "xOffset": 112,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1958,8 +2210,8 @@
     {
         "id": "rune_3",
         "name": "Rune 3",
-        "xOffset": 152,
-        "yOffset": 80,
+        "xOffset": 116,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1970,8 +2222,8 @@
     {
         "id": "rune_4",
         "name": "Rune 4",
-        "xOffset": 156,
-        "yOffset": 80,
+        "xOffset": 120,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1982,8 +2234,8 @@
     {
         "id": "rune_5",
         "name": "Rune 5",
-        "xOffset": 160,
-        "yOffset": 80,
+        "xOffset": 124,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -1994,8 +2246,20 @@
     {
         "id": "savage_roar",
         "name": "Savage Roar",
-        "xOffset": 164,
-        "yOffset": 80,
+        "xOffset": 128,
+        "yOffset": 76,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "scanner",
+        "name": "Scanner",
+        "xOffset": 132,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2006,8 +2270,8 @@
     {
         "id": "seal_of_martyrdom_buff",
         "name": "Seal of Martyrdom Buff",
-        "xOffset": 168,
-        "yOffset": 80,
+        "xOffset": 136,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2018,8 +2282,8 @@
     {
         "id": "serpent_sting_debuff",
         "name": "Serpent Sting Debuff",
-        "xOffset": 172,
-        "yOffset": 80,
+        "xOffset": 140,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2030,8 +2294,20 @@
     {
         "id": "shield_of_righteousness",
         "name": "Shield of Righteousness",
-        "xOffset": 176,
-        "yOffset": 80,
+        "xOffset": 144,
+        "yOffset": 76,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "shield_of_righteousness_retail",
+        "name": "Shield of Righteousness Retail",
+        "xOffset": 148,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2042,8 +2318,8 @@
     {
         "id": "skull_bash",
         "name": "Skull Bash",
-        "xOffset": 180,
-        "yOffset": 80,
+        "xOffset": 152,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2054,8 +2330,8 @@
     {
         "id": "slice_and_dice_buff",
         "name": "Slice and Dice Buff",
-        "xOffset": 184,
-        "yOffset": 80,
+        "xOffset": 156,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2066,8 +2342,8 @@
     {
         "id": "stealth_buff",
         "name": "Stealth Buff",
-        "xOffset": 188,
-        "yOffset": 80,
+        "xOffset": 160,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2078,8 +2354,8 @@
     {
         "id": "swing_timer_test",
         "name": "Swing Timer Test",
-        "xOffset": 192,
-        "yOffset": 80,
+        "xOffset": 164,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2090,8 +2366,8 @@
     {
         "id": "swing_timer_at_max",
         "name": "Swing Timer at Max",
-        "xOffset": 196,
-        "yOffset": 80,
+        "xOffset": 168,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2102,8 +2378,8 @@
     {
         "id": "target_aggro",
         "name": "Target Aggro",
-        "xOffset": 200,
-        "yOffset": 80,
+        "xOffset": 172,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2114,8 +2390,20 @@
     {
         "id": "target_casting",
         "name": "Target Casting",
-        "xOffset": 204,
-        "yOffset": 80,
+        "xOffset": 176,
+        "yOffset": 76,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "target_cross",
+        "name": "Target Cross",
+        "xOffset": 180,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2126,8 +2414,8 @@
     {
         "id": "target_health_under_20",
         "name": "Target Health Under 20",
-        "xOffset": 208,
-        "yOffset": 80,
+        "xOffset": 184,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2138,8 +2426,8 @@
     {
         "id": "target_health_under_50",
         "name": "Target Health Under 50",
-        "xOffset": 212,
-        "yOffset": 80,
+        "xOffset": 188,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2150,8 +2438,8 @@
     {
         "id": "target_health_under_75",
         "name": "Target Health Under 75",
-        "xOffset": 216,
-        "yOffset": 80,
+        "xOffset": 192,
+        "yOffset": 76,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2162,7 +2450,7 @@
     {
         "id": "target_health_under_90",
         "name": "Target Health Under 90",
-        "xOffset": 100,
+        "xOffset": 196,
         "yOffset": 76,
         "backgroundColor": {
             "r": 0,
@@ -2174,7 +2462,7 @@
     {
         "id": "target_interruptible",
         "name": "Target Interruptible",
-        "xOffset": 104,
+        "xOffset": 200,
         "yOffset": 76,
         "backgroundColor": {
             "r": 0,
@@ -2186,7 +2474,7 @@
     {
         "id": "target_interruptible_range_12",
         "name": "Target Interruptible Range 12",
-        "xOffset": 108,
+        "xOffset": 204,
         "yOffset": 76,
         "backgroundColor": {
             "r": 0,
@@ -2198,7 +2486,7 @@
     {
         "id": "target_is_player",
         "name": "Target Is Player",
-        "xOffset": 112,
+        "xOffset": 208,
         "yOffset": 76,
         "backgroundColor": {
             "r": 0,
@@ -2210,7 +2498,19 @@
     {
         "id": "target_moving",
         "name": "Target Moving",
-        "xOffset": 116,
+        "xOffset": 212,
+        "yOffset": 76,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "target_skull",
+        "name": "Target Skull",
+        "xOffset": 216,
         "yOffset": 76,
         "backgroundColor": {
             "r": 0,
@@ -2222,8 +2522,8 @@
     {
         "id": "target_interruptible_range_15",
         "name": "Target interruptible Range 15",
-        "xOffset": 120,
-        "yOffset": 76,
+        "xOffset": 100,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2234,8 +2534,8 @@
     {
         "id": "theiranus_dead",
         "name": "Theiranus Dead",
-        "xOffset": 124,
-        "yOffset": 76,
+        "xOffset": 104,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2246,8 +2546,8 @@
     {
         "id": "thorns_buff",
         "name": "Thorns Buff",
-        "xOffset": 128,
-        "yOffset": 76,
+        "xOffset": 108,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2258,8 +2558,8 @@
     {
         "id": "threat_under_80",
         "name": "Threat Under 80",
-        "xOffset": 132,
-        "yOffset": 76,
+        "xOffset": 112,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2270,8 +2570,8 @@
     {
         "id": "tigers_fury_buff",
         "name": "Tigers Fury Buff",
-        "xOffset": 136,
-        "yOffset": 76,
+        "xOffset": 116,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2282,8 +2582,20 @@
     {
         "id": "undead_or_mechanical",
         "name": "Undead or Mechanical",
-        "xOffset": 140,
-        "yOffset": 76,
+        "xOffset": 120,
+        "yOffset": 72,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "word_of_glory",
+        "name": "Word of Glory",
+        "xOffset": 124,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -2294,8 +2606,20 @@
     {
         "id": "wraith_walk",
         "name": "Wraith Walk",
-        "xOffset": 144,
-        "yOffset": 76,
+        "xOffset": 128,
+        "yOffset": 72,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
+        "id": "yourbutt_health_under_50",
+        "name": "Yourbutt Health Under 50",
+        "xOffset": 132,
+        "yOffset": 72,
         "backgroundColor": {
             "r": 0,
             "g": 1,

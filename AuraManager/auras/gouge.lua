@@ -8,8 +8,8 @@ ns.auras["gouge"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 192,
-    yOffset = 96,
+    xOffset = 124,
+    yOffset = 92,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,12 +45,12 @@ ns.auras["gouge"] = {
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
+                spellName = 1776,
+                use_genericShowOn = true,
                 realSpellName = "Gouge",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 1776,
             },
             untrigger = {},
         },
@@ -72,6 +72,7 @@ ns.auras["gouge"] = {
         spec = {
             multi = {},
         },
+        use_class = true,
     },
     animation = {
         start = {

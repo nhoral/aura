@@ -8,8 +8,8 @@ ns.auras["gouge_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 196,
-    yOffset = 96,
+    xOffset = 128,
+    yOffset = 92,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,14 +45,14 @@ ns.auras["gouge_debuff"] = {
                 event = "Health",
                 names = {},
                 spellIds = {},
+                useRem = false,
                 ownOnly = true,
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                useName = true,
                 auranames = {
                     "Gouge",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
@@ -74,6 +74,7 @@ ns.auras["gouge_debuff"] = {
         spec = {
             multi = {},
         },
+        use_class = true,
     },
     animation = {
         start = {

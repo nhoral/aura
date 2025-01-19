@@ -45,12 +45,12 @@ ns.auras["bash"] = {
                 event = "Action Usable",
                 names = {},
                 spellIds = {},
+                spellName = 5211,
+                use_genericShowOn = true,
                 realSpellName = "Bash",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 5211,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -81,6 +81,7 @@ ns.auras["bash"] = {
             },
             single = "Scourge",
         },
+        use_class = false,
     },
     animation = {
         start = {
