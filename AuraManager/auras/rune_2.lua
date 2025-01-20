@@ -8,7 +8,7 @@ ns.auras["rune_2"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
+    xOffset = 128,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -39,11 +39,11 @@ ns.auras["rune_2"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                unit = "player",
-                subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Health",
                 names = {},
+                subeventSuffix = "_CAST_START",
+                unit = "player",
+                event = "Health",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 spellIds = {},
                 use_genericShowOn = true,
@@ -52,11 +52,11 @@ ns.auras["rune_2"] = {
                 powertype = 6,
                 use_powertype = true,
                 use_percentpower = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
                 use_runesCount = true,
                 power = {

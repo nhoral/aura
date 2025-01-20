@@ -8,7 +8,7 @@ ns.auras["combo_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 208,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -39,11 +39,11 @@ ns.auras["combo_5"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                unit = "player",
-                subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Power",
                 names = {},
+                subeventSuffix = "_CAST_START",
+                unit = "player",
+                event = "Power",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 spellIds = {},
                 use_genericShowOn = true,
@@ -52,11 +52,11 @@ ns.auras["combo_5"] = {
                 powertype = 4,
                 use_powertype = true,
                 use_percentpower = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
                 use_runesCount = true,
                 power = {

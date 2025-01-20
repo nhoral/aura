@@ -18,6 +18,7 @@ auras/arcane_shot.lua
 auras/aspect_of_the_hawk_buff.lua
 auras/aspect_of_the_monkey_buff.lua
 auras/avengers_shield.lua
+auras/bandage_in_inventory.lua
 auras/bash.lua
 auras/bear_form.lua
 auras/blessing_of_might_buff.lua
@@ -141,6 +142,7 @@ auras/pet_range_8.lua
 auras/pet_target_aggro.lua
 auras/pillar_of_frost.lua
 auras/pillar_of_frost_buff.lua
+auras/player_attacking.lua
 auras/player_casting.lua
 auras/player_casting_heal.lua
 auras/player_charmed.lua
@@ -149,6 +151,7 @@ auras/player_feared.lua
 auras/player_has_pet.lua
 auras/player_magic_debuff.lua
 auras/player_moving.lua
+auras/player_not_behind_target.lua
 auras/player_rooted.lua
 auras/player_silenced.lua
 auras/player_slowed.lua
@@ -181,6 +184,7 @@ auras/range_30.lua
 auras/range_8.lua
 auras/range_8_2+.lua
 auras/range_8_3+.lua
+auras/range_8_cross.lua
 auras/raptor_strike.lua
 auras/razorice_debuff_5.lua
 auras/recently_bandaged_debuff.lua

@@ -8,7 +8,7 @@ ns.auras["can_cc_cross"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 164,
+    xOffset = 168,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -39,12 +39,12 @@ ns.auras["can_cc_cross"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "custom",
-                unit = "player",
+                names = {},
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
+                unit = "player",
                 duration = "1",
                 event = "Health",
-                names = {},
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
@@ -60,9 +60,8 @@ ns.auras["can_cc_cross"] = {
             if UnitExists(unit) and UnitCanAttack("player", unit) then
                 -- Check if unit has cross mark (7)
                 local mark = GetRaidTargetIndex(unit)
-                local inRange = WeakAuras.CheckRange(unit, 8, "<=")
                 
-                if mark == 7 and inRange then
+                if mark == 7 then
                     -- Check if unit is CC'd
                     local isCC = false
                     local i = 1

@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frostwyrm's_fury"] = {
-    id = "Frostwyrm's Fury",
-    uid = "rnAE0RUYe(1",
+ns.auras["range_8_cross"] = {
+    id = "Range 8 Cross",
+    uid = "4BvFgX2c)KH",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
-    yOffset = 92,
+    xOffset = 200,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,20 +38,55 @@ ns.auras["frostwyrm's_fury"] = {
         {
             trigger = {
                 debuffType = "HELPFUL",
-                type = "spell",
+                type = "custom",
                 names = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
-                event = "Action Usable",
+                duration = "1",
+                event = "Health",
                 subeventPrefix = "SPELL",
+                use_unit = true,
+                custom_type = "stateupdate",
+                custom = [[function(allstates, event, ...)
+    -- Throttle checks
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
+        aura_env.last = GetTime()
+        
+        -- Check all nameplates
+        for i = 1, 40 do
+            local unit = "nameplate"..i
+            
+            -- Check if unit exists and is attackable
+            if UnitExists(unit) and UnitCanAttack("player", unit) then
+                -- Check if unit has cross mark (7)
+                local mark = GetRaidTargetIndex(unit)
+                local inRange = WeakAuras.CheckRange(unit, 8, "<=")
+                
+                if mark == 7 and inRange then
+                    allstates[""] = {
+                        show = true,
+                        changed = true,
+                        unit = unit
+                    }
+                    return true
+                end
+            end
+        end
+        
+        -- No valid target found, hide aura
+        allstates[""] = {
+            show = false,
+            changed = true
+        }
+        return true
+    end
+end]],
                 spellIds = {},
-                realSpellName = "Arcane Shot",
-                use_spellName = true,
-                use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
-                use_track = true,
-                spellName = 279302,
-                use_exact_spellName = false,
+                check = "update",
+                unevent = "auto",
+                customVariables = "",
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
             },
             untrigger = {},
         },
@@ -63,10 +98,9 @@ ns.auras["frostwyrm's_fury"] = {
         },
         class = {
             multi = {
-                ROGUE = true,
-                HUNTER = true,
+                WARRIOR = true,
             },
-            single = "HUNTER",
+            single = "WARRIOR",
         },
         size = {
             multi = {},
@@ -74,13 +108,8 @@ ns.auras["frostwyrm's_fury"] = {
         spec = {
             multi = {},
         },
-        race = {
-            multi = {
-                Scourge = true,
-            },
-            single = "Scourge",
-        },
-        use_class = false,
+        use_never = false,
+        zoneIds = "",
     },
     animation = {
         start = {

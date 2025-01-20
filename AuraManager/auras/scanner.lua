@@ -8,7 +8,7 @@ ns.auras["scanner"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 132,
+    xOffset = 148,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -39,12 +39,12 @@ ns.auras["scanner"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "custom",
-                unit = "player",
+                names = {},
                 subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
+                unit = "player",
                 duration = "1",
                 event = "Health",
-                names = {},
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 custom_type = "stateupdate",
                 custom = [[function(allstates, event)
@@ -62,7 +62,7 @@ ns.auras["scanner"] = {
         -- First pass: Identify all valid targets
         for i = 1, 40 do
             local unit = "nameplate"..i
-            if UnitExists(unit) and UnitAffectingCombat(unit) and UnitCanAttack("player", unit) then
+            if UnitExists(unit) and UnitCanAttack("player", unit) then
                 local guid = UnitGUID(unit)
                 if guid then
                     currentEnemies[guid] = unit
@@ -71,19 +71,30 @@ ns.auras["scanner"] = {
             end
         end
         
-        -- Clear all existing marks first
-        for guid, unit in pairs(currentEnemies) do
-            SetRaidTarget(unit, 0)
-            aura_env.marks[guid] = nil
+        -- Clean up marks for enemies no longer present
+        for guid, mark in pairs(aura_env.marks) do
+            if not currentEnemies[guid] then
+                aura_env.marks[guid] = nil
+            end
         end
         
-        -- Reassign marks in priority order
+        -- Assign marks to unmarked targets and adjust existing marks
         for i, guid in ipairs(enemyList) do
-            if i <= #MARKS then
-                local unit = currentEnemies[guid]
-                local mark = MARKS[i]
-                aura_env.marks[guid] = mark
-                SetRaidTarget(unit, mark)
+            local unit = currentEnemies[guid]
+            local currentMark = GetRaidTargetIndex(unit)
+            
+            -- If we set this mark previously
+            if aura_env.marks[guid] then
+                -- Clear if it needs a higher priority mark
+                if i <= #MARKS and MARKS[i] ~= aura_env.marks[guid] then
+                    SetRaidTarget(unit, 0)
+                    aura_env.marks[guid] = MARKS[i]
+                    SetRaidTarget(unit, MARKS[i])
+                end
+                -- If no mark exists and we have one available
+            elseif not currentMark and i <= #MARKS then
+                aura_env.marks[guid] = MARKS[i]
+                SetRaidTarget(unit, MARKS[i])
             end
         end
         

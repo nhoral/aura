@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frostwyrm's_fury"] = {
-    id = "Frostwyrm's Fury",
-    uid = "rnAE0RUYe(1",
+ns.auras["bandage_in_inventory"] = {
+    id = "Bandage In Inventory",
+    uid = "xz)l7deWE6P",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
-    yOffset = 92,
+    xOffset = 136,
+    yOffset = 100,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,24 +34,38 @@ ns.auras["frostwyrm's_fury"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
+        disjunctive = "any",
         activeTriggerMode = -10,
         {
             trigger = {
                 debuffType = "HELPFUL",
-                type = "spell",
+                type = "item",
                 names = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
-                event = "Action Usable",
+                event = "Item Count",
                 subeventPrefix = "SPELL",
                 spellIds = {},
-                realSpellName = "Arcane Shot",
+                unitExists = false,
+                auranames = {
+                    "Enrage",
+                },
+                matchesShowOn = "showOnActive",
+                useName = true,
+                useRem = false,
+                realSpellName = "Taunt",
                 use_spellName = true,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 279302,
-                use_exact_spellName = false,
+                spellName = 355,
+                itemName = 1251,
+                use_count = true,
+                use_debuffClass = false,
+                use_itemName = true,
+                count = "1",
+                useNamePattern = false,
+                count_operator = ">=",
             },
             untrigger = {},
         },
@@ -63,10 +77,10 @@ ns.auras["frostwyrm's_fury"] = {
         },
         class = {
             multi = {
-                ROGUE = true,
-                HUNTER = true,
+                DRUID = true,
+                WARRIOR = true,
             },
-            single = "HUNTER",
+            single = "WARRIOR",
         },
         size = {
             multi = {},
@@ -74,13 +88,6 @@ ns.auras["frostwyrm's_fury"] = {
         spec = {
             multi = {},
         },
-        race = {
-            multi = {
-                Scourge = true,
-            },
-            single = "Scourge",
-        },
-        use_class = false,
     },
     animation = {
         start = {

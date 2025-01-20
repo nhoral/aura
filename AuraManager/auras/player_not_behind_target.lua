@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frostwyrm's_fury"] = {
-    id = "Frostwyrm's Fury",
-    uid = "rnAE0RUYe(1",
+ns.auras["player_not_behind_target"] = {
+    id = "Player not behind target",
+    uid = "VpGXA06c4Qk",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
-    yOffset = 92,
+    xOffset = 204,
+    yOffset = 84,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,20 +38,44 @@ ns.auras["frostwyrm's_fury"] = {
         {
             trigger = {
                 debuffType = "HELPFUL",
-                type = "spell",
+                type = "custom",
                 names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                event = "Action Usable",
+                unit = "target",
+                duration = ".5",
+                event = "Crowd Controlled",
                 subeventPrefix = "SPELL",
+                use_unit = true,
+                custom_type = "event",
+                custom = [[function(event, arg1, arg2)
+    if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
+        return true
+    end
+    return false
+end]],
                 spellIds = {},
-                realSpellName = "Arcane Shot",
-                use_spellName = true,
-                use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
-                use_track = true,
-                spellName = 279302,
-                use_exact_spellName = false,
+                custom_hide = "timed",
+                unitExists = false,
+                auranames = {
+                    "Quick Flame Ward",
+                },
+                matchesShowOn = "showOnActive",
+                useName = true,
+                useRem = false,
+                use_inverse = false,
+                use_debuffClass = false,
+                debuffClass = {
+                    magic = true,
+                },
+                use_controlType = true,
+                use_interruptSchool = true,
+                interruptSchool = 16,
+                controlType = "ROOT",
+                useExactSpellId = false,
+                auraspellids = {
+                    "116",
+                },
+                events = "UI_ERROR_MESSAGE",
             },
             untrigger = {},
         },
@@ -64,9 +88,9 @@ ns.auras["frostwyrm's_fury"] = {
         class = {
             multi = {
                 ROGUE = true,
-                HUNTER = true,
+                MAGE = true,
             },
-            single = "HUNTER",
+            single = "MAGE",
         },
         size = {
             multi = {},
@@ -74,13 +98,6 @@ ns.auras["frostwyrm's_fury"] = {
         spec = {
             multi = {},
         },
-        race = {
-            multi = {
-                Scourge = true,
-            },
-            single = "Scourge",
-        },
-        use_class = false,
     },
     animation = {
         start = {

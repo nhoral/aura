@@ -2,14 +2,39 @@
     "name": "Rogue",
     "actions": [
         {
+            "name": "Potion",
+            "key": "9",
+            "conditions": ["health_under_20", "combat", "potion_in_inventory"]
+        },
+        {
+            "name": "Gouge for Heal",
+            "key": "3",
+            "conditions": ["gouge", "health_under_20", "combat", "range_8", "!range_8_2+", "!gouge_debuff"]
+        },
+        {
+            "name": "Bandage Self",
+            "key": "8",
+            "conditions": ["!recently_bandaged_debuff", "bandage_in_inventory", "health_under_20", "combat", "!range_8_2+", "gouge_debuff"]
+        },
+        {
+            "name": "Evasion",
+            "key": "7",
+            "conditions": ["evasion", "health_under_20", "combat"]
+        },
+        {
+            "name": "Sprint After Enemy",
+            "key": "-",
+            "conditions": ["combat", "!range_8", "player_moving", "target_moving", "!combat_start"]
+        },
+        {
             "name": "Gouge Target Cross",
             "key": "4",
-            "conditions": ["icon_cross_exists","can_cc_cross", "gouge", "power_45", "!target_cross"]
+            "conditions": ["icon_cross_exists", "can_cc_cross", "range_8_cross", "gouge", "power_45", "!target_cross"]
         },
         {
             "name": "Gouge Cross",
             "key": "3",
-            "conditions": ["gouge", "power_45", "target_cross", "can_cc_cross"]
+            "conditions": ["gouge", "power_45", "range_8_cross", "target_cross", "can_cc_cross"]
         },
         {
             "name": "Return to Skull (after gouging)",
@@ -17,14 +42,34 @@
             "conditions": ["icon_skull_exists", "!target_skull", "!can_cc_cross"]
         },
         {
+            "name": "Slice and Dice",
+            "key": "SHIFT-3",
+            "conditions": ["combo_1", "range_8", "power_25", "!slice_and_dice_buff"]
+        },
+        {
             "name": "Eviscerate",
             "key": "2",
             "conditions": ["power_35", "combo_2", "range_8"]
         },
+        {
+            "name": "Backstab",
+            "key": "6",
+            "conditions": ["!player_not_behind_target", "range_8", "power_60"]
+        },
         { 
             "name": "Sinister Strike",
             "key": "1",
-            "conditions": ["power_45", "range_8"]
+            "conditions": ["player_not_behind_target", "power_45", "range_8"]
+        },
+        { 
+            "name": "Throw",
+            "key": "5",
+            "conditions": ["!player_moving","range_30","!range_8"]
+        },
+        {
+            "name": "Auto Attack",
+            "key": "SHIFT-2",
+            "conditions": ["combat", "!player_attacking", "range_8"]
         }
     ]
-} 
+}

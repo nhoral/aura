@@ -8,7 +8,7 @@ ns.auras["mana_33"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 120,
+    xOffset = 124,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -39,11 +39,11 @@ ns.auras["mana_33"] = {
             trigger = {
                 debuffType = "HELPFUL",
                 type = "unit",
-                unit = "player",
-                subeventSuffix = "_CAST_START",
-                subeventPrefix = "SPELL",
-                event = "Power",
                 names = {},
+                subeventSuffix = "_CAST_START",
+                unit = "player",
+                event = "Power",
+                subeventPrefix = "SPELL",
                 use_unit = true,
                 spellIds = {},
                 use_power = true,
@@ -51,11 +51,11 @@ ns.auras["mana_33"] = {
                 powertype = 0,
                 use_powertype = true,
                 use_percentpower = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
                 power = {
                     "33",

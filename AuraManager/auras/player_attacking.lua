@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["frostwyrm's_fury"] = {
-    id = "Frostwyrm's Fury",
-    uid = "rnAE0RUYe(1",
+ns.auras["player_attacking"] = {
+    id = "Player Attacking",
+    uid = "6s63kxY6dhb",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
-    yOffset = 92,
+    xOffset = 152,
+    yOffset = 84,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,53 +34,79 @@ ns.auras["frostwyrm's_fury"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        activeTriggerMode = -10,
+        disjunctive = "all",
+        activeTriggerMode = 1,
         {
             trigger = {
                 debuffType = "HELPFUL",
-                type = "spell",
+                type = "custom",
                 names = {},
                 subeventSuffix = "_CAST_START",
                 unit = "player",
-                event = "Action Usable",
+                duration = "1",
+                event = "Health",
                 subeventPrefix = "SPELL",
+                use_unit = true,
+                custom_type = "stateupdate",
+                custom = [[function(allstates)
+    if not aura_env.last or GetTime() - aura_env.last > 0.5 then
+        aura_env.last = GetTime()
+        
+        local playerAttacking = IsCurrentSpell(6603)
+        
+        if playerAttacking then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].show = true
+            allstates[""].changed = true
+            return true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+            return true
+        end
+    end
+end]],
                 spellIds = {},
-                realSpellName = "Arcane Shot",
-                use_spellName = true,
-                use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
-                use_track = true,
-                spellName = 279302,
-                use_exact_spellName = false,
+                check = "update",
+                unevent = "auto",
+                custom_hide = "timed",
+                customVariables = "{}",
             },
-            untrigger = {},
+            untrigger = {
+                custom = [[function()
+    return not aura_env.isTriggered
+end]],
+            },
         },
     },
     conditions = {},
     load = {
+        use_level = false,
         talent = {
             multi = {},
         },
         class = {
             multi = {
-                ROGUE = true,
-                HUNTER = true,
+                WARLOCK = true,
             },
-            single = "HUNTER",
+            single = "WARLOCK",
         },
+        use_spellknown = false,
         size = {
             multi = {},
         },
         spec = {
             multi = {},
         },
-        race = {
-            multi = {
-                Scourge = true,
-            },
-            single = "Scourge",
+        use_never = false,
+        level = {
+            "120",
         },
-        use_class = false,
+        level_operator = {
+            "~=",
+        },
+        zoneIds = "",
     },
     animation = {
         start = {
