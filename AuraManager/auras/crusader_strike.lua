@@ -8,7 +8,7 @@ ns.auras["crusader_strike"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 108,
+    xOffset = 120,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -37,18 +37,18 @@ ns.auras["crusader_strike"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Action Usable",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
+                genericShowOn = "showOnCooldown",
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
                 use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 407676,
                 use_exact_spellName = false,
@@ -68,10 +68,10 @@ ns.auras["crusader_strike"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

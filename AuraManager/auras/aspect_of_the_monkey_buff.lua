@@ -8,7 +8,7 @@ ns.auras["aspect_of_the_monkey_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 128,
+    xOffset = 124,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["aspect_of_the_monkey_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "BOTH",
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "BOTH",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Aspect of the Monkey",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
             },
             untrigger = {},
@@ -70,10 +70,10 @@ ns.auras["aspect_of_the_monkey_buff"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

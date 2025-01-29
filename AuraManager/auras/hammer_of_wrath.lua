@@ -8,7 +8,7 @@ ns.auras["hammer_of_wrath"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 144,
+    xOffset = 156,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -37,19 +37,19 @@ ns.auras["hammer_of_wrath"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Action Usable",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 use_inverse = false,
+                genericShowOn = "showOnCooldown",
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
                 use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 24275,
             },
@@ -68,10 +68,10 @@ ns.auras["hammer_of_wrath"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

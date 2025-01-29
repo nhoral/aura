@@ -8,7 +8,7 @@ ns.auras["curse_of_agony_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 128,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["curse_of_agony_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "target",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "target",
+                names = {},
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Curse of Agony",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
             },
             untrigger = {},
@@ -68,10 +68,10 @@ ns.auras["curse_of_agony_debuff"] = {
             },
             single = "WARLOCK",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

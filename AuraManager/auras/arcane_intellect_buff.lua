@@ -8,7 +8,7 @@ ns.auras["arcane_intellect_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
+    xOffset = 108,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["arcane_intellect_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "BOTH",
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "BOTH",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Arcane Intellect",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
             },
             untrigger = {},
@@ -69,10 +69,10 @@ ns.auras["arcane_intellect_buff"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

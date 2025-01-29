@@ -8,8 +8,8 @@ ns.auras["razorice_debuff_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
-    yOffset = 80,
+    xOffset = 156,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,22 @@ ns.auras["razorice_debuff_5"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "target",
                 event = "Action Usable",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "target",
+                names = {},
+                debuffType = "HARMFUL",
                 auranames = {
                     "Razorice",
                 },
                 useName = true,
+                genericShowOn = "showOnCooldown",
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
                 use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 14281,
                 use_exact_spellName = false,
@@ -75,10 +75,10 @@ ns.auras["razorice_debuff_5"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

@@ -8,7 +8,7 @@ ns.auras["blessing_of_might_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
+    xOffset = 144,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["blessing_of_might_buff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "BOTH",
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "BOTH",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Blessing of Might",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
             },
             untrigger = {},
@@ -70,10 +70,10 @@ ns.auras["blessing_of_might_buff"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

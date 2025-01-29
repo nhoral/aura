@@ -8,8 +8,8 @@ ns.auras["shield_of_righteousness_retail"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 164,
-    yOffset = 76,
+    xOffset = 144,
+    yOffset = 72,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,19 +37,19 @@ ns.auras["shield_of_righteousness_retail"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "spell",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Action Usable",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 use_inverse = false,
+                genericShowOn = "showOnCooldown",
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
                 use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 53600,
             },
@@ -68,10 +68,10 @@ ns.auras["shield_of_righteousness_retail"] = {
             },
             single = "MAGE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
         race = {

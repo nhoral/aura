@@ -37,16 +37,14 @@ ns.auras["can_cc_cross"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                customVariables = "",
                 type = "custom",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
+                unevent = "auto",
                 duration = "1",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 use_unit = true,
-                custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -99,9 +97,11 @@ ns.auras["can_cc_cross"] = {
     end
 end]],
                 spellIds = {},
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                customVariables = "",
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
             },
@@ -119,14 +119,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        size = {
-            multi = {},
-        },
+        zoneIds = "",
+        use_never = false,
         spec = {
             multi = {},
         },
-        use_never = false,
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

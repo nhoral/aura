@@ -1,0 +1,45 @@
+{
+    "name": "Hunter",
+    "actions": [
+        {
+            "name": "Hunters Mark",
+            "key": "5",
+            "conditions": ["!hunter's_mark", "power_15", "enemy_over_8_yards_range"]
+        },
+        {
+            "name": "Serpent Sting",
+            "key": "3",
+            "conditions": ["!serpent_sting", "power_15", "enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+        },
+        {
+            "name": "Arcane Shot",
+            "key": "6",
+            "conditions": ["arcane_shot", "power_25", "enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+        },
+        {
+            "name": "Raptor Strike",
+            "key": "2",
+            "conditions": ["raptor_strike", "melee_range", "power_15"]
+        },
+        {
+            "name": "Auto Shot",
+            "key": "1",
+            "conditions": ["enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+        },
+        {
+            "name": "Start Scanning Range",
+            "key": "1",
+            "conditions": ["combat","player_gcd", "!player_shooting", "!range_8", "range_30", "!scanning"]
+        },
+        {
+            "name": "Start Scanning Melee",
+            "key": "1",
+            "conditions": ["combat","player_gcd", "range_8", "!scanning"]
+        },
+        {
+            "name": "Start Scanning OOC",
+            "key": "1",
+            "conditions": ["!combat","!scanning"]
+        }
+    ]
+} 

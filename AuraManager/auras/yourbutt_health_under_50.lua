@@ -8,8 +8,8 @@ ns.auras["yourbutt_health_under_50"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
-    yOffset = 72,
+    xOffset = 136,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,16 +38,15 @@ ns.auras["yourbutt_health_under_50"] = {
         activeTriggerMode = 1,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                customVariables = "{}",
                 type = "custom",
-                names = {},
+                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
+                unevent = "auto",
                 duration = "1",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 use_unit = true,
-                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -81,10 +80,11 @@ ns.auras["yourbutt_health_under_50"] = {
     end
 end]],
                 spellIds = {},
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                custom_hide = "timed",
-                customVariables = "{}",
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
             },
             untrigger = {
                 custom = [[function()
@@ -106,20 +106,20 @@ end]],
             single = "WARLOCK",
         },
         use_spellknown = false,
-        size = {
-            multi = {},
-        },
-        spec = {
-            multi = {},
+        zoneIds = "",
+        level_operator = {
+            "~=",
         },
         use_never = false,
         level = {
             "120",
         },
-        level_operator = {
-            "~=",
+        spec = {
+            multi = {},
         },
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

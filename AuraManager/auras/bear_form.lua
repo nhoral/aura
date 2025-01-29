@@ -8,7 +8,7 @@ ns.auras["bear_form"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 144,
+    xOffset = 140,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -37,22 +37,22 @@ ns.auras["bear_form"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "BOTH",
                 type = "unit",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Stance/Form/Aura",
                 subeventPrefix = "SPELL",
                 use_unit = true,
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "BOTH",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Bear Form",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
                 use_debuffClass = false,
                 useNamePattern = false,
@@ -75,10 +75,10 @@ ns.auras["bear_form"] = {
             },
             single = "DRUID",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["mongoose_bite"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 172,
+    xOffset = 196,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -37,26 +37,26 @@ ns.auras["mongoose_bite"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
                 type = "spell",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "target",
                 event = "Action Usable",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "target",
+                names = {},
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Concussive Shot",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
+                genericShowOn = "showOnCooldown",
                 realSpellName = "Concussive Shot",
                 use_spellName = true,
                 use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 259387,
             },
@@ -74,10 +74,10 @@ ns.auras["mongoose_bite"] = {
             },
             single = "HUNTER",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },

@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["a_test"] = {
-    id = "A Test",
-    uid = "pvNxmxlB5l3",
+ns.auras["range_35"] = {
+    id = "Range 35",
+    uid = "9donuJDRW5j",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
-    yOffset = 100,
+    xOffset = 108,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,22 +37,32 @@ ns.auras["a_test"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "BOTH",
-                type = "aura2",
-                names = {},
+                type = "unit",
                 subeventSuffix = "_CAST_START",
-                unit = "player",
-                event = "Health",
+                event = "Range Check",
                 subeventPrefix = "SPELL",
+                use_unit = true,
                 spellIds = {},
-                ownOnly = true,
-                unitExists = false,
-                auranames = {
-                    "Amplify Magic",
+                unit = "target",
+                names = {},
+                debuffType = "HELPFUL",
+                use_showCost = true,
+                powertype = 3,
+                use_powertype = true,
+                range_operator = "<=",
+                use_range = true,
+                range = "35",
+                use_absorbMode = true,
+                use_absorbHealMode = true,
+                percenthealth = {
+                    "20",
                 },
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
+                use_percentpower = false,
+                use_power = false,
+                use_percenthealth = true,
+                percenthealth_operator = {
+                    "<",
+                },
             },
             untrigger = {},
         },
@@ -64,15 +74,14 @@ ns.auras["a_test"] = {
         },
         class = {
             multi = {
-                MAGE = true,
-                DRUID = true,
+                ROGUE = true,
             },
-            single = "MAGE",
-        },
-        size = {
-            multi = {},
+            single = "ROGUE",
         },
         spec = {
+            multi = {},
+        },
+        size = {
             multi = {},
         },
     },

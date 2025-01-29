@@ -8,8 +8,8 @@ ns.auras["target_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
-    yOffset = 72,
+    xOffset = 100,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,27 +38,45 @@ ns.auras["target_skull"] = {
         activeTriggerMode = 1,
         {
             trigger = {
-                debuffType = "HELPFUL",
-                type = "unit",
-                names = {},
+                customVariables = "{}",
+                type = "custom",
+                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
+                unevent = "auto",
                 duration = "1",
                 event = "Unit Characteristics",
                 subeventPrefix = "SPELL",
                 use_unit = true,
-                custom_type = "stateupdate",
+                custom = [[function(allstates)
+    if not aura_env.last or GetTime() - aura_env.last > 0.05 then
+        aura_env.last = GetTime()
+        
+        local isSkull = GetRaidTargetIndex("target") == 8
+        
+        if (isSkull) then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].changed = true
+            return true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+            return true
+        end
+    end
+end]],
                 spellIds = {},
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                custom_hide = "timed",
-                customVariables = "{}",
-                use_class = false,
+                unit = "target",
+                names = {},
+                debuffType = "HELPFUL",
                 use_unitisunit = false,
                 use_character = false,
+                use_class = false,
                 character = "player",
-                use_raidMarkIndex = true,
                 unitisunit = "player",
+                use_raidMarkIndex = true,
                 raidMarkIndex = 8,
             },
             untrigger = {},
@@ -76,20 +94,20 @@ ns.auras["target_skull"] = {
             },
             single = "WARLOCK",
         },
-        size = {
-            multi = {},
-        },
-        spec = {
-            multi = {},
+        zoneIds = "",
+        level_operator = {
+            "~=",
         },
         use_never = false,
         level = {
             "120",
         },
-        level_operator = {
-            "~=",
+        spec = {
+            multi = {},
         },
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

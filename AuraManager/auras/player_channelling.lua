@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["concussive_shot_cooldown"] = {
-    id = "Concussive Shot Cooldown",
-    uid = "xEii5JGgDsX",
+ns.auras["player_channelling"] = {
+    id = "Player Channelling",
+    uid = ")m5y7PkbuRk",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 212,
-    yOffset = 100,
+    xOffset = 188,
+    yOffset = 84,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,28 +37,23 @@ ns.auras["concussive_shot_cooldown"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
-                type = "spell",
-                names = {},
+                type = "unit",
                 subeventSuffix = "_CAST_START",
-                unit = "target",
-                event = "Action Usable",
+                event = "Cast",
                 subeventPrefix = "SPELL",
+                use_unit = true,
                 spellIds = {},
-                ownOnly = true,
-                unitExists = false,
-                auranames = {
-                    "Concussive Shot",
-                },
-                matchesShowOn = "showOnActive",
-                useName = true,
-                useRem = false,
-                realSpellName = "Concussive Shot",
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
+                genericShowOn = "showOnCooldown",
+                realSpellName = 0,
                 use_spellName = true,
                 use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 5116,
+                spellName = 0,
+                use_castType = true,
+                castType = "channel",
             },
             untrigger = {},
         },
@@ -69,15 +64,12 @@ ns.auras["concussive_shot_cooldown"] = {
             multi = {},
         },
         class = {
-            multi = {
-                HUNTER = true,
-            },
-            single = "HUNTER",
-        },
-        size = {
             multi = {},
         },
         spec = {
+            multi = {},
+        },
+        size = {
             multi = {},
         },
     },

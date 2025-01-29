@@ -19,22 +19,52 @@
         {
             "name": "Evasion",
             "key": "7",
-            "conditions": ["evasion", "health_under_20", "combat"]
+            "conditions": ["evasion", "health_under_20", "combat", "!player_channeling"]
         },
         {
             "name": "Sprint After Enemy",
             "key": "-",
-            "conditions": ["combat", "!range_8", "player_moving", "target_moving", "!combat_start"]
+            "conditions": ["combat", "!range_8", "!range_15", "range_30", "player_moving", "target_moving", "!combat_start", "!player_channeling"]
         },
         {
             "name": "Gouge Target Cross",
             "key": "4",
-            "conditions": ["icon_cross_exists", "can_cc_cross", "range_8_cross", "gouge", "power_45", "!target_cross"]
+            "conditions": ["icon_cross_exists", "can_cc_cross", "range_8_cross", "gouge", "power_45", "!target_cross", "!player_channeling"]
         },
         {
             "name": "Gouge Cross",
             "key": "3",
-            "conditions": ["gouge", "power_45", "range_8_cross", "target_cross", "can_cc_cross"]
+            "conditions": ["icon_cross_exists", "gouge", "power_45", "range_8_cross", "target_cross", "can_cc_cross", "!player_channeling"]
+        },
+        {
+            "name": "Gouge Target Circle",
+            "key": "4",
+            "conditions": ["icon_circle_exists", "can_cc_circle", "range_8_circle", "gouge", "power_45", "!target_circle", "!player_channeling"]
+        },
+        {
+            "name": "Gouge Circle",
+            "key": "3",
+            "conditions": ["icon_circle_exists", "gouge", "power_45", "range_8_circle", "target_circle", "can_cc_circle", "!player_channeling"]
+        },
+        {
+            "name": "Kick Target Diamond",
+            "key": "4",
+            "conditions": ["icon_diamond_exists", "can_interrupt_diamond", "range_8_diamond", "kick", "power_25", "!target_diamond", "!player_channeling"]
+        },
+        {
+            "name": "Kick Diamond",
+            "key": "SHIFT-4",
+            "conditions": ["icon_diamond_exists", "kick", "power_25", "range_8_diamond", "target_diamond", "can_interrupt_diamond", "!player_channeling"]
+        },
+        {
+            "name": "Kick Target Cross",
+            "key": "4",
+            "conditions": ["icon_cross_exists", "can_interrupt_cross", "range_8_cross", "kick", "power_25", "!target_cross", "!player_channeling"]
+        },
+        {
+            "name": "Kick Cross",
+            "key": "SHIFT-4",
+            "conditions": ["icon_cross_exists", "kick", "power_25", "range_8_cross", "target_cross", "can_interrupt_cross", "!player_channeling"]
         },
         {
             "name": "Return to Skull (after gouging)",
@@ -42,34 +72,39 @@
             "conditions": ["icon_skull_exists", "!target_skull", "!can_cc_cross"]
         },
         {
+            "name": "Kick",
+            "key": "SHIFT-4",
+            "conditions": ["kick", "target_interruptible", "power_25"]
+        },
+        {
             "name": "Slice and Dice",
             "key": "SHIFT-3",
-            "conditions": ["combo_1", "range_8", "power_25", "!slice_and_dice_buff"]
+            "conditions": ["combo_1", "range_8", "power_25", "!slice_and_dice_buff", "!player_channeling"]
         },
         {
             "name": "Eviscerate",
             "key": "2",
-            "conditions": ["power_35", "combo_2", "range_8"]
+            "conditions": ["power_35", "combo_2", "range_8", "!player_channeling"]
         },
         {
             "name": "Backstab",
             "key": "6",
-            "conditions": ["!player_not_behind_target", "range_8", "power_60"]
+            "conditions": ["!player_not_behind_target", "range_8", "power_60", "!player_channeling"]
         },
         { 
             "name": "Sinister Strike",
             "key": "1",
-            "conditions": ["player_not_behind_target", "power_45", "range_8"]
+            "conditions": ["player_not_behind_target", "power_45", "range_8", "!player_channeling"]
         },
         { 
             "name": "Throw",
             "key": "5",
-            "conditions": ["!player_moving","range_30","!range_8"]
+            "conditions": ["!player_moving","range_30","!range_8", "!player_channeling"]
         },
         {
             "name": "Auto Attack",
             "key": "SHIFT-2",
-            "conditions": ["combat", "!player_attacking", "range_8"]
+            "conditions": ["combat", "!gouge_debuff", "!player_attacking", "range_8", "!player_channeling"]
         }
     ]
 }

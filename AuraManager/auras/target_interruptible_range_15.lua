@@ -8,8 +8,8 @@ ns.auras["target_interruptible_range_15"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
-    yOffset = 72,
+    xOffset = 104,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,16 +37,16 @@ ns.auras["target_interruptible_range_15"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
+                customVariables = [[{
+  stacks = true,
+}]],
                 type = "custom",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
+                unevent = "auto",
                 duration = "1",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 use_unit = true,
-                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -90,11 +90,11 @@ ns.auras["target_interruptible_range_15"] = {
     end
 end]],
                 spellIds = {},
+                custom_type = "stateupdate",
                 check = "update",
-                unevent = "auto",
-                customVariables = [[{
-  stacks = true,
-}]],
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
             },
@@ -112,14 +112,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        size = {
-            multi = {},
-        },
+        zoneIds = "",
+        use_never = false,
         spec = {
             multi = {},
         },
-        use_never = false,
-        zoneIds = "",
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

@@ -2,29 +2,49 @@
     "name": "Hunter",
     "actions": [
         {
-            "name": "Hunters Mark",
-            "key": "5",
-            "conditions": ["!hunter's_mark", "power_15", "enemy_over_8_yards_range"]
+            "name": "Serpent Sting Target Cross",
+            "key": "2",
+            "conditions": ["icon_cross_exists", "!serpent_sting_debuff", "!range_8_cross", "range_35_cross", "power_15", "!target_cross", "!player_channeling"]
+        },
+        {
+            "name": "Serpent Sting Cross",
+            "key": "6",
+            "conditions": ["icon_cross_exists", "!serpent_sting_debuff", "!range_8_cross", "range_35_cross", "power_15", "!player_channeling"]
+        },
+        {
+            "name": "Target Skull",
+            "key": "2",
+            "conditions": ["icon_skull_exists", "!target_skull"]
+        },
+        {
+            "name": "Hunter's Mark",
+            "key": "7",
+            "conditions": ["target_skull", "!hunter's_mark_debuff", "!range_8", "power_10"]
         },
         {
             "name": "Serpent Sting",
-            "key": "3",
-            "conditions": ["!serpent_sting", "power_15", "enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+            "key": "6",
+            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10"]
         },
         {
-            "name": "Arcane Shot",
-            "key": "6",
-            "conditions": ["arcane_shot", "power_25", "enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+            "name": "Concussive Shot",
+            "key": "9",
+            "conditions": ["concussive_shot", "!concussive_shot_debuff", "!range_8", "range_35", "power_10"]
+        },
+        {
+            "name": "Arane Shot",
+            "key": "8",
+            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35"]
         },
         {
             "name": "Raptor Strike",
-            "key": "2",
-            "conditions": ["raptor_strike", "melee_range", "power_15"]
+            "key": "4",
+            "conditions": ["raptor_strike", "range_8", "power_10"]
         },
         {
             "name": "Auto Shot",
-            "key": "1",
-            "conditions": ["enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+            "key": "3",
+            "conditions": ["!player_shooting","!range_8", "range_30"]
         }
     ]
 } 

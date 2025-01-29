@@ -8,7 +8,7 @@ ns.auras["gouge_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 132,
+    xOffset = 144,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["gouge_debuff"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HARMFUL",
                 type = "aura2",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "target",
                 event = "Health",
                 subeventPrefix = "SPELL",
                 spellIds = {},
+                unit = "target",
+                names = {},
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 unitExists = false,
                 auranames = {
                     "Gouge",
                 },
-                matchesShowOn = "showOnActive",
                 useName = true,
+                matchesShowOn = "showOnActive",
                 useRem = false,
             },
             untrigger = {},
@@ -68,13 +68,12 @@ ns.auras["gouge_debuff"] = {
             },
             single = "ROGUE",
         },
-        size = {
-            multi = {},
-        },
         spec = {
             multi = {},
         },
-        use_class = true,
+        size = {
+            multi = {},
+        },
     },
     animation = {
         start = {

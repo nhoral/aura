@@ -8,7 +8,7 @@ ns.auras["holy_power_3"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 164,
+    xOffset = 176,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -37,21 +37,21 @@ ns.auras["holy_power_3"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                debuffType = "HELPFUL",
                 type = "unit",
-                names = {},
                 subeventSuffix = "_CAST_START",
-                unit = "player",
                 event = "Power",
                 subeventPrefix = "SPELL",
                 use_unit = true,
                 spellIds = {},
+                unit = "player",
+                names = {},
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
-                use_power = true,
                 use_showCost = false,
                 powertype = 9,
                 use_powertype = true,
                 use_percentpower = false,
+                use_power = true,
                 percentpower = {
                     "10",
                 },
@@ -59,15 +59,15 @@ ns.auras["holy_power_3"] = {
                     ">=",
                 },
                 use_runesCount = true,
-                power = {
-                    "3",
-                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                rune = 0,
                 runesCount = "3",
+                rune = 0,
+                power = {
+                    "3",
+                },
             },
             untrigger = {},
         },
@@ -83,10 +83,10 @@ ns.auras["holy_power_3"] = {
             },
             single = "ROGUE",
         },
-        size = {
+        spec = {
             multi = {},
         },
-        spec = {
+        size = {
             multi = {},
         },
     },
