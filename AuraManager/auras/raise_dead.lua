@@ -8,8 +8,8 @@ ns.auras["raise_dead"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
-    yOffset = 80,
+    xOffset = 164,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,25 +40,25 @@ ns.auras["raise_dead"] = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
                 event = "Action Usable",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                use_inverse = false,
-                genericShowOn = "showOnCooldown",
+                spellName = 46585,
+                use_genericShowOn = true,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
+                use_inverse = false,
                 use_track = true,
-                spellName = 46585,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["raise_dead"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

@@ -8,7 +8,7 @@ ns.auras["target_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 180,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -34,19 +34,22 @@ ns.auras["target_skull"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        disjunctive = "all",
         activeTriggerMode = 1,
+        disjunctive = "all",
         {
             trigger = {
-                customVariables = "{}",
                 type = "custom",
-                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Unit Characteristics",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "target",
+                debuffType = "HELPFUL",
+                duration = "1",
+                custom_hide = "timed",
+                custom_type = "stateupdate",
+                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
         aura_env.last = GetTime()
@@ -65,27 +68,23 @@ ns.auras["target_skull"] = {
         end
     end
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "target",
-                names = {},
-                debuffType = "HELPFUL",
+                use_unit = true,
+                customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                unitisunit = "player",
-                use_raidMarkIndex = true,
                 raidMarkIndex = 8,
+                use_raidMarkIndex = true,
+                unitisunit = "player",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        use_level = false,
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -94,19 +93,20 @@ end]],
             },
             single = "WARLOCK",
         },
+        spec = {
+            multi = {},
+        },
+        talent = {
+            multi = {},
+        },
+        use_never = false,
         zoneIds = "",
         level_operator = {
             "~=",
         },
-        use_never = false,
+        use_level = false,
         level = {
             "120",
-        },
-        spec = {
-            multi = {},
-        },
-        size = {
-            multi = {},
         },
     },
     animation = {

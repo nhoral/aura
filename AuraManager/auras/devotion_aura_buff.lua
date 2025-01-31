@@ -39,26 +39,26 @@ ns.auras["devotion_aura_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
+                useRem = false,
                 event = "Health",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "player",
                 names = {},
-                debuffType = "BOTH",
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Devotion Aura",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "BOTH",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -72,7 +72,7 @@ ns.auras["devotion_aura_buff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

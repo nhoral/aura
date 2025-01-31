@@ -8,7 +8,7 @@ ns.auras["nature's_grasp"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 208,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -40,17 +40,17 @@ ns.auras["nature's_grasp"] = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
                 event = "Action Usable",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                genericShowOn = "showOnCooldown",
+                spellName = 16689,
+                use_genericShowOn = true,
                 realSpellName = "Nature's Grasp",
                 use_spellName = true,
-                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 16689,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["nature's_grasp"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["nature's_grasp"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

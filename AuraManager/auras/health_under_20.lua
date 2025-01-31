@@ -40,22 +40,22 @@ ns.auras["health_under_20"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Health",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                use_showCost = true,
+                use_absorbMode = true,
+                use_unit = true,
                 powertype = 3,
                 use_powertype = true,
-                use_absorbMode = true,
                 use_absorbHealMode = true,
                 percenthealth = {
                     "20",
                 },
                 use_percentpower = false,
                 use_power = false,
+                use_showCost = true,
                 use_percenthealth = true,
                 percenthealth_operator = {
                     "<=",
@@ -66,7 +66,7 @@ ns.auras["health_under_20"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,7 +78,7 @@ ns.auras["health_under_20"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

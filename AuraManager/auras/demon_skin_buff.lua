@@ -39,40 +39,40 @@ ns.auras["demon_skin_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                event = "Health",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
+                useRem = false,
                 ownOnly = true,
+                event = "Health",
+                names = {},
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Demon Skin",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
             multi = {
-                WARLOCK = true,
                 DRUID = true,
+                WARLOCK = true,
             },
             single = "WARLOCK",
         },
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

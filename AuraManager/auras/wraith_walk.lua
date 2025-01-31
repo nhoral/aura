@@ -8,8 +8,8 @@ ns.auras["wraith_walk"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 132,
-    yOffset = 68,
+    xOffset = 100,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,17 +40,17 @@ ns.auras["wraith_walk"] = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
                 event = "Action Usable",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                genericShowOn = "showOnCooldown",
+                spellName = 212552,
+                use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 212552,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["wraith_walk"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["wraith_walk"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

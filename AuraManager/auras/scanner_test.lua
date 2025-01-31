@@ -8,7 +8,7 @@ ns.auras["scanner_test"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
+    xOffset = 188,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -37,17 +37,21 @@ ns.auras["scanner_test"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                customVariables = [[{
-  stacks = true,
-}]],
                 type = "custom",
-                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Health",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                debuffType = "HELPFUL",
+                duration = "1",
+                custom_hide = "timed",
+                custom_type = "event",
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
+                events = "PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates, event)
     -- Initialize aura environment if it doesn't exist
     if not aura_env then aura_env = {} end
@@ -159,22 +163,18 @@ ns.auras["scanner_test"] = {
         return false
     end
 end]],
-                spellIds = {},
-                custom_type = "event",
                 check = "update",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
-                events = "PLAYER_TARGET_CHANGED",
+                use_unit = true,
+                customVariables = [[{
+  stacks = true,
+}]],
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -183,14 +183,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        zoneIds = "",
-        use_never = true,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = true,
+        zoneIds = "",
     },
     animation = {
         start = {

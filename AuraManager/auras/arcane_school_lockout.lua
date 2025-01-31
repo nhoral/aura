@@ -39,40 +39,40 @@ ns.auras["arcane_school_lockout"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                useRem = false,
                 event = "Crowd Controlled",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "target",
                 names = {},
-                debuffType = "HELPFUL",
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_inverse = false,
+                use_unit = true,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
+                use_controlType = true,
+                use_interruptSchool = true,
+                useExactSpellId = false,
+                controlType = "SCHOOL_INTERRUPT",
+                interruptSchool = 64,
                 auraspellids = {
                     "116",
                 },
-                useExactSpellId = false,
-                use_controlType = true,
-                use_interruptSchool = true,
-                controlType = "SCHOOL_INTERRUPT",
-                interruptSchool = 64,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["arcane_school_lockout"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["range_8"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
+    xOffset = 200,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -40,25 +40,25 @@ ns.auras["range_8"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Range Check",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "target",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
                 debuffType = "HELPFUL",
-                use_showCost = true,
+                use_absorbMode = true,
+                range = "8",
+                use_unit = true,
                 powertype = 3,
                 use_powertype = true,
-                range_operator = "<=",
-                use_range = true,
-                range = "8",
-                use_absorbMode = true,
                 use_absorbHealMode = true,
                 percenthealth = {
                     "20",
                 },
                 use_percentpower = false,
+                range_operator = "<=",
                 use_power = false,
+                use_range = true,
+                use_showCost = true,
                 use_percenthealth = true,
                 percenthealth_operator = {
                     "<",
@@ -69,7 +69,7 @@ ns.auras["range_8"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -81,7 +81,7 @@ ns.auras["range_8"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

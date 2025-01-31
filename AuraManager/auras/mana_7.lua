@@ -8,7 +8,7 @@ ns.auras["mana_7"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 168,
+    xOffset = 172,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -40,28 +40,28 @@ ns.auras["mana_7"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Power",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                use_showCost = false,
+                use_unit = true,
                 powertype = 0,
                 use_powertype = true,
                 use_percentpower = false,
                 use_power = true,
-                percentpower = {
-                    "10",
-                },
+                use_showCost = false,
                 percentpower_operator = {
                     ">=",
                 },
-                power_operator = {
-                    ">=",
+                percentpower = {
+                    "10",
                 },
                 power = {
                     "7",
+                },
+                power_operator = {
+                    ">=",
                 },
             },
             untrigger = {},
@@ -69,7 +69,7 @@ ns.auras["mana_7"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -82,7 +82,7 @@ ns.auras["mana_7"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

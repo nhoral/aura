@@ -8,7 +8,7 @@ ns.auras["undead_or_mechanical"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
+    xOffset = 212,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -40,24 +40,24 @@ ns.auras["undead_or_mechanical"] = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
                 event = "Health",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                custom_type = "status",
+                events = "PLAYER_TARGET_CHANGED",
                 custom = [[function()
     return UnitExists("target") and (UnitCreatureType("target") == "Elemental" or UnitCreatureType("target") == "Mechanical")
 end]],
-                spellIds = {},
-                custom_type = "status",
                 check = "event",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
-                events = "PLAYER_TARGET_CHANGED",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -66,7 +66,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

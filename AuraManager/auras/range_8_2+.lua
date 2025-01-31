@@ -8,7 +8,7 @@ ns.auras["range_8_2+"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 128,
+    xOffset = 204,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -37,16 +37,19 @@ ns.auras["range_8_2+"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                customVariables = [[{
-  stacks = true,
-}]],
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Health",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                debuffType = "HELPFUL",
+                duration = "1",
+                custom_type = "stateupdate",
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -82,21 +85,18 @@ ns.auras["range_8_2+"] = {
         return true
     end
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
+                customVariables = [[{
+  stacks = true,
+}]],
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -105,14 +105,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        zoneIds = "",
-        use_never = false,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = false,
+        zoneIds = "",
     },
     animation = {
         start = {

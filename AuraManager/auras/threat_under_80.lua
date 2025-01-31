@@ -8,7 +8,7 @@ ns.auras["threat_under_80"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 204,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -40,29 +40,29 @@ ns.auras["threat_under_80"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Threat Situation",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "target",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
                 debuffType = "HELPFUL",
-                use_threatpct = true,
-                use_showCost = true,
+                use_unit = true,
                 powertype = 0,
+                use_powertype = true,
+                use_showCost = true,
                 threatpct_operator = {
                     "<",
                 },
                 threatpct = {
                     "80",
                 },
-                use_powertype = true,
+                use_threatpct = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,13 +71,13 @@ ns.auras["threat_under_80"] = {
             },
             single = "ROGUE",
         },
-        use_never = false,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = false,
     },
     animation = {
         start = {

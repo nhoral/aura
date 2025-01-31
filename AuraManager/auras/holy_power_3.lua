@@ -40,41 +40,41 @@ ns.auras["holy_power_3"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Power",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
                 use_genericShowOn = true,
-                use_showCost = false,
+                use_unit = true,
                 powertype = 9,
                 use_powertype = true,
                 use_percentpower = false,
                 use_power = true,
-                percentpower = {
-                    "10",
-                },
+                use_showCost = false,
                 percentpower_operator = {
                     ">=",
                 },
+                percentpower = {
+                    "10",
+                },
                 use_runesCount = true,
+                power = {
+                    "3",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                runesCount = "3",
                 rune = 0,
-                power = {
-                    "3",
-                },
+                runesCount = "3",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -86,7 +86,7 @@ ns.auras["holy_power_3"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

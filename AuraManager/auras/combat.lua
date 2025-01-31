@@ -39,21 +39,21 @@ ns.auras["combat"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                event = "Conditions",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
-                names = {},
-                debuffType = "BOTH",
+                useRem = false,
                 ownOnly = true,
+                event = "Conditions",
+                names = {},
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Demon Skin",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "BOTH",
+                use_unit = true,
                 use_incombat = true,
             },
             untrigger = {},
@@ -61,7 +61,7 @@ ns.auras["combat"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -73,7 +73,7 @@ ns.auras["combat"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

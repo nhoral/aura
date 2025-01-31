@@ -8,8 +8,8 @@ ns.auras["razorice_debuff_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 156,
-    yOffset = 76,
+    xOffset = 112,
+    yOffset = 72,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,23 +40,23 @@ ns.auras["razorice_debuff_5"] = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
                 event = "Action Usable",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "target",
                 names = {},
-                debuffType = "HARMFUL",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Razorice",
                 },
-                useName = true,
-                genericShowOn = "showOnCooldown",
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
+                spellName = 14281,
+                use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 14281,
-                use_exact_spellName = false,
                 stacks = "5",
+                use_exact_spellName = false,
                 useStacks = true,
                 stacksOperator = "==",
             },
@@ -65,7 +65,7 @@ ns.auras["razorice_debuff_5"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,7 +78,7 @@ ns.auras["razorice_debuff_5"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

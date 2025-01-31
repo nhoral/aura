@@ -8,7 +8,7 @@ ns.auras["scanner"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 176,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -37,16 +37,19 @@ ns.auras["scanner"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                customVariables = [[{
-  stacks = true,
-}]],
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Health",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                debuffType = "HELPFUL",
+                duration = "1",
+                custom_type = "stateupdate",
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 custom = [[function(allstates, event)
     -- Initialize aura environment
     if not aura_env then aura_env = {} end
@@ -86,21 +89,18 @@ ns.auras["scanner"] = {
     
     return true
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
+                customVariables = [[{
+  stacks = true,
+}]],
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -109,14 +109,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        zoneIds = "",
-        use_never = true,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = true,
+        zoneIds = "",
     },
     animation = {
         start = {

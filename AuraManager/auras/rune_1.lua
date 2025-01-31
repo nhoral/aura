@@ -8,8 +8,8 @@ ns.auras["rune_1"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 192,
-    yOffset = 76,
+    xOffset = 148,
+    yOffset = 72,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,41 +40,41 @@ ns.auras["rune_1"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Health",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
                 use_genericShowOn = true,
-                use_showCost = false,
+                use_unit = true,
                 powertype = 6,
                 use_powertype = true,
                 use_percentpower = false,
                 use_power = true,
-                percentpower = {
-                    "10",
-                },
+                use_showCost = false,
                 percentpower_operator = {
                     ">=",
                 },
+                percentpower = {
+                    "10",
+                },
                 use_runesCount = true,
+                power = {
+                    "1",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                runesCount = "1",
                 rune = 0,
-                power = {
-                    "1",
-                },
+                runesCount = "1",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -86,7 +86,7 @@ ns.auras["rune_1"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

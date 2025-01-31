@@ -8,7 +8,7 @@ ns.auras["scanner_mk._2"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 180,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -37,16 +37,20 @@ ns.auras["scanner_mk._2"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                customVariables = [[{
-  stacks = true,
-}]],
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Health",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                debuffType = "HELPFUL",
+                duration = "1",
+                custom_type = "stateupdate",
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
+                events = "PLAYER_TARGET_CHANGED UNIT_TARGET NAME_PLATE_UNIT_ADDED NAME_PLATE_UNIT_REMOVED",
                 custom = [[function(allstates)
     -- Initialize aura environment variables if not exists
     aura_env.last = aura_env.last or 0
@@ -279,22 +283,18 @@ ns.auras["scanner_mk._2"] = {
     end
     return false
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
-                events = "PLAYER_TARGET_CHANGED UNIT_TARGET NAME_PLATE_UNIT_ADDED NAME_PLATE_UNIT_REMOVED",
+                use_unit = true,
+                customVariables = [[{
+  stacks = true,
+}]],
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -303,14 +303,14 @@ end]],
             },
             single = "WARRIOR",
         },
-        zoneIds = "",
-        use_never = true,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = true,
+        zoneIds = "",
         group_leader = {
             multi = {
                 LEADER = true,

@@ -8,8 +8,8 @@ ns.auras["target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 168,
-    yOffset = 72,
+    xOffset = 128,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,12 +37,22 @@ ns.auras["target_aggro"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                customVariables = "{}",
                 type = "custom",
                 subeventSuffix = "_CAST_START",
                 event = "Conditions",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "target",
+                debuffType = "HELPFUL",
+                spellName = 5176,
+                use_genericShowOn = true,
+                realSpellName = "Wrath",
+                use_spellName = true,
+                genericShowOn = "showOnCooldown",
+                use_inverse = false,
+                use_track = true,
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not UnitAffectingCombat("player") then
         allstates[""] = allstates[""] or {show = false}
@@ -69,48 +79,38 @@ ns.auras["target_aggro"] = {
     
     return true
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "target",
-                names = {},
-                debuffType = "HELPFUL",
-                use_inverse = false,
-                genericShowOn = "showOnCooldown",
-                realSpellName = "Wrath",
-                use_spellName = true,
-                use_genericShowOn = true,
-                use_track = true,
-                spellName = 5176,
+                use_unit = true,
+                customVariables = "{}",
                 itemName = 0,
                 use_itemName = true,
                 use_messageType = false,
-                use_message = false,
+                use_ismoving = true,
+                use_spec = true,
                 instance_size = {},
+                use_sourceName = false,
                 use_moveSpeed = false,
                 use_targetRequired = false,
-                use_ismoving = true,
-                use_sourceName = false,
-                use_spec = true,
+                use_message = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
             multi = {},
         },
-        use_never = false,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = false,
     },
     animation = {
         start = {

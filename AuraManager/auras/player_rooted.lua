@@ -8,7 +8,7 @@ ns.auras["player_rooted"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 176,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,40 +39,40 @@ ns.auras["player_rooted"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                useRem = false,
                 event = "Crowd Controlled",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "target",
                 names = {},
-                debuffType = "HELPFUL",
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_inverse = false,
+                use_unit = true,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
+                use_controlType = true,
+                use_interruptSchool = true,
+                useExactSpellId = false,
+                controlType = "ROOT",
+                interruptSchool = 16,
                 auraspellids = {
                     "116",
                 },
-                useExactSpellId = false,
-                use_controlType = true,
-                use_interruptSchool = true,
-                controlType = "ROOT",
-                interruptSchool = 16,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["player_rooted"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,8 +8,8 @@ ns.auras["player_channelling"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 188,
-    yOffset = 84,
+    xOffset = 144,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,18 +40,18 @@ ns.auras["player_channelling"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Cast",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                genericShowOn = "showOnCooldown",
+                spellName = 0,
+                use_genericShowOn = true,
                 realSpellName = 0,
                 use_spellName = true,
-                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 0,
+                use_unit = true,
                 use_castType = true,
                 castType = "channel",
             },
@@ -60,7 +60,7 @@ ns.auras["player_channelling"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -69,7 +69,7 @@ ns.auras["player_channelling"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["tigers_fury_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 120,
+    xOffset = 208,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -39,26 +39,26 @@ ns.auras["tigers_fury_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
+                useRem = false,
                 event = "Cooldown Progress (Spell)",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
-                debuffType = "HELPFUL",
                 unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Tiger's Fury",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
-                genericShowOn = "showOnCooldown",
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 5217,
+                use_genericShowOn = true,
                 realSpellName = "Tiger's Fury",
                 use_spellName = true,
-                use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 5217,
+                use_unit = true,
                 use_debuffClass = false,
                 useNamePattern = false,
             },
@@ -67,7 +67,7 @@ ns.auras["tigers_fury_buff"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -79,7 +79,7 @@ ns.auras["tigers_fury_buff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

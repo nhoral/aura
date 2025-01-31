@@ -8,8 +8,8 @@ ns.auras["scan_timeout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 76,
+    xOffset = 172,
+    yOffset = 72,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -38,11 +38,16 @@ ns.auras["scan_timeout"] = {
         {
             trigger = {
                 type = "custom",
-                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
                 event = "Chat Message",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                debuffType = "HELPFUL",
+                custom_hide = "timed",
+                custom_type = "stateupdate",
+                events = "CVAR_UPDATE",
                 custom = [[function(allstates)
     -- Throttle the check for perf
     if not aura_env.last or GetTime() - aura_env.last > 0.1 then
@@ -60,7 +65,7 @@ ns.auras["scan_timeout"] = {
             print("setting scan start")
             aura_env.scanStart = GetTime()
         elseif scanning ~= "OFF" and scanStart ~= 0 then
-            if (GetTime() - scanStart) > 0.5 then
+            if (GetTime() - scanStart) > 3 then
                 
                 _G.ScannerData = {
                     lowestHealth = 2000000000,
@@ -79,13 +84,8 @@ ns.auras["scan_timeout"] = {
     end
     return false
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
-                events = "CVAR_UPDATE",
+                use_unit = true,
             },
             untrigger = {
                 custom = "",
@@ -94,20 +94,20 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
             multi = {},
         },
-        zoneIds = "",
-        use_never = false,
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
+        use_never = true,
+        zoneIds = "",
         role = {
             multi = {},
         },

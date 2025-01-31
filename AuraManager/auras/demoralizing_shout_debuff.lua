@@ -34,29 +34,29 @@ ns.auras["demoralizing_shout_debuff"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        disjunctive = "any",
         activeTriggerMode = -10,
+        disjunctive = "any",
         {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
                 event = "Health",
-                subeventPrefix = "SPELL",
-                spellIds = {},
-                unit = "target",
                 names = {},
-                debuffType = "HARMFUL",
+                spellIds = {},
+                useName = true,
                 auranames = {
                     "Demoralizing Shout",
                 },
-                useName = true,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -68,7 +68,7 @@ ns.auras["demoralizing_shout_debuff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

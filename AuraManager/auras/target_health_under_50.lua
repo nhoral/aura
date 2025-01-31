@@ -8,8 +8,8 @@ ns.auras["target_health_under_50"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 192,
-    yOffset = 72,
+    xOffset = 152,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,22 +40,22 @@ ns.auras["target_health_under_50"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Health",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "target",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "target",
                 debuffType = "HELPFUL",
-                use_showCost = true,
+                use_absorbMode = true,
+                use_unit = true,
                 powertype = 3,
                 use_powertype = true,
-                use_absorbMode = true,
                 use_absorbHealMode = true,
                 percenthealth = {
                     "50",
                 },
                 use_percentpower = false,
                 use_power = false,
+                use_showCost = true,
                 use_percenthealth = true,
                 percenthealth_operator = {
                     "<",
@@ -66,7 +66,7 @@ ns.auras["target_health_under_50"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,7 +78,7 @@ ns.auras["target_health_under_50"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

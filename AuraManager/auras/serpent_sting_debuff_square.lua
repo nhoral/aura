@@ -8,7 +8,7 @@ ns.auras["serpent_sting_debuff_square"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 136,
+    xOffset = 216,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -39,8 +39,21 @@ ns.auras["serpent_sting_debuff_square"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                useRem = false,
+                ownOnly = true,
                 event = "Combat Log",
+                names = {},
+                unitExists = false,
+                matchesShowOn = "showOnActive",
+                spellIds = {},
+                useName = true,
+                auranames = {
+                    "Serpent Sting",
+                },
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
+                custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -92,27 +105,14 @@ ns.auras["serpent_sting_debuff_square"] = {
         return true
     end
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "target",
-                names = {},
-                debuffType = "HARMFUL",
-                ownOnly = true,
-                unitExists = false,
-                auranames = {
-                    "Serpent Sting",
-                },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -124,7 +124,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

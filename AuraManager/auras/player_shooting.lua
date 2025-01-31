@@ -8,7 +8,7 @@ ns.auras["player_shooting"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 180,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -34,53 +34,52 @@ ns.auras["player_shooting"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        disjunctive = "all",
         activeTriggerMode = 1,
+        disjunctive = "all",
         {
             trigger = {
-                customVariables = "{}",
-                type = "unit",
-                custom_hide = "timed",
+                type = "custom",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Swing Timer",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                custom = [[function(event, arg1, arg2, arg3)
-    aura_env = aura_env or {}
-    
-    if (event == "START_AUTOREPEAT_SPELL") then
-        aura_env.shooting = true
-        aura_env.shotStart = GetTime()
-    elseif (event == "STOP_AUTOREPEAT_SPELL") then
-        aura_env.shooting = false
-        aura_env.shotStart = nil
-    elseif (event == "UNIT_SPELLCAST_SUCCEEDED") then
-        aura_env.shotStart = GetTime()
-    end
-    
-    if (aura_env.shooting and aura_env.shotStart ~= nil) then
-        if (GetTime() - aura_env.shotStart) < 1 then    
-            return true   
-        end
-    end
-    
-    return false
-end]],
-                spellIds = {},
-                custom_type = "event",
-                check = "update",
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
                 use_inverse = false,
+                duration = "1",
+                custom_hide = "timed",
+                custom_type = "stateupdate",
+                unevent = "auto",
                 events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
+                custom = [[function(allstates)
+    -- Initialize state if needed
+    aura_env.last = aura_env.last or 0
+    aura_env.shooting = aura_env.shooting or false
+    
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
+        aura_env.last = GetTime()
+        -- Check auto shot status
+        local isAutoShotOn = IsAutoRepeatSpell(GetSpellInfo(75))  -- 75 is Auto Shot
+        local hasRangedWeapon = IsEquippedItemType("Bow") or IsEquippedItemType("Gun") or IsEquippedItemType("Crossbow")
+        -- Update shooting state
+        aura_env.shooting = isAutoShotOn and hasRangedWeapon
+        -- Update state display
+        allstates[""] = allstates[""] or {show = false}
+        allstates[""].show = aura_env.shooting
+        allstates[""].changed = true
+        return true
+    end
+    return false
+end]],
+                check = "update",
+                use_unit = true,
+                customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
                 remaining_operator = "<",
-                remaining = "0.2",
                 use_remaining = true,
+                remaining = "0.2",
             },
             untrigger = {
                 custom = [[function()
@@ -91,8 +90,7 @@ end]],
     },
     conditions = {},
     load = {
-        use_level = false,
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -101,21 +99,22 @@ end]],
             },
             single = "WARLOCK",
         },
-        use_spellknown = false,
+        spec = {
+            multi = {},
+        },
+        talent = {
+            multi = {},
+        },
+        use_never = false,
         zoneIds = "",
         level_operator = {
             "~=",
         },
-        use_never = false,
+        use_level = false,
         level = {
             "120",
         },
-        spec = {
-            multi = {},
-        },
-        size = {
-            multi = {},
-        },
+        use_spellknown = false,
     },
     animation = {
         start = {

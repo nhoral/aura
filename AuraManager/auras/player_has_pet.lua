@@ -8,8 +8,8 @@ ns.auras["player_has_pet"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
-    yOffset = 84,
+    xOffset = 164,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,14 +40,14 @@ ns.auras["player_has_pet"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Conditions",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
-                genericShowOn = "showOnCooldown",
                 use_genericShowOn = true,
+                genericShowOn = "showOnCooldown",
+                use_unit = true,
                 itemName = 0,
                 use_itemName = true,
                 behavior = "passive",
@@ -60,7 +60,7 @@ ns.auras["player_has_pet"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -72,7 +72,7 @@ ns.auras["player_has_pet"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

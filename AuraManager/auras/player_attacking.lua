@@ -8,8 +8,8 @@ ns.auras["player_attacking"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 176,
-    yOffset = 84,
+    xOffset = 132,
+    yOffset = 80,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,19 +34,22 @@ ns.auras["player_attacking"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        disjunctive = "all",
         activeTriggerMode = 1,
+        disjunctive = "all",
         {
             trigger = {
-                customVariables = "{}",
                 type = "custom",
-                custom_hide = "timed",
                 subeventSuffix = "_CAST_START",
-                unevent = "auto",
-                duration = "1",
                 event = "Health",
+                names = {},
+                spellIds = {},
                 subeventPrefix = "SPELL",
-                use_unit = true,
+                unit = "player",
+                debuffType = "HELPFUL",
+                duration = "1",
+                custom_hide = "timed",
+                custom_type = "stateupdate",
+                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -66,12 +69,9 @@ ns.auras["player_attacking"] = {
         end
     end
 end]],
-                spellIds = {},
-                custom_type = "stateupdate",
                 check = "update",
-                unit = "player",
-                names = {},
-                debuffType = "HELPFUL",
+                use_unit = true,
+                customVariables = "{}",
             },
             untrigger = {
                 custom = [[function()
@@ -82,8 +82,7 @@ end]],
     },
     conditions = {},
     load = {
-        use_level = false,
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -92,21 +91,22 @@ end]],
             },
             single = "WARLOCK",
         },
-        use_spellknown = false,
+        spec = {
+            multi = {},
+        },
+        talent = {
+            multi = {},
+        },
+        use_never = false,
         zoneIds = "",
         level_operator = {
             "~=",
         },
-        use_never = false,
+        use_level = false,
         level = {
             "120",
         },
-        spec = {
-            multi = {},
-        },
-        size = {
-            multi = {},
-        },
+        use_spellknown = false,
     },
     animation = {
         start = {

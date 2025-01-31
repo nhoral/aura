@@ -40,34 +40,34 @@ ns.auras["combo_3"] = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
                 event = "Power",
-                subeventPrefix = "SPELL",
-                use_unit = true,
-                spellIds = {},
-                unit = "player",
                 names = {},
+                spellIds = {},
+                subeventPrefix = "SPELL",
+                unit = "player",
                 debuffType = "HELPFUL",
                 use_genericShowOn = true,
-                use_showCost = false,
+                use_unit = true,
                 powertype = 4,
                 use_powertype = true,
                 use_percentpower = false,
                 use_power = true,
-                percentpower = {
-                    "10",
-                },
+                use_showCost = false,
                 percentpower_operator = {
                     ">=",
                 },
+                percentpower = {
+                    "10",
+                },
                 use_runesCount = true,
+                power = {
+                    "3",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                runesCount = "1",
                 rune = 0,
-                power = {
-                    "3",
-                },
+                runesCount = "1",
                 use_health = false,
             },
             untrigger = {},
@@ -75,7 +75,7 @@ ns.auras["combo_3"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -87,7 +87,7 @@ ns.auras["combo_3"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },
