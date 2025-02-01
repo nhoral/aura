@@ -29,6 +29,10 @@ class ScreenMonitor:
         self.last_check = 0
         self.test_mode = test_mode
         
+        # Key holding state
+        self.currently_held_key = None
+        self.current_hold_action = None
+        
         # Movement state tracking
         self.movement_states = {
             "is_moving_forward": False,
@@ -75,6 +79,22 @@ class ScreenMonitor:
         if not test_mode:
             self.start()
     
+    def _release_held_key(self):
+        """Release any currently held key"""
+        if self.currently_held_key:
+            if isinstance(self.currently_held_key, tuple):
+                # Release modifier key combinations
+                modifier_key, actual_key = self.currently_held_key
+                self.keyboard.release(actual_key)
+                self.keyboard.release(modifier_key)
+            else:
+                # Release single key
+                self.keyboard.release(self.currently_held_key)
+            self.currently_held_key = None
+            self.current_hold_action = None
+            if self.debug:
+                print(f"Released held key")
+    
     def _monitor_loop(self):
         """Main monitoring loop that runs in a separate thread"""
         while self.running:
@@ -91,11 +111,23 @@ class ScreenMonitor:
                         if is_active
                     ])
                     
-                    # Get and execute next action if any
+                    # Get next action
                     action = self.get_next_action(active_conditions)
+                    
+                    # If we have a held key but no action or a different action,
+                    # release the held key
+                    if self.currently_held_key:
+                        if not action or action != self.current_hold_action:
+                            self._release_held_key()
+                    
+                    # Execute the action if we have one
                     if action:
                         self.execute_action(action)
+                    
                     self.last_check = current_time
+                elif not self.is_monitoring_active() and self.currently_held_key:
+                    # Release held key if monitoring becomes inactive
+                    self._release_held_key()
                 
                 # Small sleep to prevent CPU hogging
                 time.sleep(0.01)
@@ -127,6 +159,7 @@ class ScreenMonitor:
     
     def stop(self):
         """Stop monitoring and clean up resources"""
+        self._release_held_key()  # Release any held keys before stopping
         self.running = False
         if self.keyboard_listener:
             self.keyboard_listener.stop()
@@ -275,21 +308,51 @@ class ScreenMonitor:
         print(f"Executing: {action_name} [key: {key}]")
         print(f"Conditions: {', '.join(condition_status)}")
         
-        # Handle modifier key combinations
+        # If this is a different action than the current hold action,
+        # release any currently held key
+        if action != self.current_hold_action:
+            self._release_held_key()
+        
+        # Handle different key modifiers
         if key.startswith("SHIFT-"):
             actual_key = key[6:]  # Remove "SHIFT-" prefix
-            self.keyboard.press(Key.shift)
-            self.keyboard.press(actual_key)
-            time.sleep(self.key_hold_duration)
-            self.keyboard.release(actual_key)
-            self.keyboard.release(Key.shift)
+            if key.startswith("HOLD-"):
+                # For HOLD modifier, only press if not already holding this combination
+                if self.currently_held_key != (Key.shift, actual_key):
+                    self.keyboard.press(Key.shift)
+                    self.keyboard.press(actual_key)
+                    self.currently_held_key = (Key.shift, actual_key)
+                    self.current_hold_action = action
+            else:
+                # Normal SHIFT behavior
+                self.keyboard.press(Key.shift)
+                self.keyboard.press(actual_key)
+                time.sleep(self.key_hold_duration)
+                self.keyboard.release(actual_key)
+                self.keyboard.release(Key.shift)
         elif key.startswith("CTRL-"):
             actual_key = key[5:]  # Remove "CTRL-" prefix
-            self.keyboard.press(Key.ctrl)
-            self.keyboard.press(actual_key)
-            time.sleep(self.key_hold_duration)
-            self.keyboard.release(actual_key)
-            self.keyboard.release(Key.ctrl)
+            if key.startswith("HOLD-"):
+                # For HOLD modifier, only press if not already holding this combination
+                if self.currently_held_key != (Key.ctrl, actual_key):
+                    self.keyboard.press(Key.ctrl)
+                    self.keyboard.press(actual_key)
+                    self.currently_held_key = (Key.ctrl, actual_key)
+                    self.current_hold_action = action
+            else:
+                # Normal CTRL behavior
+                self.keyboard.press(Key.ctrl)
+                self.keyboard.press(actual_key)
+                time.sleep(self.key_hold_duration)
+                self.keyboard.release(actual_key)
+                self.keyboard.release(Key.ctrl)
+        elif key.startswith("HOLD-"):
+            actual_key = key[5:]  # Remove "HOLD-" prefix
+            # Only press if not already holding this key
+            if self.currently_held_key != actual_key:
+                self.keyboard.press(actual_key)
+                self.currently_held_key = actual_key
+                self.current_hold_action = action
         else:
             self.keyboard.press(key)
             time.sleep(self.key_hold_duration)

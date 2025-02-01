@@ -2,9 +2,14 @@
     "name": "Hunter Hardcore",
     "actions": [
         {
+            "name": "Is Moving Left OOC",
+            "key": "HOLD-s",
+            "conditions": ["!combat","is_moving_left"]
+        },
+        {
             "name": "Is Moving Left",
-            "key": "s",
-            "conditions": ["!combat", "is_moving_left"]
+            "key": "HOLD-d",
+            "conditions": ["combat","is_moving_left"]
         },
         {
             "name": "Call/Revive Pet uses macro",
