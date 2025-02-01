@@ -215,6 +215,7 @@ auras/range_35_circle.lua
 auras/range_35_cross.lua
 auras/range_35_square.lua
 auras/range_8.lua
+auras/range_8_1+.lua
 auras/range_8_2+.lua
 auras/range_8_3+.lua
 auras/range_8_circle.lua
@@ -278,6 +279,7 @@ auras/thorns_buff.lua
 auras/threat_under_80.lua
 auras/tigers_fury_buff.lua
 auras/undead_or_mechanical.lua
+auras/wing_clip_debuff.lua
 auras/word_of_glory.lua
 auras/wraith_walk.lua
 auras/yourbutt_health_under_50.lua

@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["player_channelling"] = {
-    id = "Player Channelling",
-    uid = ")m5y7PkbuRk",
+ns.auras["wing_clip_debuff"] = {
+    id = "Wing Clip Debuff",
+    uid = "5tQdLTY0BGu",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 144,
-    yOffset = 80,
+    xOffset = 100,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,23 +37,22 @@ ns.auras["player_channelling"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "unit",
+                type = "aura2",
                 subeventSuffix = "_CAST_START",
-                event = "Cast",
+                useRem = false,
+                ownOnly = true,
+                event = "Health",
                 names = {},
+                unitExists = false,
+                matchesShowOn = "showOnActive",
                 spellIds = {},
+                useName = true,
+                auranames = {
+                    "Wing Clip",
+                },
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_genericShowOn = true,
-                realSpellName = 0,
-                use_spellName = true,
-                genericShowOn = "showOnCooldown",
-                spellName = 0,
-                use_track = true,
-                use_unit = true,
-                use_castType = true,
-                castType = "channel",
+                unit = "target",
+                debuffType = "HARMFUL",
             },
             untrigger = {},
         },
@@ -64,7 +63,10 @@ ns.auras["player_channelling"] = {
             multi = {},
         },
         class = {
-            multi = {},
+            multi = {
+                HUNTER = true,
+            },
+            single = "HUNTER",
         },
         spec = {
             multi = {},

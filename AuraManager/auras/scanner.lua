@@ -8,7 +8,7 @@ ns.auras["scanner"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 176,
+    xOffset = 180,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -47,9 +47,7 @@ ns.auras["scanner"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_type = "stateupdate",
-                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                unevent = "auto",
                 custom = [[function(allstates, event)
     -- Initialize aura environment
     if not aura_env then aura_env = {} end
@@ -89,6 +87,8 @@ ns.auras["scanner"] = {
     
     return true
 end]],
+                unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
                 use_unit = true,
                 customVariables = [[{

@@ -49,7 +49,6 @@ ns.auras["pet_attacking_triangle"] = {
                 duration = "1",
                 custom_hide = "timed",
                 custom_type = "stateupdate",
-                unevent = "auto",
                 events = "UNIT_PET, PET_ATTACK_START PET_ATTACK_STOP RAID_TARGET_UPDATE",
                 custom = [[function(allstates)
     -- Initialize state if needed
@@ -79,6 +78,7 @@ ns.auras["pet_attacking_triangle"] = {
     end
     return false
 end]],
+                unevent = "auto",
                 check = "update",
                 use_unit = true,
                 customVariables = "{}",

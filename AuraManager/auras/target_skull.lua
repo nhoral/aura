@@ -8,7 +8,7 @@ ns.auras["target_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 180,
+    xOffset = 184,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -49,7 +49,6 @@ ns.auras["target_skull"] = {
                 duration = "1",
                 custom_hide = "timed",
                 custom_type = "stateupdate",
-                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
         aura_env.last = GetTime()
@@ -68,6 +67,7 @@ ns.auras["target_skull"] = {
         end
     end
 end]],
+                unevent = "auto",
                 check = "update",
                 use_unit = true,
                 customVariables = "{}",

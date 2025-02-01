@@ -8,7 +8,7 @@ ns.auras["range_8_3+"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
+    xOffset = 212,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -47,9 +47,7 @@ ns.auras["range_8_3+"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_type = "stateupdate",
-                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                unevent = "auto",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -85,6 +83,8 @@ ns.auras["range_8_3+"] = {
         return true
     end
 end]],
+                unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
                 use_unit = true,
                 customVariables = [[{

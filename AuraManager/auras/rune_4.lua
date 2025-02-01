@@ -8,7 +8,7 @@ ns.auras["rune_4"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 160,
+    xOffset = 164,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -52,21 +52,21 @@ ns.auras["rune_4"] = {
                 use_percentpower = false,
                 use_power = true,
                 use_showCost = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
                 },
-                use_runesCount = true,
-                power = {
-                    "4",
+                percentpower_operator = {
+                    ">=",
                 },
+                use_runesCount = true,
+                rune = 0,
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                rune = 0,
+                power = {
+                    "4",
+                },
                 runesCount = "4",
             },
             untrigger = {},

@@ -8,7 +8,7 @@ ns.auras["target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 128,
+    xOffset = 132,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -45,39 +45,40 @@ ns.auras["target_aggro"] = {
                 subeventPrefix = "SPELL",
                 unit = "target",
                 debuffType = "HELPFUL",
-                spellName = 5176,
                 use_genericShowOn = true,
+                use_inverse = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                use_inverse = false,
+                spellName = 5176,
                 use_track = true,
                 custom_type = "stateupdate",
                 custom = [[function(allstates)
-    if not UnitAffectingCombat("player") then
-        allstates[""] = allstates[""] or {show = false}
-        allstates[""].show = false
-        allstates[""].changed = true
+    -- Throttle the check for perf?  What is config?
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
+        -- Set the last time
+        aura_env.last = GetTime()
+        
+        if not UnitAffectingCombat("player") then
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+            
+            return true
+        end
+        
+        if UnitAffectingCombat("target") and UnitIsUnit("targettarget", "player") then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].show = true
+            allstates[""].changed = true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+        end
         
         return true
     end
-    
-    local unit = "target"
-    
-    local isTanking, status, threatpct, rawthreatpct, threatvalue = UnitDetailedThreatSituation("player", unit)
-    local unitAffectingCombat = UnitAffectingCombat(unit)
-    
-    if isTanking or not unitAffectingCombat then
-        allstates[""] = allstates[""] or {show = true}
-        allstates[""].show = true
-        allstates[""].changed = true
-    else
-        allstates[""] = allstates[""] or {show = false}
-        allstates[""].show = false
-        allstates[""].changed = true
-    end
-    
-    return true
 end]],
                 check = "update",
                 use_unit = true,
@@ -85,13 +86,13 @@ end]],
                 itemName = 0,
                 use_itemName = true,
                 use_messageType = false,
+                use_moveSpeed = false,
+                use_sourceName = false,
+                use_targetRequired = false,
                 use_ismoving = true,
                 use_spec = true,
-                instance_size = {},
-                use_sourceName = false,
-                use_moveSpeed = false,
-                use_targetRequired = false,
                 use_message = false,
+                instance_size = {},
             },
             untrigger = {},
         },

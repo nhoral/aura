@@ -8,7 +8,7 @@ ns.auras["target_moving"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 176,
+    xOffset = 180,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -49,7 +49,6 @@ ns.auras["target_moving"] = {
                 duration = "1",
                 custom_hide = "timed",
                 custom_type = "stateupdate",
-                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -69,6 +68,7 @@ ns.auras["target_moving"] = {
         end
     end
 end]],
+                unevent = "auto",
                 check = "update",
                 use_unit = true,
                 customVariables = "{}",

@@ -50,7 +50,6 @@ ns.auras["player_shooting"] = {
                 duration = "1",
                 custom_hide = "timed",
                 custom_type = "stateupdate",
-                unevent = "auto",
                 events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
                 custom = [[function(allstates)
     -- Initialize state if needed
@@ -72,14 +71,15 @@ ns.auras["player_shooting"] = {
     end
     return false
 end]],
+                unevent = "auto",
                 check = "update",
                 use_unit = true,
                 customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
                 remaining_operator = "<",
-                use_remaining = true,
                 remaining = "0.2",
+                use_remaining = true,
             },
             untrigger = {
                 custom = [[function()

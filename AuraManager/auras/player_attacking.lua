@@ -49,7 +49,6 @@ ns.auras["player_attacking"] = {
                 duration = "1",
                 custom_hide = "timed",
                 custom_type = "stateupdate",
-                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -69,6 +68,7 @@ ns.auras["player_attacking"] = {
         end
     end
 end]],
+                unevent = "auto",
                 check = "update",
                 use_unit = true,
                 customVariables = "{}",

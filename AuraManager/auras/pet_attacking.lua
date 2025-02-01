@@ -49,7 +49,6 @@ ns.auras["pet_attacking"] = {
                 duration = "1",
                 custom_hide = "timed",
                 custom_type = "stateupdate",
-                unevent = "auto",
                 events = "UNIT_PET PET_ATTACK_START PET_ATTACK_STOP PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
     -- Initialize state if needed
@@ -76,6 +75,7 @@ ns.auras["pet_attacking"] = {
     end
     return false
 end]],
+                unevent = "auto",
                 check = "update",
                 use_unit = true,
                 customVariables = "{}",

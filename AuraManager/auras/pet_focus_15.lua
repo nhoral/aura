@@ -61,11 +61,11 @@ ns.auras["pet_focus_15"] = {
                 itemName = 15018,
                 use_count = false,
                 use_itemName = true,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "15",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
                 use_threatvalue = false,
                 threatpct_operator = {
@@ -76,14 +76,14 @@ ns.auras["pet_focus_15"] = {
                 threatpct = {
                     "100",
                 },
-                use_messageType = true,
-                use_eventtype = true,
                 use_status = false,
+                use_delay = true,
+                use_aggro = true,
+                use_eventtype = true,
                 eventtype = "PLAYER_REGEN_ENABLED",
                 use_threatpct = false,
                 status = 3,
-                use_aggro = true,
-                use_delay = true,
+                use_messageType = true,
             },
             untrigger = {},
         },

@@ -47,9 +47,7 @@ ns.auras["can_cc_circle"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_type = "stateupdate",
-                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                unevent = "auto",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -101,6 +99,8 @@ ns.auras["can_cc_circle"] = {
         return true
     end
 end]],
+                unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
                 use_unit = true,
                 customVariables = "",

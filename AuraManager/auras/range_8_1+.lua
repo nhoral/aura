@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["power_10"] = {
-    id = "Power 10",
-    uid = "mw(lUS)aXV1",
+ns.auras["range_8_1+"] = {
+    id = "Range 8 1+",
+    uid = "peRD)lSwsuo",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 80,
+    xOffset = 204,
+    yOffset = 76,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,26 +37,59 @@ ns.auras["power_10"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "unit",
+                type = "custom",
                 subeventSuffix = "_CAST_START",
-                event = "Power",
+                event = "Health",
                 names = {},
                 spellIds = {},
                 subeventPrefix = "SPELL",
                 unit = "player",
                 debuffType = "HELPFUL",
+                duration = "1",
+                custom_type = "stateupdate",
+                customStacks = [[function() return aura_env.count end]],
+                custom = [[function(allstates)
+    -- Throttle the check for perf?  What is config?
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
+        -- Set the last time
+        aura_env.last = GetTime()
+        
+        -- Start a count
+        local enemyIndex = 0
+        
+        -- Iterate 40 times
+        for i = 1, 20 do
+            -- Concat string with index
+            local unit = "nameplate"..i
+            local unitCanAttack = UnitCanAttack("player", unit) 
+            local inRange = WeakAuras.CheckRange(unit, 8, "<=")
+            
+            if unitCanAttack and inRange then
+                enemyIndex = enemyIndex + 1
+            end
+        end
+        
+        if enemyIndex >= 1 then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].show = true
+            allstates[""].changed = true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            --allstates[""].stacks = aura_env.config.enemy_count
+            allstates[""].changed = true
+        end
+        
+        return true
+    end
+end]],
+                unevent = "auto",
+                use_absorbMode = true,
+                check = "update",
                 use_unit = true,
-                powertype = 0,
-                use_powertype = false,
-                use_percentpower = true,
-                use_power = false,
-                use_showCost = false,
-                percentpower = {
-                    "10",
-                },
-                percentpower_operator = {
-                    ">=",
-                },
+                customVariables = [[{
+  stacks = true,
+}]],
             },
             untrigger = {},
         },
@@ -68,9 +101,9 @@ ns.auras["power_10"] = {
         },
         class = {
             multi = {
-                ROGUE = true,
+                WARRIOR = true,
             },
-            single = "ROGUE",
+            single = "WARRIOR",
         },
         spec = {
             multi = {},
@@ -78,6 +111,8 @@ ns.auras["power_10"] = {
         talent = {
             multi = {},
         },
+        use_never = false,
+        zoneIds = "",
     },
     animation = {
         start = {

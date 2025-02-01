@@ -52,21 +52,21 @@ ns.auras["combo_1"] = {
                 use_percentpower = false,
                 use_power = true,
                 use_showCost = false,
-                percentpower_operator = {
-                    ">=",
-                },
                 percentpower = {
                     "10",
                 },
-                use_runesCount = true,
-                power = {
-                    "1",
+                percentpower_operator = {
+                    ">=",
                 },
+                use_runesCount = true,
+                rune = 0,
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                rune = 0,
+                power = {
+                    "1",
+                },
                 runesCount = "1",
                 use_health = false,
             },
