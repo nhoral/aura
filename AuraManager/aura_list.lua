@@ -263,6 +263,7 @@ ns.aura_list = {
     "target_is_ooc",
     "target_is_player",
     "target_moving",
+    "target_securely_tanked",
     "target_skull",
     "target_triangle",
     "theiranus_dead",

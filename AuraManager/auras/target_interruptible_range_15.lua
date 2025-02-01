@@ -8,7 +8,7 @@ ns.auras["target_interruptible_range_15"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 192,
+    xOffset = 196,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -46,7 +46,7 @@ ns.auras["target_interruptible_range_15"] = {
                 unit = "player",
                 debuffType = "HELPFUL",
                 duration = "1",
-                custom_type = "stateupdate",
+                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
@@ -91,8 +91,8 @@ ns.auras["target_interruptible_range_15"] = {
     end
 end]],
                 unevent = "auto",
-                use_absorbMode = true,
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = [[{
   stacks = true,

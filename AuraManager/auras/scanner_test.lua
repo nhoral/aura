@@ -47,9 +47,9 @@ ns.auras["scanner_test"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "event",
-                events = "PLAYER_TARGET_CHANGED",
+                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
+                events = "PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates, event)
     -- Initialize aura environment if it doesn't exist
     if not aura_env then aura_env = {} end
@@ -162,8 +162,8 @@ ns.auras["scanner_test"] = {
     end
 end]],
                 unevent = "auto",
-                use_absorbMode = true,
                 check = "update",
+                custom_type = "event",
                 use_unit = true,
                 customVariables = [[{
   stacks = true,

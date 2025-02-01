@@ -48,18 +48,18 @@ ns.auras["pet_target_triangle"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
+                unitisunit = "player",
                 raidMarkIndex = 4,
                 use_raidMarkIndex = true,
-                unitisunit = "player",
                 use_hostility = false,
             },
             untrigger = {},
@@ -87,10 +87,10 @@ ns.auras["pet_target_triangle"] = {
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

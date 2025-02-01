@@ -45,7 +45,6 @@ ns.auras["role_toggle"] = {
                 subeventPrefix = "SPELL",
                 unit = "player",
                 debuffType = "HELPFUL",
-                custom_type = "status",
                 events = "CVAR_UPDATE",
                 custom = [[function(event,glStr,value)
     local cvar="WeakaurasCustomToggle1"
@@ -56,6 +55,7 @@ ns.auras["role_toggle"] = {
     end
 end]],
                 check = "event",
+                custom_type = "status",
             },
             untrigger = {
                 custom = [[function(event,glStr,value)

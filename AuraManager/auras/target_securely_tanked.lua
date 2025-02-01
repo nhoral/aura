@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["range_35_square"] = {
-    id = "Range 35 Square",
-    uid = "o)evQc9pBvI",
+ns.auras["target_securely_tanked"] = {
+    id = "Target Securely Tanked",
+    uid = "laPpGB)1TRz",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 196,
-    yOffset = 76,
+    xOffset = 184,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -48,37 +48,46 @@ ns.auras["range_35_square"] = {
                 duration = "1",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                custom = [[function(allstates, event, ...)
-    -- Throttle checks
+                custom = [[function(allstates)
+    -- Throttle updates for performance
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
         
-        -- Check all nameplates
-        for i = 1, 40 do
-            local unit = "nameplate"..i
-            
-            -- Check if unit exists and is attackable
-            if UnitExists(unit) and UnitCanAttack("player", unit) then
-                -- Check if unit has cross mark (7)
-                local mark = GetRaidTargetIndex(unit)
-                local inRange = WeakAuras.CheckRange(unit, 35, "<=")
-                
-                if mark == 6 and inRange then
-                    allstates[""] = {
-                        show = true,
-                        changed = true,
-                        unit = unit
-                    }
+        -- Function to check if a pet is securely tanking
+        local function isPetSecurelyTanking(unit)
+            -- Check player's pet
+            if UnitExists("pet") then
+                local isTanking, status, threatpct = UnitDetailedThreatSituation("pet", unit)
+                if isTanking and status == 3 then
                     return true
                 end
             end
+            
+            -- Check party pets
+            for i = 1, 4 do
+                local partyPet = "partypet" .. i
+                if UnitExists(partyPet) then
+                    local isTanking, status, threatpct = UnitDetailedThreatSituation(partyPet, unit)
+                    if isTanking and status == 3 then
+                        return true
+                    end
+                end
+            end
+            
+            return false
         end
         
-        -- No valid target found, hide aura
-        allstates[""] = {
-            show = false,
-            changed = true
-        }
+        -- Check if target exists and is being tanked by a pet
+        if UnitExists("target") and isPetSecurelyTanking("target") then
+            allstates[""] = allstates[""] or {show = true}
+            allstates[""].show = true
+            allstates[""].changed = true
+        else
+            allstates[""] = allstates[""] or {show = false}
+            allstates[""].show = false
+            allstates[""].changed = true
+        end
+        
         return true
     end
 end]],
@@ -86,7 +95,9 @@ end]],
                 check = "update",
                 custom_type = "stateupdate",
                 use_unit = true,
-                customVariables = "",
+                customVariables = [[{
+  stacks = true,
+}]],
             },
             untrigger = {},
         },

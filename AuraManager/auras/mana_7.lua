@@ -49,19 +49,19 @@ ns.auras["mana_7"] = {
                 powertype = 0,
                 use_powertype = true,
                 use_percentpower = false,
-                use_power = true,
                 use_showCost = false,
+                use_power = true,
                 percentpower = {
                     "10",
                 },
                 percentpower_operator = {
                     ">=",
                 },
-                power_operator = {
-                    ">=",
-                },
                 power = {
                     "7",
+                },
+                power_operator = {
+                    ">=",
                 },
             },
             untrigger = {},

@@ -45,7 +45,6 @@ ns.auras["icon_skull_seen"] = {
                 subeventPrefix = "SPELL",
                 unit = "player",
                 debuffType = "HELPFUL",
-                custom_type = "status",
                 events = "CVAR_UPDATE",
                 custom = [[function(event, glStr, value)
     local cvar = "WeakAurasScannerSkullSeen"
@@ -58,6 +57,7 @@ ns.auras["icon_skull_seen"] = {
     end
 end]],
                 check = "event",
+                custom_type = "status",
             },
             untrigger = {
                 custom = "",

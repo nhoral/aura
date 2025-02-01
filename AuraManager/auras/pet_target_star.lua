@@ -48,18 +48,18 @@ ns.auras["pet_target_star"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
+                unitisunit = "player",
                 raidMarkIndex = 1,
                 use_raidMarkIndex = true,
-                unitisunit = "player",
             },
             untrigger = {},
         },
@@ -86,10 +86,10 @@ ns.auras["pet_target_star"] = {
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

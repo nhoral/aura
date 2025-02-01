@@ -48,9 +48,9 @@ ns.auras["target_is_player"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
@@ -84,10 +84,10 @@ ns.auras["target_is_player"] = {
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

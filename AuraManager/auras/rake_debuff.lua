@@ -54,10 +54,10 @@ ns.auras["rake_debuff"] = {
                 unit = "target",
                 debuffType = "HARMFUL",
                 use_debuffClass = false,
-                useExactSpellId = false,
                 auraspellids = {
                     "414684",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },

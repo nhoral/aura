@@ -46,7 +46,6 @@ ns.auras["scan_timeout"] = {
                 unit = "player",
                 debuffType = "HELPFUL",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 events = "CVAR_UPDATE",
                 custom = [[function(allstates)
     -- Throttle the check for perf
@@ -85,6 +84,7 @@ ns.auras["scan_timeout"] = {
     return false
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
             },
             untrigger = {

@@ -56,10 +56,10 @@ ns.auras["frost_nova_debuff"] = {
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },

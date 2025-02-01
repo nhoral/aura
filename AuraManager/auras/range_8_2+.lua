@@ -46,7 +46,7 @@ ns.auras["range_8_2+"] = {
                 unit = "player",
                 debuffType = "HELPFUL",
                 duration = "1",
-                custom_type = "stateupdate",
+                use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
@@ -84,8 +84,8 @@ ns.auras["range_8_2+"] = {
     end
 end]],
                 unevent = "auto",
-                use_absorbMode = true,
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = [[{
   stacks = true,

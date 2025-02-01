@@ -50,8 +50,8 @@ ns.auras["rune_4"] = {
                 powertype = 6,
                 use_powertype = true,
                 use_percentpower = false,
-                use_power = true,
                 use_showCost = false,
+                use_power = true,
                 percentpower = {
                     "10",
                 },
@@ -59,14 +59,14 @@ ns.auras["rune_4"] = {
                     ">=",
                 },
                 use_runesCount = true,
-                rune = 0,
+                power = {
+                    "4",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                power = {
-                    "4",
-                },
+                rune = 0,
                 runesCount = "4",
             },
             untrigger = {},

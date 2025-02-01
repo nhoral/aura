@@ -8,7 +8,7 @@ ns.auras["target_triangle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 188,
+    xOffset = 192,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -48,7 +48,6 @@ ns.auras["target_triangle"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
         aura_env.last = GetTime()
@@ -69,15 +68,16 @@ ns.auras["target_triangle"] = {
 end]],
                 unevent = "auto",
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
+                unitisunit = "player",
                 raidMarkIndex = 8,
                 use_raidMarkIndex = true,
-                unitisunit = "player",
             },
             untrigger = {},
         },
@@ -104,10 +104,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

@@ -272,6 +272,7 @@ auras/target_interruptible_range_15.lua
 auras/target_is_ooc.lua
 auras/target_is_player.lua
 auras/target_moving.lua
+auras/target_securely_tanked.lua
 auras/target_skull.lua
 auras/target_triangle.lua
 auras/theiranus_dead.lua

@@ -3132,9 +3132,21 @@
         }
     },
     {
+        "id": "target_securely_tanked",
+        "name": "Target Securely Tanked",
+        "xOffset": 184,
+        "yOffset": 68,
+        "backgroundColor": {
+            "r": 0,
+            "g": 1,
+            "b": 0,
+            "a": 1
+        }
+    },
+    {
         "id": "target_skull",
         "name": "Target Skull",
-        "xOffset": 184,
+        "xOffset": 188,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3146,7 +3158,7 @@
     {
         "id": "target_triangle",
         "name": "Target Triangle",
-        "xOffset": 188,
+        "xOffset": 192,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3158,7 +3170,7 @@
     {
         "id": "target_interruptible_range_15",
         "name": "Target interruptible Range 15",
-        "xOffset": 192,
+        "xOffset": 196,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3170,7 +3182,7 @@
     {
         "id": "target_is_ooc",
         "name": "Target is OOC",
-        "xOffset": 196,
+        "xOffset": 200,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3182,7 +3194,7 @@
     {
         "id": "theiranus_dead",
         "name": "Theiranus Dead",
-        "xOffset": 200,
+        "xOffset": 204,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3194,7 +3206,7 @@
     {
         "id": "thorns_buff",
         "name": "Thorns Buff",
-        "xOffset": 204,
+        "xOffset": 208,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3206,7 +3218,7 @@
     {
         "id": "threat_under_80",
         "name": "Threat Under 80",
-        "xOffset": 208,
+        "xOffset": 212,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3218,7 +3230,7 @@
     {
         "id": "tigers_fury_buff",
         "name": "Tigers Fury Buff",
-        "xOffset": 212,
+        "xOffset": 216,
         "yOffset": 68,
         "backgroundColor": {
             "r": 0,
@@ -3230,8 +3242,8 @@
     {
         "id": "undead_or_mechanical",
         "name": "Undead or Mechanical",
-        "xOffset": 216,
-        "yOffset": 68,
+        "xOffset": 100,
+        "yOffset": 64,
         "backgroundColor": {
             "r": 0,
             "g": 1,
@@ -3242,7 +3254,7 @@
     {
         "id": "wing_clip_debuff",
         "name": "Wing Clip Debuff",
-        "xOffset": 100,
+        "xOffset": 104,
         "yOffset": 64,
         "backgroundColor": {
             "r": 0,
@@ -3254,7 +3266,7 @@
     {
         "id": "word_of_glory",
         "name": "Word of Glory",
-        "xOffset": 104,
+        "xOffset": 108,
         "yOffset": 64,
         "backgroundColor": {
             "r": 0,
@@ -3266,7 +3278,7 @@
     {
         "id": "wraith_walk",
         "name": "Wraith Walk",
-        "xOffset": 108,
+        "xOffset": 112,
         "yOffset": 64,
         "backgroundColor": {
             "r": 0,
@@ -3278,7 +3290,7 @@
     {
         "id": "yourbutt_health_under_50",
         "name": "Yourbutt Health Under 50",
-        "xOffset": 112,
+        "xOffset": 116,
         "yOffset": 64,
         "backgroundColor": {
             "r": 0,

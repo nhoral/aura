@@ -8,7 +8,7 @@ ns.auras["yourbutt_health_under_50"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
+    xOffset = 116,
     yOffset = 64,
     width = 3,
     height = 3,
@@ -48,7 +48,6 @@ ns.auras["yourbutt_health_under_50"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -83,6 +82,7 @@ ns.auras["yourbutt_health_under_50"] = {
 end]],
                 unevent = "auto",
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
             },
@@ -115,10 +115,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

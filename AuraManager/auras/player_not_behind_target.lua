@@ -55,7 +55,6 @@ ns.auras["player_not_behind_target"] = {
                 use_inverse = false,
                 duration = ".5",
                 custom_hide = "timed",
-                custom_type = "event",
                 events = "UI_ERROR_MESSAGE",
                 custom = [[function(event, arg1, arg2)
     if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
@@ -63,6 +62,7 @@ ns.auras["player_not_behind_target"] = {
     end
     return false
 end]],
+                custom_type = "event",
                 use_unit = true,
                 use_debuffClass = false,
                 debuffClass = {
@@ -70,12 +70,12 @@ end]],
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
-                useExactSpellId = false,
-                controlType = "ROOT",
-                interruptSchool = 16,
                 auraspellids = {
                     "116",
                 },
+                controlType = "ROOT",
+                useExactSpellId = false,
+                interruptSchool = 16,
             },
             untrigger = {},
         },

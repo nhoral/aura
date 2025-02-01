@@ -57,10 +57,10 @@ ns.auras["frostbolt_debuff"] = {
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },

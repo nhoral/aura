@@ -49,8 +49,8 @@ ns.auras["power_15"] = {
                 powertype = 0,
                 use_powertype = false,
                 use_percentpower = true,
-                use_power = false,
                 use_showCost = false,
+                use_power = false,
                 percentpower = {
                     "15",
                 },

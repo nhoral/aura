@@ -53,7 +53,6 @@ ns.auras["serpent_sting_debuff_square"] = {
                 subeventPrefix = "SPELL",
                 unit = "target",
                 debuffType = "HARMFUL",
-                custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -106,6 +105,7 @@ ns.auras["serpent_sting_debuff_square"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
             },
             untrigger = {},
         },

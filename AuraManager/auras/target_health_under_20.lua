@@ -54,8 +54,8 @@ ns.auras["target_health_under_20"] = {
                     "20",
                 },
                 use_percentpower = false,
-                use_power = false,
                 use_showCost = true,
+                use_power = false,
                 use_percenthealth = true,
                 percenthealth_operator = {
                     "<",
