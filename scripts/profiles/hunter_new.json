@@ -83,23 +83,24 @@
         },
         {
             "name": "Stop and Shoot (Left)",
-            "key": "HOLD-d",
+            "key": "HOLD-right",
             "conditions": ["combat", "is_moving_left", "player_shooting", "!player_swing", "!range_8", "range_35", "!range_8_1+", "!health_under_50"]
         },
         {
             "name": "Stop and Shoot (Right)",
-            "key": "HOLD-a",
+            "key": "HOLD-left",
             "conditions": ["combat", "is_moving_right", "player_shooting", "!player_swing", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
         },
         {
             "name": "Stop and Shoot (Forward)",
-            "key": "HOLD-s",
+            "key": "HOLD-down",
             "conditions": ["combat", "is_moving_forward", "player_shooting", "!player_swing", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
         },
         {
             "name": "Stop and Shoot (Backward)",
-            "key": "HOLD-w",
+            "key": "HOLD-up",
             "conditions": ["combat", "is_moving_backward", "player_shooting", "!player_swing", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
+
         }
     ]
 }

@@ -75,6 +75,20 @@ class ScreenMonitor:
         self.monitor_thread = None
         self.gamepad_available = False
         
+        # Add special key mapping
+        self.special_keys = {
+            "up": Key.up,
+            "down": Key.down,
+            "left": Key.left,
+            "right": Key.right,
+            "shift": Key.shift,
+            "ctrl": Key.ctrl,
+            "enter": Key.enter,
+            "space": Key.space,
+            "tab": Key.tab,
+            "esc": Key.esc
+        }
+        
         # In test mode, don't start monitoring
         if not test_mode:
             self.start()
@@ -287,6 +301,15 @@ class ScreenMonitor:
                 return action
         return None
     
+    def _parse_key(self, key_str: str):
+        """Parse a key string into a pynput key object"""
+        if key_str in self.special_keys:
+            return self.special_keys[key_str]
+        elif len(key_str) == 1:
+            return key_str
+        else:
+            return KeyCode.from_char(key_str)
+
     def execute_action(self, action: Dict[str, Any]):
         """Execute a keyboard action"""
         action_name = action.get('name', 'Name Missing')
@@ -315,7 +338,7 @@ class ScreenMonitor:
         
         # Handle different key modifiers
         if key.startswith("SHIFT-"):
-            actual_key = key[6:]  # Remove "SHIFT-" prefix
+            actual_key = self._parse_key(key[6:])  # Remove "SHIFT-" prefix
             if key.startswith("HOLD-"):
                 # For HOLD modifier, only press if not already holding this combination
                 if self.currently_held_key != (Key.shift, actual_key):
@@ -331,7 +354,7 @@ class ScreenMonitor:
                 self.keyboard.release(actual_key)
                 self.keyboard.release(Key.shift)
         elif key.startswith("CTRL-"):
-            actual_key = key[5:]  # Remove "CTRL-" prefix
+            actual_key = self._parse_key(key[5:])  # Remove "CTRL-" prefix
             if key.startswith("HOLD-"):
                 # For HOLD modifier, only press if not already holding this combination
                 if self.currently_held_key != (Key.ctrl, actual_key):
@@ -347,16 +370,17 @@ class ScreenMonitor:
                 self.keyboard.release(actual_key)
                 self.keyboard.release(Key.ctrl)
         elif key.startswith("HOLD-"):
-            actual_key = key[5:]  # Remove "HOLD-" prefix
+            actual_key = self._parse_key(key[5:])  # Remove "HOLD-" prefix
             # Only press if not already holding this key
             if self.currently_held_key != actual_key:
                 self.keyboard.press(actual_key)
                 self.currently_held_key = actual_key
                 self.current_hold_action = action
         else:
-            self.keyboard.press(key)
+            actual_key = self._parse_key(key)
+            self.keyboard.press(actual_key)
             time.sleep(self.key_hold_duration)
-            self.keyboard.release(key)
+            self.keyboard.release(actual_key)
     
     def run(self):
         """Keep the program running until exit"""
