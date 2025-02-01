@@ -16,7 +16,7 @@ project_root = str(Path(__file__).resolve().parent.parent)
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from config import INPUT_SETTINGS
+from config import INPUT_SETTINGS, MOVEMENT_SETTINGS
 
 class ScreenMonitor:
     def __init__(self, checker: ScreenChecker, profile_path: str, debug: bool = False, test_mode: bool = False):
@@ -28,6 +28,19 @@ class ScreenMonitor:
         self.monitoring_active = False
         self.last_check = 0
         self.test_mode = test_mode
+        
+        # Movement state tracking
+        self.movement_states = {
+            "is_moving_forward": False,
+            "is_moving_backward": False,
+            "is_moving_left": False,
+            "is_moving_right": False
+        }
+        self.keyboard_movement_keys = {
+            key: KeyCode.from_char(value) 
+            for key, value in MOVEMENT_SETTINGS["keyboard"].items()
+        }
+        self.pressed_keys = set()
         
         # Load profile
         with open(profile_path, 'r') as f:
@@ -71,6 +84,12 @@ class ScreenMonitor:
                 if self.is_monitoring_active() and (current_time - self.last_check) >= self.check_interval:
                     # Get current conditions
                     active_conditions = self.checker.check_conditions()
+                    
+                    # Add movement conditions to active conditions
+                    active_conditions.extend([
+                        condition for condition, is_active in self.movement_states.items()
+                        if is_active
+                    ])
                     
                     # Get and execute next action if any
                     action = self.get_next_action(active_conditions)
@@ -130,6 +149,9 @@ class ScreenMonitor:
                     self.monitoring_active = True
                     print("Monitoring activated")
             self.trigger_held = True
+        elif not self.gamepad_available and key in self.keyboard_movement_keys.values():
+            self.pressed_keys.add(key)
+            self._update_keyboard_movement_states()
         elif self.debug and hasattr(key, 'char'):
             if key.char == 'p':
                 print("Saving screen image...")
@@ -140,6 +162,8 @@ class ScreenMonitor:
                     print(f"Current conditions: {conditions}")
                 else:
                     print("No conditions detected")
+                # Also print movement states when debugging
+                print(f"Movement states: {self.movement_states}")
     
     def _on_key_release(self, key):
         """Handle keyboard release events"""
@@ -148,6 +172,19 @@ class ScreenMonitor:
                 self.monitoring_active = False
                 print("Monitoring deactivated")
             self.trigger_held = False
+        elif not self.gamepad_available and key in self.keyboard_movement_keys.values():
+            self.pressed_keys.discard(key)
+            self._update_keyboard_movement_states()
+    
+    def _update_keyboard_movement_states(self):
+        """Update movement states based on currently pressed keys"""
+        if not self.gamepad_available:
+            self.movement_states = {
+                "is_moving_forward": self.keyboard_movement_keys["forward"] in self.pressed_keys,
+                "is_moving_backward": self.keyboard_movement_keys["backward"] in self.pressed_keys,
+                "is_moving_left": self.keyboard_movement_keys["left"] in self.pressed_keys,
+                "is_moving_right": self.keyboard_movement_keys["right"] in self.pressed_keys
+            }
     
     def _monitor_gamepad(self):
         """Monitor gamepad input in separate thread"""
@@ -157,6 +194,10 @@ class ScreenMonitor:
                 for event in events:
                     if event.code == "ABS_RZ":  # Right trigger axis
                         self._monitor_gamepad_event(event)
+                    elif event.code == "ABS_X":  # Left stick X-axis
+                        self._update_gamepad_movement_states(event, "horizontal")
+                    elif event.code == "ABS_Y":  # Left stick Y-axis
+                        self._update_gamepad_movement_states(event, "vertical")
         except Exception as e:
             if self.gamepad_available:
                 print(f"Gamepad error: {str(e)}")
@@ -173,6 +214,19 @@ class ScreenMonitor:
             else:  # hold mode
                 self.monitoring_active = new_state
             self.trigger_held = new_state
+    
+    def _update_gamepad_movement_states(self, event, axis):
+        """Update movement states based on gamepad stick position"""
+        deadzone = MOVEMENT_SETTINGS["gamepad"]["stick_deadzone"]
+        # Convert stick position to -1 to 1 range
+        value = event.state / 32768.0
+        
+        if axis == "horizontal":
+            self.movement_states["is_moving_left"] = value < -deadzone
+            self.movement_states["is_moving_right"] = value > deadzone
+        else:  # vertical
+            self.movement_states["is_moving_forward"] = value < -deadzone
+            self.movement_states["is_moving_backward"] = value > deadzone
     
     def is_monitoring_active(self):
         """Check if monitoring should be active"""

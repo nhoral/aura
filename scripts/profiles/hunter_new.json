@@ -2,10 +2,16 @@
     "name": "Hunter Hardcore",
     "actions": [
         {
+            "name": "Is Moving Left",
+            "key": "s",
+            "conditions": ["!combat", "is_moving_left"]
+        },
+        {
             "name": "Call/Revive Pet uses macro",
             "key": "4",
             "conditions": ["!combat","!player_has_pet"]
         },
+
         {
             "name": "OOC Scan targetenemy",
             "key": "1",

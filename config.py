@@ -36,6 +36,19 @@ GRID_SETTINGS = {
     "BASE_Y_OFFSET": 100   # Positive moves up, negative moves down
 }
 
+# Movement detection settings
+MOVEMENT_SETTINGS = {
+    "keyboard": {
+        "forward": "w",
+        "backward": "s",
+        "left": "a",
+        "right": "d"
+    },
+    "gamepad": {
+        "stick_deadzone": 0.2  # Minimum analog stick movement to register as direction
+    }
+}
+
 # Addon metadata
 ADDON_INFO = {
     "interface_version": "100200",
