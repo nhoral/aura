@@ -8,7 +8,7 @@ ns.auras["raise_ally"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 160,
+    xOffset = 164,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -40,26 +40,26 @@ ns.auras["raise_ally"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                spellName = 61999,
                 use_genericShowOn = true,
                 realSpellName = "Savage Roar",
                 use_spellName = true,
-                use_inverse = false,
                 genericShowOn = "showOnCooldown",
+                use_inverse = false,
                 use_track = true,
-                spellName = 61999,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["raise_ally"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

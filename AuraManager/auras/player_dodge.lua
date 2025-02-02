@@ -8,7 +8,7 @@ ns.auras["player_dodge"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 152,
+    xOffset = 156,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -40,31 +40,31 @@ ns.auras["player_dodge"] = {
             trigger = {
                 type = "combatlog",
                 subeventSuffix = "_MISSED",
+                debuffType = "HELPFUL",
                 event = "Combat Log",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SWING",
-                unit = "player",
-                debuffType = "HELPFUL",
+                spellName = 6572,
                 use_genericShowOn = true,
                 realSpellName = "Revenge",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 6572,
                 duration = "4",
                 use_sourceUnit = true,
                 use_destFlags2 = false,
                 use_missType = true,
-                sourceUnit = "target",
                 missType = "DODGE",
+                sourceUnit = "target",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -76,7 +76,7 @@ ns.auras["player_dodge"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

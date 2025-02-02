@@ -39,20 +39,20 @@ ns.auras["pet_combat"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Unit Characteristics",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "pet",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "DAMAGE_SHIELD",
                 auranames = {
                     "Moonfire",
                 },
-                subeventPrefix = "DAMAGE_SHIELD",
-                unit = "pet",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 duration = "1",
@@ -69,14 +69,14 @@ ns.auras["pet_combat"] = {
                 threatpct = {
                     "100",
                 },
-                use_aggro = true,
-                status = 3,
-                use_status = false,
-                use_delay = true,
-                use_eventtype = true,
-                eventtype = "PLAYER_REGEN_ENABLED",
-                use_threatpct = false,
                 use_messageType = true,
+                eventtype = "PLAYER_REGEN_ENABLED",
+                use_eventtype = true,
+                use_delay = true,
+                status = 3,
+                use_aggro = true,
+                use_threatpct = false,
+                use_status = false,
                 use_behavior = false,
                 use_inCombat = true,
             },
@@ -85,7 +85,7 @@ ns.auras["pet_combat"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -97,7 +97,7 @@ ns.auras["pet_combat"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

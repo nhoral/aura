@@ -19,7 +19,7 @@
         {
             "name": "use bandage at 50% health",
             "key": "3",
-            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!target_aggro", "!player_moving"]
+            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!player_any_aggro", "!player_moving", "combat"]
         },
         {
             "name": "Target triangle for Pet Attack: /targetenemy",
@@ -44,63 +44,62 @@
         {
             "name": "Heal Pet",
             "key": "SHIFT-2",
-            "conditions": ["player_has_pet", "pet_health_under_20", "!player_moving", "combat", "pet_range_20", "power_20"]
+            "conditions": ["player_has_pet", "pet_health_under_20", "!player_moving", "combat", "pet_range_20", "power_20", "!channeling"]
         },
         {
             "name": "Wing Clip",
             "key": "-",
-            "conditions": ["!wing_clip_debuff", "range_8", "power_10"]
+            "conditions": ["!wing_clip_debuff", "range_8", "power_10", "!channeling"]
         }, 
         {
             "name": "Serpent Sting",
             "key": "6",
-            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10"]
+            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10", "!channeling"]
         },
         {
             "name": "Distracting Shot",
             "key": "0",
-            "conditions": ["distracting_shot", "concussive_shot", "!target_aggro", "!range_8", "range_35", "power_10"]
+            "conditions": ["distracting_shot", "concussive_shot", "target_securely_tanked", "!range_8", "range_35", "power_40", "pet_health_under_20", "!channeling"]
         }, 
         {
             "name": "Concussive Shot",
             "key": "9",
-            "conditions": ["concussive_shot", "!concussive_shot_debuff", "target_aggro","!range_8", "range_35", "power_10"]
+            "conditions": ["concussive_shot", "!concussive_shot_debuff", "target_aggro","!range_8", "range_35", "power_10", "!channeling"]
         },   
         {
             "name": "Arane Shot",
             "key": "8",
-            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35"]
+            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35", "!channeling"]
         },
         {
             "name": "Raptor Strike",
             "key": "5",
-            "conditions": ["raptor_strike", "range_8", "power_10"]
+            "conditions": ["raptor_strike", "range_8", "power_10", "!channeling"]
         },
         {
             "name": "Auto Shot",
             "key": "3",
-            "conditions": ["!player_shooting","!range_8", "range_35"]
+            "conditions": ["!player_shooting","!range_8", "range_35", "!channeling"]
         },
         {
             "name": "Stop and Shoot (Left)",
             "key": "HOLD-right",
-            "conditions": ["combat", "is_moving_left", "player_shooting", "!player_swing", "!range_8", "range_35", "!range_8_1+", "!health_under_50"]
+            "conditions": ["combat", "is_moving_left", "player_shooting", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
         },
         {
             "name": "Stop and Shoot (Right)",
             "key": "HOLD-left",
-            "conditions": ["combat", "is_moving_right", "player_shooting", "!player_swing", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
+            "conditions": ["combat", "is_moving_right", "player_shooting", "!player_swing", "range_35", "!health_under_50", "!range_8_1+"]
         },
         {
             "name": "Stop and Shoot (Forward)",
             "key": "HOLD-down",
-            "conditions": ["combat", "is_moving_forward", "player_shooting", "!player_swing", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
+            "conditions": ["combat", "is_moving_forward", "player_shooting", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
         },
         {
             "name": "Stop and Shoot (Backward)",
             "key": "HOLD-up",
-            "conditions": ["combat", "is_moving_backward", "player_shooting", "!player_swing", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
-
+            "conditions": ["combat", "is_moving_backward", "player_shooting", "!player_swing", "range_35", "!health_under_50", "!range_8_1+"]
         }
     ]
 }

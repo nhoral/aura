@@ -158,6 +158,7 @@ ns.aura_list = {
     "pet_target_triangle",
     "pillar_of_frost",
     "pillar_of_frost_buff",
+    "player_any_aggro",
     "player_attacking",
     "player_casting",
     "player_casting_heal",

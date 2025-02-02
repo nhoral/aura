@@ -167,6 +167,7 @@ auras/pet_target_target_aggro.lua
 auras/pet_target_triangle.lua
 auras/pillar_of_frost.lua
 auras/pillar_of_frost_buff.lua
+auras/player_any_aggro.lua
 auras/player_attacking.lua
 auras/player_casting.lua
 auras/player_casting_heal.lua

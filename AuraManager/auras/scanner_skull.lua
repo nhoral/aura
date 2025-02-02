@@ -8,7 +8,7 @@ ns.auras["scanner_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 188,
+    xOffset = 192,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -39,17 +39,18 @@ ns.auras["scanner_skull"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
+                custom_type = "stateupdate",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                events = "PLAYER_TARGET_CHANGED",
+                unevent = "auto",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.1 then
@@ -106,10 +107,9 @@ ns.auras["scanner_skull"] = {
     
     return true
 end]],
-                unevent = "auto",
+                events = "PLAYER_TARGET_CHANGED",
                 check = "update",
-                custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
 }]],
@@ -119,7 +119,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -131,7 +131,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

@@ -410,7 +410,7 @@ def main():
                       default='scripts/layout.json',
                       help='Path to layout JSON file')
     parser.add_argument('--profile', '-p',
-                      default='scripts/profiles/hunter_new.json',
+                      default='scripts/profiles/warlock.json',
                       help='Path to profile JSON file')
     parser.add_argument('--debug', '-d',
                       action='store_true',

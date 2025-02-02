@@ -39,13 +39,13 @@ ns.auras["icon_skull_seen"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                events = "CVAR_UPDATE",
+                custom_type = "status",
                 custom = [[function(event, glStr, value)
     local cvar = "WeakAurasScannerSkullSeen"
     if glStr and value and glStr == cvar then
@@ -56,8 +56,8 @@ ns.auras["icon_skull_seen"] = {
         RegisterCVar(cvar, "0")
     end
 end]],
+                events = "CVAR_UPDATE",
                 check = "event",
-                custom_type = "status",
             },
             untrigger = {
                 custom = "",
@@ -66,7 +66,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -75,7 +75,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

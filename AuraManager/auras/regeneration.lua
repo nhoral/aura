@@ -8,7 +8,7 @@ ns.auras["regeneration"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
+    xOffset = 128,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -39,26 +39,26 @@ ns.auras["regeneration"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                spellName = 1008,
                 use_genericShowOn = true,
                 realSpellName = "Amplify Magic",
                 use_spellName = true,
-                use_inverse = true,
                 genericShowOn = "showOnCooldown",
+                use_inverse = true,
                 use_track = true,
-                spellName = 1008,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["regeneration"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         race = {

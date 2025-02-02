@@ -8,8 +8,8 @@ ns.auras["tigers_fury_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 68,
+    xOffset = 100,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,25 +39,25 @@ ns.auras["tigers_fury_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Cooldown Progress (Spell)",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Tiger's Fury",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
+                spellName = 5217,
                 use_genericShowOn = true,
                 realSpellName = "Tiger's Fury",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
-                spellName = 5217,
                 use_unit = true,
                 use_debuffClass = false,
                 useNamePattern = false,
@@ -67,7 +67,7 @@ ns.auras["tigers_fury_buff"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -79,7 +79,7 @@ ns.auras["tigers_fury_buff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

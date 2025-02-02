@@ -1,0 +1,50 @@
+{
+    "name": "Warlock Hardcore",
+    "actions": [  
+        {
+            "name": "OOC Scan targetenemy",
+            "key": "1",
+            "conditions": ["!combat", "!target_skull"]
+        },
+        {
+            "name": "use potion at 50% health",
+            "key": "2",
+            "conditions": ["potion_in_inventory", "combat", "health_under_50", "!potion"]
+        },
+        {
+            "name": "use bandage at 50% health",
+            "key": "3",
+            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!player_any_aggro", "!player_moving", "combat"]
+        },
+        {
+            "name": "Target Skull: /targetenemy",
+            "key": "1",
+            "conditions": ["!target_skull"]
+        },
+        {
+            "name": "Fireball",
+            "key": "4",
+            "conditions": ["range_35", "!player_casting"]
+        },
+        {
+            "name": "Stop To Cast (Left)",
+            "key": "HOLD-right",
+            "conditions": ["combat", "is_moving_left", "player_casting", "range_35", "!range_8_1+", "!health_under_50"]
+        },
+        {
+            "name": "Stop To Cast (Right)",
+            "key": "HOLD-left",
+            "conditions": ["combat", "is_moving_right", "player_casting", "range_35", "!health_under_50", "!range_8_1+"]
+        },
+        {
+            "name": "Stop and Shoot (Forward)",
+            "key": "HOLD-down",
+            "conditions": ["combat", "is_moving_forward", "player_casting", "range_35", "!health_under_50", "!range_8_1+"]
+        },
+        {
+            "name": "Stop and Shoot (Backward)",
+            "key": "HOLD-up",
+            "conditions": ["combat", "is_moving_backward", "player_casting", "range_35", "!health_under_50", "!range_8_1+"]
+        }
+    ]
+}

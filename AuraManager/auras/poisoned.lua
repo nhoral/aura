@@ -8,7 +8,7 @@ ns.auras["poisoned"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 208,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,13 +39,13 @@ ns.auras["poisoned"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HARMFUL",
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = false,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "17183",
                     "17292",
@@ -70,9 +70,9 @@ ns.auras["poisoned"] = {
                     "16400",
                     "8313",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HARMFUL",
+                useName = false,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_debuffClass = true,
                 debuffClass = {
                     poison = true,
@@ -83,7 +83,7 @@ ns.auras["poisoned"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -95,7 +95,7 @@ ns.auras["poisoned"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },
