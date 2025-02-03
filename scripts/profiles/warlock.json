@@ -22,10 +22,15 @@
             "conditions": ["!target_skull"]
         },
         {
-            "name": "Fireball",
+            "name": "Demon Skin",
             "key": "4",
+            "conditions": ["!demon_skin_buff", "power_30", "!channelling"]
+        },
+        {
+            "name": "Shadow Bolt",
+            "key": "5",
             "hold": "player_casting",
-            "conditions": ["range_35", "!player_casting"]
-        }     
+            "conditions": ["power_20", "!player_casting", "!channelling"]
+        }  
     ]
 }
