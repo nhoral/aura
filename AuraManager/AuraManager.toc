@@ -27,6 +27,7 @@ auras/bomb.lua
 auras/bomb_in_inventory.lua
 auras/can_cc_circle.lua
 auras/can_cc_cross.lua
+auras/can_cc_triangle.lua
 auras/can_interrupt_cross.lua
 auras/can_interrupt_diamond.lua
 auras/cat_form.lua
@@ -223,6 +224,7 @@ auras/range_8_circle.lua
 auras/range_8_cross.lua
 auras/range_8_diamond.lua
 auras/range_8_square.lua
+auras/range_8_triangle.lua
 auras/raptor_strike.lua
 auras/razorice_debuff_5.lua
 auras/recently_bandaged_debuff.lua
@@ -241,6 +243,7 @@ auras/rune_5.lua
 auras/savage_roar.lua
 auras/scan_timeout.lua
 auras/scanner.lua
+auras/scanner_cross.lua
 auras/scanner_mk._2.lua
 auras/scanner_skull.lua
 auras/scanner_test.lua
@@ -255,6 +258,7 @@ auras/shield_of_righteousness.lua
 auras/shield_of_righteousness_retail.lua
 auras/skull_bash.lua
 auras/slice_and_dice_buff.lua
+auras/sprint.lua
 auras/stealth_buff.lua
 auras/swing_timer_at_max.lua
 auras/swing_timer_test.lua

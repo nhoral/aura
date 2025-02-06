@@ -8,7 +8,7 @@ ns.auras["fire_school_lockout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 104,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["fire_school_lockout"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                unit = "target",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_inverse = false,
                 use_unit = true,
                 use_debuffClass = false,
@@ -60,19 +60,19 @@ ns.auras["fire_school_lockout"] = {
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
-                interruptSchool = 4,
-                controlType = "SCHOOL_INTERRUPT",
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                controlType = "SCHOOL_INTERRUPT",
+                useExactSpellId = false,
+                interruptSchool = 4,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["fire_school_lockout"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

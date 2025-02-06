@@ -8,7 +8,7 @@ ns.auras["lay_on_hands"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 120,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -39,18 +39,18 @@ ns.auras["lay_on_hands"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                spellName = 633,
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 633,
                 use_exact_spellName = false,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["lay_on_hands"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["lay_on_hands"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

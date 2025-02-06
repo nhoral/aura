@@ -8,7 +8,7 @@ ns.auras["frost_fever_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 120,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -39,22 +39,22 @@ ns.auras["frost_fever_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HARMFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "target",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Frost Fever",
                 },
-                useName = true,
-                spellName = 14281,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
                 use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 14281,
                 stacks = "5",
                 use_exact_spellName = false,
                 useStacks = true,
@@ -65,7 +65,7 @@ ns.auras["frost_fever_debuff"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,7 +78,7 @@ ns.auras["frost_fever_debuff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

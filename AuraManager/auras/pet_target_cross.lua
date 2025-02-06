@@ -8,7 +8,7 @@ ns.auras["pet_target_cross"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 212,
+    xOffset = 216,
     yOffset = 84,
     width = 3,
     height = 3,
@@ -40,33 +40,33 @@ ns.auras["pet_target_cross"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
-                unit = "pet",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "pet",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
-                custom_type = "stateupdate",
+                custom_hide = "timed",
                 unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                use_raidMarkIndex = true,
-                raidMarkIndex = 7,
                 unitisunit = "player",
+                raidMarkIndex = 7,
+                use_raidMarkIndex = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,18 +78,18 @@ ns.auras["pet_target_cross"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

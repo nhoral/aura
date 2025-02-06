@@ -8,7 +8,7 @@ ns.auras["skull_bash"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 128,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -40,26 +40,26 @@ ns.auras["skull_bash"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                spellName = 410176,
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Skull Bash",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_inverse = false,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 410176,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -73,7 +73,7 @@ ns.auras["skull_bash"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

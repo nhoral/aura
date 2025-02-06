@@ -8,7 +8,7 @@ ns.auras["word_of_glory"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
+    xOffset = 128,
     yOffset = 64,
     width = 3,
     height = 3,
@@ -39,26 +39,26 @@ ns.auras["word_of_glory"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                spellName = 85673,
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_inverse = false,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 85673,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["word_of_glory"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

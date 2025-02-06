@@ -8,8 +8,8 @@ ns.auras["theiranus_dead"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
-    yOffset = 68,
+    xOffset = 104,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,16 +40,14 @@ ns.auras["theiranus_dead"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
-                custom_type = "stateupdate",
-                unevent = "auto",
+                custom_hide = "timed",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -71,8 +69,10 @@ ns.auras["theiranus_dead"] = {
         end
     end
 end]],
+                unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
             },
             untrigger = {
@@ -84,7 +84,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -96,18 +96,18 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

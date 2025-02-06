@@ -8,7 +8,7 @@ ns.auras["scanning"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 216,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -39,13 +39,13 @@ ns.auras["scanning"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                custom_type = "status",
+                unit = "player",
+                debuffType = "HELPFUL",
+                events = "CVAR_UPDATE",
                 custom = [[function(event, glStr, value)
     local cvar = "WeakAurasScannerToggle"
     if glStr and value and glStr == cvar then
@@ -56,8 +56,8 @@ ns.auras["scanning"] = {
         RegisterCVar(cvar, "OFF")
     end
 end]],
-                events = "CVAR_UPDATE",
                 check = "event",
+                custom_type = "status",
             },
             untrigger = {
                 custom = "",
@@ -66,7 +66,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -75,7 +75,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = true,

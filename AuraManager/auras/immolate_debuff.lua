@@ -8,7 +8,7 @@ ns.auras["immolate_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 104,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -39,27 +39,27 @@ ns.auras["immolate_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HARMFUL",
+                useRem = false,
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                unit = "target",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "348",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["immolate_debuff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

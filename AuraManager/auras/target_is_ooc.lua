@@ -8,8 +8,8 @@ ns.auras["target_is_ooc"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
-    yOffset = 68,
+    xOffset = 100,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,26 +40,26 @@ ns.auras["target_is_ooc"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
-                custom_type = "stateupdate",
+                custom_hide = "timed",
                 unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                use_raidMarkIndex = false,
-                raidMarkIndex = 8,
                 unitisunit = "player",
+                raidMarkIndex = 8,
+                use_raidMarkIndex = false,
                 use_inCombat = false,
                 use_attackable = true,
             },
@@ -68,7 +68,7 @@ ns.auras["target_is_ooc"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -80,18 +80,18 @@ ns.auras["target_is_ooc"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

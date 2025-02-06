@@ -8,7 +8,7 @@ ns.auras["target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 136,
+    xOffset = 152,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -39,21 +39,19 @@ ns.auras["target_aggro"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Conditions",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                spellName = 5176,
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_inverse = false,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                use_unit = true,
-                custom_type = "stateupdate",
+                spellName = 5176,
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -82,24 +80,26 @@ ns.auras["target_aggro"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
                 itemName = 0,
                 use_itemName = true,
                 use_messageType = false,
-                use_message = false,
                 use_spec = true,
                 instance_size = {},
                 use_sourceName = false,
-                use_moveSpeed = false,
                 use_targetRequired = false,
+                use_moveSpeed = false,
                 use_ismoving = true,
+                use_message = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -108,7 +108,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

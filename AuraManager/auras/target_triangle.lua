@@ -8,7 +8,7 @@ ns.auras["target_triangle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 196,
+    xOffset = 212,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -40,16 +40,14 @@ ns.auras["target_triangle"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
-                custom_type = "stateupdate",
-                unevent = "auto",
+                custom_hide = "timed",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
         aura_env.last = GetTime()
@@ -68,23 +66,25 @@ ns.auras["target_triangle"] = {
         end
     end
 end]],
+                unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                use_raidMarkIndex = true,
-                raidMarkIndex = 8,
                 unitisunit = "player",
+                raidMarkIndex = 8,
+                use_raidMarkIndex = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -96,18 +96,18 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

@@ -40,39 +40,39 @@ ns.auras["bandage_in_inventory"] = {
             trigger = {
                 type = "item",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 event = "Item Count",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Enrage",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
-                spellName = 355,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Taunt",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 355,
                 itemName = 1251,
                 use_count = true,
-                count_operator = ">=",
                 use_debuffClass = false,
-                use_itemName = true,
                 count = "1",
+                use_itemName = true,
                 useNamePattern = false,
+                count_operator = ">=",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["bandage_in_inventory"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

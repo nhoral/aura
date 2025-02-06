@@ -1,0 +1,96 @@
+{
+    "name": "Rogue",
+    "actions": [
+        {
+            "name": "OOC Scan targetenemy",
+            "key": "1",
+            "conditions": ["!combat", "!target_skull"]
+        },
+        {
+            "name": "Gouge Under 20%",
+            "key": "8",
+            "conditions": ["gouge", "target_skull", "range_8", "health_under_20", "!player_channeling"]
+        },
+        {
+            "name": "use potion at 50% health",
+            "key": "2",
+            "conditions": ["potion_in_inventory", "combat", "health_under_50", "!potion"]
+        },
+        {
+            "name": "use bandage at 50% health",
+            "key": "3",
+            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!player_any_aggro", "!player_moving", "combat"]
+        },
+        {
+            "name": "Evasion",
+            "key": "7",
+            "conditions": ["evasion", "health_under_20", "combat", "!player_channeling"]
+        },
+        {
+            "name": "Sprint After Enemy",
+            "key": "-",
+            "conditions": ["sprint", "combat", "!range_8", "!range_15", "range_30", "player_moving", "target_moving", "!combat_start", "!player_channeling"]
+        },
+        {
+            "name": "Target Triangle",
+            "key": "1",
+            "conditions": ["icon_cross_exists", "can_cc_cross", "range_8_cross", "gouge", "power_45", "!target_cross", "!player_channeling"]
+        },
+        {
+            "name": "Gouge Triangle",
+            "key": "8",
+            "conditions": ["icon_cross_exists", "gouge", "power_45", "range_8_cross", "target_cross", "can_cc_cross", "!player_channeling"]
+        },
+        {
+            "name": "Target Skull: /targetenemy",
+            "key": "1",
+            "conditions": ["!target_skull"]
+        },
+        {
+            "name": "Kick",
+            "key": "SHIFT-4",
+            "conditions": ["kick", "target_interruptible", "power_25"]
+        },
+        {
+            "name": "Eviscerate Health Above 75%",
+            "key": "5",
+            "conditions": ["combo_points_5", "range_8", "!target_health_under_75", "power_35"]
+        },
+        {
+            "name": "Eviscerate Health Above 50%",
+            "key": "5",
+            "conditions": ["combo_points_4", "range_8", "target_health_under_75", "power_35"]
+        },
+        {
+            "name": "Eviscerate Health Above 35%",
+            "key": "5",
+            "conditions": ["combo_points_3", "range_8", "target_health_under_50", "power_35"]
+        },
+        {
+            "name": "Eviscerate Health Under 35%",
+            "key": "5",
+            "conditions": ["combo_points_2", "range_8", "target_health_under_35", "power_35"]
+        },
+        {
+            "name": "Backstab",
+            "key": "7",
+            "conditions": ["!player_not_behind_target", "range_8", "power_60", "!player_channeling"]
+        },
+        { 
+            "name": "Sinister Strike",
+            "key": "4",
+            "conditions": ["player_not_behind_target", "power_45", "range_8", "!player_channeling"]
+        },
+
+        { 
+            "name": "Throw",
+            "key": "6",
+            "conditions": ["!player_moving", "range_30", "!range_8", "!player_channeling"]
+        },
+        {
+            "name": "Auto Attack",
+            "key": "SHIFT-2",
+            "conditions": ["combat", "!gouge_debuff", "!player_attacking", "range_8", "!player_channeling"]
+        }
+    ]
+}

@@ -8,7 +8,7 @@ ns.auras["player_any_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 132,
+    xOffset = 136,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -40,17 +40,16 @@ ns.auras["player_any_aggro"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Swing Timer",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_inverse = false,
                 duration = "1",
-                use_unit = true,
-                custom_type = "stateupdate",
-                unevent = "auto",
+                custom_hide = "timed",
+                events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -103,15 +102,16 @@ ns.auras["player_any_aggro"] = {
     
     return true
 end]],
-                events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
+                unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
                 remaining_operator = "<",
-                use_remaining = true,
                 remaining = "0.2",
+                use_remaining = true,
             },
             untrigger = {
                 custom = [[function()
@@ -122,7 +122,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -134,18 +134,18 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

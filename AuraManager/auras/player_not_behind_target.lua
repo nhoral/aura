@@ -8,7 +8,7 @@ ns.auras["player_not_behind_target"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 208,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,50 +39,50 @@ ns.auras["player_not_behind_target"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                unit = "target",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_inverse = false,
                 duration = ".5",
-                use_unit = true,
-                custom_type = "event",
+                custom_hide = "timed",
+                events = "UI_ERROR_MESSAGE",
                 custom = [[function(event, arg1, arg2)
     if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
         return true
     end
     return false
 end]],
-                events = "UI_ERROR_MESSAGE",
-                custom_hide = "timed",
+                custom_type = "event",
+                use_unit = true,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
-                interruptSchool = 16,
-                controlType = "ROOT",
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                controlType = "ROOT",
+                useExactSpellId = false,
+                interruptSchool = 16,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -95,7 +95,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

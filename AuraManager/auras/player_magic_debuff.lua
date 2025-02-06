@@ -8,7 +8,7 @@ ns.auras["player_magic_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 172,
+    xOffset = 176,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["player_magic_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HARMFUL",
+                useRem = false,
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = false,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = false,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HARMFUL",
                 use_inverse = false,
                 use_unit = true,
                 use_debuffClass = true,
@@ -60,19 +60,19 @@ ns.auras["player_magic_debuff"] = {
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
-                interruptSchool = 16,
-                controlType = "STUN",
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                controlType = "STUN",
+                useExactSpellId = false,
+                interruptSchool = 16,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["player_magic_debuff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

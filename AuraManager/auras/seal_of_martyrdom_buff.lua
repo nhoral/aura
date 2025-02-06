@@ -8,8 +8,8 @@ ns.auras["seal_of_martyrdom_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
-    yOffset = 72,
+    xOffset = 100,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,27 +39,27 @@ ns.auras["seal_of_martyrdom_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Seal of Martyrdom",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["seal_of_martyrdom_buff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

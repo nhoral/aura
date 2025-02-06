@@ -8,8 +8,8 @@ ns.auras["icon_triangle_exists"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 92,
+    xOffset = 100,
+    yOffset = 88,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,18 +39,15 @@ ns.auras["icon_triangle_exists"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
-                custom_type = "stateupdate",
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                unevent = "auto",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -91,7 +88,10 @@ ns.auras["icon_triangle_exists"] = {
     
     return true
 end]],
+                unevent = "auto",
                 check = "update",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = [[{
   stacks = true,
 }]],
@@ -101,7 +101,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -113,7 +113,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

@@ -8,7 +8,7 @@ ns.auras["pet_target_target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 120,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,21 +39,19 @@ ns.auras["pet_target_target_aggro"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Conditions",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                spellName = 5176,
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                genericShowOn = "showOnCooldown",
                 use_inverse = false,
+                genericShowOn = "showOnCooldown",
                 use_track = true,
-                use_unit = true,
-                custom_type = "stateupdate",
+                spellName = 5176,
                 custom = [[function(allstates)
     if not UnitAffectingCombat("pet") then
         allstates[""] = allstates[""] or {show = false}
@@ -81,24 +79,26 @@ ns.auras["pet_target_target_aggro"] = {
     return true
 end]],
                 check = "update",
+                custom_type = "stateupdate",
+                use_unit = true,
                 customVariables = "{}",
                 itemName = 0,
                 use_itemName = true,
                 use_messageType = false,
-                use_message = false,
                 use_spec = true,
                 instance_size = {},
                 use_sourceName = false,
-                use_moveSpeed = false,
                 use_targetRequired = false,
+                use_moveSpeed = false,
                 use_ismoving = true,
+                use_message = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -107,7 +107,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

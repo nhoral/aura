@@ -8,7 +8,7 @@ ns.auras["divine_protection_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 180,
+    xOffset = 184,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["divine_protection_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Divine Protection",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_debuffClass = false,
             },
             untrigger = {},
@@ -60,7 +60,7 @@ ns.auras["divine_protection_buff"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -73,7 +73,7 @@ ns.auras["divine_protection_buff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -289,10 +289,12 @@ class ScreenMonitor:
             for condition in action["conditions"]:
                 if condition.startswith("!"):
                     condition_name = condition[1:]
+                    # For negated conditions, they are met when the condition is NOT in active_conditions
                     if condition_name in active_conditions:
                         all_conditions_met = False
                         break
                 else:
+                    # For normal conditions, they are met when the condition IS in active_conditions
                     if condition not in active_conditions:
                         all_conditions_met = False
                         break
@@ -321,12 +323,16 @@ class ScreenMonitor:
         for condition in action['conditions']:
             if condition.startswith('!'):
                 condition_name = condition[1:]
-                is_met = condition_name not in active_conditions
-                status = "FALSE" if is_met else "TRUE"
+                is_present = condition_name in active_conditions
+                # For negated conditions, they are met when the condition is NOT present
+                is_met = not is_present
+                status = "PRESENT" if is_present else "NOT_PRESENT"
             else:
-                is_met = condition in active_conditions
-                status = "TRUE" if is_met else "FALSE"
-            condition_status.append(f"{condition}: {status}")
+                is_present = condition in active_conditions
+                # For normal conditions, they are met when the condition IS present
+                is_met = is_present
+                status = "PRESENT" if is_present else "NOT_PRESENT"
+            condition_status.append(f"{condition}: {status} ({is_met})")
         
         print(f"Executing: {action_name} [key: {key}]")
         print(f"Conditions: {', '.join(condition_status)}")
@@ -410,7 +416,7 @@ def main():
                       default='scripts/layout.json',
                       help='Path to layout JSON file')
     parser.add_argument('--profile', '-p',
-                      default='scripts/profiles/warlock.json',
+                      default='scripts/profiles/rogue_new.json',
                       help='Path to profile JSON file')
     parser.add_argument('--debug', '-d',
                       action='store_true',

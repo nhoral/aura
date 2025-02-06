@@ -8,7 +8,7 @@ ns.auras["power_word_fortitude_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 160,
+    xOffset = 164,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -39,23 +39,23 @@ ns.auras["power_word_fortitude_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 ownOnly = true,
                 event = "Health",
                 names = {},
-                unit = "player",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Power Word: Fortitude",
                 },
-                useName = true,
-                spellName = 1243,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 realSpellName = "Power Word: Fortitude",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
+                spellName = 1243,
                 use_unit = true,
             },
             untrigger = {},
@@ -63,7 +63,7 @@ ns.auras["power_word_fortitude_buff"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -76,7 +76,7 @@ ns.auras["power_word_fortitude_buff"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

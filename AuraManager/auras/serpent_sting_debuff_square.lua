@@ -8,7 +8,7 @@ ns.auras["serpent_sting_debuff_square"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 116,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -39,21 +39,20 @@ ns.auras["serpent_sting_debuff_square"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HARMFUL",
+                useRem = false,
                 ownOnly = true,
                 event = "Combat Log",
                 names = {},
                 unitExists = false,
-                unit = "target",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Serpent Sting",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
-                custom_type = "stateupdate",
+                subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HARMFUL",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -106,13 +105,14 @@ ns.auras["serpent_sting_debuff_square"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -124,7 +124,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },
