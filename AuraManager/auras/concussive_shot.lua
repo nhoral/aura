@@ -39,23 +39,23 @@ ns.auras["concussive_shot"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Action Usable",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Concussive Shot",
                 },
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
-                use_genericShowOn = true,
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 realSpellName = "Concussive Shot",
                 use_spellName = true,
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 5116,
@@ -65,7 +65,7 @@ ns.auras["concussive_shot"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -77,7 +77,7 @@ ns.auras["concussive_shot"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

@@ -39,13 +39,14 @@ ns.auras["range_8_cross"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
+                use_unit = true,
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
                 custom = [[function(allstates, event, ...)
@@ -53,13 +54,10 @@ ns.auras["range_8_cross"] = {
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
         
-        -- Check all nameplates
-        for i = 1, 40 do
-            local unit = "nameplate"..i
-            
-            -- Check if unit exists and is attackable
-            if UnitExists(unit) and UnitCanAttack("player", unit) then
-                -- Check if unit has cross mark (7)
+        -- Function to check a unit
+        local function checkUnit(unit)
+            if UnitExists(unit) and UnitCanAttack("player", unit) and not UnitIsDeadOrGhost(unit) then
+                -- Check if unit has circle mark (2) and is in range
                 local mark = GetRaidTargetIndex(unit)
                 local inRange = WeakAuras.CheckRange(unit, 8, "<=")
                 
@@ -72,6 +70,32 @@ ns.auras["range_8_cross"] = {
                     return true
                 end
             end
+            return false
+        end
+        
+        -- Check nameplates (max 20)
+        for i = 1, 20 do
+            if checkUnit("nameplate" .. i) then
+                return true
+            end
+        end
+        
+        -- Check direct targets
+        if checkUnit("target") then
+            return true
+        end
+        if checkUnit("pettarget") then
+            return true
+        end
+        
+        -- Check party members and their targets/pets
+        for i = 1, 4 do
+            if checkUnit("party" .. i .. "target") then
+                return true
+            end
+            if checkUnit("partypet" .. i .. "target") then
+                return true
+            end
         end
         
         -- No valid target found, hide aura
@@ -79,13 +103,13 @@ ns.auras["range_8_cross"] = {
             show = false,
             changed = true
         }
-        return true
     end
+    
+    return true
 end]],
                 unevent = "auto",
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
                 customVariables = "",
             },
             untrigger = {},
@@ -93,7 +117,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -105,7 +129,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

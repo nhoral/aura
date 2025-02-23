@@ -39,13 +39,14 @@ ns.auras["enemy_loose"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
+                use_unit = true,
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
                 custom = [[function(allstates)
@@ -87,7 +88,6 @@ end]],
                 unevent = "auto",
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
                 customVariables = [[{
   stacks = true,
 }]],
@@ -97,7 +97,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -109,7 +109,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

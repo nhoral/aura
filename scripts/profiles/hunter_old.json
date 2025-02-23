@@ -1,45 +1,105 @@
 {
-    "name": "Hunter",
-    "actions": [
+    "name": "Hunter Hardcore",
+    "actions": [  
         {
-            "name": "Hunters Mark",
-            "key": "5",
-            "conditions": ["!hunter's_mark", "power_15", "enemy_over_8_yards_range"]
+            "name": "Call/Revive Pet uses macro",
+            "key": "4",
+            "conditions": ["!combat","!player_has_pet"]
         },
+        {
+            "name": "OOC Scan targetenemy",
+            "key": "1",
+            "conditions": ["!combat", "!target_skull"]
+        },
+        {
+            "name": "use potion at 50% health",
+            "key": "2",
+            "conditions": ["potion_in_inventory", "combat", "health_under_50", "!potion"]
+        },
+        {
+            "name": "use bandage at 50% health",
+            "key": "3",
+            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!player_any_aggro", "!player_moving", "combat"]
+        },
+        {
+            "name": "Target triangle for Pet Attack: /targetenemy",
+            "key": "1",
+            "conditions": ["player_has_pet", "icon_triangle_exists", "!pet_attacking_triangle", "!pet_aggro_triangle", "!target_is_ooc", "!target_triangle"]
+        },
+        {
+            "name": "Pet Attack Triangle",
+            "key": "SHIFT-1",
+            "conditions": ["player_has_pet", "!pet_attacking_triangle", "target_triangle"]
+        },
+        {
+            "name": "Target Skull: /targetenemy",
+            "key": "1",
+            "conditions": ["!target_skull"]
+        },
+        {
+            "name": "Pet Attack Skull",
+            "key": "SHIFT-1",
+            "conditions": ["player_has_pet", "icon_skull_exists", "!icon_triangle_exists", "!pet_attacking_skull"]
+        },
+        {
+            "name": "Heal Pet",
+            "key": "SHIFT-2",
+            "conditions": ["player_has_pet", "pet_health_under_20", "!player_moving", "combat", "pet_range_20", "power_20", "!channeling"]
+        },
+        {
+            "name": "Wing Clip",
+            "key": "-",
+            "conditions": ["!wing_clip_debuff", "range_8", "power_10", "!channeling"]
+        }, 
         {
             "name": "Serpent Sting",
-            "key": "3",
-            "conditions": ["!serpent_sting", "power_15", "enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+            "key": "6",
+            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10", "!channeling"]
         },
         {
-            "name": "Arcane Shot",
-            "key": "6",
-            "conditions": ["arcane_shot", "power_25", "enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+            "name": "Distracting Shot",
+            "key": "0",
+            "conditions": ["distracting_shot", "concussive_shot", "target_securely_tanked", "!range_8", "range_35", "power_40", "pet_health_under_20", "!channeling"]
+        }, 
+        {
+            "name": "Concussive Shot",
+            "key": "9",
+            "conditions": ["concussive_shot", "!concussive_shot_debuff", "target_aggro","!range_8", "range_35", "power_10", "!channeling"]
+        },   
+        {
+            "name": "Arane Shot",
+            "key": "8",
+            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35", "!channeling"]
         },
         {
             "name": "Raptor Strike",
-            "key": "2",
-            "conditions": ["raptor_strike", "melee_range", "power_15"]
+            "key": "5",
+            "conditions": ["raptor_strike", "range_8", "power_10", "!channeling"]
         },
         {
             "name": "Auto Shot",
-            "key": "1",
-            "conditions": ["enemy_over_8_yards_range", "!enemy_over_35_yards_range"]
+            "key": "3",
+            "conditions": ["!player_shooting","!range_8", "range_35", "!channeling"]
         },
         {
-            "name": "Start Scanning Range",
-            "key": "1",
-            "conditions": ["combat","player_gcd", "!player_shooting", "!range_8", "range_30", "!scanning"]
+            "name": "Stop and Shoot (Left)",
+            "key": "HOLD-right",
+            "conditions": ["combat", "is_moving_left", "player_shooting", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
         },
         {
-            "name": "Start Scanning Melee",
-            "key": "1",
-            "conditions": ["combat","player_gcd", "range_8", "!scanning"]
+            "name": "Stop and Shoot (Right)",
+            "key": "HOLD-left",
+            "conditions": ["combat", "is_moving_right", "player_shooting", "!player_swing", "range_35", "!health_under_50", "!range_8_1+"]
         },
         {
-            "name": "Start Scanning OOC",
-            "key": "1",
-            "conditions": ["!combat","!scanning"]
+            "name": "Stop and Shoot (Forward)",
+            "key": "HOLD-down",
+            "conditions": ["combat", "is_moving_forward", "player_shooting", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
+        },
+        {
+            "name": "Stop and Shoot (Backward)",
+            "key": "HOLD-up",
+            "conditions": ["combat", "is_moving_backward", "player_shooting", "!player_swing", "range_35", "!health_under_50", "!range_8_1+"]
         }
     ]
-} 
+}

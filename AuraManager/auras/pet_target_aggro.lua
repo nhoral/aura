@@ -39,19 +39,20 @@ ns.auras["pet_target_aggro"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Conditions",
                 names = {},
+                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
-                use_genericShowOn = true,
+                use_inverse = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                use_inverse = false,
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 5176,
+                use_unit = true,
                 custom = [[function(allstates)
     if not UnitAffectingCombat("pet") then
         allstates[""] = allstates[""] or {show = false}
@@ -80,7 +81,6 @@ ns.auras["pet_target_aggro"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
                 customVariables = "{}",
                 itemName = 0,
                 use_itemName = true,
@@ -90,15 +90,15 @@ end]],
                 use_sourceName = false,
                 use_targetRequired = false,
                 use_moveSpeed = false,
-                use_ismoving = true,
                 use_message = false,
+                use_ismoving = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -107,7 +107,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

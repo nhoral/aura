@@ -39,19 +39,19 @@ ns.auras["player_rooted"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Quick Flame Ward",
                 },
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_inverse = false,
                 use_unit = true,
                 use_debuffClass = false,
@@ -64,15 +64,15 @@ ns.auras["player_rooted"] = {
                     "116",
                 },
                 controlType = "ROOT",
-                useExactSpellId = false,
                 interruptSchool = 16,
+                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["player_rooted"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

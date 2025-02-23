@@ -39,31 +39,31 @@ ns.auras["player_not_behind_target"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Quick Flame Ward",
                 },
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_inverse = false,
                 duration = ".5",
-                custom_hide = "timed",
-                events = "UI_ERROR_MESSAGE",
+                use_unit = true,
                 custom = [[function(event, arg1, arg2)
     if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
         return true
     end
     return false
 end]],
+                events = "UI_ERROR_MESSAGE",
                 custom_type = "event",
-                use_unit = true,
+                custom_hide = "timed",
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
@@ -74,15 +74,15 @@ end]],
                     "116",
                 },
                 controlType = "ROOT",
-                useExactSpellId = false,
                 interruptSchool = 16,
+                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -95,7 +95,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

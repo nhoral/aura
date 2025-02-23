@@ -37,28 +37,62 @@ ns.auras["player_casting"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "unit",
+                type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Cast",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_genericShowOn = true,
                 realSpellName = 0,
                 use_spellName = true,
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 0,
                 use_unit = true,
+                custom = [[function(allstates, event, ...)
+    -- Throttle updates for performance
+    if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.05 then
+        aura_env.lastUpdate = GetTime()
+        
+        -- Get casting info
+        local name, _, _, _, endTime = UnitCastingInfo("player")
+        
+        -- Store end time with buffer for comparison
+        if name then
+            aura_env.bufferedEndTime = (endTime / 1000) + 0.05
+        end
+        
+        -- Show if casting or within buffer period
+        if name or (aura_env.bufferedEndTime and GetTime() < aura_env.bufferedEndTime) then
+            allstates[""] = {
+                show = true,
+                changed = true
+            }
+        else
+            allstates[""] = {
+                show = false,
+                changed = true
+            }
+            aura_env.bufferedEndTime = nil
+        end
+    end
+    
+    return true
+end]],
+                check = "update",
+                custom_type = "stateupdate",
+                remaining_operator = ">",
+                use_remaining = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -67,7 +101,7 @@ ns.auras["player_casting"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

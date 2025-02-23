@@ -39,17 +39,16 @@ ns.auras["scanner_cross"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
                 use_absorbMode = true,
                 customStacks = [[function() return aura_env.count end]],
-                events = "PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.1 then
@@ -72,27 +71,41 @@ ns.auras["scanner_cross"] = {
                 end
                 i = i + 1
             end
-            
             return true
+        end
+        
+        -- Function to check if unit is targeting any party member
+        local function isTargetingPartyMember(unit)
+            local targetUnit = unit .. "target"
+            -- Check if targeting player
+            if UnitExists(targetUnit) and UnitIsUnit(targetUnit, "player") then
+                return true
+            end
+            -- Check if targeting party members
+            for i = 1, 4 do
+                if UnitExists("party" .. i) and UnitIsUnit(targetUnit, "party" .. i) then
+                    return true
+                end
+            end
+            return false
         end
         
         -- Function to check a unit
         local function checkUnit(unit)
             if UnitExists(unit) and UnitCanAttack("player", unit) and not UnitIsDeadOrGhost(unit) then
-                -- Clear triangle if unit can't be gouged
-                if GetRaidTargetIndex(unit) == 7 and not canBeGouged(unit) then
+                local currentMark = GetRaidTargetIndex(unit)
+                
+                -- Clear cross if unit can't be gouged
+                if currentMark == 7 and not canBeGouged(unit) then
                     SetRaidTarget(unit, 0)
                     return
                 end
                 
-                -- Skip if unit has skull or already has triangle
-                local currentMark = GetRaidTargetIndex(unit)
-                if currentMark == 8 or currentMark == 4 then return end
+                -- Skip if unit has skull
+                if currentMark == 8 then return end
                 
-                -- Check if unit is attacking a friendly player and can be gouged
-                local targetUnit = unit .. "target"
-                if UnitExists(targetUnit) and UnitIsPlayer(targetUnit) and 
-                not UnitCanAttack("player", targetUnit) and canBeGouged(unit) then
+                -- Check if unit is attacking any party member and can be gouged
+                if isTargetingPartyMember(unit) and canBeGouged(unit) then
                     -- Get range
                     local range = 200
                     if CheckInteractDistance(unit, 2) then -- 9 yards
@@ -101,7 +114,7 @@ ns.auras["scanner_cross"] = {
                         range = 30
                     end
                     
-                    -- Update best target if closer
+                    -- Update best target if closer or already marked with cross
                     if range < bestRange then
                         bestTarget = unit
                         bestRange = range
@@ -122,7 +135,7 @@ ns.auras["scanner_cross"] = {
             checkUnit("partypet" .. i .. "target")
         end
         
-        -- Mark best target with triangle if not already marked
+        -- Mark best target with cross if not already marked
         if bestTarget and GetRaidTargetIndex(bestTarget) ~= 7 then
             SetRaidTarget(bestTarget, 7)
         end
@@ -130,10 +143,11 @@ ns.auras["scanner_cross"] = {
     
     return true
 end]],
+                events = "PLAYER_TARGET_CHANGED",
                 unevent = "auto",
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
 }]],
@@ -143,7 +157,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -155,10 +169,10 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
-        use_never = false,
+        use_never = true,
         zoneIds = "",
     },
     animation = {

@@ -39,14 +39,14 @@ ns.auras["pet_health_under_75"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "pet",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "pet",
-                debuffType = "HELPFUL",
-                use_absorbMode = true,
                 use_unit = true,
+                use_absorbMode = true,
                 powertype = 3,
                 use_powertype = true,
                 use_absorbHealMode = true,
@@ -66,7 +66,7 @@ ns.auras["pet_health_under_75"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -78,7 +78,7 @@ ns.auras["pet_health_under_75"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

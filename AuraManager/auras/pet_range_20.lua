@@ -39,27 +39,27 @@ ns.auras["pet_range_20"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Range Check",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "pet",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "DAMAGE_SHIELD",
                 auranames = {
                     "Moonfire",
                 },
-                subeventPrefix = "DAMAGE_SHIELD",
-                unit = "pet",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 duration = "1",
-                range = "20",
                 use_unit = true,
-                range_operator = "<=",
+                range = "20",
                 use_range = true,
+                range_operator = "<=",
                 itemName = 10410,
                 use_count = false,
                 use_itemName = true,
@@ -72,13 +72,13 @@ ns.auras["pet_range_20"] = {
                 threatpct = {
                     "100",
                 },
-                use_delay = true,
-                use_threatpct = false,
-                use_aggro = true,
-                status = 3,
                 eventtype = "PLAYER_REGEN_ENABLED",
-                use_status = false,
+                use_aggro = true,
                 use_eventtype = true,
+                use_status = false,
+                status = 3,
+                use_threatpct = false,
+                use_delay = true,
                 use_messageType = true,
             },
             untrigger = {},
@@ -86,7 +86,7 @@ ns.auras["pet_range_20"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -98,7 +98,7 @@ ns.auras["pet_range_20"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

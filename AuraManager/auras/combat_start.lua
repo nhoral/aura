@@ -39,20 +39,20 @@ ns.auras["combat_start"] = {
             trigger = {
                 type = "event",
                 subeventSuffix = "",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Combat Events",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "DAMAGE_SHIELD",
                 auranames = {
                     "Moonfire",
                 },
-                subeventPrefix = "DAMAGE_SHIELD",
-                unit = "target",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 duration = "4",
@@ -69,13 +69,13 @@ ns.auras["combat_start"] = {
                 threatpct = {
                     "100",
                 },
-                use_delay = false,
-                use_threatpct = false,
-                use_aggro = true,
-                status = 3,
                 eventtype = "PLAYER_REGEN_DISABLED",
-                use_status = false,
+                use_aggro = true,
                 use_eventtype = true,
+                use_status = false,
+                status = 3,
+                use_threatpct = false,
+                use_delay = false,
                 use_messageType = true,
                 delay = 2,
             },
@@ -84,7 +84,7 @@ ns.auras["combat_start"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -96,7 +96,7 @@ ns.auras["combat_start"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

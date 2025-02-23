@@ -1,10 +1,10 @@
 {
     "name": "Hunter Hardcore",
-    "actions": [  
+    "actions": [
         {
             "name": "Call/Revive Pet uses macro",
             "key": "4",
-            "conditions": ["!combat","!player_has_pet"]
+            "conditions": ["inactive", "!combat","!player_has_pet"]
         },
         {
             "name": "OOC Scan targetenemy",
@@ -19,17 +19,17 @@
         {
             "name": "use bandage at 50% health",
             "key": "3",
-            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!player_any_aggro", "!player_moving", "combat"]
+            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!target_aggro", "!player_moving"]
         },
         {
             "name": "Target triangle for Pet Attack: /targetenemy",
             "key": "1",
-            "conditions": ["player_has_pet", "icon_triangle_exists", "!pet_attacking_triangle", "!pet_aggro_triangle", "!target_is_ooc", "!target_triangle"]
+            "conditions": ["inactive","player_has_pet", "icon_triangle_exists", "!pet_attacking_triangle", "!pet_aggro_triangle", "!target_is_ooc", "!target_triangle"]
         },
         {
             "name": "Pet Attack Triangle",
             "key": "SHIFT-1",
-            "conditions": ["player_has_pet", "!pet_attacking_triangle", "target_triangle"]
+            "conditions": ["inactive", "player_has_pet", "!pet_attacking_triangle", "target_triangle"]
         },
         {
             "name": "Target Skull: /targetenemy",
@@ -39,67 +39,42 @@
         {
             "name": "Pet Attack Skull",
             "key": "SHIFT-1",
-            "conditions": ["player_has_pet", "icon_skull_exists", "!icon_triangle_exists", "!pet_attacking_skull"]
+            "conditions": ["inactive", "icon_skull_exists", "!icon_triangle_exists", "!pet_attacking_skull"]
         },
         {
-            "name": "Heal Pet",
-            "key": "SHIFT-2",
-            "conditions": ["player_has_pet", "pet_health_under_20", "!player_moving", "combat", "pet_range_20", "power_20", "!channeling"]
+            "name": "Hunters Mark",
+            "key": "8",
+            "conditions": ["target_skull","!hunter's_mark_debuff", "power_80", "!range_8", "range_35"]
         },
-        {
-            "name": "Wing Clip",
-            "key": "-",
-            "conditions": ["!wing_clip_debuff", "range_8", "power_10", "!channeling"]
-        }, 
         {
             "name": "Serpent Sting",
             "key": "6",
-            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10", "!channeling"]
+            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10"]
         },
-        {
-            "name": "Distracting Shot",
-            "key": "0",
-            "conditions": ["distracting_shot", "concussive_shot", "target_securely_tanked", "!range_8", "range_35", "power_40", "pet_health_under_20", "!channeling"]
-        }, 
         {
             "name": "Concussive Shot",
             "key": "9",
-            "conditions": ["concussive_shot", "!concussive_shot_debuff", "target_aggro","!range_8", "range_35", "power_10", "!channeling"]
-        },   
+            "conditions": ["inactive","concussive_shot", "!concussive_shot_debuff", "!range_8", "range_35", "power_10"]
+        },
         {
             "name": "Arane Shot",
-            "key": "8",
-            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35", "!channeling"]
+            "key": "7",
+            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35"]
         },
         {
             "name": "Raptor Strike",
             "key": "5",
-            "conditions": ["raptor_strike", "range_8", "power_10", "!channeling"]
+            "conditions": ["raptor_strike", "range_8", "power_10"]
         },
         {
             "name": "Auto Shot",
-            "key": "3",
-            "conditions": ["!player_shooting","!range_8", "range_35", "!channeling"]
+            "key": "4",
+            "conditions": ["!player_shooting","!range_8", "range_30"]
         },
         {
-            "name": "Stop and Shoot (Left)",
-            "key": "HOLD-right",
-            "conditions": ["combat", "is_moving_left", "player_shooting", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
-        },
-        {
-            "name": "Stop and Shoot (Right)",
-            "key": "HOLD-left",
-            "conditions": ["combat", "is_moving_right", "player_shooting", "!player_swing", "range_35", "!health_under_50", "!range_8_1+"]
-        },
-        {
-            "name": "Stop and Shoot (Forward)",
-            "key": "HOLD-down",
-            "conditions": ["combat", "is_moving_forward", "player_shooting", "!range_8", "range_35", "!health_under_50", "!range_8_1+"]
-        },
-        {
-            "name": "Stop and Shoot (Backward)",
-            "key": "HOLD-up",
-            "conditions": ["combat", "is_moving_backward", "player_shooting", "!player_swing", "range_35", "!health_under_50", "!range_8_1+"]
+            "name": "Auto Attack",
+            "key": "SHIFT-2",
+            "conditions": ["!player_attacking", "range_8"]
         }
     ]
 }

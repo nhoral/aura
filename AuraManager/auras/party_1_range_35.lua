@@ -39,23 +39,23 @@ ns.auras["party_1_range_35"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Range Check",
                 names = {},
+                unit = "party1",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "party1",
-                debuffType = "HELPFUL",
-                use_genericShowOn = true,
+                use_inverse = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
-                use_inverse = false,
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 5176,
-                range = "35",
                 use_unit = true,
-                range_operator = "<=",
+                range = "35",
                 use_range = true,
+                range_operator = "<=",
                 itemName = 0,
                 use_itemName = true,
                 use_hand = true,
@@ -65,15 +65,15 @@ ns.auras["party_1_range_35"] = {
                 use_targetRequired = false,
                 use_moveSpeed = false,
                 use_message = false,
-                use_specific_unit = true,
                 use_spellNames = true,
+                use_specific_unit = true,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -82,7 +82,7 @@ ns.auras["party_1_range_35"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

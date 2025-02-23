@@ -116,27 +116,39 @@ class ScreenMonitor:
                 # Check conditions and execute actions if monitoring is active
                 current_time = time.time()
                 if self.is_monitoring_active() and (current_time - self.last_check) >= self.check_interval:
-                    # Get current conditions
-                    active_conditions = self.checker.check_conditions()
+                    # Get current game conditions
+                    game_conditions = self.checker.check_conditions()
+                    if not game_conditions and self.debug:
+                        print("\nDEBUG - WARNING: check_conditions() returned empty list!")
+                        print("DEBUG - Last check time:", self.last_check)
+                        print("DEBUG - Current time:", current_time)
+                        print("DEBUG - Check interval:", self.check_interval)
                     
-                    # Add movement conditions to active conditions
-                    active_conditions.extend([
+                    # Get movement conditions
+                    movement_conditions = [
                         condition for condition, is_active in self.movement_states.items()
                         if is_active
-                    ])
+                    ]
                     
-                    # Get next action
-                    action = self.get_next_action(active_conditions)
-                    
-                    # If we have a held key but no action or a different action,
-                    # release the held key
-                    if self.currently_held_key:
-                        if not action or action != self.current_hold_action:
-                            self._release_held_key()
-                    
-                    # Execute the action if we have one
-                    if action:
-                        self.execute_action(action)
+                    # Only proceed with action evaluation if we have game conditions
+                    if game_conditions:
+                        # Combine all conditions
+                        active_conditions = game_conditions + movement_conditions
+                        
+                        # Get next action
+                        action = self.get_next_action(active_conditions)
+                        
+                        # If we have a held key but no action or a different action,
+                        # release the held key
+                        if self.currently_held_key:
+                            if not action or action != self.current_hold_action:
+                                self._release_held_key()
+                        
+                        # Execute the action if we have one
+                        if action:
+                            self.execute_action(action, active_conditions)
+                    elif self.debug and movement_conditions:
+                        print("DEBUG - Skipping action evaluation - only movement conditions present:", movement_conditions)
                     
                     self.last_check = current_time
                 elif not self.is_monitoring_active() and self.currently_held_key:
@@ -281,7 +293,7 @@ class ScreenMonitor:
     
     def get_next_action(self, active_conditions):
         """Get the next action to execute based on active conditions"""
-        if not self.is_monitoring_active():
+        if not self.is_monitoring_active() or not active_conditions:
             return None
 
         for action in self.profile["actions"]:
@@ -300,6 +312,12 @@ class ScreenMonitor:
                         break
             
             if all_conditions_met:
+                # Only log debug info if we're about to return a key "1" action
+                if action["key"] == "1":
+                    print(f"\nDEBUG - Selected action: {action['name']}")
+                    print(f"DEBUG - Current conditions: {active_conditions}")
+                    print(f"DEBUG - Required conditions: {action['conditions']}")
+                    print("DEBUG - All conditions met\n")
                 return action
         return None
     
@@ -312,13 +330,28 @@ class ScreenMonitor:
         else:
             return KeyCode.from_char(key_str)
 
-    def execute_action(self, action: Dict[str, Any]):
+    def execute_action(self, action: Dict[str, Any], active_conditions: List[str]):
         """Execute a keyboard action"""
         action_name = action.get('name', 'Name Missing')
         key = action['key']
         
+        # Verify conditions are still met
+        all_conditions_met = True
+        for condition in action['conditions']:
+            if condition.startswith('!'):
+                condition_name = condition[1:]
+                if condition_name in active_conditions:
+                    all_conditions_met = False
+                    break
+            else:
+                if condition not in active_conditions:
+                    all_conditions_met = False
+                    break
+                    
+        if not all_conditions_met:
+            return
+        
         # Build condition status string
-        active_conditions = self.checker.check_conditions()
         condition_status = []
         for condition in action['conditions']:
             if condition.startswith('!'):
@@ -416,7 +449,7 @@ def main():
                       default='scripts/layout.json',
                       help='Path to layout JSON file')
     parser.add_argument('--profile', '-p',
-                      default='scripts/profiles/rogue_new.json',
+                      default='scripts/profiles/hunter_new.json',
                       help='Path to profile JSON file')
     parser.add_argument('--debug', '-d',
                       action='store_true',

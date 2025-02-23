@@ -39,23 +39,23 @@ ns.auras["pet_growl"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Action Usable",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "DAMAGE_SHIELD",
                 auranames = {
                     "Moonfire",
                 },
-                subeventPrefix = "DAMAGE_SHIELD",
-                unit = "target",
-                debuffType = "HARMFUL",
-                use_genericShowOn = true,
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 realSpellName = "Growl",
                 use_spellName = true,
+                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 14916,
@@ -73,13 +73,13 @@ ns.auras["pet_growl"] = {
                 threatpct = {
                     "100",
                 },
-                use_delay = true,
-                use_threatpct = false,
-                use_aggro = true,
-                status = 3,
                 eventtype = "PLAYER_REGEN_ENABLED",
-                use_status = false,
+                use_aggro = true,
                 use_eventtype = true,
+                use_status = false,
+                status = 3,
+                use_threatpct = false,
+                use_delay = true,
                 use_messageType = true,
                 use_itemBonusId = true,
                 use_itemSlot = false,
@@ -94,7 +94,7 @@ ns.auras["pet_growl"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -106,7 +106,7 @@ ns.auras["pet_growl"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

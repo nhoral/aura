@@ -39,12 +39,12 @@ ns.auras["rune_3"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_unit = true,
                 powertype = 6,
@@ -66,15 +66,15 @@ ns.auras["rune_3"] = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                rune = 0,
                 runesCount = "3",
+                rune = 0,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -86,7 +86,7 @@ ns.auras["rune_3"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

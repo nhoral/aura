@@ -40,22 +40,22 @@ ns.auras["potion"] = {
             trigger = {
                 type = "item",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Cooldown Progress (Item)",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Enrage",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_genericShowOn = true,
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 realSpellName = "Taunt",
                 use_spellName = true,
+                use_genericShowOn = true,
                 genericShowOn = "showOnReady",
                 use_track = true,
                 spellName = 355,
@@ -72,22 +72,22 @@ ns.auras["potion"] = {
             trigger = {
                 type = "item",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Cooldown Progress (Item)",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Enrage",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_genericShowOn = true,
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 realSpellName = "Taunt",
                 use_spellName = true,
+                use_genericShowOn = true,
                 genericShowOn = "showOnReady",
                 use_track = true,
                 spellName = 355,
@@ -103,7 +103,7 @@ ns.auras["potion"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -116,7 +116,7 @@ ns.auras["potion"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },
