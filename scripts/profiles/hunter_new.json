@@ -72,6 +72,11 @@
             "conditions": ["!player_shooting","!range_8", "range_30"]
         },
         {
+            "name": "Stop and Shoot",
+            "key": "STOP",
+            "conditions": ["combat", "player_shooting", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
+        },
+        {
             "name": "Auto Attack",
             "key": "SHIFT-2",
             "conditions": ["!player_attacking", "range_8"]
