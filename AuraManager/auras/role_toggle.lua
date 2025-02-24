@@ -8,7 +8,7 @@ ns.auras["role_toggle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 160,
+    xOffset = 168,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -45,6 +45,7 @@ ns.auras["role_toggle"] = {
                 unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                custom_type = "status",
                 custom = [[function(event,glStr,value)
     local cvar="WeakaurasCustomToggle1"
     if glStr and value and glStr==cvar then
@@ -55,7 +56,6 @@ ns.auras["role_toggle"] = {
 end]],
                 events = "CVAR_UPDATE",
                 check = "event",
-                custom_type = "status",
             },
             untrigger = {
                 custom = [[function(event,glStr,value)

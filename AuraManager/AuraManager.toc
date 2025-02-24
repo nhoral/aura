@@ -64,6 +64,7 @@ auras/divine_protection_buff.lua
 auras/divine_shield.lua
 auras/divine_steed.lua
 auras/divine_storm.lua
+auras/earth_shock.lua
 auras/empower_rune_weapon.lua
 auras/enemy_loose.lua
 auras/entangled_debuff.lua
@@ -233,6 +234,7 @@ auras/rejuvenation_buff.lua
 auras/remorseless_winter.lua
 auras/rime_buff.lua
 auras/rip_debuff.lua
+auras/rockbiter_weapon_buff.lua
 auras/rocket_barrage.lua
 auras/role_toggle.lua
 auras/rune_1.lua
@@ -244,6 +246,7 @@ auras/savage_roar.lua
 auras/scan_timeout.lua
 auras/scanner.lua
 auras/scanner_cross.lua
+auras/scanner_diamond.lua
 auras/scanner_mk._2.lua
 auras/scanner_skull.lua
 auras/scanner_test.lua
@@ -260,6 +263,7 @@ auras/skull_bash.lua
 auras/slice_and_dice_buff.lua
 auras/sprint.lua
 auras/stealth_buff.lua
+auras/stoneskin_buff.lua
 auras/swing_timer_at_max.lua
 auras/swing_timer_test.lua
 auras/target_aggro.lua

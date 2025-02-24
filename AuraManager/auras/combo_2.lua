@@ -59,14 +59,14 @@ ns.auras["combo_2"] = {
                     ">=",
                 },
                 use_runesCount = true,
-                power = {
-                    "2",
-                },
+                runesCount = "1",
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                runesCount = "1",
+                power = {
+                    "2",
+                },
                 rune = 0,
                 use_health = false,
             },

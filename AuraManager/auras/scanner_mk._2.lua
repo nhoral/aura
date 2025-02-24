@@ -8,7 +8,7 @@ ns.auras["scanner_mk._2"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 200,
+    xOffset = 212,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -47,8 +47,7 @@ ns.auras["scanner_mk._2"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Initialize aura environment variables if not exists
     aura_env.last = aura_env.last or 0
@@ -281,10 +280,11 @@ ns.auras["scanner_mk._2"] = {
     end
     return false
 end]],
+                customStacks = [[function() return aura_env.count end]],
                 events = "PLAYER_TARGET_CHANGED UNIT_TARGET NAME_PLATE_UNIT_ADDED NAME_PLATE_UNIT_REMOVED",
                 unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
-                custom_type = "stateupdate",
                 customVariables = [[{
   stacks = true,
 }]],

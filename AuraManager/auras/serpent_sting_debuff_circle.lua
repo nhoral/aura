@@ -8,7 +8,7 @@ ns.auras["serpent_sting_debuff_circle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 108,
+    xOffset = 120,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -53,6 +53,7 @@ ns.auras["serpent_sting_debuff_circle"] = {
                 useName = true,
                 matchesShowOn = "showOnActive",
                 useRem = false,
+                custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -105,7 +106,6 @@ ns.auras["serpent_sting_debuff_circle"] = {
     end
 end]],
                 check = "update",
-                custom_type = "stateupdate",
             },
             untrigger = {},
         },

@@ -47,8 +47,7 @@ ns.auras["can_cc_triangle"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -120,9 +119,10 @@ ns.auras["can_cc_triangle"] = {
     
     return true
 end]],
+                customStacks = [[function() return aura_env.count end]],
                 unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
-                custom_type = "stateupdate",
                 customVariables = "",
             },
             untrigger = {},

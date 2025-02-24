@@ -8,8 +8,8 @@ ns.auras["icon_skull_seen"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 92,
+    xOffset = 100,
+    yOffset = 88,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,6 +45,7 @@ ns.auras["icon_skull_seen"] = {
                 unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                custom_type = "status",
                 custom = [[function(event, glStr, value)
     local cvar = "WeakAurasScannerSkullSeen"
     if glStr and value and glStr == cvar then
@@ -57,7 +58,6 @@ ns.auras["icon_skull_seen"] = {
 end]],
                 events = "CVAR_UPDATE",
                 check = "event",
-                custom_type = "status",
             },
             untrigger = {
                 custom = "",

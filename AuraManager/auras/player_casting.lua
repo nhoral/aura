@@ -8,7 +8,7 @@ ns.auras["player_casting"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 144,
+    xOffset = 148,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -45,13 +45,14 @@ ns.auras["player_casting"] = {
                 unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                use_genericShowOn = true,
                 realSpellName = 0,
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
-                use_track = true,
                 spellName = 0,
+                use_track = true,
                 use_unit = true,
+                custom_type = "stateupdate",
                 custom = [[function(allstates, event, ...)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.05 then
@@ -83,7 +84,6 @@ ns.auras["player_casting"] = {
     return true
 end]],
                 check = "update",
-                custom_type = "stateupdate",
                 remaining_operator = ">",
                 use_remaining = false,
             },

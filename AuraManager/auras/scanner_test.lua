@@ -8,8 +8,8 @@ ns.auras["scanner_test"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
-    yOffset = 72,
+    xOffset = 100,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -47,8 +47,7 @@ ns.auras["scanner_test"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                custom_type = "event",
                 custom = [[function(allstates, event)
     -- Initialize aura environment if it doesn't exist
     if not aura_env then aura_env = {} end
@@ -160,10 +159,11 @@ ns.auras["scanner_test"] = {
         return false
     end
 end]],
+                customStacks = [[function() return aura_env.count end]],
                 events = "PLAYER_TARGET_CHANGED",
                 unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
-                custom_type = "event",
                 custom_hide = "timed",
                 customVariables = [[{
   stacks = true,

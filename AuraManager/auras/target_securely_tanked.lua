@@ -8,8 +8,8 @@ ns.auras["target_securely_tanked"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
-    yOffset = 68,
+    xOffset = 100,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -47,8 +47,7 @@ ns.auras["target_securely_tanked"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -92,9 +91,10 @@ ns.auras["target_securely_tanked"] = {
         return true
     end
 end]],
+                customStacks = [[function() return aura_env.count end]],
                 unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
-                custom_type = "stateupdate",
                 customVariables = [[{
   stacks = true,
 }]],

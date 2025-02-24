@@ -8,7 +8,7 @@ ns.auras["scanner_cross"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 196,
+    xOffset = 204,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -47,8 +47,7 @@ ns.auras["scanner_cross"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.1 then
@@ -143,10 +142,11 @@ ns.auras["scanner_cross"] = {
     
     return true
 end]],
+                customStacks = [[function() return aura_env.count end]],
                 events = "PLAYER_TARGET_CHANGED",
                 unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
@@ -172,7 +172,7 @@ end]],
         size = {
             multi = {},
         },
-        use_never = true,
+        use_never = false,
         zoneIds = "",
     },
     animation = {

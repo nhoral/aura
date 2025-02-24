@@ -8,8 +8,8 @@ ns.auras["scanning"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 72,
+    xOffset = 108,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,6 +45,7 @@ ns.auras["scanning"] = {
                 unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                custom_type = "status",
                 custom = [[function(event, glStr, value)
     local cvar = "WeakAurasScannerToggle"
     if glStr and value and glStr == cvar then
@@ -57,7 +58,6 @@ ns.auras["scanning"] = {
 end]],
                 events = "CVAR_UPDATE",
                 check = "event",
-                custom_type = "status",
             },
             untrigger = {
                 custom = "",

@@ -8,8 +8,8 @@ ns.auras["target_triangle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 212,
-    yOffset = 68,
+    xOffset = 108,
+    yOffset = 64,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -48,6 +48,7 @@ ns.auras["target_triangle"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
         aura_env.last = GetTime()
@@ -68,16 +69,15 @@ ns.auras["target_triangle"] = {
 end]],
                 unevent = "auto",
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                unitisunit = "player",
                 use_raidMarkIndex = true,
                 raidMarkIndex = 8,
+                unitisunit = "player",
             },
             untrigger = {},
         },
@@ -102,11 +102,11 @@ end]],
         use_never = false,
         zoneIds = "",
         use_level = false,
-        level = {
-            "120",
-        },
         level_operator = {
             "~=",
+        },
+        level = {
+            "120",
         },
     },
     animation = {

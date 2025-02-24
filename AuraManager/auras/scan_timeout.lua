@@ -8,7 +8,7 @@ ns.auras["scan_timeout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 188,
+    xOffset = 196,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -46,6 +46,7 @@ ns.auras["scan_timeout"] = {
                 spellIds = {},
                 subeventPrefix = "SPELL",
                 use_unit = true,
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle the check for perf
     if not aura_env.last or GetTime() - aura_env.last > 0.1 then
@@ -84,7 +85,6 @@ ns.auras["scan_timeout"] = {
 end]],
                 events = "CVAR_UPDATE",
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
             },
             untrigger = {

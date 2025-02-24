@@ -8,8 +8,8 @@ ns.auras["scanner_triangle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 212,
-    yOffset = 72,
+    xOffset = 104,
+    yOffset = 68,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -47,8 +47,7 @@ ns.auras["scanner_triangle"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.1 then
@@ -131,10 +130,11 @@ ns.auras["scanner_triangle"] = {
     
     return true
 end]],
+                customStacks = [[function() return aura_env.count end]],
                 events = "PLAYER_TARGET_CHANGED",
                 unevent = "auto",
+                use_absorbMode = true,
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
@@ -160,7 +160,7 @@ end]],
         size = {
             multi = {},
         },
-        use_never = false,
+        use_never = true,
         zoneIds = "",
     },
     animation = {

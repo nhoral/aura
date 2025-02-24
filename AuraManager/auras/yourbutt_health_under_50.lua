@@ -8,7 +8,7 @@ ns.auras["yourbutt_health_under_50"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 136,
+    xOffset = 152,
     yOffset = 64,
     width = 3,
     height = 3,
@@ -48,6 +48,7 @@ ns.auras["yourbutt_health_under_50"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
         aura_env.last = GetTime()
@@ -82,7 +83,6 @@ ns.auras["yourbutt_health_under_50"] = {
 end]],
                 unevent = "auto",
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
                 customVariables = "{}",
             },
@@ -113,11 +113,11 @@ end]],
         use_never = false,
         zoneIds = "",
         use_level = false,
-        level = {
-            "120",
-        },
         level_operator = {
             "~=",
+        },
+        level = {
+            "120",
         },
         use_spellknown = false,
     },

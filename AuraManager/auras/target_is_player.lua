@@ -8,7 +8,7 @@ ns.auras["target_is_player"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 196,
+    xOffset = 212,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -48,9 +48,9 @@ ns.auras["target_is_player"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
+                custom_type = "stateupdate",
                 unevent = "auto",
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
                 customVariables = "{}",
                 use_unitisunit = false,
@@ -82,11 +82,11 @@ ns.auras["target_is_player"] = {
         use_never = false,
         zoneIds = "",
         use_level = false,
-        level = {
-            "120",
-        },
         level_operator = {
             "~=",
+        },
+        level = {
+            "120",
         },
     },
     animation = {

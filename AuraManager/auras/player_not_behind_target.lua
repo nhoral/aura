@@ -8,7 +8,7 @@ ns.auras["player_not_behind_target"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
+    xOffset = 212,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -55,6 +55,7 @@ ns.auras["player_not_behind_target"] = {
                 use_inverse = false,
                 duration = ".5",
                 use_unit = true,
+                custom_type = "event",
                 custom = [[function(event, arg1, arg2)
     if event == "UI_ERROR_MESSAGE" and string.find(arg2, "be behind your") then
         return true
@@ -62,7 +63,6 @@ ns.auras["player_not_behind_target"] = {
     return false
 end]],
                 events = "UI_ERROR_MESSAGE",
-                custom_type = "event",
                 custom_hide = "timed",
                 use_debuffClass = false,
                 debuffClass = {

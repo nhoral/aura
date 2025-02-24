@@ -8,7 +8,7 @@ ns.auras["undead_or_mechanical"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 120,
+    xOffset = 136,
     yOffset = 64,
     width = 3,
     height = 3,
@@ -45,12 +45,12 @@ ns.auras["undead_or_mechanical"] = {
                 unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                custom_type = "status",
                 custom = [[function()
     return UnitExists("target") and (UnitCreatureType("target") == "Elemental" or UnitCreatureType("target") == "Mechanical")
 end]],
                 events = "PLAYER_TARGET_CHANGED",
                 check = "event",
-                custom_type = "status",
             },
             untrigger = {},
         },

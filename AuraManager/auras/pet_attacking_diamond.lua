@@ -8,7 +8,7 @@ ns.auras["pet_attacking_diamond"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
+    xOffset = 152,
     yOffset = 84,
     width = 3,
     height = 3,
@@ -48,6 +48,7 @@ ns.auras["pet_attacking_diamond"] = {
                 subeventPrefix = "SPELL",
                 duration = "1",
                 use_unit = true,
+                custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Initialize state if needed
     aura_env.last = aura_env.last or 0
@@ -79,7 +80,6 @@ end]],
                 events = "UNIT_PET, PET_ATTACK_START PET_ATTACK_STOP RAID_TARGET_UPDATE",
                 unevent = "auto",
                 check = "update",
-                custom_type = "stateupdate",
                 custom_hide = "timed",
                 customVariables = "{}",
             },
@@ -110,11 +110,11 @@ end]],
         use_never = false,
         zoneIds = "",
         use_level = false,
-        level = {
-            "120",
-        },
         level_operator = {
             "~=",
+        },
+        level = {
+            "120",
         },
         use_spellknown = false,
     },

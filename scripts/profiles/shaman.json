@@ -1,0 +1,60 @@
+{
+    "name": "Shaman Hardcore",
+    "actions": [
+        {
+            "name": "OOC Scan targetenemy",
+            "key": "1",
+            "conditions": ["!combat", "!target_skull"]
+        },
+        {
+            "name": "use potion at 50% health",
+            "key": "2",
+            "conditions": ["potion_in_inventory", "combat", "health_under_50", "!potion"]
+        },
+        {
+            "name": "Healing Wave at 50% health",
+            "key": "5",
+            "conditions": ["power_20", "health_under_50"]
+        },
+        {
+            "name": "Healing Wave Party 1",
+            "key": "6",
+            "conditions": ["power_20", "party_1_health_under_70"]
+        },
+        {
+            "name": "use bandage at 50% health",
+            "key": "3",
+            "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!target_aggro", "!player_moving"]
+        },
+        {
+            "name": "Target Skull: /targetenemy",
+            "key": "1",
+            "conditions": ["!target_skull"]
+        },
+        {
+            "name": "Earth Shock",
+            "key": "9",
+            "conditions": ["power_20", "earth_shock", "target_interruptable"]
+        },
+        {
+            "name": "Stoneskin Totem",
+            "key": "8",
+            "conditions": ["power_20", "!stoneskin_buff", "combat", "!player_moving"]
+        },
+        {
+            "name": "Rockbiter",
+            "key": "7",
+            "conditions": ["power_20", "!rockbiter_weapon_buff"]
+        },
+        {
+            "name": "Lightning Bolt",
+            "key": "4",
+            "conditions": ["power_80", "!range_8", "range_30"]
+        },
+        {
+            "name": "Auto Attack",
+            "key": "SHIFT-2",
+            "conditions": ["!player_attacking", "range_8"]
+        }
+    ]
+}

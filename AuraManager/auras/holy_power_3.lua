@@ -8,7 +8,7 @@ ns.auras["holy_power_3"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 180,
+    xOffset = 184,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -59,14 +59,14 @@ ns.auras["holy_power_3"] = {
                     ">=",
                 },
                 use_runesCount = true,
-                power = {
-                    "3",
-                },
+                runesCount = "3",
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                runesCount = "3",
+                power = {
+                    "3",
+                },
                 rune = 0,
             },
             untrigger = {},
