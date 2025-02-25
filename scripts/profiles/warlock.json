@@ -2,7 +2,7 @@
     "name": "Warlock Hardcore",
     "actions": [ 
         {
-            "name": "Set Casting Intent",
+            "name": "Summon Imp - Set Casting Intent",
             "key": "SHIFT-3",
             "conditions": ["!combat", "!player_has_pet", "!player_casting", "!casting_intent"]
         },
