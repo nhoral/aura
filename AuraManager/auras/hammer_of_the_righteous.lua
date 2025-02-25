@@ -8,7 +8,7 @@ ns.auras["hammer_of_the_righteous"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 168,
+    xOffset = 176,
     yOffset = 92,
     width = 3,
     height = 3,
@@ -39,18 +39,18 @@ ns.auras["hammer_of_the_righteous"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 407632,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 407632,
+                use_inverse = false,
                 use_track = true,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["hammer_of_the_righteous"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["hammer_of_the_righteous"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

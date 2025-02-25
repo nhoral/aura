@@ -8,7 +8,7 @@ ns.auras["player_swing"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 208,
+    xOffset = 216,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,18 +39,18 @@ ns.auras["player_swing"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Swing Timer",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 0,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = 0,
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 0,
+                use_inverse = false,
                 use_track = true,
                 use_unit = true,
                 use_hand = true,
@@ -64,7 +64,7 @@ ns.auras["player_swing"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -73,7 +73,7 @@ ns.auras["player_swing"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

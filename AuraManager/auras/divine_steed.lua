@@ -8,7 +8,7 @@ ns.auras["divine_steed"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 192,
+    xOffset = 200,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -39,18 +39,18 @@ ns.auras["divine_steed"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 190784,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 190784,
+                use_inverse = false,
                 use_track = true,
             },
             untrigger = {},
@@ -58,7 +58,7 @@ ns.auras["divine_steed"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["divine_steed"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

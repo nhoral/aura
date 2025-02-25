@@ -8,7 +8,7 @@ ns.auras["divine_protection"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 180,
+    xOffset = 188,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -39,17 +39,17 @@ ns.auras["divine_protection"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 498,
                 use_genericShowOn = true,
                 realSpellName = "Distracting Shot",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 498,
                 use_track = true,
                 use_exact_spellName = false,
             },
@@ -58,7 +58,7 @@ ns.auras["divine_protection"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["divine_protection"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

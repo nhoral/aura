@@ -8,7 +8,7 @@ ns.auras["target_interruptible"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 212,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -39,12 +39,12 @@ ns.auras["target_interruptible"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Cast",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 use_unit = true,
                 use_castType = false,
                 remaining_operator = ">",
@@ -58,7 +58,7 @@ ns.auras["target_interruptible"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -67,7 +67,7 @@ ns.auras["target_interruptible"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["target_diamond"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 184,
+    xOffset = 192,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -40,25 +40,25 @@ ns.auras["target_diamond"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
+                custom_hide = "timed",
                 custom_type = "stateupdate",
                 unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                use_raidMarkIndex = true,
                 raidMarkIndex = 3,
+                use_raidMarkIndex = true,
                 unitisunit = "player",
             },
             untrigger = {},
@@ -66,7 +66,7 @@ ns.auras["target_diamond"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,15 +78,15 @@ ns.auras["target_diamond"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
+        use_level = false,
         level = {
             "120",
         },

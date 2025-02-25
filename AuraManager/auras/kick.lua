@@ -8,7 +8,7 @@ ns.auras["kick"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 116,
+    xOffset = 124,
     yOffset = 88,
     width = 3,
     height = 3,
@@ -39,17 +39,17 @@ ns.auras["kick"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 1766,
                 use_genericShowOn = true,
                 realSpellName = "Kick",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 1766,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["kick"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -69,7 +69,7 @@ ns.auras["kick"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -21,6 +21,8 @@ ns.aura_list = {
     "can_cc_triangle",
     "can_interrupt_cross",
     "can_interrupt_diamond",
+    "casting_intent",
+    "casting_intent_off",
     "cat_form",
     "cleanse",
     "clearcasting_buff",

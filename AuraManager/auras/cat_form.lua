@@ -8,7 +8,7 @@ ns.auras["cat_form"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 184,
+    xOffset = 192,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["cat_form"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "BOTH",
+                useRem = false,
                 ownOnly = true,
                 event = "Stance/Form/Aura",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Cat Form",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "BOTH",
                 use_unit = true,
                 use_debuffClass = false,
                 useNamePattern = false,
@@ -66,7 +66,7 @@ ns.auras["cat_form"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -78,7 +78,7 @@ ns.auras["cat_form"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

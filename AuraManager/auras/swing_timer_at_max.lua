@@ -8,7 +8,7 @@ ns.auras["swing_timer_at_max"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 164,
+    xOffset = 172,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["swing_timer_at_max"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "BOTH",
+                useRem = false,
                 ownOnly = true,
                 event = "Swing Timer",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Demon Skin",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "BOTH",
                 use_inverse = false,
                 use_unit = true,
                 use_hand = true,
@@ -67,7 +67,7 @@ ns.auras["swing_timer_at_max"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -79,7 +79,7 @@ ns.auras["swing_timer_at_max"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

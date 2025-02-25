@@ -8,7 +8,7 @@ ns.auras["target_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 104,
+    xOffset = 112,
     yOffset = 64,
     width = 3,
     height = 3,
@@ -40,15 +40,16 @@ ns.auras["target_skull"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
+                custom_hide = "timed",
                 custom_type = "stateupdate",
+                unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
         aura_env.last = GetTime()
@@ -67,16 +68,15 @@ ns.auras["target_skull"] = {
         end
     end
 end]],
-                unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                use_raidMarkIndex = true,
                 raidMarkIndex = 8,
+                use_raidMarkIndex = true,
                 unitisunit = "player",
             },
             untrigger = {},
@@ -84,7 +84,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -96,15 +96,15 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
+        use_level = false,
         level = {
             "120",
         },

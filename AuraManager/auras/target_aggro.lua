@@ -8,7 +8,7 @@ ns.auras["target_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 168,
+    xOffset = 176,
     yOffset = 68,
     width = 3,
     height = 3,
@@ -39,20 +39,19 @@ ns.auras["target_aggro"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Conditions",
                 names = {},
-                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "target",
+                debuffType = "HELPFUL",
+                spellName = 5176,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5176,
+                use_inverse = false,
                 use_track = true,
-                use_unit = true,
                 custom_type = "stateupdate",
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
@@ -82,24 +81,25 @@ ns.auras["target_aggro"] = {
     end
 end]],
                 check = "update",
+                use_unit = true,
                 customVariables = "{}",
                 itemName = 0,
                 use_itemName = true,
                 use_messageType = false,
                 use_message = false,
-                use_targetRequired = false,
-                use_moveSpeed = false,
-                use_sourceName = false,
-                use_spec = true,
                 use_ismoving = true,
+                use_spec = true,
                 instance_size = {},
+                use_sourceName = false,
+                use_moveSpeed = false,
+                use_targetRequired = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -108,7 +108,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

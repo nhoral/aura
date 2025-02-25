@@ -8,7 +8,7 @@ ns.auras["counterspell"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 120,
+    xOffset = 128,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -39,17 +39,17 @@ ns.auras["counterspell"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 2139,
                 use_genericShowOn = true,
                 realSpellName = "Counterspell",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 2139,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["counterspell"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -70,7 +70,7 @@ ns.auras["counterspell"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

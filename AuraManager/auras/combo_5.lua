@@ -8,7 +8,7 @@ ns.auras["combo_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 100,
+    xOffset = 108,
     yOffset = 96,
     width = 3,
     height = 3,
@@ -39,35 +39,35 @@ ns.auras["combo_5"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Power",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_unit = true,
                 powertype = 4,
                 use_powertype = true,
                 use_percentpower = false,
-                use_showCost = false,
                 use_power = true,
-                percentpower = {
-                    "10",
-                },
+                use_showCost = false,
                 percentpower_operator = {
                     ">=",
                 },
+                percentpower = {
+                    "10",
+                },
                 use_runesCount = true,
-                runesCount = "1",
+                power = {
+                    "5",
+                },
                 power_operator = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                power = {
-                    "5",
-                },
                 rune = 0,
+                runesCount = "1",
                 use_health = false,
             },
             untrigger = {},
@@ -75,7 +75,7 @@ ns.auras["combo_5"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -87,7 +87,7 @@ ns.auras["combo_5"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

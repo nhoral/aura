@@ -8,7 +8,7 @@ ns.auras["range_35_cross"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 204,
+    xOffset = 212,
     yOffset = 76,
     width = 3,
     height = 3,
@@ -39,15 +39,17 @@ ns.auras["range_35_cross"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
                 custom_type = "stateupdate",
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -82,10 +84,8 @@ ns.auras["range_35_cross"] = {
         return true
     end
 end]],
-                customStacks = [[function() return aura_env.count end]],
-                unevent = "auto",
-                use_absorbMode = true,
                 check = "update",
+                use_unit = true,
                 customVariables = "",
             },
             untrigger = {},
@@ -93,7 +93,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -105,7 +105,7 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,

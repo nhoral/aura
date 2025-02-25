@@ -8,7 +8,7 @@ ns.auras["savage_roar"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 192,
+    xOffset = 200,
     yOffset = 72,
     width = 3,
     height = 3,
@@ -40,18 +40,18 @@ ns.auras["savage_roar"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 407988,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = "Savage Roar",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 407988,
+                use_inverse = false,
                 use_track = true,
             },
             untrigger = {},
@@ -59,7 +59,7 @@ ns.auras["savage_roar"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["savage_roar"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

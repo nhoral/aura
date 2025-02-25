@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["target_is_ooc"] = {
-    id = "Target is OOC",
-    uid = "2SSXF2)C(Mh",
+ns.auras["casting_intent"] = {
+    id = "Casting Intent",
+    uid = "xy13p1UGJ0G",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 124,
-    yOffset = 64,
+    xOffset = 184,
+    yOffset = 100,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,36 +34,37 @@ ns.auras["target_is_ooc"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        activeTriggerMode = 1,
-        disjunctive = "all",
+        activeTriggerMode = -10,
         {
             trigger = {
-                type = "unit",
+                type = "custom",
                 subeventSuffix = "_CAST_START",
-                event = "Unit Characteristics",
+                event = "Health",
                 names = {},
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "target",
+                unit = "player",
                 debuffType = "HELPFUL",
-                duration = "1",
-                custom_hide = "timed",
-                custom_type = "stateupdate",
-                unevent = "auto",
-                check = "update",
-                use_unit = true,
-                customVariables = "{}",
-                use_unitisunit = false,
-                use_character = false,
-                use_class = false,
-                character = "player",
-                raidMarkIndex = 8,
-                use_raidMarkIndex = false,
-                unitisunit = "player",
-                use_inCombat = false,
-                use_attackable = true,
+                custom_type = "status",
+                events = "CVAR_UPDATE",
+                custom = [[function(event,glStr,value)
+    local cvar="CastingIntent"
+    if glStr and value and glStr==cvar then
+        return tonumber(value)==1
+    elseif not glStr and not value then
+        RegisterCVar(cvar,0)
+    end
+end]],
+                check = "event",
             },
-            untrigger = {},
+            untrigger = {
+                custom = [[function(event,glStr,value)
+    local cvar="CastingIntent"
+    if glStr and value and glStr==cvar then
+        return tonumber(value)==0
+    end
+end]],
+            },
         },
     },
     conditions = {},
@@ -72,10 +73,7 @@ ns.auras["target_is_ooc"] = {
             multi = {},
         },
         class = {
-            multi = {
-                WARLOCK = true,
-            },
-            single = "WARLOCK",
+            multi = {},
         },
         spec = {
             multi = {},
@@ -85,12 +83,8 @@ ns.auras["target_is_ooc"] = {
         },
         use_never = false,
         zoneIds = "",
-        level_operator = {
-            "~=",
-        },
-        use_level = false,
-        level = {
-            "120",
+        role = {
+            multi = {},
         },
     },
     animation = {

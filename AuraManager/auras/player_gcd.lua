@@ -8,7 +8,7 @@ ns.auras["player_gcd"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 172,
+    xOffset = 180,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,18 +39,18 @@ ns.auras["player_gcd"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Global Cooldown",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 1978,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = 0,
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 1978,
+                use_inverse = false,
                 use_track = true,
                 use_unit = true,
             },
@@ -59,7 +59,7 @@ ns.auras["player_gcd"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -68,7 +68,7 @@ ns.auras["player_gcd"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -8,7 +8,7 @@ ns.auras["combat_start"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 200,
+    xOffset = 208,
     yOffset = 100,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["combat_start"] = {
             trigger = {
                 type = "event",
                 subeventSuffix = "",
-                debuffType = "HARMFUL",
+                useRem = false,
                 ownOnly = true,
                 event = "Combat Events",
                 names = {},
                 unitExists = false,
-                unit = "target",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "DAMAGE_SHIELD",
+                useName = true,
                 auranames = {
                     "Moonfire",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "DAMAGE_SHIELD",
+                unit = "target",
+                debuffType = "HARMFUL",
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 duration = "4",
@@ -69,14 +69,14 @@ ns.auras["combat_start"] = {
                 threatpct = {
                     "100",
                 },
-                use_eventtype = true,
-                use_delay = false,
-                eventtype = "PLAYER_REGEN_DISABLED",
-                use_aggro = true,
-                use_status = false,
-                status = 3,
-                use_threatpct = false,
                 use_messageType = true,
+                status = 3,
+                use_status = false,
+                use_aggro = true,
+                use_delay = false,
+                use_eventtype = true,
+                use_threatpct = false,
+                eventtype = "PLAYER_REGEN_DISABLED",
                 delay = 2,
             },
             untrigger = {},
@@ -84,7 +84,7 @@ ns.auras["combat_start"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -96,7 +96,7 @@ ns.auras["combat_start"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

@@ -39,17 +39,17 @@ ns.auras["blink"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 1953,
                 use_genericShowOn = true,
                 realSpellName = "Blink",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 1953,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["blink"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -70,7 +70,7 @@ ns.auras["blink"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         race = {

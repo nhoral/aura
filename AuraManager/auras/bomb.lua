@@ -39,28 +39,28 @@ ns.auras["bomb"] = {
             trigger = {
                 type = "item",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 event = "Item Count",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Enrage",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 355,
                 use_genericShowOn = true,
                 realSpellName = "Taunt",
                 use_spellName = true,
                 genericShowOn = "showOnReady",
-                spellName = 355,
                 use_track = true,
                 itemName = 4360,
-                use_itemName = true,
                 use_debuffClass = false,
+                use_itemName = true,
                 useNamePattern = false,
             },
             untrigger = {},
@@ -68,7 +68,7 @@ ns.auras["bomb"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -81,7 +81,7 @@ ns.auras["bomb"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

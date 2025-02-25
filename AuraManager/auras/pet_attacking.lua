@@ -8,7 +8,7 @@ ns.auras["pet_attacking"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 140,
+    xOffset = 148,
     yOffset = 84,
     width = 3,
     height = 3,
@@ -40,15 +40,17 @@ ns.auras["pet_attacking"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 duration = "1",
-                use_unit = true,
+                custom_hide = "timed",
                 custom_type = "stateupdate",
+                unevent = "auto",
+                events = "UNIT_PET PET_ATTACK_START PET_ATTACK_STOP PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
     -- Initialize state if needed
     aura_env.last = aura_env.last or 0
@@ -74,10 +76,8 @@ ns.auras["pet_attacking"] = {
     end
     return false
 end]],
-                events = "UNIT_PET PET_ATTACK_START PET_ATTACK_STOP PLAYER_TARGET_CHANGED",
-                unevent = "auto",
                 check = "update",
-                custom_hide = "timed",
+                use_unit = true,
                 customVariables = "{}",
             },
             untrigger = {
@@ -89,7 +89,7 @@ end]],
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -101,15 +101,15 @@ end]],
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        use_level = false,
         level_operator = {
             "~=",
         },
+        use_level = false,
         level = {
             "120",
         },

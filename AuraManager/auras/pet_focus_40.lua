@@ -8,7 +8,7 @@ ns.auras["pet_focus_40"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 180,
+    xOffset = 188,
     yOffset = 84,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["pet_focus_40"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "",
-                debuffType = "HARMFUL",
+                useRem = false,
                 ownOnly = true,
                 event = "Power",
                 names = {},
                 unitExists = false,
-                unit = "pet",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "DAMAGE_SHIELD",
+                useName = true,
                 auranames = {
                     "Moonfire",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "DAMAGE_SHIELD",
+                unit = "pet",
+                debuffType = "HARMFUL",
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 duration = "1",
@@ -61,11 +61,11 @@ ns.auras["pet_focus_40"] = {
                 itemName = 4253,
                 use_count = false,
                 use_itemName = true,
-                percentpower = {
-                    "40",
-                },
                 percentpower_operator = {
                     ">=",
+                },
+                percentpower = {
+                    "40",
                 },
                 use_threatvalue = false,
                 threatpct_operator = {
@@ -76,21 +76,21 @@ ns.auras["pet_focus_40"] = {
                 threatpct = {
                     "100",
                 },
-                use_eventtype = true,
-                use_delay = true,
-                eventtype = "PLAYER_REGEN_ENABLED",
-                use_aggro = true,
-                use_status = false,
-                status = 3,
-                use_threatpct = false,
                 use_messageType = true,
+                status = 3,
+                use_status = false,
+                use_aggro = true,
+                use_delay = true,
+                use_eventtype = true,
+                use_threatpct = false,
+                eventtype = "PLAYER_REGEN_ENABLED",
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -102,7 +102,7 @@ ns.auras["pet_focus_40"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

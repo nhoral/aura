@@ -8,7 +8,7 @@ ns.auras["player_feared"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 168,
+    xOffset = 176,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["player_feared"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
+                useRem = false,
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                unit = "player",
+                matchesShowOn = "showOnActive",
                 spellIds = {},
-                subeventPrefix = "SPELL",
+                useName = true,
                 auranames = {
                     "Quick Flame Ward",
                 },
-                useName = true,
-                matchesShowOn = "showOnActive",
-                useRem = false,
+                subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
                 use_inverse = false,
                 use_unit = true,
                 use_debuffClass = false,
@@ -60,19 +60,19 @@ ns.auras["player_feared"] = {
                 },
                 use_controlType = true,
                 use_interruptSchool = true,
+                useExactSpellId = false,
+                controlType = "FEAR",
+                interruptSchool = 16,
                 auraspellids = {
                     "116",
                 },
-                controlType = "FEAR",
-                interruptSchool = 16,
-                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["player_feared"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

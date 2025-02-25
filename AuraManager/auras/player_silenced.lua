@@ -8,7 +8,7 @@ ns.auras["player_silenced"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 196,
+    xOffset = 204,
     yOffset = 80,
     width = 3,
     height = 3,
@@ -40,18 +40,18 @@ ns.auras["player_silenced"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Crowd Controlled",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 5176,
                 use_genericShowOn = true,
-                use_inverse = false,
                 realSpellName = "Wrath",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5176,
+                use_inverse = false,
                 use_track = true,
                 use_unit = true,
                 itemName = 0,
@@ -60,18 +60,18 @@ ns.auras["player_silenced"] = {
                 use_controlType = true,
                 controlType = "SILENCE",
                 use_message = false,
-                use_targetRequired = false,
-                use_moveSpeed = false,
-                use_sourceName = false,
                 use_ismoving = true,
                 instance_size = {},
+                use_sourceName = false,
+                use_moveSpeed = false,
+                use_targetRequired = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -80,7 +80,7 @@ ns.auras["player_silenced"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },

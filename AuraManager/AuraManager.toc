@@ -30,6 +30,8 @@ auras/can_cc_cross.lua
 auras/can_cc_triangle.lua
 auras/can_interrupt_cross.lua
 auras/can_interrupt_diamond.lua
+auras/casting_intent.lua
+auras/casting_intent_off.lua
 auras/cat_form.lua
 auras/cleanse.lua
 auras/clearcasting_buff.lua

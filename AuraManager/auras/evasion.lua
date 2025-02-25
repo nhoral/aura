@@ -8,8 +8,8 @@ ns.auras["evasion"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 96,
+    xOffset = 104,
+    yOffset = 92,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,17 +39,17 @@ ns.auras["evasion"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
-                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
+                unit = "player",
+                debuffType = "HELPFUL",
+                spellName = 5277,
                 use_genericShowOn = true,
                 realSpellName = "Evasion",
                 use_spellName = true,
                 genericShowOn = "showOnCooldown",
-                spellName = 5277,
                 use_track = true,
             },
             untrigger = {},
@@ -57,7 +57,7 @@ ns.auras["evasion"] = {
     },
     conditions = {},
     load = {
-        talent = {
+        size = {
             multi = {},
         },
         class = {
@@ -69,7 +69,7 @@ ns.auras["evasion"] = {
         spec = {
             multi = {},
         },
-        size = {
+        talent = {
             multi = {},
         },
     },
