@@ -8,8 +8,8 @@ ns.auras["combo_2"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 100,
+    xOffset = -656,
+    yOffset = -299,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -50,13 +50,13 @@ ns.auras["combo_2"] = {
                 powertype = 4,
                 use_powertype = true,
                 use_percentpower = false,
-                use_power = true,
                 use_showCost = false,
-                percentpower_operator = {
-                    ">=",
-                },
+                use_power = true,
                 percentpower = {
                     "10",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
                 use_runesCount = true,
                 power = {

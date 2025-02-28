@@ -8,8 +8,8 @@ ns.auras["enemy_loose"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 96,
+    xOffset = -644,
+    yOffset = -303,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -46,10 +46,9 @@ ns.auras["enemy_loose"] = {
                 unit = "player",
                 debuffType = "HELPFUL",
                 duration = "1",
-                custom_type = "stateupdate",
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
                 unevent = "auto",
+                customStacks = [[function() return aura_env.count end]],
+                use_absorbMode = true,
                 custom = [[function(allstates)
     -- Throttle the check for perf?  What is config?
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -87,6 +86,7 @@ ns.auras["enemy_loose"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = [[{
   stacks = true,

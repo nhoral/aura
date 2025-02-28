@@ -8,8 +8,8 @@ ns.auras["frostbolt_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
-    yOffset = 92,
+    xOffset = -576,
+    yOffset = -303,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -57,10 +57,10 @@ ns.auras["frostbolt_debuff"] = {
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },

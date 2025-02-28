@@ -8,8 +8,8 @@ ns.auras["theiranus_dead"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 128,
-    yOffset = 64,
+    xOffset = -640,
+    yOffset = -335,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -48,7 +48,6 @@ ns.auras["theiranus_dead"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
@@ -72,6 +71,7 @@ ns.auras["theiranus_dead"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
             },
@@ -104,10 +104,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

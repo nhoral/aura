@@ -8,8 +8,8 @@ ns.auras["mana_33"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 168,
-    yOffset = 88,
+    xOffset = -644,
+    yOffset = -311,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -49,13 +49,13 @@ ns.auras["mana_33"] = {
                 powertype = 0,
                 use_powertype = true,
                 use_percentpower = false,
-                use_power = true,
                 use_showCost = false,
-                percentpower_operator = {
-                    ">=",
-                },
+                use_power = true,
                 percentpower = {
                     "10",
+                },
+                percentpower_operator = {
+                    ">=",
                 },
                 power = {
                     "33",

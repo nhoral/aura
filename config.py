@@ -32,8 +32,8 @@ GRID_SETTINGS = {
     "AURA_HEIGHT": 3,
     "SPACING": 1,
     # Base offset from center of screen
-    "BASE_X_OFFSET": 100,  # Positive moves right, negative moves left
-    "BASE_Y_OFFSET": 100   # Positive moves up, negative moves down
+    "BASE_X_OFFSET": -656,  # Positive moves right, negative moves left
+    "BASE_Y_OFFSET": -295   # Positive moves up, negative moves down
 }
 
 # Movement detection settings

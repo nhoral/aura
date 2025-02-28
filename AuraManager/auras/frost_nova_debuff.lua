@@ -8,8 +8,8 @@ ns.auras["frost_nova_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 140,
-    yOffset = 92,
+    xOffset = -588,
+    yOffset = -303,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -56,10 +56,10 @@ ns.auras["frost_nova_debuff"] = {
                 debuffClass = {
                     magic = true,
                 },
-                useExactSpellId = false,
                 auraspellids = {
                     "116",
                 },
+                useExactSpellId = false,
             },
             untrigger = {},
         },

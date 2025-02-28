@@ -2,6 +2,16 @@
     "name": "Shaman Hardcore",
     "actions": [
         {
+            "name": "Rockbiter",
+            "key": "7",
+            "conditions": ["power_20", "!rockbiter_weapon_buff"]
+        },
+        {
+            "name": "Lightning Shield",
+            "key": "0",
+            "conditions": ["power_30", "!lightning_shield_buff"]
+        },
+        {
             "name": "OOC Scan targetenemy",
             "key": "1",
             "conditions": ["!combat", "!target_skull"]
@@ -32,24 +42,34 @@
             "conditions": ["!target_skull"]
         },
         {
+            "name": "Stoneclaw Totem",
+            "key": "-",
+            "conditions": ["power_20", "stoneclaw_totem", "icon_triangle_exists", "!stoneclaw_totem_exists", "range_8_triangle"]
+        },
+        {
             "name": "Earth Shock",
             "key": "9",
-            "conditions": ["power_20", "earth_shock", "target_interruptable"]
+            "conditions": ["power_20", "earth_shock", "target_interruptible", "range_15"]
+        },
+        {
+            "name": "Flame Shock",
+            "key": "SHIFT-1",
+            "conditions": ["inactive", "power_20", "flame_shock", "range_15", "!target_health_under_75", "power_80"]
+        },
+        {
+            "name": "Strength of Earth Totem",
+            "key": "=",
+            "conditions": ["power_20", "!strength_of_earth_totem_exists", "!stoneclaw_totem_dropped", "!earthbind_totem_exists", "combat", "range_8_1+"]
         },
         {
             "name": "Stoneskin Totem",
             "key": "8",
-            "conditions": ["power_20", "!stoneskin_buff", "combat", "!player_moving"]
-        },
-        {
-            "name": "Rockbiter",
-            "key": "7",
-            "conditions": ["power_20", "!rockbiter_weapon_buff"]
+            "conditions": ["power_20", "!stoneclaw_totem_dropped", "!stoneskin_totem_exists", "!strength_of_earth_totem_exists", "!earthbind_totem_exists", "combat", "range_8_1+"]
         },
         {
             "name": "Lightning Bolt",
             "key": "4",
-            "conditions": ["power_80", "!range_8", "range_30"]
+            "conditions": ["power_80", "!range_8", "range_30", "!player_casting"]
         },
         {
             "name": "Auto Attack",

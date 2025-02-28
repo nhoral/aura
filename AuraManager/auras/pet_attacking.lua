@@ -8,8 +8,8 @@ ns.auras["pet_attacking"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
-    yOffset = 84,
+    xOffset = -540,
+    yOffset = -311,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -48,7 +48,6 @@ ns.auras["pet_attacking"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 events = "UNIT_PET PET_ATTACK_START PET_ATTACK_STOP PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
@@ -77,6 +76,7 @@ ns.auras["pet_attacking"] = {
     return false
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
             },
@@ -109,10 +109,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

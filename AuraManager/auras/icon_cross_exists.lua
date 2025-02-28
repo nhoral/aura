@@ -8,8 +8,8 @@ ns.auras["icon_cross_exists"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 216,
-    yOffset = 92,
+    xOffset = -608,
+    yOffset = -307,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -46,10 +46,9 @@ ns.auras["icon_cross_exists"] = {
                 unit = "player",
                 debuffType = "HELPFUL",
                 duration = "1",
-                custom_type = "stateupdate",
-                use_absorbMode = true,
-                customStacks = [[function() return aura_env.count end]],
                 unevent = "auto",
+                customStacks = [[function() return aura_env.count end]],
+                use_absorbMode = true,
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -91,6 +90,7 @@ ns.auras["icon_cross_exists"] = {
     return true
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = [[{
   stacks = true,

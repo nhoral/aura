@@ -8,8 +8,8 @@ ns.auras["casting_intent"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 184,
-    yOffset = 100,
+    xOffset = -572,
+    yOffset = -295,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,7 +45,6 @@ ns.auras["casting_intent"] = {
                 subeventPrefix = "SPELL",
                 unit = "player",
                 debuffType = "HELPFUL",
-                custom_type = "status",
                 events = "CVAR_UPDATE",
                 custom = [[function(event,glStr,value)
     local cvar="CastingIntent"
@@ -56,6 +55,7 @@ ns.auras["casting_intent"] = {
     end
 end]],
                 check = "event",
+                custom_type = "status",
             },
             untrigger = {
                 custom = [[function(event,glStr,value)

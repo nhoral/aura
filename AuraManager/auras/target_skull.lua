@@ -8,8 +8,8 @@ ns.auras["target_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 112,
-    yOffset = 64,
+    xOffset = -540,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -48,7 +48,6 @@ ns.auras["target_skull"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.05 then
@@ -69,15 +68,16 @@ ns.auras["target_skull"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
                 use_class = false,
                 character = "player",
-                raidMarkIndex = 8,
                 use_raidMarkIndex = true,
                 unitisunit = "player",
+                raidMarkIndex = 8,
             },
             untrigger = {},
         },
@@ -104,10 +104,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
     },
     animation = {
         start = {

@@ -8,8 +8,8 @@ ns.auras["player_attacking"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 152,
-    yOffset = 80,
+    xOffset = -656,
+    yOffset = -319,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -48,7 +48,6 @@ ns.auras["player_attacking"] = {
                 debuffType = "HELPFUL",
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 custom = [[function(allstates)
     if not aura_env.last or GetTime() - aura_env.last > 0.5 then
@@ -70,6 +69,7 @@ ns.auras["player_attacking"] = {
     end
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
             },
@@ -102,10 +102,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

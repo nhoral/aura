@@ -8,8 +8,8 @@ ns.auras["player_any_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 148,
-    yOffset = 80,
+    xOffset = -540,
+    yOffset = -315,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -49,7 +49,6 @@ ns.auras["player_any_aggro"] = {
                 use_inverse = false,
                 duration = "1",
                 custom_hide = "timed",
-                custom_type = "stateupdate",
                 unevent = "auto",
                 events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
                 custom = [[function(allstates)
@@ -105,13 +104,14 @@ ns.auras["player_any_aggro"] = {
     return true
 end]],
                 check = "update",
+                custom_type = "stateupdate",
                 use_unit = true,
                 customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
                 remaining_operator = "<",
-                remaining = "0.2",
                 use_remaining = true,
+                remaining = "0.2",
             },
             untrigger = {
                 custom = [[function()
@@ -142,10 +142,10 @@ end]],
         level_operator = {
             "~=",
         },
-        use_level = false,
         level = {
             "120",
         },
+        use_level = false,
         use_spellknown = false,
     },
     animation = {

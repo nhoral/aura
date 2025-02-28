@@ -8,8 +8,8 @@ ns.auras["casting_intent_off"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = 188,
-    yOffset = 100,
+    xOffset = -568,
+    yOffset = -295,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -45,31 +45,23 @@ ns.auras["casting_intent_off"] = {
                 subeventPrefix = "SPELL",
                 unit = "player",
                 debuffType = "HELPFUL",
-                custom_type = "status",
-                events = [[UNIT_SPELLCAST_SUCCEEDED 
-UNIT_SPELLCAST_FAILED
-UNIT_SPELLCAST_INTERRUPTED
-UNIT_SPELLCAST_STOP]],
-                custom = [[function(allstates, event, ...)
-    if event == "UNIT_SPELLCAST_SUCCEEDED" 
-    or event == "UNIT_SPELLCAST_FAILED" 
-    or event == "UNIT_SPELLCAST_INTERRUPTED" 
-    or event == "UNIT_SPELLCAST_STOP" then
-        local unit = ...
-        if unit == "player" then
-            -- Turn off the CastingIntent CVar
-            ConsoleExec("CastingIntent 0")
-            return true
-        end
+                custom_hide = "timed",
+                events = "UNIT_SPELLCAST_SUCCEEDED UNIT_SPELLCAST_FAILED",
+                custom = [[function(allstates, caster)
+    if caster == "player" then
+        -- Turn off the CastingIntent CVar
+        SetCVar("CastingIntent", "0")
+        
+        return true
     end
+    
     return false
 end]],
                 check = "event",
+                custom_type = "event",
             },
             untrigger = {
-                custom = [[
-
-]],
+                custom = "",
             },
         },
     },
