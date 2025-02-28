@@ -57,6 +57,11 @@
             "conditions": ["inactive", "power_20", "flame_shock", "range_15", "!target_health_under_75", "power_80"]
         },
         {
+            "name": "Searing Totem",
+            "key": "SHIFT-3",
+            "conditions": ["power_20", "combat", "!searing_totem_dropped", "range_30"]
+        },
+        {
             "name": "Strength of Earth Totem",
             "key": "=",
             "conditions": ["power_20", "!strength_of_earth_totem_exists", "!stoneclaw_totem_dropped", "!earthbind_totem_exists", "combat", "range_8_1+"]
