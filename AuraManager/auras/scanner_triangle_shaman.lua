@@ -8,8 +8,8 @@ ns.auras["scanner_triangle_shaman"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -568,
-    yOffset = -327,
+    xOffset = -612,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,26 +39,45 @@ ns.auras["scanner_triangle_shaman"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
-                unevent = "auto",
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 events = "PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.1 then
         aura_env.lastUpdate = GetTime()
         
-        -- Scan all possible targets
-        local bestTarget = nil
-        local bestRange = 200
+        -- Collection of units to check
+        local units = {}
+        
+        -- Add nameplate units
+        for i = 1, 20 do
+            if UnitExists("nameplate" .. i) then
+                table.insert(units, "nameplate" .. i)
+            end
+        end
+        
+        -- Add other common units
+        local otherUnits = {
+            "target", "pettarget",
+            "party1target", "party2target", "party3target", "party4target",
+            "partypet1target", "partypet2target", "partypet3target", "partypet4target"
+        }
+        
+        for _, unit in ipairs(otherUnits) do
+            if UnitExists(unit) then
+                table.insert(units, unit)
+            end
+        end
         
         -- Function to check if unit is targeting any party member (has aggro)
         local function isTargetingPartyMember(unit)
@@ -76,54 +95,82 @@ ns.auras["scanner_triangle_shaman"] = {
             return false
         end
         
-        -- Function to check a unit
-        local function checkUnit(unit)
-            if UnitExists(unit) and UnitCanAttack("player", unit) and not UnitIsDeadOrGhost(unit) then
-                local currentMark = GetRaidTargetIndex(unit)
-                
-                -- Skip if unit has skull
-                if currentMark == 8 then return end
-                
-                -- Clear triangle if unit no longer has aggro
-                if currentMark == 4 and not isTargetingPartyMember(unit) then
-                    SetRaidTarget(unit, 0)
-                    return
-                end
-                
-                -- Check if unit is attacking any party member
-                if isTargetingPartyMember(unit) then
-                    -- Get range
-                    local range = 200
-                    if CheckInteractDistance(unit, 2) then -- 9 yards
-                        range = 10
-                    elseif CheckInteractDistance(unit, 4) then -- 28 yards
-                        range = 30
-                    end
-                    
-                    -- Update best target if closer or already marked with triangle
-                    if currentMark == 4 or range < bestRange then
-                        bestTarget = unit
-                        bestRange = range
+        -- Function to check if unit is a valid target for triangle mark
+        local function isValidTriangleTarget(unit)
+            -- Skip if unit is invalid
+            if not UnitExists(unit) or 
+            not UnitCanAttack("player", unit) or 
+            UnitIsDeadOrGhost(unit) then
+                return false
+            end
+            
+            -- Skip if unit has skull or diamond mark
+            local currentMark = GetRaidTargetIndex(unit)
+            if currentMark == 8 or currentMark == 3 then
+                return false
+            end
+            
+            -- Must be targeting a party member
+            return isTargetingPartyMember(unit)
+        end
+        
+        -- Function to get approximate range to unit
+        local function getUnitRange(unit)
+            if CheckInteractDistance(unit, 2) then -- 9 yards
+                return 10
+            elseif CheckInteractDistance(unit, 4) then -- 28 yards
+                return 30
+            end
+            return 200 -- Far away or range check failed
+        end
+        
+        -- Check if current triangle-marked unit is still valid
+        local currentTriangleUnit = nil
+        for _, unit in ipairs(units) do
+            if GetRaidTargetIndex(unit) == 4 then -- Triangle mark
+                if isValidTriangleTarget(unit) then
+                    -- Current triangle unit is still valid
+                    currentTriangleUnit = unit
+                    break
+                else
+                    -- Only clear if it doesn't have diamond now
+                    local currentMark = GetRaidTargetIndex(unit)
+                    if currentMark == 4 then
+                        SetRaidTarget(unit, 0)
+                        print("clearing triangle from " .. unit)
                     end
                 end
             end
         end
         
-        -- Check all units
-        for i = 1, 20 do
-            checkUnit("nameplate" .. i)
-        end
-        checkUnit("target")
-        checkUnit("pettarget")
-        for i = 1, 4 do
-            local partyUnit = "party" .. i
-            checkUnit(partyUnit .. "target")
-            checkUnit("partypet" .. i .. "target")
+        -- If we found a valid triangle unit, keep using it
+        if currentTriangleUnit then
+            return true
         end
         
-        -- Mark best target with triangle if not already marked
-        if bestTarget and GetRaidTargetIndex(bestTarget) ~= 4 then
-            SetRaidTarget(bestTarget, 4)
+        -- Find best new target to mark with triangle
+        local bestTarget = nil
+        local bestRange = 200
+        
+        for _, unit in ipairs(units) do
+            if isValidTriangleTarget(unit) then
+                local range = getUnitRange(unit)
+                
+                -- Update best target if closer
+                if range < bestRange then
+                    bestTarget = unit
+                    bestRange = range
+                end
+            end
+        end
+        
+        -- Mark best target with triangle
+        if bestTarget then
+            -- Double-check it doesn't have diamond
+            if GetRaidTargetIndex(bestTarget) ~= 3 then
+                SetRaidTarget(bestTarget, 4)
+                print("setting triangle on " .. bestTarget)
+            end
         end
     end
     
@@ -131,7 +178,7 @@ ns.auras["scanner_triangle_shaman"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
 }]],
@@ -141,7 +188,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -153,10 +200,10 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
-        use_never = false,
+        use_never = true,
         zoneIds = "",
     },
     animation = {

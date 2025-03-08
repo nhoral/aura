@@ -8,7 +8,7 @@ ns.auras["frost_nova_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -588,
+    xOffset = -580,
     yOffset = -303,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["frost_nova_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HARMFUL",
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "122",
                 },
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_debuffClass = false,
                 debuffClass = {
                     magic = true,
@@ -66,7 +66,7 @@ ns.auras["frost_nova_debuff"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -79,7 +79,7 @@ ns.auras["frost_nova_debuff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

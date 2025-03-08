@@ -8,8 +8,8 @@ ns.auras["target_cross"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -584,
-    yOffset = -331,
+    xOffset = -588,
+    yOffset = -335,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,18 +40,18 @@ ns.auras["target_cross"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
+                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
                 unevent = "auto",
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
@@ -66,7 +66,7 @@ ns.auras["target_cross"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -78,18 +78,18 @@ ns.auras["target_cross"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        level_operator = {
-            "~=",
-        },
+        use_level = false,
         level = {
             "120",
         },
-        use_level = false,
+        level_operator = {
+            "~=",
+        },
     },
     animation = {
         start = {

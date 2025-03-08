@@ -8,7 +8,7 @@ ns.auras["mark_of_the_wild_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -600,
+    xOffset = -592,
     yOffset = -311,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["mark_of_the_wild_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Mark of the Wild",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_debuffClass = false,
                 useNamePattern = false,
             },
@@ -60,7 +60,7 @@ ns.auras["mark_of_the_wild_buff"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -72,7 +72,7 @@ ns.auras["mark_of_the_wild_buff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

@@ -40,27 +40,27 @@ ns.auras["demoralizing_roar_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Demoralizing Roar",
                 },
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -72,7 +72,7 @@ ns.auras["demoralizing_roar_debuff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

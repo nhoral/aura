@@ -39,15 +39,15 @@ ns.auras["distracting_shot"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                use_genericShowOn = true,
                 realSpellName = "Distracting Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 20736,
@@ -58,7 +58,7 @@ ns.auras["distracting_shot"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["distracting_shot"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         race = {

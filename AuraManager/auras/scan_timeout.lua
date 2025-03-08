@@ -8,8 +8,8 @@ ns.auras["scan_timeout"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -600,
-    yOffset = -327,
+    xOffset = -648,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,13 +39,13 @@ ns.auras["scan_timeout"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Chat Message",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                custom_hide = "timed",
+                use_unit = true,
                 events = "CVAR_UPDATE",
                 custom = [[function(allstates)
     -- Throttle the check for perf
@@ -85,7 +85,7 @@ ns.auras["scan_timeout"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
             },
             untrigger = {
                 custom = "",
@@ -94,7 +94,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -103,7 +103,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = true,

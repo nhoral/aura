@@ -8,7 +8,7 @@ ns.auras["player_magic_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -620,
+    xOffset = -560,
     yOffset = -319,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["player_magic_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HARMFUL",
                 event = "Crowd Controlled",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = false,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Quick Flame Ward",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HARMFUL",
+                useName = false,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_inverse = false,
                 use_unit = true,
                 use_debuffClass = true,
@@ -64,15 +64,15 @@ ns.auras["player_magic_debuff"] = {
                     "116",
                 },
                 controlType = "STUN",
-                useExactSpellId = false,
                 interruptSchool = 16,
+                useExactSpellId = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["player_magic_debuff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

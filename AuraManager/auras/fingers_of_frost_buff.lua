@@ -8,7 +8,7 @@ ns.auras["fingers_of_frost_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -628,
+    xOffset = -624,
     yOffset = -303,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["fingers_of_frost_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Fingers of Frost",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_debuffClass = false,
             },
             untrigger = {},
@@ -60,7 +60,7 @@ ns.auras["fingers_of_frost_buff"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -73,7 +73,7 @@ ns.auras["fingers_of_frost_buff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

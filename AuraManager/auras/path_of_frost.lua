@@ -8,8 +8,8 @@ ns.auras["path_of_frost"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -556,
-    yOffset = -311,
+    xOffset = -620,
+    yOffset = -315,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,15 +39,15 @@ ns.auras["path_of_frost"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 3714,
@@ -58,7 +58,7 @@ ns.auras["path_of_frost"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["path_of_frost"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         race = {

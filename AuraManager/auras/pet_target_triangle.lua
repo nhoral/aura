@@ -8,8 +8,8 @@ ns.auras["pet_target_triangle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -552,
-    yOffset = -315,
+    xOffset = -616,
+    yOffset = -319,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,18 +40,18 @@ ns.auras["pet_target_triangle"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Unit Characteristics",
                 names = {},
+                unit = "pet",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "pet",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
                 unevent = "auto",
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = "{}",
                 use_unitisunit = false,
                 use_character = false,
@@ -67,7 +67,7 @@ ns.auras["pet_target_triangle"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -79,18 +79,18 @@ ns.auras["pet_target_triangle"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        level_operator = {
-            "~=",
-        },
+        use_level = false,
         level = {
             "120",
         },
-        use_level = false,
+        level_operator = {
+            "~=",
+        },
     },
     animation = {
         start = {

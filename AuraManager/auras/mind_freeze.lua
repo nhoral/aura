@@ -8,7 +8,7 @@ ns.auras["mind_freeze"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -596,
+    xOffset = -588,
     yOffset = -311,
     width = 3,
     height = 3,
@@ -39,15 +39,15 @@ ns.auras["mind_freeze"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                use_genericShowOn = true,
                 realSpellName = "Arcane Shot",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 47528,
@@ -58,7 +58,7 @@ ns.auras["mind_freeze"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["mind_freeze"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         race = {

@@ -12,6 +12,11 @@
             "conditions": ["power_30", "!lightning_shield_buff"]
         },
         {
+            "name": "OOC Healing Wave",
+            "key": "5",
+            "conditions": ["power_20", "!combat", "health_under_50"]
+        },
+        {
             "name": "OOC Scan targetenemy",
             "key": "1",
             "conditions": ["!combat", "!target_skull"]
@@ -37,9 +42,29 @@
             "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!target_aggro", "!player_moving"]
         },
         {
+            "name": "Interrupt Target Diamond: /targetenemy",
+            "key": "1",
+            "conditions": ["icon_diamond_exists", "earth_shock", "!target_diamond", "range_20_diamond", "power_25"]
+        },
+        {
+            "name": "Earth Shock Diamond",
+            "key": "9",
+            "conditions": ["earth_shock", "target_diamond", "power_25", "range_20_diamond"]
+        },
+        {
             "name": "Target Skull: /targetenemy",
             "key": "1",
             "conditions": ["!target_skull"]
+        },
+        {
+            "name": "Lightning Bolt Pull",
+            "key": "SHIFT-7",
+            "conditions": ["power_20", "!range_8", "range_30", "!combat"]
+        },
+        {
+            "name": "Fire Nova Totem",
+            "key": "SHIFT-5",
+            "conditions": ["inactive","power_40", "fire_nova_totem", "icon_triangle_exists", "!stoneclaw_totem_exists", "range_8_triangle"]
         },
         {
             "name": "Stoneclaw Totem",
@@ -52,6 +77,11 @@
             "conditions": ["power_20", "earth_shock", "target_interruptible", "range_15"]
         },
         {
+            "name": "Fire Nova Totem Full",
+            "key": "SHIFT-5",
+            "conditions": ["power_40", "fire_nova_totem", "range_8_3+"]
+        },
+        {
             "name": "Flame Shock",
             "key": "SHIFT-1",
             "conditions": ["inactive", "power_20", "flame_shock", "range_15", "!target_health_under_75", "power_80"]
@@ -59,7 +89,7 @@
         {
             "name": "Searing Totem",
             "key": "SHIFT-3",
-            "conditions": ["power_20", "combat", "!searing_totem_dropped", "range_30"]
+            "conditions": ["power_20", "combat", "!searing_totem_dropped", "!fire_nova_totem_dropped", "range_30"]
         },
         {
             "name": "Strength of Earth Totem",

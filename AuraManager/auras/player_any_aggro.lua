@@ -8,8 +8,8 @@ ns.auras["player_any_aggro"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -540,
-    yOffset = -315,
+    xOffset = -604,
+    yOffset = -319,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -40,77 +40,83 @@ ns.auras["player_any_aggro"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Swing Timer",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_inverse = false,
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
                 unevent = "auto",
                 events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
                 custom = [[function(allstates)
     -- Throttle updates for performance
-    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
-        aura_env.last = GetTime()
+    if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.2 then
+        aura_env.lastUpdate = GetTime()
         
-        -- Function to check if unit is targeting player
-        local function checkUnitTargetingPlayer(unit)
-            if UnitExists(unit) and UnitCanAttack("player", unit) and not UnitIsDeadOrGhost(unit) then
-                -- Check if unit is targeting player
-                if UnitIsUnit("player", unit.."target") then
+        -- Collection of units to check
+        local units = {}
+        
+        -- Add nameplate units
+        for i = 1, 40 do
+            local unit = "nameplate"..i
+            if UnitExists(unit) then
+                table.insert(units, unit)
+            end
+        end
+        
+        -- Add other common target units
+        local otherUnits = {
+            "target", "pettarget",
+            "party1target", "party2target", "party3target", "party4target",
+            "partypet1target", "partypet2target", "partypet3target", "partypet4target"
+        }
+        
+        for _, unit in ipairs(otherUnits) do
+            if UnitExists(unit) then
+                table.insert(units, unit)
+            end
+        end
+        
+        -- Check each unit for targeting player
+        for _, unit in ipairs(units) do
+            -- Skip if unit is invalid or not attackable
+            if UnitExists(unit) and UnitCanAttack("player", unit) then
+                -- Check if this unit is targeting the player
+                local unitTarget = unit.."target"
+                if UnitExists(unitTarget) and UnitIsUnit(unitTarget, "player") then
+                    allstates[""] = {
+                        show = true,
+                        changed = true,
+                        progressType = "static",
+                        autoHide = false
+                    }
                     return true
                 end
             end
-            return false
         end
         
-        -- Check nameplates (max 20)
-        for i = 1, 20 do
-            if checkUnitTargetingPlayer("nameplate" .. i) then
-                allstates[""] = allstates[""] or {show = true}
-                allstates[""].show = true
-                allstates[""].changed = true
-                return true
-            end
-        end
-        
-        -- Check direct targets
-        if checkUnitTargetingPlayer("target") then
-            allstates[""] = allstates[""] or {show = true}
-            allstates[""].show = true
-            allstates[""].changed = true
-            return true
-        end
-        
-        -- Check party members' targets
-        for i = 1, 4 do
-            if checkUnitTargetingPlayer("party" .. i .. "target") then
-                allstates[""] = allstates[""] or {show = true}
-                allstates[""].show = true
-                allstates[""].changed = true
-                return true
-            end
-        end
-        
-        -- No units targeting player, hide aura
-        allstates[""] = allstates[""] or {show = false}
-        allstates[""].show = false
-        allstates[""].changed = true
+        -- No enemies found targeting player
+        allstates[""] = {
+            show = false,
+            changed = true,
+            progressType = "static",
+            autoHide = false
+        }
     end
     
     return true
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
-                remaining_operator = "<",
                 use_remaining = true,
+                remaining_operator = "<",
                 remaining = "0.2",
             },
             untrigger = {
@@ -122,7 +128,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -134,18 +140,18 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        level_operator = {
-            "~=",
-        },
+        use_level = false,
         level = {
             "120",
         },
-        use_level = false,
+        level_operator = {
+            "~=",
+        },
         use_spellknown = false,
     },
     animation = {

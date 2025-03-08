@@ -8,7 +8,7 @@ ns.auras["rockbiter_weapon_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -636,
+    xOffset = -564,
     yOffset = -327,
     width = 3,
     height = 3,
@@ -39,22 +39,22 @@ ns.auras["rockbiter_weapon_buff"] = {
             trigger = {
                 type = "item",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 ownOnly = true,
                 event = "Weapon Enchant",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Rockbiter Weapon",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_spellName = true,
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
+                use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 8017,
@@ -73,7 +73,7 @@ ns.auras["rockbiter_weapon_buff"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -86,7 +86,7 @@ ns.auras["rockbiter_weapon_buff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

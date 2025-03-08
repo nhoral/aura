@@ -8,8 +8,8 @@ ns.auras["scanner_mk._2"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -584,
-    yOffset = -327,
+    xOffset = -632,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,16 +39,17 @@ ns.auras["scanner_mk._2"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                unevent = "auto",
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 events = "PLAYER_TARGET_CHANGED UNIT_TARGET NAME_PLATE_UNIT_ADDED NAME_PLATE_UNIT_REMOVED",
                 custom = [[function(allstates)
     -- Initialize aura environment variables if not exists
@@ -284,7 +285,6 @@ ns.auras["scanner_mk._2"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
                 customVariables = [[{
   stacks = true,
 }]],
@@ -294,7 +294,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -306,7 +306,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = true,

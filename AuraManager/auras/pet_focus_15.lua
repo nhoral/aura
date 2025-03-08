@@ -8,7 +8,7 @@ ns.auras["pet_focus_15"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -624,
+    xOffset = -568,
     yOffset = -315,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["pet_focus_15"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Power",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "pet",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "DAMAGE_SHIELD",
                 auranames = {
                     "Moonfire",
                 },
-                subeventPrefix = "DAMAGE_SHIELD",
-                unit = "pet",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 duration = "1",
@@ -76,13 +76,13 @@ ns.auras["pet_focus_15"] = {
                 threatpct = {
                     "100",
                 },
-                use_status = false,
-                use_aggro = true,
-                status = 3,
-                use_eventtype = true,
                 eventtype = "PLAYER_REGEN_ENABLED",
                 use_delay = true,
                 use_threatpct = false,
+                use_eventtype = true,
+                use_aggro = true,
+                use_status = false,
+                status = 3,
                 use_messageType = true,
             },
             untrigger = {},
@@ -90,7 +90,7 @@ ns.auras["pet_focus_15"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -102,7 +102,7 @@ ns.auras["pet_focus_15"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

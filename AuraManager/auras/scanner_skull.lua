@@ -8,8 +8,8 @@ ns.auras["scanner_skull"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -580,
-    yOffset = -327,
+    xOffset = -624,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,17 +39,17 @@ ns.auras["scanner_skull"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
-                unevent = "auto",
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 events = "PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
     -- Throttle updates for performance
@@ -57,56 +57,89 @@ ns.auras["scanner_skull"] = {
         aura_env.lastUpdate = GetTime()
         
         -- Check if player is solo or party leader
-        local isLeader = UnitIsGroupLeader("player")
         local inGroup = IsInGroup()
+        local isLeader = UnitIsGroupLeader("player")
         
         -- Exit if in group but not leader
         if inGroup and not isLeader then
             return false
         end
         
-        -- Scan all possible targets
+        -- Collection of units to check
+        local units = {}
+        
+        -- Add nameplate units
+        for i = 1, 20 do
+            if UnitExists("nameplate" .. i) then
+                table.insert(units, "nameplate" .. i)
+            end
+        end
+        
+        -- Add other common units
+        local otherUnits = {
+            "target", "pettarget",
+            "party1target", "party2target", "party3target", "party4target",
+            "partypet1target", "partypet2target", "partypet3target", "partypet4target"
+        }
+        
+        for _, unit in ipairs(otherUnits) do
+            if UnitExists(unit) then
+                table.insert(units, unit)
+            end
+        end
+        
+        -- Function to check if unit is a valid target for skull mark
+        local function isValidSkullTarget(unit)
+            -- Skip if unit is invalid
+            if not UnitExists(unit) or 
+            not UnitCanAttack("player", unit) or 
+            UnitIsDeadOrGhost(unit) or
+            UnitIsTapDenied(unit) then    
+                return false
+            end
+            
+            -- Valid potential skull target
+            return true
+        end
+        
+        -- Reliable range checking function
+        local function getUnitRange(unit)
+            -- Use interaction distance checks for consistent results
+            if CheckInteractDistance(unit, 1) then -- 3.7 yards (inspection range)
+                return 4
+            elseif CheckInteractDistance(unit, 2) then -- 8.8 yards (trade range)
+                return 9
+            elseif CheckInteractDistance(unit, 3) then -- 9.9 yards (duel range)
+                return 10
+            elseif CheckInteractDistance(unit, 4) then -- 28 yards (follow range)
+                return 28
+            end
+            
+            -- Default to max range if no interaction is possible
+            return 100
+        end
+        
+        -- Variables to track best target
         local bestTarget = nil
         local bestHealthPct = 100
-        local bestRange = 200
+        local bestRange = 100
         
-        -- Function to check a unit
-        local function checkUnit(unit)
-            if UnitExists(unit) and not UnitIsDeadOrGhost(unit) and UnitCanAttack("player", unit) then
+        -- Find the best target to mark with skull
+        for _, unit in ipairs(units) do
+            if isValidSkullTarget(unit) then
                 -- Get health percentage
                 local healthPct = UnitHealth(unit) / UnitHealthMax(unit) * 100
                 
-                -- Get range
-                local range = 200
-                if CheckInteractDistance(unit, 2) then -- 9 yards
-                    range = 10
-                elseif CheckInteractDistance(unit, 4) then -- 28 yards
-                    range = 30
-                end
+                -- Get range estimate
+                local range = getUnitRange(unit)
                 
-                -- Update best target if better
+                -- Check if this target is better than current best
                 if healthPct < bestHealthPct or (healthPct == bestHealthPct and range < bestRange) then
                     bestTarget = unit
                     bestHealthPct = healthPct
                     bestRange = range
                 end
             end
-        end
-        
-        -- Check nameplates (max 20)
-        for i = 1, 20 do
-            checkUnit("nameplate" .. i)
-        end
-        
-        -- Check direct targets
-        checkUnit("target")
-        checkUnit("pettarget")
-        
-        -- Check party members and their targets/pets
-        for i = 1, 4 do
-            local partyUnit = "party" .. i
-            checkUnit(partyUnit .. "target")
-            checkUnit("partypet" .. i .. "target")
         end
         
         -- Mark best target with skull if not already marked
@@ -119,7 +152,7 @@ ns.auras["scanner_skull"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
 }]],
@@ -129,7 +162,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -141,7 +174,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

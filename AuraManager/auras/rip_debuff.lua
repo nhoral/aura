@@ -8,7 +8,7 @@ ns.auras["rip_debuff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -640,
+    xOffset = -568,
     yOffset = -327,
     width = 3,
     height = 3,
@@ -39,20 +39,20 @@ ns.auras["rip_debuff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HARMFUL",
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "target",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Rip",
                 },
-                subeventPrefix = "SPELL",
-                unit = "target",
-                debuffType = "HARMFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_debuffClass = false,
                 auraspellids = {
                     "414684",
@@ -64,7 +64,7 @@ ns.auras["rip_debuff"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -76,7 +76,7 @@ ns.auras["rip_debuff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

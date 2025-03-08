@@ -8,7 +8,7 @@ ns.auras["ghost_wolf"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -564,
+    xOffset = -556,
     yOffset = -303,
     width = 3,
     height = 3,
@@ -39,16 +39,16 @@ ns.auras["ghost_wolf"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Action Usable",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_inverse = false,
+                use_genericShowOn = true,
                 realSpellName = "Arcane Blast",
                 use_spellName = true,
-                use_genericShowOn = true,
+                use_inverse = false,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 2645,
@@ -58,7 +58,7 @@ ns.auras["ghost_wolf"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["ghost_wolf"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         race = {

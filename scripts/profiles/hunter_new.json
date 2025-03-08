@@ -3,8 +3,8 @@
     "actions": [
         {
             "name": "Call/Revive Pet uses macro",
-            "key": "4",
-            "conditions": ["inactive", "!combat","!player_has_pet"]
+            "key": "SHIFT-3",
+            "conditions": ["!combat","!player_has_pet"]
         },
         {
             "name": "OOC Scan targetenemy",
@@ -24,12 +24,12 @@
         {
             "name": "Target triangle for Pet Attack: /targetenemy",
             "key": "1",
-            "conditions": ["inactive","player_has_pet", "icon_triangle_exists", "!pet_attacking_triangle", "!pet_aggro_triangle", "!target_is_ooc", "!target_triangle"]
+            "conditions": ["player_has_pet", "icon_triangle_exists", "!pet_attacking_triangle", "!pet_aggro_triangle", "!target_is_ooc", "!target_triangle"]
         },
         {
             "name": "Pet Attack Triangle",
             "key": "SHIFT-1",
-            "conditions": ["inactive", "player_has_pet", "!pet_attacking_triangle", "target_triangle"]
+            "conditions": ["player_has_pet", "!pet_attacking_triangle", "target_triangle"]
         },
         {
             "name": "Target Skull: /targetenemy",
@@ -39,25 +39,25 @@
         {
             "name": "Pet Attack Skull",
             "key": "SHIFT-1",
-            "conditions": ["inactive", "icon_skull_exists", "!icon_triangle_exists", "!pet_attacking_skull"]
+            "conditions": ["icon_skull_exists", "!icon_triangle_exists", "!pet_attacking_skull", "player_has_pet"]
         },
         {
             "name": "Hunters Mark",
             "key": "8",
-            "conditions": ["target_skull","!hunter's_mark_debuff", "power_80", "!range_8", "range_35"]
+            "conditions": ["target_skull", "!hunter's_mark_debuff", "power_80", "!range_8", "range_35"]
         },
         {
             "name": "Serpent Sting",
             "key": "6",
-            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10"]
+            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10", "!target_dies_10"]
         },
         {
             "name": "Concussive Shot",
             "key": "9",
-            "conditions": ["inactive","concussive_shot", "!concussive_shot_debuff", "!range_8", "range_35", "power_10"]
+            "conditions": ["concussive_shot", "!concussive_shot_debuff", "!range_8", "range_35", "power_10", "target_moving"]
         },
         {
-            "name": "Arane Shot",
+            "name": "Arcane Shot",
             "key": "7",
             "conditions": ["arcane_shot", "power_10", "!range_8", "range_35"]
         },

@@ -39,13 +39,12 @@ ns.auras["casting_intent_off"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                custom_hide = "timed",
                 events = "UNIT_SPELLCAST_SUCCEEDED UNIT_SPELLCAST_FAILED",
                 custom = [[function(allstates, caster)
     if caster == "player" then
@@ -59,6 +58,7 @@ ns.auras["casting_intent_off"] = {
 end]],
                 check = "event",
                 custom_type = "event",
+                custom_hide = "timed",
             },
             untrigger = {
                 custom = "",
@@ -67,7 +67,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -76,7 +76,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

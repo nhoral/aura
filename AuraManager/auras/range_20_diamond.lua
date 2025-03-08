@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["party_4_health_under_70"] = {
-    id = "Party 4 Health Under 70",
-    uid = "FhlmFnl7cvf",
+ns.auras["range_20_diamond"] = {
+    id = "Range 20 Diamond",
+    uid = "AWKIAJ6Nh87",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -560,
-    yOffset = -311,
+    xOffset = -540,
+    yOffset = -323,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -34,86 +34,82 @@ ns.auras["party_4_health_under_70"] = {
     texture = "Solid",
     textureSource = "LSM",
     triggers = {
-        activeTriggerMode = 1,
-        disjunctive = "all",
+        activeTriggerMode = -10,
         {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
+                use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
                 unevent = "auto",
-                custom = [[function(allstates)
-    if not aura_env.last or GetTime() - aura_env.last > 0.5 then
+                custom = [[function(allstates, event, ...)
+    -- Throttle checks
+    if not aura_env.last or GetTime() - aura_env.last > 0.2 then
         aura_env.last = GetTime()
         
-        local numGroup = GetNumGroupMembers()
-        if (numGroup < 5) then
-            allstates[""] = allstates[""] or {show = false}
-            allstates[""].s5how = false
-            allstates[""].changed = true
-            return true
+        -- Check all nameplates
+        for i = 1, 40 do
+            local unit = "nameplate"..i
+            
+            -- Check if unit exists and is attackable
+            if UnitExists(unit) and UnitCanAttack("player", unit) then
+                -- Check if unit has cross mark (7)
+                local mark = GetRaidTargetIndex(unit)
+                local inRange = WeakAuras.CheckRange(unit, 20, "<=")
+                
+                if mark == 3 and inRange then
+                    allstates[""] = {
+                        show = true,
+                        changed = true,
+                        unit = unit
+                    }
+                    return true
+                end
+            end
         end
         
-        local hp,hpMax = UnitHealth("party4"),UnitHealthMax("party4")
-        
-        if (math.ceil((hp / hpMax) * 100) <= 70 and not UnitIsDead("party4")) then
-            allstates[""] = allstates[""] or {show = true}
-            allstates[""].changed = true
-            return true
-        else
-            allstates[""] = allstates[""] or {show = false}
-            allstates[""].show = false
-            allstates[""].changed = true
-            return true
-        end
+        -- No valid target found, hide aura
+        allstates[""] = {
+            show = false,
+            changed = true
+        }
+        return true
     end
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
-                customVariables = "{}",
+                customVariables = "",
             },
-            untrigger = {
-                custom = [[function()
-    return not aura_env.isTriggered
-end]],
-            },
+            untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
             multi = {
-                WARLOCK = true,
+                WARRIOR = true,
             },
-            single = "WARLOCK",
+            single = "WARRIOR",
         },
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        level_operator = {
-            "~=",
-        },
-        level = {
-            "120",
-        },
-        use_level = false,
-        use_spellknown = false,
     },
     animation = {
         start = {

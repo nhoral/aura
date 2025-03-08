@@ -8,7 +8,7 @@ ns.auras["slice_and_dice_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -644,
+    xOffset = -560,
     yOffset = -331,
     width = 3,
     height = 3,
@@ -39,27 +39,27 @@ ns.auras["slice_and_dice_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Slice and Dice",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -71,7 +71,7 @@ ns.auras["slice_and_dice_buff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

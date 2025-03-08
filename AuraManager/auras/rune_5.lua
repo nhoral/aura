@@ -8,8 +8,8 @@ ns.auras["rune_5"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -608,
-    yOffset = -327,
+    xOffset = -656,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,12 +39,12 @@ ns.auras["rune_5"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_unit = true,
                 powertype = 6,
@@ -66,15 +66,15 @@ ns.auras["rune_5"] = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                rune = 0,
                 runesCount = "5",
+                rune = 0,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -86,7 +86,7 @@ ns.auras["rune_5"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

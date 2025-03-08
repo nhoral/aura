@@ -8,7 +8,7 @@ ns.auras["player_shooting"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -608,
+    xOffset = -548,
     yOffset = -319,
     width = 3,
     height = 3,
@@ -40,15 +40,15 @@ ns.auras["player_shooting"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Swing Timer",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_inverse = false,
                 duration = "1",
-                custom_hide = "timed",
+                use_unit = true,
                 unevent = "auto",
                 events = "START_AUTOREPEAT_SPELL, STOP_AUTOREPEAT_SPELL, UNIT_SPELLCAST_START, UNIT_SPELLCAST_STOP, UNIT_SPELLCAST_SUCCEEDED, UNIT_SPELLCAST_DELAYED, UNIT_SPELLCAST_FAILED, UNIT_SPELLCAST_INTERRUPTED, COMBAT_LOG_EVENT_UNFILTERED",
                 custom = [[function(allstates)
@@ -73,12 +73,12 @@ ns.auras["player_shooting"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
-                remaining_operator = "<",
                 use_remaining = true,
+                remaining_operator = "<",
                 remaining = "0.2",
             },
             untrigger = {
@@ -90,7 +90,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -102,18 +102,18 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,
         zoneIds = "",
-        level_operator = {
-            "~=",
-        },
+        use_level = false,
         level = {
             "120",
         },
-        use_level = false,
+        level_operator = {
+            "~=",
+        },
         use_spellknown = false,
     },
     animation = {

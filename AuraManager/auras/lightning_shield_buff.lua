@@ -8,7 +8,7 @@ ns.auras["lightning_shield_buff"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -556,
+    xOffset = -548,
     yOffset = -307,
     width = 3,
     height = 3,
@@ -39,27 +39,27 @@ ns.auras["lightning_shield_buff"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "BOTH",
                 ownOnly = true,
                 event = "Health",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Lightning Shield",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "BOTH",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -72,7 +72,7 @@ ns.auras["lightning_shield_buff"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

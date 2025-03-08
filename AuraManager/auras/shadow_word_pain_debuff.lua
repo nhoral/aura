@@ -1,15 +1,15 @@
 
 local ADDON_NAME, ns = ...
 ns.auras = ns.auras or {}
-ns.auras["party_1_range_35"] = {
-    id = "Party 1 Range 35",
-    uid = "gCHQsouemnj",
+ns.auras["shadow_word_pain_debuff"] = {
+    id = "Shadow Word Pain Debuff",
+    uid = "OQGvBXAVhlc",
     internalVersion = 78,
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -572,
-    yOffset = -311,
+    xOffset = -576,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -37,52 +37,41 @@ ns.auras["party_1_range_35"] = {
         activeTriggerMode = -10,
         {
             trigger = {
-                type = "unit",
+                type = "aura2",
                 subeventSuffix = "_CAST_START",
-                event = "Range Check",
+                debuffType = "HARMFUL",
+                ownOnly = true,
+                event = "Health",
                 names = {},
+                unitExists = false,
+                unit = "target",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "party1",
-                debuffType = "HELPFUL",
-                use_inverse = false,
-                realSpellName = "Wrath",
-                use_spellName = true,
-                use_genericShowOn = true,
-                genericShowOn = "showOnCooldown",
-                use_track = true,
-                spellName = 5176,
-                range = "35",
-                use_unit = true,
-                range_operator = "<=",
-                use_range = true,
-                itemName = 0,
-                use_itemName = true,
-                use_hand = true,
-                use_messageType = false,
-                use_message = false,
-                instance_size = {},
-                use_sourceName = false,
-                use_targetRequired = false,
-                use_moveSpeed = false,
-                use_specific_unit = true,
-                use_spellNames = true,
+                auranames = {
+                    "Shadow Word: Pain",
+                },
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
-            multi = {},
+            multi = {
+                WARLOCK = true,
+            },
+            single = "WARLOCK",
         },
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

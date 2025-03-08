@@ -8,8 +8,8 @@ ns.auras["range_8_triangle"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -552,
-    yOffset = -323,
+    xOffset = -604,
+    yOffset = -327,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,16 +39,17 @@ ns.auras["range_8_triangle"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                unevent = "auto",
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 custom = [[function(allstates, event, ...)
     -- Throttle checks
     if not aura_env.last or GetTime() - aura_env.last > 0.2 then
@@ -109,7 +110,6 @@ ns.auras["range_8_triangle"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
                 customVariables = "",
             },
             untrigger = {},
@@ -117,7 +117,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -129,7 +129,7 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         use_never = false,

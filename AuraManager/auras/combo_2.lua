@@ -39,12 +39,12 @@ ns.auras["combo_2"] = {
             trigger = {
                 type = "unit",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Power",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 use_genericShowOn = true,
                 use_unit = true,
                 powertype = 4,
@@ -66,8 +66,8 @@ ns.auras["combo_2"] = {
                     ">=",
                 },
                 runesCount_operator = ">=",
-                rune = 0,
                 runesCount = "1",
+                rune = 0,
                 use_health = false,
             },
             untrigger = {},
@@ -75,7 +75,7 @@ ns.auras["combo_2"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -87,7 +87,7 @@ ns.auras["combo_2"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

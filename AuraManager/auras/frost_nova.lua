@@ -8,7 +8,7 @@ ns.auras["frost_nova"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -592,
+    xOffset = -584,
     yOffset = -303,
     width = 3,
     height = 3,
@@ -39,15 +39,15 @@ ns.auras["frost_nova"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Cooldown Progress (Spell)",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                use_genericShowOn = true,
                 realSpellName = "Frost Nova",
                 use_spellName = true,
-                use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 spellName = 122,
@@ -57,7 +57,7 @@ ns.auras["frost_nova"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -70,7 +70,7 @@ ns.auras["frost_nova"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
         race = {

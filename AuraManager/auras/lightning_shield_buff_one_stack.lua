@@ -8,7 +8,7 @@ ns.auras["lightning_shield_buff_one_stack"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -552,
+    xOffset = -544,
     yOffset = -307,
     width = 3,
     height = 3,
@@ -39,19 +39,19 @@ ns.auras["lightning_shield_buff_one_stack"] = {
             trigger = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Weapon Enchant",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "324",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
                 genericShowOn = "showOnCooldown",
                 stacks = "1",
@@ -70,7 +70,7 @@ ns.auras["lightning_shield_buff_one_stack"] = {
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -82,7 +82,7 @@ ns.auras["lightning_shield_buff_one_stack"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

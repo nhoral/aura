@@ -8,8 +8,8 @@ ns.auras["scanner_diamond"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -588,
-    yOffset = -327,
+    xOffset = -636,
+    yOffset = -331,
     width = 3,
     height = 3,
     frameStrata = 1,
@@ -39,79 +39,124 @@ ns.auras["scanner_diamond"] = {
             trigger = {
                 type = "custom",
                 subeventSuffix = "_CAST_START",
+                debuffType = "HELPFUL",
                 event = "Health",
                 names = {},
+                unit = "player",
                 spellIds = {},
                 subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
                 duration = "1",
-                custom_hide = "timed",
-                unevent = "auto",
-                customStacks = [[function() return aura_env.count end]],
+                use_unit = true,
                 use_absorbMode = true,
+                customStacks = [[function() return aura_env.count end]],
+                unevent = "auto",
                 events = "PLAYER_TARGET_CHANGED",
                 custom = [[function(allstates)
     -- Throttle updates for performance
     if not aura_env.lastUpdate or GetTime() - aura_env.lastUpdate > 0.1 then
         aura_env.lastUpdate = GetTime()
         
-        -- Function to check if unit has an interruptible cast
-        local function hasInterruptibleCast(unit)
-            if UnitExists(unit) and UnitCanAttack("player", unit) and not UnitIsDeadOrGhost(unit) then
-                -- Skip if unit has skull mark
-                local currentMark = GetRaidTargetIndex(unit)
-                if currentMark == 8 then return false end
-                
-                local name, _, _, _, _, _, _, notInterruptible = UnitCastingInfo(unit)
-                -- Also check channeled spells
-                if not name then
-                    name, _, _, _, _, _, notInterruptible = UnitChannelInfo(unit)
-                end
-                
-                -- Return true if casting and can be interrupted
-                if name and not notInterruptible then
-                    -- Set diamond mark (3) if not already marked
-                    if currentMark ~= 3 then
-                        SetRaidTarget(unit, 3)
-                    end
-                    return true
-                else
-                    -- Clear diamond if no longer casting
-                    if currentMark == 3 then
-                        SetRaidTarget(unit, 0)
-                    end
-                end
-            end
+        -- Check if player is solo or party leader
+        local inGroup = IsInGroup()
+        local isLeader = UnitIsGroupLeader("player")
+        
+        -- Exit if in group but not leader
+        if inGroup and not isLeader then
             return false
         end
         
-        -- Check all units
+        -- Collection of units to check
+        local units = {}
+        
+        -- Add nameplate units
         for i = 1, 20 do
-            if hasInterruptibleCast("nameplate" .. i) then
-                allstates[""] = {
-                    show = true,
-                    changed = true
-                }
-                return true
+            if UnitExists("nameplate" .. i) then
+                table.insert(units, "nameplate" .. i)
             end
         end
         
-        -- Check target and other common unit IDs
-        local unitsToCheck = {
+        -- Add other common units
+        local otherUnits = {
             "target", "pettarget",
             "party1target", "party2target", "party3target", "party4target",
             "partypet1target", "partypet2target", "partypet3target", "partypet4target"
         }
         
-        for _, unit in ipairs(unitsToCheck) do
-            if hasInterruptibleCast(unit) then
-                allstates[""] = {
-                    show = true,
-                    changed = true
-                }
-                return true
+        for _, unit in ipairs(otherUnits) do
+            if UnitExists(unit) then
+                table.insert(units, unit)
             end
+        end
+        
+        -- Function to check if unit has an interruptible cast
+        local function hasInterruptibleCast(unit)
+            -- Skip if unit is invalid
+            if not UnitExists(unit) or 
+            not UnitCanAttack("player", unit) or 
+            UnitIsDeadOrGhost(unit) or
+            UnitIsTapDenied(unit) then
+                return false
+            end
+            
+            -- Skip if unit has skull mark
+            local currentMark = GetRaidTargetIndex(unit)
+            if currentMark == 8 then
+                return false
+            end
+            
+            -- Check for interruptible cast
+            local name, _, _, startTime, endTime, _, _, notInterruptible = UnitCastingInfo(unit)
+            -- Also check channeled spells
+            if not name then
+                name, _, _, startTime, endTime, _, notInterruptible = UnitChannelInfo(unit)
+            end
+            
+            -- Return true if casting and can be interrupted
+            return name and not notInterruptible, (endTime or 0) - (startTime or 0)
+        end
+        
+        -- Track best candidate for new mark
+        local bestTarget = nil
+        local longestCastTime = 0
+        
+        -- Single pass through all units
+        for _, unit in ipairs(units) do
+            -- Check if this unit already has diamond and is still valid
+            if GetRaidTargetIndex(unit) == 3 then
+                local isInterruptible = hasInterruptibleCast(unit)
+                if isInterruptible then
+                    -- Current diamond unit is still valid - keep it and exit early
+                    allstates[""] = {
+                        show = true,
+                        changed = true
+                    }
+                    return true
+                else
+                    -- Diamond-marked unit is no longer valid, clear mark
+                    SetRaidTarget(unit, 0)
+                end
+            else
+                -- Check if this is a potential new diamond target
+                local isInterruptible, castDuration = hasInterruptibleCast(unit)
+                if isInterruptible then
+                    -- Prioritize targets with longer remaining cast time
+                    if castDuration > longestCastTime then
+                        bestTarget = unit
+                        longestCastTime = castDuration
+                    end
+                end
+            end
+        end
+        
+        -- If we got here, no existing diamond was valid
+        -- Mark best candidate with diamond if found
+        if bestTarget then
+            SetRaidTarget(bestTarget, 3)
+            allstates[""] = {
+                show = true,
+                changed = true
+            }
+            return true
         end
         
         -- No interruptible cast found
@@ -125,7 +170,7 @@ ns.auras["scanner_diamond"] = {
 end]],
                 check = "update",
                 custom_type = "stateupdate",
-                use_unit = true,
+                custom_hide = "timed",
                 customVariables = [[{
   stacks = true,
 }]],
@@ -135,7 +180,7 @@ end]],
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -147,10 +192,10 @@ end]],
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
-        use_never = true,
+        use_never = false,
         zoneIds = "",
     },
     animation = {

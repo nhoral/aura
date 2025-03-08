@@ -8,7 +8,7 @@ ns.auras["stoneclaw_totem_dropped"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -628,
+    xOffset = -544,
     yOffset = -331,
     width = 3,
     height = 3,
@@ -39,21 +39,21 @@ ns.auras["stoneclaw_totem_dropped"] = {
             trigger = {
                 type = "spell",
                 subeventSuffix = "_CAST_START",
-                useRem = false,
+                debuffType = "HELPFUL",
                 event = "Totem",
                 names = {},
                 unitExists = false,
-                matchesShowOn = "showOnActive",
+                unit = "player",
                 spellIds = {},
-                useName = true,
+                subeventPrefix = "SPELL",
                 auranames = {
                     "Demon Skin",
                 },
-                subeventPrefix = "SPELL",
-                unit = "player",
-                debuffType = "HELPFUL",
-                use_spellName = true,
+                useName = true,
+                matchesShowOn = "showOnActive",
+                useRem = false,
                 use_genericShowOn = true,
+                use_spellName = true,
                 genericShowOn = "showOnCooldown",
                 use_track = true,
                 use_itemName = true,
@@ -63,17 +63,17 @@ ns.auras["stoneclaw_totem_dropped"] = {
                 showOn = "showOnActive",
                 use_enchant = true,
                 weapon = "main",
-                use_totemName = true,
-                use_totemType = false,
                 totemName = "5730",
+                use_totemName = true,
                 use_totemNamePattern = false,
+                use_totemType = false,
             },
             untrigger = {},
         },
     },
     conditions = {},
     load = {
-        size = {
+        talent = {
             multi = {},
         },
         class = {
@@ -85,7 +85,7 @@ ns.auras["stoneclaw_totem_dropped"] = {
         spec = {
             multi = {},
         },
-        talent = {
+        size = {
             multi = {},
         },
     },

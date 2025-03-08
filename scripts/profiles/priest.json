@@ -1,0 +1,85 @@
+{
+    "name": "Priest Hardcore",
+    "actions": [
+        {
+            "name": "Party1 Power Word: Fortitude",
+            "key": "SHIFT-3",
+            "conditions": ["player_in_party", "!combat", "power_30", "!party1_power_word_fortitude_buff"]
+        },
+        {
+            "name": "Power Word: Fortitude",
+            "key": "SHIFT-2",
+            "conditions": ["!combat", "power_30", "!power_word_fortitude_buff"]
+        },
+        {
+            "name": "OOC Scan targetenemy",
+            "key": "1",
+            "conditions": ["!combat", "!target_skull"]
+        },
+        {
+            "name": "use potion at 50% health",
+            "key": "2",
+            "conditions": ["potion_in_inventory", "combat", "health_under_50", "!potion"]
+        },
+        {
+            "name": "Power Word: Shield Tank",
+            "key": "9",
+            "conditions": ["player_in_party", "power_20", "tank_health_under_25", "!tank_power_word_shield_buff", "!tank_weakened_soul_debuff"]
+        },
+        {
+            "name": "Renew Tank",
+            "key": "=",
+            "conditions": ["player_in_party", "power_90", "tank_health_under_90", "!tank_health_under_75", "!tank_renew_buff"]
+        },
+        {
+            "name": "Lesser Heal Tank",
+            "key": "7",
+            "conditions": ["player_in_party", "power_10", "tank_health_under_75"]
+        },
+        {
+            "name": "Fade",
+            "key": "SHIFT-1",
+            "conditions": ["player_in_party", "power_30", "player_any_aggro", "fade"]
+        },
+        {
+            "name": "Power Word: Shield",
+            "key": "8",
+            "conditions": ["power_20", "player_any_aggro", "!power_word_shield_buff", "!weakened_soul_debuff"]
+        },
+        {
+            "name": "Renew",
+            "key": "-",
+            "conditions": ["player_in_party", "power_20", "player_any_aggro", "!renew_buff"]
+        },
+        {
+            "name": "Renew Solo",
+            "key": "-",
+            "conditions": ["!player_in_party", "power_20", "health_under_75", "!health_under_50", "!renew_buff"]
+        },
+        {
+            "name": "Lesser Heal at 50% health",
+            "key": "6",
+            "conditions": ["power_20", "health_under_50"]
+        },
+        {
+            "name": "Target Skull: /targetenemy",
+            "key": "1",
+            "conditions": ["!target_skull"]
+        },
+        {
+            "name": "Shadow Word: Pain",
+            "key": "4",
+            "conditions": ["power_90", "!shadow_word_pain_debuff"]
+        },
+        {
+            "name": "Shoot",
+            "key": "5",
+            "conditions": ["!player_shooting","range_30"]
+        },
+        {
+            "name": "Stop and Shoot",
+            "key": "STOP",
+            "conditions": ["inactive","combat", "player_shooting", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
+        }
+    ]
+}
