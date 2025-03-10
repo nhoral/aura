@@ -67,6 +67,11 @@
             "conditions": ["!target_skull"]
         },
         {
+            "name": "Hex of Weakness",
+            "key": "4",
+            "conditions": ["inactive", "power_90", "!shadow_word_pain_debuff"]
+        },
+        {
             "name": "Shadow Word: Pain",
             "key": "4",
             "conditions": ["power_90", "!shadow_word_pain_debuff"]
@@ -74,12 +79,12 @@
         {
             "name": "Shoot",
             "key": "5",
-            "conditions": ["!player_shooting","range_30"]
+            "conditions": ["!player_wanding", "range_30"]
         },
         {
             "name": "Stop and Shoot",
             "key": "STOP",
-            "conditions": ["inactive","combat", "player_shooting", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
+            "conditions": ["combat", "player_wanding", "!player_swing", "range_35", "!range_8_1+", "!health_under_50"]
         }
     ]
 }

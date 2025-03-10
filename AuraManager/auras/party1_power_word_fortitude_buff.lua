@@ -40,7 +40,6 @@ ns.auras["party1_power_word_fortitude_buff"] = {
                 type = "aura2",
                 subeventSuffix = "_CAST_START",
                 debuffType = "HELPFUL",
-                ownOnly = true,
                 event = "Health",
                 names = {},
                 unit = "member",

@@ -77,9 +77,9 @@ end]],
                 customVariables = "{}",
                 use_hand = true,
                 hand = "ranged",
-                use_remaining = true,
                 remaining_operator = "<",
                 remaining = "0.2",
+                use_remaining = true,
             },
             untrigger = {
                 custom = [[function()

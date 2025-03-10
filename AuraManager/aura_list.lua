@@ -213,6 +213,7 @@ ns.aura_list = {
     "player_slowed",
     "player_stunned",
     "player_swing",
+    "player_wanding",
     "poisoned",
     "potion",
     "potion_in_inventory",

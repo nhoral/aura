@@ -8,7 +8,7 @@ ns.auras["scanner_triangle_tank"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -608,
+    xOffset = -604,
     yOffset = -331,
     width = 3,
     height = 3,
@@ -105,6 +105,7 @@ ns.auras["scanner_triangle_tank"] = {
             -- Skip if unit is invalid
             if not UnitExists(unit) or 
             not UnitCanAttack("player", unit) or 
+            not UnitAffectingCombat(unit) or
             UnitIsDeadOrGhost(unit) or
             UnitIsTapDenied(unit) then
                 return false

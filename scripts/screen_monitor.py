@@ -530,16 +530,30 @@ def main():
                       default='scripts/layout.json',
                       help='Path to layout JSON file')
     parser.add_argument('--profile', '-p',
-                      default='scripts/profiles/priest.json',
-                      help='Path to profile JSON file')
+                      default='priest',  # Default to just the name
+                      help='Profile name (e.g. priest, warrior, rogue)')
     parser.add_argument('--debug', '-d',
                       action='store_true',
                       help='Enable debug mode')
     args = parser.parse_args()
 
     try:
+        # Construct the full profile path
+        profile_path = str(Path('scripts/profiles') / f"{args.profile}.json")
+        
+        # Verify the profile exists
+        if not Path(profile_path).exists():
+            print(f"Error: Profile '{args.profile}' not found in scripts/profiles/")
+            print("Available profiles:")
+            # List available profiles
+            profiles_dir = Path('scripts/profiles')
+            if profiles_dir.exists():
+                for profile_file in profiles_dir.glob('*.json'):
+                    print(f"  - {profile_file.stem}")
+            return 1
+
         checker = ScreenChecker(args.layout)
-        monitor = ScreenMonitor(checker, args.profile, args.debug)
+        monitor = ScreenMonitor(checker, profile_path, args.debug)
         monitor.run()
     except Exception as e:
         print(f"Error: {str(e)}")

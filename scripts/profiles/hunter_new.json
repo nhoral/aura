@@ -22,6 +22,11 @@
             "conditions": ["bandage_in_inventory", "health_under_50", "!recently_bandaged_debuff", "!target_aggro", "!player_moving"]
         },
         {
+            "name": "Mend Pet at Pet 50% health",
+            "key": "3",
+            "conditions": ["player_has_pet", "pet_range_20", "power_20", "pet_health_under_50", "player_any_aggro", "!channeling"]
+        },
+        {
             "name": "Target triangle for Pet Attack: /targetenemy",
             "key": "1",
             "conditions": ["player_has_pet", "icon_triangle_exists", "!pet_attacking_triangle", "!pet_aggro_triangle", "!target_is_ooc", "!target_triangle"]
@@ -42,34 +47,49 @@
             "conditions": ["icon_skull_exists", "!icon_triangle_exists", "!pet_attacking_skull", "player_has_pet"]
         },
         {
+            "name": "Wing Clip",
+            "key": "SHIFT-7",
+            "conditions": ["!wing_clip_debuff", "range_8", "power_10", "!channeling"]
+        },
+        {
+            "name": "Aspect of the Monkey",
+            "key": "SHIFT-9",
+            "conditions": ["!aspect_of_the_monkey_buff", "range_8", "power_20", "!channeling", "target_aggro"]
+        },
+        {
+            "name": "Aspect of the Hawk",
+            "key": "SHIFT-8",
+            "conditions": ["!aspect_of_the_hawk_buff", "!range_8", "range_30", "power_20", "!channeling"]
+        },
+        {
             "name": "Hunters Mark",
             "key": "8",
-            "conditions": ["target_skull", "!hunter's_mark_debuff", "power_80", "!range_8", "range_35"]
+            "conditions": ["target_skull", "!hunter's_mark_debuff", "power_80", "!range_8", "range_35", "!channeling"]
         },
         {
             "name": "Serpent Sting",
             "key": "6",
-            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10", "!target_dies_10"]
+            "conditions": ["!serpent_sting_debuff", "!range_8", "range_30", "power_10", "!target_dies_10", "!channeling"]
         },
         {
             "name": "Concussive Shot",
             "key": "9",
-            "conditions": ["concussive_shot", "!concussive_shot_debuff", "!range_8", "range_35", "power_10", "target_moving"]
+            "conditions": ["concussive_shot", "!concussive_shot_debuff", "!range_8", "range_35", "power_10", "target_moving", "!channeling"]
         },
         {
             "name": "Arcane Shot",
             "key": "7",
-            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35"]
+            "conditions": ["arcane_shot", "power_10", "!range_8", "range_35", "!channeling"]
         },
         {
             "name": "Raptor Strike",
             "key": "5",
-            "conditions": ["raptor_strike", "range_8", "power_10"]
+            "conditions": ["raptor_strike", "range_8", "power_10", "!channeling"]
         },
         {
             "name": "Auto Shot",
             "key": "4",
-            "conditions": ["!player_shooting","!range_8", "range_30"]
+            "conditions": ["!player_shooting","!range_8", "range_30", "!channeling"]
         },
         {
             "name": "Stop and Shoot",
@@ -79,7 +99,7 @@
         {
             "name": "Auto Attack",
             "key": "SHIFT-2",
-            "conditions": ["!player_attacking", "range_8"]
+            "conditions": ["!player_attacking", "range_8", "!channeling"]
         }
     ]
 }

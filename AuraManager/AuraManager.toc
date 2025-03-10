@@ -222,6 +222,7 @@ auras/player_silenced.lua
 auras/player_slowed.lua
 auras/player_stunned.lua
 auras/player_swing.lua
+auras/player_wanding.lua
 auras/poisoned.lua
 auras/potion.lua
 auras/potion_in_inventory.lua

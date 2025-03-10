@@ -8,7 +8,7 @@ ns.auras["scanner_moon_tank"] = {
     regionType = "aurabar",
     anchorPoint = "CENTER",
     selfPoint = "CENTER",
-    xOffset = -628,
+    xOffset = -624,
     yOffset = -331,
     width = 3,
     height = 3,
@@ -106,6 +106,7 @@ ns.auras["scanner_moon_tank"] = {
             if not UnitExists(unit) or 
             not UnitCanAttack("player", unit) or 
             UnitIsDeadOrGhost(unit) or
+            not UnitAffectingCombat(unit) or
             UnitIsTapDenied(unit) then
                 return false
             end
@@ -227,7 +228,7 @@ end]],
         size = {
             multi = {},
         },
-        use_never = false,
+        use_never = true,
         zoneIds = "",
     },
     animation = {
